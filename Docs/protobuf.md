@@ -122,7 +122,7 @@ response: [AuditionPresetStatus](#auditionpresetstatus) message containing the p
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| presetData | [string](#string) | required | JSON string conaining the preset to be auditioned |
+| presetData | [string](#string) | required | [JSON](json.md) string conaining the preset to be auditioned |
 
 <a name="AuditionPresetStatus-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
@@ -136,7 +136,7 @@ Response to an [AuditionPreset](#auditionpreset) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| presetData | [string](#string) | required | JSON data conatining preset data being auditioned |
+| presetData | [string](#string) | required | [JSON data](json.md) conatining preset data being auditioned |
 
 <a name="AuditionStateRequest-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
@@ -197,7 +197,7 @@ Response to a [ClearPreset](#clearpreset) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| slotIndex | [int32](#int32) | required |  |
+| slotIndex | [int32](#int32) | required | bank number cleared |
 
 <a name="ConnectionStatus-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
@@ -287,7 +287,7 @@ response: [CurrentPresetStatus](#currentpresetstatus) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| currentPresetData | [string](#string) | required | JSON data conatining preset data |
+| currentPresetData | [string](#string) | required | [JSON data](json.md) conatining preset data |
 
 <a name="CurrentPresetStatus-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
@@ -301,7 +301,7 @@ Returns the state of the current preset
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| currentPresetData | [string](#string) | required | JSON data conatining current preset data |
+| currentPresetData | [string](#string) | required | [JSON data](json.md) conatining current preset data |
 | currentSlotIndex | [int32](#int32) | required | Current preset bank number |
 | currentPresetDirtyStatus | [bool](#bool) | required | True if current preset has been edited and not saved |
 
@@ -499,7 +499,7 @@ Saved preset data
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| data | [string](#string) | required | JSON data conatining preset data for requested preset bank |
+| data | [string](#string) | required | [JSON data](json.md) conatining preset data for requested preset bank |
 | slotIndex | [int32](#int32) | required | Preset bank this preset is stored in |
 
 
