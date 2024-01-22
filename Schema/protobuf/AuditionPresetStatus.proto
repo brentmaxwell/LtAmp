@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Response to an AuditionPreset message
+ */
+message AuditionPresetStatus {
+    // JSON data conatining preset data being auditioned
+    required string presetData = 1;
+}

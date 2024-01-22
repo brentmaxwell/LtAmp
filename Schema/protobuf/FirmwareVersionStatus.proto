@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * The firmware version of the amp
+ */
+message FirmwareVersionStatus {
+    // Firmware Version
+    required string version = 1;
+}

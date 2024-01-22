@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Assigns preset banks to the footswitch
+ *
+ * response: QASlotsStatus message
+ */
+message QASlotsSet {
+    // Preset banks to assign to the footswitch
+    repeated uint32 slots = 1;
+}

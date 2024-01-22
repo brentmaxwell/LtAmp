@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Response to a ShiftPreset message with the status of the command
+ */
+message ShiftPresetStatus {
+    // Preset shifted
+    required int32 indexToShiftFrom = 1;
+    // Destination
+    required int32 indexToShiftTo = 2;
+}

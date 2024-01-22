@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+/*
+ * Status of the SetDspUnitParameter message. Also sent when parameters are adjusted on the amp
+ */
+message SetDspUnitParameterStatus {
+    // string id of the node changed (one of amp, stomp, mod, delay, reverb)
+    required string nodeId = 1;
+
+    // string id of the parameter to change
+    required string parameterId = 2;
+    
+    //one of the following based on the need of the parameter
+    oneof type {
+        float floatParameter = 3;
+        string stringParameter = 4;
+        sint32 sint32Parameter = 5;
+        bool boolParameter = 6;
+    }
+}

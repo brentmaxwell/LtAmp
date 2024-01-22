@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+message SwapPreset {
+    required int32 indexA = 1;
+    required int32 indexB = 2;
+}

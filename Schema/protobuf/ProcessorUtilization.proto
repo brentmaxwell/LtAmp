@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+/*
+ * Current processor utilization statistics
+ */
+message ProcessorUtilization {
+    required float percent = 1;
+    required float minPercent = 2;
+    required float maxPercent = 3;
+}

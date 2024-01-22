@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+message NewPresetSavedStatus {
+    required string presetData = 1;
+    required int32 presetSlot = 2;
+}

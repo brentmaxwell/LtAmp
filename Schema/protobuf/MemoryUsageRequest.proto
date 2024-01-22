@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Requests memory usage statistics from the amp
+ *
+ * response: MemoryUsageStatus message
+ */
+message MemoryUsageRequest {
+    // Always true on requests
+    required bool request = 1;
+}

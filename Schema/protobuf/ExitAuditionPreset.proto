@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Leaves audition mode
+ *
+ * response: ExitAuditionPresetStatus message
+ */
+message ExitAuditionPreset {
+    // True to exit audition mode
+    required bool exit = 1;
+}

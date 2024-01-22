@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+/*
+ * Changes the state of the amp
+ *
+ * response: A ModalStatusMessage with the result of the request
+ */
+message ModalStatusMessage {
+    // Context to switch to
+    required ModalContext context = 1;
+    // The result of the request. Requests to the amp are sent with an OK state
+    required ModalState state = 2;
+}
+
+enum ModalContext {
+    // Used during the initialization of the connection
+    SYNC_BEGIN = 0;
+    // Used during the initialization of the connection
+    SYNC_END = 1;
+    BACKUP_BEGIN = 2;
+    BACKUP_END = 3;
+    RESTORE_BEGIN = 4;
+    RESTORE_END = 5;
+    // Enables the tuner
+    TUNER_ENABLE = 6;
+    // Disables the tuner
+    TUNER_DISABLE = 7;
+    FACTORY_RESTORE_BEGIN = 8;
+    FACTORY_RESTORE_END = 9;
+    TONE_BUSY_BEGIN = 10;
+    TONE_BUSY_END = 11;
+}
+
+enum ModalState {
+    // Success; also the default when sending this message to the amp
+    OK = 0;
+    // Failure
+    FAIL = 1;
+}

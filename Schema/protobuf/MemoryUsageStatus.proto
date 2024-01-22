@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Message conainting current memory usage statistics
+ */
+message MemoryUsageStatus {
+    required int32 stack = 1;
+    required int32 heap = 2;
+}

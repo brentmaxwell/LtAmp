@@ -1,0 +1,5 @@
+syntax = "proto2";
+
+message ProductIdentificationStatus {
+    required string id = 1;
+}

@@ -1,0 +1,5 @@
+syntax = "proto2";
+
+message LineOutGainSet {
+    required float valueDB = 1;
+}

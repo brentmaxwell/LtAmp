@@ -1,0 +1,160 @@
+syntax = "proto2";
+
+import "IndexPot.proto";
+import "IndexButton.proto";
+import "IndexEncoder.proto";
+import "LoadPreset.proto";
+import "PresetJSONMessageRequest_LT.proto";
+import "PresetJSONMessage.proto";
+import "ProcessorUtilizationRequest.proto";
+import "ProcessorUtilization.proto";
+import "FrameBufferMessageRequest.proto";
+import "FrameBufferMessage.proto";
+import "ActiveDisplay.proto";
+import "MemoryUsageStatus.proto";
+import "MemoryUsageRequest.proto";
+import "LoopbackTest.proto";
+import "CurrentLoadedPresetIndexStatus.proto";
+import "SetDspUnitParameter.proto";
+import "AudioStatus.proto";
+import "SetDspUnitParameterStatus.proto";
+import "DspUnitParameterStatus.proto";
+import "ReplaceNode.proto";
+import "ReplaceNodeStatus.proto";
+import "ProductIdentificationRequest.proto";
+import "ProductIdentificationStatus.proto";
+import "FirmwareVersionRequest.proto";
+import "FirmwareVersionStatus.proto";
+import "CurrentPresetRequest.proto";
+import "CurrentPresetSet.proto";
+import "CurrentPresetStatus.proto";
+import "RetrievePreset.proto";
+import "UsbGainRequest.proto";
+import "UsbGainStatus.proto";
+import "UsbGainSet.proto";
+import "LineOutGainRequest.proto";
+import "LineOutGainStatus.proto";
+import "LineOutGainSet.proto";
+import "QASlotsRequest.proto";
+import "QASlotsStatus.proto";
+import "QASlotsSet.proto";
+import "PresetSavedStatus.proto";
+import "ModalStatusMessage.proto";
+import "UnsupportedMessageStatus.proto";
+import "ClearPreset.proto";
+import "ClearPresetStatus.proto";
+import "SaveCurrentPreset.proto";
+import "SaveCurrentPresetTo.proto";
+import "SavePresetAs.proto";
+import "NewPresetSavedStatus.proto";
+import "RenamePresetAt.proto";
+import "AuditionPreset.proto";
+import "AuditionPresetStatus.proto";
+import "ExitAuditionPreset.proto";
+import "ExitAuditionPresetStatus.proto";
+import "AuditionStateRequest.proto";
+import "AuditionStateStatus.proto";
+import "LT4FootswitchModeRequest.proto";
+import "LT4FootswitchModeStatus.proto";
+import "Heartbeat.proto";
+import "ShiftPreset.proto";
+import "ShiftPresetStatus.proto";
+import "SwapPreset.proto";
+import "SwapPresetStatus.proto";
+import "ConnectionStatus.proto";
+import "ConnectionStatusRequest.proto";
+import "LoadPreset_TestSuite.proto";
+import "CurrentLoadedPresetIndexBypassStatus.proto";
+import "CurrentDisplayedPresetIndexStatus.proto";
+
+/*
+ * Base message type used to communicate with the amp
+ *
+ * All messages are of this type, and encapsulate the actual message
+ */
+message FenderMessageLT {
+    // Response type. All messages from the host to the amp are UNSOLICITED
+    required ResponseType responseType = 1 [default = UNSOLICITED];
+    
+    // Type of message contained
+    oneof type {
+        IndexPot indexPot = 2;
+        IndexButton indexButton = 3;
+        IndexEncoder indexEncoder = 4;
+        ActiveDisplay activeDisplay = 5;
+        ProcessorUtilizationRequest processorUtilizationRequest = 6;
+        ProcessorUtilization processorUtilization = 7;
+        MemoryUsageRequest memoryUsageRequest = 8;
+        MemoryUsageStatus memoryUsageStatus = 9;
+        PresetJSONMessageRequest_LT presetJSONMessageRequest_LT = 10;
+        FrameBufferMessageRequest frameBufferMessageRequest = 11;
+        FrameBufferMessage frameBufferMessage = 12;
+        LT4FootswitchModeRequest lt4FootswitchModeRequest = 13;
+        LT4FootswitchModeStatus lt4FootswitchModeStatus = 14;
+        LoadPreset_TestSuite loadPreset_TestSuite = 15;
+        LoopbackTest loopbackTest = 30;
+        PresetJSONMessage presetJSONMessage = 31;
+        CurrentPresetStatus currentPresetStatus = 32;
+        LoadPreset loadPreset = 33;
+        SetDspUnitParameter setDspUnitParameter = 34;
+        SetDspUnitParameterStatus setDspUnitParameterStatus = 35;
+        DspUnitParameterStatus dspUnitParameterStatus = 36;
+        CurrentLoadedPresetIndexStatus currentLoadedPresetIndexStatus = 37;
+        PresetEditedStatus presetEditedStatus = 38;
+        ReplaceNode replaceNode = 39;
+        ReplaceNodeStatus replaceNodeStatus = 40;
+        ShiftPreset shiftPreset = 41;
+        ShiftPresetStatus shiftPresetStatus = 42;
+        SwapPreset swapPreset = 43;
+        SwapPresetStatus swapPresetStatus = 44;
+        CurrentPresetSet currentPresetSet = 45;
+        CurrentLoadedPresetIndexBypassStatus currentLoadedPresetIndexBypassStatus = 46;
+        CurrentDisplayedPresetIndexStatus currentDisplayedPresetIndexStatus = 47;
+        PresetSavedStatus presetSavedStatus = 50;
+        ClearPreset clearPreset = 51;
+        ClearPresetStatus clearPresetStatus = 52;
+        SaveCurrentPreset saveCurrentPreset = 53;
+        SaveCurrentPresetTo saveCurrentPresetTo = 54;
+        SavePresetAs savePresetAs = 55;
+        NewPresetSavedStatus newPresetSavedStatus = 56;
+        RenamePresetAt renamePresetAt = 57;
+        AuditionPreset auditionPreset = 58;
+        AuditionPresetStatus auditionPresetStatus = 59;
+        ExitAuditionPreset exitAuditionPreset = 60;
+        ExitAuditionPresetStatus exitAuditionPresetStatus = 61;
+        AuditionStateRequest auditionStateRequest = 62;
+        AuditionStateStatus auditionStateStatus = 63;
+        ProductIdentificationStatus productIdentificationStatus = 100;
+        ProductIdentificationRequest productIdentificationRequest = 101;
+        FirmwareVersionRequest firmwareVersionRequest = 102;
+        FirmwareVersionStatus firmwareVersionStatus = 103;
+        CurrentPresetRequest currentPresetRequest = 104;
+        RetrievePreset retrievePreset = 105;
+        UsbGainRequest usbGainRequest = 106;
+        UsbGainStatus usbGainStatus = 107;
+        QASlotsRequest qASlotsRequest = 108;
+        QASlotsStatus qASlotsStatus = 109;
+        LineOutGainRequest lineOutGainRequest = 110;
+        LineOutGainStatus lineOutGainStatus = 111;
+        ModalStatusMessage modalStatusMessage = 113;
+        UsbGainSet usbGainSet = 114;
+        LineOutGainSet lineOutGainSet = 115;
+        QASlotsSet qASlotsSet = 116;
+        UnsupportedMessageStatus unsupportedMessageStatus = 200;
+        Heartbeat heartbeat = 201;
+        ConnectionStatusRequest connectionStatusRequest = 202;
+        ConnectionStatus connectionStatus = 203;
+    }
+}
+
+/*
+ * Message response type
+ */
+enum ResponseType {
+    // Message sent not as the result of a command
+    UNSOLICITED = 0;
+    // Message sent as the result of a command, but NOT the last message in the batch
+    NOT_LAST_ACK = 1;
+    // Message sent as the last result of a command
+    IS_LAST_ACK = 2;
+}

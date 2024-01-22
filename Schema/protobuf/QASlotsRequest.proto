@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Requests the settings of the footswitch presets
+ *
+ * response: QASlotsStatus message
+ */
+message QASlotsRequest {
+    // Always true on requests
+    required bool request = 1;
+}

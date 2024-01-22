@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+message IndexPot {
+    required int32 index = 1;
+    required float position = 2;
+}

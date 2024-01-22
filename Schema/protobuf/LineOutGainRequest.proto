@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+message LineOutGainRequest {
+    // Always true on requests
+    required bool request = 1;
+}
