@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+message CurrentLoadedPresetIndexBypassStatus {
+    required int32 currentLoadedPresetIndex = 1;
+    repeated bool bypassStatus = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Queries the amp for its audition state
+ *
+ * response: AuditionStateStatus message
+ */
+message AuditionStateRequest {
+    // Always true on requests
+    required bool request = 1;
+}

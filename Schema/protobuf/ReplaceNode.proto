@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+/*
+ * Swaps out a node (amp, stomp, mod, delay, or reverb)
+ *
+ * response: ReplaceNodeStatus message
+ */
+message ReplaceNode {
+    // node to replace (amp, stomp, mod, delay, or reverb)
+    required string nodeIdToReplace = 1;
+    // FenderId of node to set
+    required string fenderIdToReplaceWith = 2;
+}

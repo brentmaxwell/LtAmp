@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Sets the gain for the USB audio device
+ */
+message UsbGainSet {
+    // gain in dB
+    required float valueDB = 1;
+}

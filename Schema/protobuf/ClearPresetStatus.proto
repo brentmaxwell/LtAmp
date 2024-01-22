@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Response to a ClearPreset message with the slot index cleared
+ */
+message ClearPresetStatus {
+    // slot index cleared
+    required int32 slotIndex = 1;
+}

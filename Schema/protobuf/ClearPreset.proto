@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+/*
+ * Clears a preset in the amp
+ *
+ * response: ClearPresetStatus message
+ */
+message ClearPreset {
+    // Preset bank to clear
+    required int32 slotIndex = 1;
+    // ??? the Tone amp sets this to true when clearing the preset
+    required bool isLoadPreset = 2;
+}

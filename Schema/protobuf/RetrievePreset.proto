@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Queries the amp on the stored presets
+ *
+ * response: PresetJsonMessage
+ */
+message RetrievePreset {
+    // Preset bank to retrieve
+    required int32 slot = 1;
+}

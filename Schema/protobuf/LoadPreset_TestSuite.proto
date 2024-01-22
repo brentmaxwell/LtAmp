@@ -1,0 +1,5 @@
+syntax = "proto2";
+
+message LoadPreset_TestSuite {
+    required int32 presetIndex = 1;
+}

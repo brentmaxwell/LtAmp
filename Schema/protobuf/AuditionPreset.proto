@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Sends a preset to the amp to be "auditioned"
+ *
+ * response: AuditionPresetStatus message containing the preset data loaded to the amp
+ */
+message AuditionPreset {
+    // JSON string conaining the preset to be auditioned
+    required string presetData = 1;
+}

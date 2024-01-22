@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Editing status of the current preset
+ */
+message PresetEditedStatus {
+    // True if the preset is in editing state
+    required bool presetEdited = 1 [default = false];
+}

@@ -1,0 +1,5 @@
+syntax = "proto2";
+
+message FrameBufferMessage {
+    required bytes data = 1;
+}

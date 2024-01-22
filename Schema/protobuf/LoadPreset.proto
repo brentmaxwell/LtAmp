@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Switches the amp to the specified preset number
+ *
+ * response: CurrentLoadedPresetIndexStatus message 
+ */
+message LoadPreset {
+    // Preset bank number currently loaded
+    required int32 presetIndex = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * The current connection state of the amp
+ */
+message ConnectionStatus {
+    // True if the amp is connected
+    required bool isConnected = 1;
+}

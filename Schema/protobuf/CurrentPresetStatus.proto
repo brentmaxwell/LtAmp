@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+/*
+ * Returns the state of the current preset
+ */
+message CurrentPresetStatus {
+    // JSON data conatining current preset data
+    required string currentPresetData = 1;
+
+    // Current preset bank number
+    required int32 currentSlotIndex = 2;
+
+    // True if current preset has been edited and not saved
+    required bool currentPresetDirtyStatus = 3;
+}

@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+/*
+ * Moves a preset to the specified point, shifting all other presets
+ *
+ * response: ShiftPresetStatus message
+ */
+message ShiftPreset {
+    // Preset to shift
+    required int32 indexToShiftFrom = 1;
+    // Destination of preset to shift
+    required int32 indexToShiftTo = 2;
+}

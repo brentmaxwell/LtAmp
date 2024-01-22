@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+/*
+ * Gets the current USB Gain settings
+ *
+ * response: UsbGainStatus message
+ */
+message UsbGainRequest {
+    required bool request = 1;
+}

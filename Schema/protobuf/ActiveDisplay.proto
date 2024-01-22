@@ -1,0 +1,5 @@
+syntax = "proto2";
+
+message ActiveDisplay {
+    required string pageName = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * The current audition state of the amp
+ */
+message AuditionStateStatus {
+    // True if the amp is in audition mode
+    required bool isAuditioning = 1;
+}

@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * Result message for an ExitAuditionPreset message
+ */
+message ExitAuditionPresetStatus {
+    // True if audition mode was exited successfully
+    required bool isSuccess = 1;
+}

@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+message UnsupportedMessageStatus {
+    required ErrorType status = 1;
+}
+
+enum ErrorType {
+    UNSUPPORTED = 0;
+    FAILED = 1;
+    INVALID_PARAM = 2;
+    INVALID_NODE_ID = 3;
+    PARAM_OUT_OF_BOUNDS = 4;
+    FACTORY_RESTORE_IN_PROGRESS = 5;
+}

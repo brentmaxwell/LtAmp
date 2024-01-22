@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+message SavePresetAs {
+    required string presetData = 1;
+    required bool isLoadPreset = 2;
+    required int32 presetSlot = 3;
+}

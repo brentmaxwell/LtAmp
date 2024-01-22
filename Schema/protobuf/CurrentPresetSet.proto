@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+/*
+ * Sets the current preset of the amp
+ *
+ * response: CurrentPresetStatus message
+ */
+message CurrentPresetSet {
+    // JSON data conatining preset data
+    required string currentPresetData = 1;
+}

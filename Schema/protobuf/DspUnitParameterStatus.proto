@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+message DspUnitParameterStatus {
+    required string nodeId = 1;
+    required string parameterId = 2;
+    
+    oneof type {
+        float floatParameter = 3;
+        string stringParameter = 4;
+        sint32 sint32Parameter = 5;
+        bool boolParameter = 6;
+    }
+}

@@ -1,0 +1,6 @@
+syntax = "proto2";
+
+// Heartbeat message sent every second to keep the connection alive
+message Heartbeat {
+    required bool dummyField = 1;
+}

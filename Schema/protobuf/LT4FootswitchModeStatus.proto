@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+message LT4FootswitchModeStatus {
+    required LT4FtswModes currentMode = 1 [default = LT4_FTSW_MODE_OFF];
+}
+
+enum LT4FtswModes {
+    LT4_FTSW_MODE_OFF = 0;
+    LT4_FTSW_MODE_BANK1 = 1;
+    LT4_FTSW_MODE_BANK2 = 2;
+    LT4_FTSW_MODE_FX = 3;
+}

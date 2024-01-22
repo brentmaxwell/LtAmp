@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message IndexButton {
+    required int32 index = 1;
+    
+    required Event event = 2;
+    enum Event {
+        EVENT_ERROR = 0;
+        BUTTON_DOWN = 1;
+        BUTTON_UP = 2;
+        BUTTON_HELD = 3;
+    }
+    
+    optional uint32 timestamp_ms = 3;
+}

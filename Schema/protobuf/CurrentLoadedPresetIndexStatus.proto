@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+/*
+ * The current preset displayed on the amp. Sent when the preset is changed at the amp or via a LoadPreset message
+ */
+message CurrentLoadedPresetIndexStatus {
+    // The current preset bank number
+    required int32 currentLoadedPresetIndex = 1;
+}
