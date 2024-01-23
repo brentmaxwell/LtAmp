@@ -15,7 +15,7 @@ using LtDotNet.Lib.Extensions;
 
 namespace LtDotNet.Lib
 {
-    public partial class LtDevice
+    public partial class LtDevice : IDisposable
     {
 
         #region public properties
@@ -40,6 +40,8 @@ namespace LtDotNet.Lib
         private int _reportLength = 0;
         private byte[] _inputBuffer;
         private byte[] _dataBuffer = new byte[0];
+        private bool disposedValue;
+
         private TimerCallback _heartbeatCallback { get; set; }
         
         #endregion
@@ -86,6 +88,31 @@ namespace LtDotNet.Lib
             heartbeatTimer.Start();
             _isOpen = true;
             DeviceConnected.Invoke(this, null);
+        }
+
+        public void Close()
+        {
+            _deviceStream.Close();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _deviceStream.Close();
+                    _deviceStream.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
 
         public void GetAllPresets()
