@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HidSharp.Utility;
-using LtDotNet.Lib.Model;
+using LtDotNet.Lib.Model.Preset;
 
 namespace LtDotNet.Lib.Extensions.JsonConverters
 {

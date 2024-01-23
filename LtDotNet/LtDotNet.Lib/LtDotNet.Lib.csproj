@@ -14,7 +14,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="JsonDefinitions\mustang_dsp.json">
+    <None Update="JsonDefinitions\mustang\default_presets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonDefinitions\mustang\dsp_units.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonDefinitions\mustang\profile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonDefinitions\rumble\dsp_units.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonDefinitions\rumble\profile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

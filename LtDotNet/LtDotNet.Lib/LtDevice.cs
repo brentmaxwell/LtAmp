@@ -7,8 +7,6 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Reflection;
 using System.Timers;
-using static LtDotNet.Lib.AmplifierEventHandler;
-using static System.Net.Mime.MediaTypeNames;
 using Timer = System.Timers.Timer;
 using System.Windows.Markup;
 using LtDotNet.Lib.Model.Preset;
@@ -17,63 +15,34 @@ using LtDotNet.Lib.Extensions;
 
 namespace LtDotNet.Lib
 {
-    public class LtDevice
+    public partial class LtDevice
     {
+
+        #region public properties
+
+        public bool IsOpen
+        {
+            get { return _isOpen; }
+        }
+        public static LtDeviceInfo DeviceInfo { get; set; }
         public static List<DspUnitDefinition> DspUnitDefinitions { get; set; }
-
         public ErrorType ErrorType { get; set; }
-        public LtDeviceInfo DeviceInfo { get; set; }
 
-        public event DeviceConnectedEventHandler DeviceConnected;
-        public event MessageSentEventHandler MessageSent;
-        public event MessageReceivedEventHandler MessageReceived;
-        public event ActiveDisplayHandler ActiveDisplayMessageReceived;
-        public event AuditionPresetStatusHandler AuditionPresetStatusMessageReceived;
-        public event AuditionStateStatusHandler AuditionStateStatusMessageReceived;
-        public event ClearPresetStatusHandler ClearPresetStatusMessageReceived;
-        public event ConnectionStatusHandler ConnectionStatusMessageReceived;
-        public event CurrentDisplayedPresetIndexStatusHandler CurrentDisplayedPresetIndexStatusMessageReceived;
-        public event CurrentLoadedPresetIndexBypassStatusHandler CurrentLoadedPresetIndexBypassStatusMessageReceived;
-        public event CurrentLoadedPresetIndexStatusHandler CurrentLoadedPresetIndexStatusMessageReceived;
-        public event CurrentPresetStatusHandler CurrentPresetStatusMessageReceived;
-        public event DspUnitParameterStatusHandler DspUnitParameterStatusMessageReceived;
-        public event ExitAuditionPresetStatusHandler ExitAuditionPresetStatusMessageReceived;
-        public event FirmwareVersionStatusHandler FirmwareVersionStatusMessageReceived;
-        public event FrameBufferMessageHandler FrameBufferMessageReceived;
-        public event IndexButtonHandler IndexButtonMessageReceived;
-        public event IndexEncoderHandler IndexEncoderMessageReceived;
-        public event IndexPotHandler IndexPotMessageReceived;
-        public event LT4FootswitchModeStatusHandler LT4FootswitchModeStatusMessageReceived;
-        public event LineOutGainStatusHandler LineOutGainStatusMessageReceived;
-        public event LoadPreset_TestSuiteHandler LoadPreset_TestSuiteMessageReceived;
-        public event LoopbackTestHandler LoopbackTestMessageReceived;
-        public event MemoryUsageStatusHandler MemoryUsageStatusMessageReceived;
-        public event ModalStatusMessageHandler ModalStatusMessageMessageReceived;
-        public event NewPresetSavedStatusHandler NewPresetSavedStatusMessageReceived;
-        public event PresetEditedStatusHandler PresetEditedStatusMessageReceived;
-        public event PresetJSONMessageHandler PresetJSONMessageReceived;
-        public event PresetSavedStatusHandler PresetSavedStatusMessageReceived;
-        public event ProcessorUtilizationHandler ProcessorUtilizationMessageReceived;
-        public event ProductIdentificationRequestHandler ProductIdentificationRequestMessageReceived;
-        public event QASlotsStatusHandler QASlotsStatusMessageReceived;
-        public event ReplaceNodeStatusHandler ReplaceNodeStatusMessageReceived;
-        public event SetDspUnitParameterHandler SetDspUnitParameterMessageReceived;
-        public event SetDspUnitParameterStatusHandler SetDspUnitParameterStatusMessageReceived;
-        public event ShiftPresetStatusHandler ShiftPresetStatusMessageReceived;
-        public event SwapPresetStatusHandler SwapPresetStatusMessageReceived;
-        public event UnsupportedMessageStatusHandler UnsupportedMessageStatusReceived;
-        public event UsbGainStatusHandler UsbGainStatusMessageReceived;
+        #endregion
+
+        #region private fields and properties
+
         private HidDevice _device { get; set; }
         private HidStream _deviceStream { get; set; }
         private ReportDescriptor _descriptor { get; set; }
         private HidDeviceInputReceiver _inputReceiver { get; set; }
-
+        private bool _isOpen;
         private int _reportLength = 0;
-
         private byte[] _inputBuffer;
         private byte[] _dataBuffer = new byte[0];
         private TimerCallback _heartbeatCallback { get; set; }
-
+        
+        #endregion
         public LtDevice()
         {
             DeviceInfo = new LtDeviceInfo();
@@ -82,27 +51,11 @@ namespace LtDotNet.Lib
             {
                 DeviceInfo.Presets.Add(new Preset());
             }
-            ImportDspUnitDefinitions();
         }
-
-        public void ImportDspUnitDefinitions()
-        {
-            var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang_dsp.json"));
-            DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);
-        }
-
-        private void Local_Changed(object? sender, DeviceListChangedEventArgs e)
-        {
-            _device = DeviceList.Local.GetHidDeviceOrNull(LtDeviceInfo.VENDOR_ID, LtDeviceInfo.PRODUCT_ID);
-            if (_device != null)
-            {
-                DeviceList.Local.Changed -= Local_Changed;
-                Connect();
-            }
-        }
-
+        
         public void Open(bool waitAndConnect = true)
         {
+            DeviceConnected += LtDevice_DeviceConnected;
             _device = DeviceList.Local.GetHidDeviceOrNull(LtDeviceInfo.VENDOR_ID, LtDeviceInfo.PRODUCT_ID);
             if(_device != null)
             {
@@ -110,10 +63,10 @@ namespace LtDotNet.Lib
             }
             else
             {
-                DeviceList.Local.Changed += Local_Changed;
+                DeviceList.Local.Changed += UsbDevices_Changed;
             }
         }
-
+        
         public void Connect()
         {
             _inputBuffer = new byte[_device.GetMaxInputReportLength()];
@@ -125,17 +78,27 @@ namespace LtDotNet.Lib
             {
                 throw new IOException("Could not open connection to device");
             }
+            _deviceStream.Closed += _deviceStream_Closed;
             _inputReceiver.Start(_deviceStream);
             InitializeConnection();
             Timer heartbeatTimer = new Timer(1000);
             heartbeatTimer.Elapsed += HeartbeatTimer_Elapsed;
             heartbeatTimer.Start();
+            _isOpen = true;
             DeviceConnected.Invoke(this, null);
+        }
+
+        public void GetAllPresets()
+        {
+            for (int i = 1; i <= LtDeviceInfo.NUM_OF_PRESETS; i++)
+            {
+                GetPreset(i);
+                Thread.Sleep(100);
+            }
         }
 
         public void SendMessage(FenderMessageLT message)
         {
-            Console.WriteLine($">> {message}");
             foreach (var packet in message.ToUsbMessage())
             {
                 _deviceStream.Write(packet);
@@ -144,6 +107,29 @@ namespace LtDotNet.Lib
             {
                 MessageSent?.Invoke(message);
             }
+        }
+
+        #region private event handlers
+
+        private void _deviceStream_Closed(object? sender, EventArgs e)
+        {
+            _isOpen = false;
+            DeviceDisconnected.Invoke(this, null);
+        }
+
+        private void UsbDevices_Changed(object? sender, DeviceListChangedEventArgs e)
+        {
+            _device = DeviceList.Local.GetHidDeviceOrNull(LtDeviceInfo.VENDOR_ID, LtDeviceInfo.PRODUCT_ID);
+            if (_device != null)
+            {
+                DeviceList.Local.Changed -= UsbDevices_Changed;
+                Connect();
+            }
+        }
+
+        private void LtDevice_DeviceConnected(object sender, EventArgs e)
+        {
+            ImportDspUnitDefinitions(DeviceInfo.ProductId);
         }
 
         private void HeartbeatTimer_Elapsed(object? sender, ElapsedEventArgs e)
@@ -178,13 +164,10 @@ namespace LtDotNet.Lib
             }
         }
 
-        public void OnMessageReceived(FenderMessageLT message)
+        private void OnMessageReceived(FenderMessageLT message)
         {
             switch (message.TypeCase)
             {
-                case FenderMessageLT.TypeOneofCase.ActiveDisplay:
-                    ActiveDisplayMessageReceived?.Invoke(message.ActiveDisplay);
-                    break;
                 case FenderMessageLT.TypeOneofCase.AuditionPresetStatus:
                     DeviceInfo.AuditioningPreset = Preset.FromString(message.AuditionPresetStatus.PresetData);
                     AuditionPresetStatusMessageReceived?.Invoke(message.AuditionPresetStatus);
@@ -199,6 +182,7 @@ namespace LtDotNet.Lib
                     break;
                 case FenderMessageLT.TypeOneofCase.ClearPresetStatus:
                     ClearPresetStatusMessageReceived?.Invoke(message.ClearPresetStatus);
+                    DeviceInfo.Presets[message.ClearPresetStatus.SlotIndex] = new Preset();
                     break;
                 case FenderMessageLT.TypeOneofCase.ConnectionStatus:
                     DeviceInfo.IsConnected = message.ConnectionStatus.IsConnected;
@@ -276,7 +260,7 @@ namespace LtDotNet.Lib
                     break;
                 case FenderMessageLT.TypeOneofCase.ProductIdentificationStatus:
                     DeviceInfo.ProductId = message.ProductIdentificationStatus.Id;
-                    ProductIdentificationRequestMessageReceived?.Invoke(message.ProductIdentificationRequest);
+                    ProductIdentificationStatusMessageReceived?.Invoke(message.ProductIdentificationStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.QASlotsStatus:
                     DeviceInfo.FootswitchPresets = message.QASlotsStatus.Slots.ToArray();
@@ -302,13 +286,21 @@ namespace LtDotNet.Lib
                     DeviceInfo.UsbGain = message.UsbGainStatus.ValueDB;
                     UsbGainStatusMessageReceived?.Invoke(message.UsbGainStatus);
                     break;
+                case FenderMessageLT.TypeOneofCase.ActiveDisplay:
+                    ActiveDisplayMessageReceived?.Invoke(message.ActiveDisplay);
+                    UnknownMessageReceived?.Invoke(message);
+                    break;
                 default:
                     break;
             }
             MessageReceived?.Invoke(message);
         }
 
-        public void InitializeConnection(bool getData = true)
+        #endregion
+
+        #region private methods
+
+        private void InitializeConnection(bool getData = true)
         {
             SetModalState(ModalContext.SyncBegin);
             Thread.Sleep(100);
@@ -324,20 +316,21 @@ namespace LtDotNet.Lib
                 Thread.Sleep(100);
                 GetUsbGain();
                 Thread.Sleep(100);
-                for (int i = 1; i <= LtDeviceInfo.NUM_OF_PRESETS; i++)
-                {
-                    GetPreset(i);
-                    Thread.Sleep(100);
-                }
             }
             SetModalState(ModalContext.SyncEnd);
         }
 
-        // ActiveDisplay
-        public void ActiveDisplay(string pageName)
+        private void ImportDspUnitDefinitions(string deviceType)
         {
-            SendMessage(MessageFactory.Create(new ActiveDisplay() { PageName = pageName }));
+            var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang", "dsp_units.json"));
+            DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);
         }
+
+        #endregion
+
+        #region Commands
+
+        #region Auditioning
 
         // AuditionPreset
         // response: AuditionPresetStatus
@@ -353,19 +346,16 @@ namespace LtDotNet.Lib
             SendMessage(MessageFactory.Create(new AuditionStateRequest() { Request = true }));
         }
 
-        // ClearPreset
-        // response: ClearPresetStatus
-        public void ClearPreset(int slotIndex, bool isLoadPreset = true)
+        // ExitAuditionPreset
+        // response: ExitAuditionPresetStatus
+        public void ExitAuditionPreset(bool exitStatus = true)
         {
-            SendMessage(MessageFactory.Create(new ClearPreset() { SlotIndex = slotIndex, IsLoadPreset = isLoadPreset }));
+            SendMessage(MessageFactory.Create(new ExitAuditionPreset() { Exit = exitStatus }));
         }
 
-        // ConnectionStatusRequest
-        // response: ConnectionStatus
-        public void GetConnectionStatus()
-        {
-            SendMessage(MessageFactory.Create(new ConnectionStatusRequest() { Request = true }));
-        }
+        #endregion
+
+        #region Preset management
 
         // CurrentPresetRequest
         // response: CurrentPresetStatus
@@ -379,6 +369,76 @@ namespace LtDotNet.Lib
         public void SetCurrentPreset(Preset preset)
         {
             SendMessage(MessageFactory.Create(new CurrentPresetSet() { CurrentPresetData = preset.ToString() }));
+        }
+
+        // LoadPreset
+        // response: CurrentLoadedPresetIndexStatus
+        public void LoadPreset(int slotIndex)
+        {
+            SendMessage(MessageFactory.Create(new LoadPreset() { PresetIndex = slotIndex }));
+        }
+
+        // ShiftPreset
+        // response: ShiftPresetStatus
+        public void ShiftPreset(int from, int to)
+        {
+            SendMessage(MessageFactory.Create(new ShiftPreset() { IndexToShiftFrom = from, IndexToShiftTo = to }));
+        }
+
+        // SwapPreset
+        // response: SwapPresetStatus
+        public void SwapPreset(int slotIndexA, int slotIndexB)
+        {
+            SendMessage(MessageFactory.Create(new SwapPreset() { IndexA = slotIndexA, IndexB = slotIndexB }));
+        }
+
+        // RetrievePreset
+        // response: PresetJsonMessage
+        public void GetPreset(int slotIndex)
+        {
+            SendMessage(MessageFactory.Create(new RetrievePreset() { Slot = slotIndex }));
+        }
+        
+        // SaveCurrentPreset
+        // response: PresetSavedStatus
+        public void SaveCurrentPreset()
+        {
+            SendMessage(MessageFactory.Create(new SaveCurrentPreset() { Save = true }));
+        }
+
+        // SaveCurrentPresetTo
+        // response: PresetSavedStatus
+        public void SaveCurrentPresetTo(int slotIndex, string name)
+        {
+            SendMessage(MessageFactory.Create(new SaveCurrentPresetTo() { PresetName = name, PresetSlot = slotIndex }));
+        }
+
+        // SavePresetAs
+        // response: PresetSavedStatus
+        public void SavePresetAs(int slotIndex, Preset preset, bool loadPreset = true)
+        {
+            SendMessage(MessageFactory.Create(new SavePresetAs() { PresetSlot = slotIndex, PresetData = preset.ToString(), IsLoadPreset = loadPreset }));
+        }
+
+        // RenamePresetAt
+        public void RenamePresetAt(int slotIndex, string name)
+        {
+            SendMessage(MessageFactory.Create(new RenamePresetAt() { PresetName = name, PresetSlot = slotIndex }));
+        }
+
+
+        // ClearPreset
+        // response: ClearPresetStatus
+        public void ClearPreset(int slotIndex, bool isLoadPreset = true)
+        {
+            SendMessage(MessageFactory.Create(new ClearPreset() { SlotIndex = slotIndex, IsLoadPreset = isLoadPreset }));
+        }
+
+        // ConnectionStatusRequest
+        // response: ConnectionStatus
+        public void GetConnectionStatus()
+        {
+            SendMessage(MessageFactory.Create(new ConnectionStatusRequest() { Request = true }));
         }
 
         // SetDspUnitParameter
@@ -408,11 +468,21 @@ namespace LtDotNet.Lib
             SendMessage(message);
         }
 
-        // ExitAuditionPreset
-        // response: ExitAuditionPresetStatus
-        public void ExitAuditionPreset(bool exitStatus = true)
+        // ReplaceNode
+        public void ReplaceNode(string nodeId, string fenderId)
         {
-            SendMessage(MessageFactory.Create(new ExitAuditionPreset() { Exit = exitStatus }));
+            SendMessage(MessageFactory.Create(new ReplaceNode() { NodeIdToReplace = nodeId, FenderIdToReplaceWith = fenderId }));
+        }
+
+        #endregion
+
+        #region device info
+
+        // ModalState
+        // response: ModalState
+        public void SetModalState(ModalContext modalContext)
+        {
+            SendMessage(MessageFactory.Create(new ModalStatusMessage() { Context = modalContext, State = ModalState.Ok }));
         }
 
         // FirmwareVersionRequest
@@ -422,17 +492,79 @@ namespace LtDotNet.Lib
             SendMessage(MessageFactory.Create(new FirmwareVersionRequest() { Request = true }));
         }
 
-        // FrameBufferMessageRequest
-        // response: FrameBufferMessage
-        public void GetFramebuffer()
+        // MemoryUsageRequest
+        public void GetMemoryUsage()
         {
-            SendMessage(MessageFactory.Create(new FrameBufferMessageRequest() { Request = true }));
+            SendMessage(MessageFactory.Create(new MemoryUsageRequest() { Request = true }));
+        }
+
+        public void GetProcessorUtilization()
+        {
+            SendMessage(MessageFactory.Create(new ProcessorUtilizationRequest() { Request = true }));
+        }
+
+        public void GetProductIdentification()
+        {
+            SendMessage(MessageFactory.Create(new ProductIdentificationRequest() { Request = true }));
         }
 
         // Heartbeat
         public void Heartbeat()
         {
             SendMessage(MessageFactory.Create(new Heartbeat() { DummyField = true }));
+        }
+
+        public void GetQASlots()
+        {
+            SendMessage(MessageFactory.Create(new QASlotsRequest() { Request = true }));
+        }
+
+        public void SetQASlots(uint[] slotIndexes)
+        {
+            var message = MessageFactory.Create(new QASlotsSet());
+            message.QASlotsSet.Slots.Add(slotIndexes);
+            SendMessage(message);
+        }
+
+        public void GetUsbGain()
+        {
+            SendMessage(MessageFactory.Create(new UsbGainRequest() { Request = true }));
+        }
+
+        public void SetUsbGain(float value)
+        {
+            SendMessage(MessageFactory.Create(new UsbGainSet() { ValueDB = value }));
+        }
+
+        #endregion
+
+        #region pre-formed commands
+
+        public void SetTuner(bool on_off)
+        {
+            SetModalState(on_off ? ModalContext.TunerEnable : ModalContext.TunerDisable);
+        }
+
+        #endregion
+
+        #region Unknown messages
+        // ActiveDisplay
+        public void ActiveDisplay(string pageName)
+        {
+            SendMessage(MessageFactory.Create(new ActiveDisplay() { PageName = pageName }));
+        }
+
+        // PresetJSONMessageRequest_LT
+        public void GetPresetLT(int request)
+        {
+            SendMessage(MessageFactory.Create(new PresetJSONMessageRequest_LT() { Request = request }));
+        }
+
+        // FrameBufferMessageRequest
+        // response: FrameBufferMessage
+        public void GetFramebuffer()
+        {
+            SendMessage(MessageFactory.Create(new FrameBufferMessageRequest() { Request = true }));
         }
 
         // LineOutGainRequest
@@ -449,11 +581,6 @@ namespace LtDotNet.Lib
             SendMessage(MessageFactory.Create(new LineOutGainSet() { ValueDB = value }));
         }
 
-        public void SwitchToPreset(int slotIndex)
-        {
-            SendMessage(MessageFactory.Create(new LoadPreset() { PresetIndex = slotIndex }));
-        }
-
         public void LoopbackTest(string data)
         {
             SendMessage(MessageFactory.Create(new LoopbackTest() { Data = data }));
@@ -464,97 +591,10 @@ namespace LtDotNet.Lib
             SendMessage(MessageFactory.Create(new LT4FootswitchModeRequest() { Request = true }));
         }
 
-        public void GetMemoryUsage()
-        {
-            SendMessage(MessageFactory.Create(new MemoryUsageRequest() { Request = true }));
-        }
+        #endregion
 
-        public void SetModalState(ModalContext modalContext)
-        {
-            SendMessage(MessageFactory.Create(new ModalStatusMessage() { Context = modalContext, State = ModalState.Ok }));
-        }
+        #endregion
 
-        public void GetPreset(int slotIndex)
-        {
-            SendMessage(MessageFactory.Create(new RetrievePreset() { Slot = slotIndex }));
-        }
-
-        public void GetPresetLT(int request)
-        {
-            SendMessage(MessageFactory.Create(new PresetJSONMessageRequest_LT() { Request = request }));
-        }
-
-        public void GetProcessorUtilization()
-        {
-            SendMessage(MessageFactory.Create(new ProcessorUtilizationRequest() { Request = true }));
-        }
-        
-        public void GetProductIdentification()
-        {
-            SendMessage(MessageFactory.Create(new ProductIdentificationRequest() { Request = true }));
-        }
-
-        public void RenamePresetAt(int slotIndex, string name)
-        {
-            SendMessage(MessageFactory.Create(new RenamePresetAt() { PresetName = name, PresetSlot = slotIndex }));
-        }
-        
-        public void ReplaceNode(string nodeId, string fenderId)
-        {
-            SendMessage(MessageFactory.Create(new ReplaceNode() { NodeIdToReplace = nodeId, FenderIdToReplaceWith = fenderId }));
-        }
-
-        public void GetQASlots()
-        {
-            SendMessage(MessageFactory.Create(new QASlotsRequest() { Request = true }));
-        }
-
-        public void SetQASlots(uint[] slotIndexes)
-        {
-            var message = MessageFactory.Create(new QASlotsSet());
-            message.QASlotsSet.Slots.Add(slotIndexes);
-            SendMessage(message);
-        }
-
-        public void SaveCurrentPreset()
-        {
-            SendMessage(MessageFactory.Create(new SaveCurrentPreset() { Save = true }));
-        }
-
-        public void SaveCurrentPresetTo(int slotIndex, string name)
-        {
-            SendMessage(MessageFactory.Create(new SaveCurrentPresetTo() { PresetName = name, PresetSlot = slotIndex }));
-        }
-
-        public void SavePresetAs(int slotIndex, Preset preset, bool loadPreset = true)
-        {
-            SendMessage(MessageFactory.Create(new SavePresetAs() { PresetSlot = slotIndex, PresetData = preset.ToString(), IsLoadPreset = loadPreset }));
-        }
-
-        public void ShiftPreset(int from, int to)
-        {
-            SendMessage(MessageFactory.Create(new ShiftPreset() { IndexToShiftFrom = from, IndexToShiftTo = to }));
-        }
-        
-        public void SwapPreset(int slotIndexA, int slotIndexB)
-        {
-            SendMessage(MessageFactory.Create(new SwapPreset() { IndexA = slotIndexA, IndexB = slotIndexB }));
-        }
-
-        public void GetUsbGain()
-        {
-            SendMessage(MessageFactory.Create(new UsbGainRequest() { Request = true }));
-        }
-
-        public void SetUsbGain(float value)
-        {
-            SendMessage(MessageFactory.Create(new UsbGainSet() { ValueDB = value }));
-        }
-
-        public void SetTuner(bool on_off)
-        {
-            SetModalState(on_off ? ModalContext.TunerEnable : ModalContext.TunerDisable);
-        }
     }
 
     public enum UsbHidMessageTag

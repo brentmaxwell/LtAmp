@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LtDotNet.Lib.Model
+namespace LtDotNet.Lib.Model.Preset
 {
     [JsonConverter(typeof(DspUnitParameterConverter))]
     public class DspUnitParameter

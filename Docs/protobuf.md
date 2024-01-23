@@ -4,7 +4,8 @@ The arrows indicate the direction the message goes.
 - ← indicates the message is sent from the amp to the computer
 - → indicates the message is sent from the computer to the amp
 
-### FenderMessageLT ← →
+### FenderMessageLT
+(← →)
 Base message type used to communicate with the amp
 
 All messages are of this type, and encapsulate the actual message
@@ -90,7 +91,8 @@ Message response type
 
 ## Auditioning
 
-### AuditionPreset (→)
+### AuditionPreset
+(→)
 Sends a preset to the amp to be &#34;auditioned&#34;
 
 response: [AuditionPresetStatus](#auditionpresetstatus) message containing the preset data loaded to the amp
@@ -99,14 +101,16 @@ response: [AuditionPresetStatus](#auditionpresetstatus) message containing the p
 | ----- | ---- | ----- | ----------- |
 | presetData | [string](#string) | required | [JSON](json.md) string conaining the preset to be auditioned |
 
-### AuditionPresetStatus (←)
+### AuditionPresetStatus
+(←)
 Response to an [AuditionPreset](#auditionpreset) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | presetData | [string](#string) | required | [JSON data](json.md) conatining preset data being auditioned |
 
-### AuditionStateRequest (→)
+### AuditionStateRequest
+(→)
 Queries the amp for its audition state
 
 response: [AuditionStateStatus](#auditionstatestatus) message
@@ -115,14 +119,16 @@ response: [AuditionStateStatus](#auditionstatestatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### AuditionStateStatus (←)
+### AuditionStateStatus
+(←)
 The current audition state of the amp. Resposne to an [AuditionStateRequest](#auditionstaterequest) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | isAuditioning | [bool](#bool) | required | True if the amp is in audition mode |
 
-### ExitAuditionPreset (→)
+### ExitAuditionPreset
+(→)
 Leaves audition mode
 
 response: [ExitAuditionPresetStatus](#exitauditionpresetstatus) message
@@ -131,7 +137,8 @@ response: [ExitAuditionPresetStatus](#exitauditionpresetstatus) message
 | ----- | ---- | ----- | ----------- |
 | exit | [bool](#bool) | required | True to exit audition mode |
 
-### ExitAuditionPresetStatus (←)
+### ExitAuditionPresetStatus
+(←)
 Result message for an [ExitAuditionPreset](#exitauditionpreset) message
 
 | Field | Type | Label | Description |
@@ -140,7 +147,8 @@ Result message for an [ExitAuditionPreset](#exitauditionpreset) message
 
 ## Preset management
 
-### CurrentPresetRequest (→)
+### CurrentPresetRequest
+(→)
 Requests the current preset from the amp
 
 response: [CurrentPresetStatus](#currentpresetstatus) message
@@ -149,7 +157,8 @@ response: [CurrentPresetStatus](#currentpresetstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### CurrentPresetSet (→)
+### CurrentPresetSet
+(→)
 Sets the current preset of the amp
 
 response: [CurrentPresetStatus](#currentpresetstatus) message
@@ -158,7 +167,8 @@ response: [CurrentPresetStatus](#currentpresetstatus) message
 | ----- | ---- | ----- | ----------- |
 | currentPresetData | [string](#string) | required | [JSON data](json.md) conatining preset data |
 
-### CurrentPresetStatus (←)
+### CurrentPresetStatus
+(←)
 Returns the state of the current preset
 
 | Field | Type | Label | Description |
@@ -167,7 +177,8 @@ Returns the state of the current preset
 | currentSlotIndex | [int32](#int32) | required | Current preset bank number |
 | currentPresetDirtyStatus | [bool](#bool) | required | True if current preset has been edited and not saved |
 
-### LoadPreset (→)
+### LoadPreset
+(→)
 Switches the amp to the specified preset number
 
 response: [CurrentLoadedPresetIndexStatus](#currentloadedpresetindexstatus) message
@@ -176,21 +187,43 @@ response: [CurrentLoadedPresetIndexStatus](#currentloadedpresetindexstatus) mess
 | ----- | ---- | ----- | ----------- |
 | presetIndex | [int32](#int32) | required | Preset bank number currently loaded |
 
-### CurrentDisplayedPresetIndexStatus (←)
+### CurrentDisplayedPresetIndexStatus
+(←)
 The current preset displayed on the amp. Sent when the preset is changed at the amp
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | currentDisplayedPresetIndex | [int32](#int32) | required | The current preset bank number |
 
-### CurrentLoadedPresetIndexStatus (←)
+### CurrentLoadedPresetIndexStatus
+(←)
 The current preset displayed on the amp. Sent when the preset is changed at the amp or via a [LoadPreset](#loadpreset) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | currentLoadedPresetIndex | [int32](#int32) | required | The current preset bank number |
 
-### ShiftPreset (→)
+### RetrievePreset
+(←)
+Queries the amp on the stored presets
+
+response: [PresetJsonMessage](#presetjsonmessage)
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| slot | [int32](#int32) | required | Preset bank to retrieve |
+
+### PresetJSONMessage
+(←)
+Saved preset data
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [string](#string) | required | [JSON data](json.md) conatining preset data for requested preset bank |
+| slotIndex | [int32](#int32) | required | Preset bank this preset is stored in |
+
+### ShiftPreset
+(→)
 Moves a preset to the specified point, shifting all other presets
 
 response: [ShiftPresetStatus](#shiftpresetstatus) message
@@ -200,7 +233,8 @@ response: [ShiftPresetStatus](#shiftpresetstatus) message
 | indexToShiftFrom | [int32](#int32) | required | Preset to shift |
 | indexToShiftTo | [int32](#int32) | required | Destination of preset to shift |
 
-### ShiftPresetStatus (←)
+### ShiftPresetStatus
+(←)
 Response to a [ShiftPreset](#shiftpreset) message with the status of the command
 
 | Field | Type | Label | Description |
@@ -208,59 +242,54 @@ Response to a [ShiftPreset](#shiftpreset) message with the status of the command
 | indexToShiftFrom | [int32](#int32) | required | Preset shifted |
 | indexToShiftTo | [int32](#int32) | required | Destination |
 
-### SwapPreset (→)
+### SwapPreset
+(→)
+Swaps the presets in indexA and indexB
 
+response: [SwapPresetStatus](#swappresetstatus) message
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | indexA | [int32](#int32) | required |  |
 | indexB | [int32](#int32) | required |  |
 
-### SwapPresetStatus (←)
-
+### SwapPresetStatus
+(←)
+result of a [SwapPreset](#swappreset) message
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | indexA | [int32](#int32) | required |  |
 | indexB | [int32](#int32) | required |  |
 
-### PresetJSONMessage (←)
-Saved preset data
+### SaveCurrentPreset
+(→)
+saves the current preset
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [string](#string) | required | [JSON data](json.md) conatining preset data for requested preset bank |
-| slotIndex | [int32](#int32) | required | Preset bank this preset is stored in |
-
-### RetrievePreset (←)
-Queries the amp on the stored presets
-
-response: [PresetJsonMessage](#presetjsonmessage)
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| slot | [int32](#int32) | required | Preset bank to retrieve |
-
-### SaveCurrentPreset (→)
+response: [PresetSavedStatus](#presetsavedstatus)
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | save | [bool](#bool) | required |  |
 
-### SaveCurrentPresetTo (→)
+### SaveCurrentPresetTo
+(→)
+response: [PresetSavedStatus](#presetsavedstatus)
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | presetName | [string](#string) | required |  |
 | presetSlot | [int32](#int32) | required |  |
 
-### SavePresetAs (→)
-
+### SavePresetAs
+(→)
+response: [PresetSavedStatus](#presetsavedstatus)
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | presetData | [string](#string) | required |  |
 | isLoadPreset | [bool](#bool) | required |  |
 | presetSlot | [int32](#int32) | required |  |
 
-### PresetSavedStatus (←)
+### PresetSavedStatus
+(←)
 Result of a [SaveCurrentPreset](#savecurrentpreset), [SaveCurrentPresetTo](#savecurrentpresetto), or [SavePresetAs](#savepresetas) message. Also sent when the preset is saved on the amp.
 
 | Field | Type | Label | Description |
@@ -268,7 +297,8 @@ Result of a [SaveCurrentPreset](#savecurrentpreset), [SaveCurrentPresetTo](#save
 | name | [string](#string) | required | Name of the preset saved |
 | slot | [int32](#int32) | required | Preset bank of the saved preset |
 
-### RenamePresetAt (→)
+### RenamePresetAt
+(→)
 Renames a preset
 
 | Field | Type | Label | Description |
@@ -276,14 +306,16 @@ Renames a preset
 | presetName | [string](#string) | required |  new preset name |
 | presetSlot | [int32](#int32) | required |  slot index to rename |
 
-### NewPresetSavedStatus (←)
+### NewPresetSavedStatus
+(←)
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | presetData | [string](#string) | required |  |
 | presetSlot | [int32](#int32) | required |  |
 
-### ClearPreset (→)
+### ClearPreset
+(→)
 Clears a preset in the amp
 
 response: [ClearPresetStatus](#clearpresetstatus) message
@@ -293,14 +325,16 @@ response: [ClearPresetStatus](#clearpresetstatus) message
 | slotIndex | [int32](#int32) | required | Preset bank to clear |
 | isLoadPreset | [bool](#bool) | required | ??? the Tone app sets this to true when clearing the preset |
 
-### ClearPresetStatus (←)
+### ClearPresetStatus
+(←)
 Response to a [ClearPreset](#clearpreset) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | slotIndex | [int32](#int32) | required | bank number cleared |
 
-### ReplaceNode (→)
+### ReplaceNode
+(→)
 Swaps out a node (amp, stomp, mod, delay, or reverb)
 
 response: [ReplaceNodeStatus](#replacenodestatus) message
@@ -310,7 +344,8 @@ response: [ReplaceNodeStatus](#replacenodestatus) message
 | nodeIdToReplace | [string](#string) | required | nodeid to replace (amp, stomp, mod, delay, or reverb) |
 | fenderIdToReplaceWith | [string](#string) | required | FenderId of node to set |
 
-### ReplaceNodeStatus (←)
+### ReplaceNodeStatus
+(←)
 Status of a [ReplaceNode](#replacenode) message; also sent when the node is changed at the amp
 
 | Field | Type | Label | Description |
@@ -318,7 +353,8 @@ Status of a [ReplaceNode](#replacenode) message; also sent when the node is chan
 | nodeIdReplaced | [string](#string) | required | node replaced (amp, stomp, mod, delay, or reverb) |
 | fenderIdReplaced | [string](#string) | required | FenderId of node set |
 
-### SetDspUnitParameter (→)
+### SetDspUnitParameter
+(→)
 Changes the parameters of the DSP units
 
 response: [SetDspUnitParameterStatus](#setdspunitparameterstatus) message
@@ -332,7 +368,8 @@ response: [SetDspUnitParameterStatus](#setdspunitparameterstatus) message
 | sint32Parameter | [sint32](#sint32) | optional |  |
 | boolParameter | [bool](#bool) | optional |  |
 
-### SetDspUnitParameterStatus (←)
+### SetDspUnitParameterStatus
+(←)
 Status of the [SetDspUnitParameter](#setdspunitparameter) message. Also sent when parameters are adjusted on the amp
 
 | Field | Type | Label | Description |
@@ -344,7 +381,8 @@ Status of the [SetDspUnitParameter](#setdspunitparameter) message. Also sent whe
 | sint32Parameter | [sint32](#sint32) | optional |  |
 | boolParameter | [bool](#bool) | optional |  |
 
-### PresetEditedStatus (←)
+### PresetEditedStatus
+(←)
 
 Editing status of the current preset
 
@@ -397,14 +435,16 @@ response: [ConnectionStatus](#connectionstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### ConnectionStatus (←)
+### ConnectionStatus
+(←)
 The current connection state of the amp. Response to a [ConnectionStatusRequest](#connectionstatusrequest) message
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | isConnected | [bool](#bool) | required | True if the amp is connected |
 
-### FirmwareVersionRequest (→)
+### FirmwareVersionRequest
+(→)
 Requests the current filrware version
 
 response: [FirmwareVersionStatus](#firmwareversionstatus) message
@@ -413,21 +453,24 @@ response: [FirmwareVersionStatus](#firmwareversionstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### FirmwareVersionStatus (←)
+### FirmwareVersionStatus
+(←)
 The firmware version of the amp
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | version | [string](#string) | required | Firmware Version |
 
-### Heartbeat (→)
+### Heartbeat
+(→)
 Heartbeat message sent every second to keep the connection alive
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | dummyField | [bool](#bool) | required |  |
 
-### MemoryUsageRequest (→)
+### MemoryUsageRequest
+(→)
 Requests memory usage statistics from the amp
 
 response: [MemoryUsageStatus](#memoryusagestatus) message
@@ -436,7 +479,8 @@ response: [MemoryUsageStatus](#memoryusagestatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### MemoryUsageStatus (←)
+### MemoryUsageStatus
+(←)
 Message conainting current memory usage statistics
 
 | Field | Type | Label | Description |
@@ -444,7 +488,8 @@ Message conainting current memory usage statistics
 | stack | [int32](#int32) | required |  |
 | heap | [int32](#int32) | required |  |
 
-### ProcessorUtilizationRequest (→)
+### ProcessorUtilizationRequest
+(→)
 Requests processor statistics from the amp
 
 response: [ProcessorUtilization](#processorutilization) message
@@ -453,7 +498,8 @@ response: [ProcessorUtilization](#processorutilization) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### ProcessorUtilization (←)
+### ProcessorUtilization
+(←)
 Current processor utilization statistics
 
 | Field | Type | Label | Description |
@@ -462,7 +508,8 @@ Current processor utilization statistics
 | minPercent | [float](#float) | required |  |
 | maxPercent | [float](#float) | required |  |
 
-### ProductIdentificationRequest (→)
+### ProductIdentificationRequest
+(→)
 
 Identifies the amplifier
 
@@ -472,7 +519,8 @@ response: [ProductIdentificationStatus](#productidentificationstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### ProductIdentificationStatus (←)
+### ProductIdentificationStatus
+(←)
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -480,7 +528,8 @@ response: [ProductIdentificationStatus](#productidentificationstatus) message
 
 ## Footswitch settings control
 
-### QASlotsRequest (→)
+### QASlotsRequest
+(→)
 Requests the settings of the footswitch presets
 
 response: [QASlotsStatus](#qaslotsstatus) message
@@ -489,7 +538,8 @@ response: [QASlotsStatus](#qaslotsstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required | Always true on requests |
 
-### QASlotsSet (→)
+### QASlotsSet
+(→)
 Assigns preset banks to the footswitch
 
 response: [QASlotsStatus](#qaslotsstatus) message
@@ -498,7 +548,8 @@ response: [QASlotsStatus](#qaslotsstatus) message
 | ----- | ---- | ----- | ----------- |
 | slots | [uint32](#uint32) | repeated | Preset banks to assign to the footswitch |
 
-### QASlotsStatus (←)
+### QASlotsStatus
+(←)
 The current settings of the footswitch presets
 
 | Field | Type | Label | Description |
@@ -507,7 +558,8 @@ The current settings of the footswitch presets
 
 ## USB Gain Control
 
-### UsbGainRequest (→)
+### UsbGainRequest
+(→)
 Gets the current USB Gain settings
 
 response: [UsbGainStatus](#usbgainstatus) message
@@ -516,7 +568,8 @@ response: [UsbGainStatus](#usbgainstatus) message
 | ----- | ---- | ----- | ----------- |
 | request | [bool](#bool) | required |  |
 
-### UsbGainSet (→)
+### UsbGainSet
+(→)
 Sets the gain for the USB audio device
 
 response: [UsbGainStatus](#usbgainstatus) message
@@ -525,7 +578,8 @@ response: [UsbGainStatus](#usbgainstatus) message
 | ----- | ---- | ----- | ----------- |
 | valueDB | [float](#float) | required | gain in dB |
 
-### UsbGainStatus (←)
+### UsbGainStatus
+(←)
 The current setting of the gain for the USB audio device
 
 | Field | Type | Label | Description |
