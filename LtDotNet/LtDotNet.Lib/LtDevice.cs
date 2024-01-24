@@ -103,8 +103,11 @@ namespace LtDotNet.Lib
             {
                 if (disposing)
                 {
-                    _deviceStream.Close();
-                    _deviceStream.Dispose();
+                    if(_deviceStream != null)
+                    {
+                        _deviceStream.Close();
+                        _deviceStream.Dispose();
+                    }
                 }
                 disposedValue = true;
             }
