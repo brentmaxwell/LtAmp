@@ -142,7 +142,7 @@ namespace LtDotNet.Tests
             uint[] slots = {0, 0};
             amp.QASlotsStatusMessageReceived += (message) =>
             {
-                slots = message.Slots;
+                slots = message.Slots.ToArray();
                 wait.Set();
             };
             amp.SetQASlots(mockDeviceState);
