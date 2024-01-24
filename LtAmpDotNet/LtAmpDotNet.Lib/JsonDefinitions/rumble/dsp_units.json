@@ -1,0 +1,4836 @@
+[
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Ampeg66B15",
+    "defaultDspUnitParameters": {
+      "volume": -13.167182,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimAmpeg66B15",
+      "gain": 0.6,
+      "treb": 0.5,
+      "mid": 0.5,
+      "bass": 0.5,
+      "inputJack": "bass",
+      "sag": "match"
+    },
+    "info": {
+      "displayName": "WARM COMBO",
+      "audioGuiObjectNameMinimized": "WARM COMBO",
+      "audioGuiObjectNameMaximized": "WARM COMBO",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Bassman300",
+    "defaultDspUnitParameters": {
+      "volume": -13.988875,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimFenderPro8x10",
+      "gain": 0.135258,
+      "blend": 0.577778,
+      "treb": 0.5,
+      "mid": 0.5,
+      "midfreq": 1000,
+      "bass": 0.5,
+      "deep": false,
+      "bright": false,
+      "notch": false,
+      "sag": "match",
+      "bias": 0.5
+    },
+    "info": {
+      "displayName": "BASS 300",
+      "audioGuiObjectNameMinimized": "BASS 300",
+      "audioGuiObjectNameMaximized": "BASS 300",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t30",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_BassmanTV",
+    "defaultDspUnitParameters": {
+      "volume": -13.573416,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimBassmanTV1x15",
+      "gain": 0.655556,
+      "treb": 0.35,
+      "mid": 0.3,
+      "bass": 0.68,
+      "deep": false,
+      "bright": false
+    },
+    "info": {
+      "displayName": "OLD FENDER",
+      "audioGuiObjectNameMinimized": "OLD FENDER",
+      "audioGuiObjectNameMaximized": "OLD FENDER",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Blackbox",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": -30,
+      "gain": 0.5,
+      "tone": 0.333
+    },
+    "info": {
+      "displayName": "ROCK DIRT",
+      "audioGuiObjectNameMinimized": "ROCK DIRT",
+      "audioGuiObjectNameMaximized": "ROCK DIRT",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "units": "dB",
+          "min": -40,
+          "max": -7,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "units": "",
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DISTORT",
+          "paramGuiObjectNameMaximized": "DISTORT",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "DISTORT",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FILTER",
+          "paramGuiObjectNameMaximized": "FILTER",
+          "displayType": "knob",
+          "controlId": "tone",
+          "displayName": "FILTER",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_ChorusTriangle",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "bypassType": "Post",
+      "level": 0.833,
+      "rateHz": 0.68,
+      "depth": 0.278,
+      "avgDelay": 0.22,
+      "lrPhase": 0.5
+    },
+    "info": {
+      "displayName": "CHORUS",
+      "audioGuiObjectNameMinimized": "CHORUS",
+      "audioGuiObjectNameMaximized": "CHORUS",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "hasTap": false,
+      "tapParameter": "rateHz",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "taper": "t30",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rateHz",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 0.08,
+          "max": 10,
+          "numTicks": 91,
+          "taper": "t10",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t10i",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DEPTH",
+          "paramGuiObjectNameMaximized": "DEPTH",
+          "displayType": "knob",
+          "controlId": "depth",
+          "displayName": "DEPTH",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_DualShowmanBass",
+    "defaultDspUnitParameters": {
+      "volume": -11.626897,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimDualShowman2xD130",
+      "gain": 0.555556,
+      "treb": 0.277778,
+      "mid": 0.780392,
+      "bass": 0.666667,
+      "sag": "match",
+      "bias": 0.5,
+      "bright": false
+    },
+    "info": {
+      "displayName": "SHOWMAN",
+      "audioGuiObjectNameMinimized": "SHOWMAN",
+      "audioGuiObjectNameMaximized": "SHOWMAN",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_EcFilter",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.7,
+      "mode": "High Up",
+      "type": "Band Pass",
+      "q": 0.5,
+      "thresh": 0.5
+    },
+    "info": {
+      "displayName": "TOUCH WAH",
+      "audioGuiObjectNameMinimized": "TOUCH WAH",
+      "audioGuiObjectNameMaximized": "TOUCH WAH",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "THRESH",
+          "paramGuiObjectNameMaximized": "THRESH",
+          "displayType": "knob",
+          "controlId": "thresh",
+          "displayName": "THRESH",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "MODE",
+          "paramGuiObjectNameMaximized": "MODE",
+          "displayType": "multi",
+          "controlId": "mode",
+          "displayName": "MODE",
+          "listItems": [ "Low Up", "Low Down", "High Up", "High Down" ],
+          "remap": { "listItems": [ "LO-UP", "LO-DOWN", "HI-UP", "HI-DOWN" ] },
+          "remapMinimized": { "listItems": [ "LO-UP", "LO-DOWN", "HI-UP", "HI-DOWN" ] }
+        },
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "FILTER",
+          "paramGuiObjectNameMaximized": "FILTER",
+          "displayType": "multi",
+          "controlId": "type",
+          "displayName": "FILTER",
+          "listItems": [ "Low Pass", "Band Pass", "High Pass" ],
+          "remap": { "listItems": [ "LPF", "BPF", "HPF" ] },
+          "remapMinimized": { "listItems": [ "LPF", "BPF", "HPF" ] }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "PEAK",
+          "paramGuiObjectNameMaximized": "PEAK",
+          "displayType": "knob",
+          "controlId": "q",
+          "displayName": "PEAK",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_GK800RB",
+    "defaultDspUnitParameters": {
+      "volume": -7.958493,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimSWRGolight4x10",
+      "gain": 0.667,
+      "treb": 0.5,
+      "mid": 0.5,
+      "midfreq": 1005,
+      "bass": 0.611,
+      "Boost": 1,
+      "LoCut": false,
+      "MidContour": true,
+      "HiBoost": false
+    },
+    "info": {
+      "displayName": "CLEAN BASS",
+      "audioGuiObjectNameMinimized": "CLEAN BASS",
+      "audioGuiObjectNameMaximized": "CLEAN BASS",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Greenbox",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": -12,
+      "gain": 0.69,
+      "tone": 0.54,
+      "blend": 1
+    },
+    "info": {
+      "displayName": "BLUES DRIVE",
+      "audioGuiObjectNameMinimized": "BLUES DRIVE",
+      "audioGuiObjectNameMaximized": "BLUES DRIVE",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "units": "dB",
+          "min": -27,
+          "max": 0,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TONE",
+          "paramGuiObjectNameMaximized": "TONE",
+          "displayType": "knob",
+          "controlId": "tone",
+          "displayName": "TONE",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BLEND",
+          "paramGuiObjectNameMaximized": "BLEND",
+          "displayType": "knob",
+          "controlId": "blend",
+          "displayName": "BLEND",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Jcm800",
+    "defaultDspUnitParameters": {
+      "volume": -11.261283,
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimAmpeg66B15",
+      "gain": 0.7,
+      "treb": 0.67,
+      "mid": 0.4,
+      "bass": 0.75,
+      "sag": "match",
+      "bias": 0.5,
+      "master": 0.5,
+      "presence": 0.5
+    },
+    "info": {
+      "displayName": "ANGRY BRIT",
+      "audioGuiObjectNameMinimized": "ANGRY BRIT",
+      "audioGuiObjectNameMaximized": "ANGRY BRIT",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "orderBMT": [ 0, 1, 2, 3, 4 ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_LargeHallReverb",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.3111,
+      "decay": 0.2444,
+      "dwell": 0.5,
+      "diffuse": 0.0222,
+      "tone": 0.6888
+    },
+    "info": {
+      "displayName": "HALL RVRB",
+      "audioGuiObjectNameMinimized": "HALL RVRB",
+      "audioGuiObjectNameMaximized": "HALL RVRB",
+      "category": "effect",
+      "subcategory": "reverb"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0.001,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DECAY",
+          "paramGuiObjectNameMaximized": "DECAY",
+          "displayType": "knob",
+          "controlId": "decay",
+          "displayName": "DECAY",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TONE",
+          "paramGuiObjectNameMaximized": "TONE",
+          "displayType": "knob",
+          "controlId": "tone",
+          "displayName": "TONE",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_LinearGain",
+    "defaultDspUnitParameters": {
+      "volume": 0,
+      "gatePreset": "off",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "none",
+      "gain": 0.5,
+      "treb": 0.5,
+      "mid": 0.5,
+      "bass": 0.5
+    },
+    "info": {
+      "displayName": "SUPER CLEAN",
+      "audioGuiObjectNameMinimized": "SUPER CLEAN",
+      "audioGuiObjectNameMaximized": "SUPER CLEAN",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "orderBMT": [ 0, 1, 4, 3, 2 ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_ModernBassOverdrive",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "Level": 0.5,
+      "Drive": 0.5,
+      "Blend": 0.5,
+      "Bass": 0.5,
+      "Treb": 0.5,
+      "Pres": 0.5
+    },
+    "info": {
+      "displayName": "BASS DRIVE",
+      "audioGuiObjectNameMinimized": "BASS DRIVE",
+      "audioGuiObjectNameMaximized": "BASS DRIVE",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayName": "LEVEL",
+          "controlId": "Level",
+          "displayType": "knob",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DRIVE",
+          "paramGuiObjectNameMaximized": "DRIVE",
+          "displayName": "DRIVE",
+          "controlId": "Drive",
+          "displayType": "knob",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BLEND",
+          "paramGuiObjectNameMaximized": "BLEND",
+          "displayName": "BLEND",
+          "controlId": "Blend",
+          "displayType": "knob",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayName": "BASS",
+          "controlId": "Bass",
+          "displayType": "knob",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayName": "TREB",
+          "controlId": "Treb",
+          "displayType": "knob",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_MonoDelay",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "bypassType": "Post",
+      "level": 1,
+      "time": 0.4,
+      "feedback": 0.5,
+      "brite": 0.5,
+      "attenuate": 0.5
+    },
+    "info": {
+      "displayName": "DELAY",
+      "audioGuiObjectNameMinimized": "DELAY",
+      "audioGuiObjectNameMaximized": "DELAY",
+      "category": "effect",
+      "subcategory": "delay"
+    },
+    "ui": {
+      "hasBypass": true,
+      "hasTap": true,
+      "tapParameter": "time",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TIME",
+          "paramGuiObjectNameMaximized": "TIME",
+          "displayType": "multi",
+          "controlId": "time",
+          "displayName": "TIME",
+          "units": "ms",
+          "min": 0.03,
+          "max": 1,
+          "numTicks": 971,
+          "taper": "t50",
+          "remap": {
+            "format": "%0.0f",
+            "min": 30,
+            "max": 1000,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FEEDBACK",
+          "paramGuiObjectNameMaximized": "FEEDBACK",
+          "displayType": "knob",
+          "controlId": "feedback",
+          "displayName": "FEEDBACK",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TONE",
+          "paramGuiObjectNameMaximized": "TONE",
+          "displayType": "knob",
+          "controlId": "brite",
+          "displayName": "TONE",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_MonsterLite",
+    "defaultDspUnitParameters": {
+      "volume": -3,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimAmpegSVT8x10",
+      "gain": 0.5,
+      "treb": 0.35,
+      "mid": 0.3,
+      "midfreq": 2456,
+      "bass": 0.68,
+      "blend": 0.9,
+      "sag": "match",
+      "bias": 0.5
+    },
+    "info": {
+      "displayName": "MONSTER",
+      "audioGuiObjectNameMinimized": "MONSTER",
+      "audioGuiObjectNameMaximized": "MONSTER",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_MustangFiveBandEq1",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "bypassType": "Post",
+      "low": 0,
+      "lowmid": 0,
+      "mid": 0,
+      "highmid": 0,
+      "high": 0,
+      "gain": 0
+    },
+    "info": {
+      "displayName": "5-BAND EQ",
+      "audioGuiObjectNameMinimized": "5-BAND EQ",
+      "audioGuiObjectNameMaximized": "5-BAND EQ",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LOW",
+          "paramGuiObjectNameMaximized": "LOW",
+          "displayType": "slider-vertical",
+          "controlId": "low",
+          "displayName": "LOW",
+          "units": "dB",
+          "numTicks": 49,
+          "min": -12,
+          "max": 12,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": -12,
+            "max": 12,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LOW MID",
+          "paramGuiObjectNameMaximized": "LOW MID",
+          "displayType": "slider-vertical",
+          "controlId": "lowmid",
+          "displayName": "LOW MID",
+          "units": "dB",
+          "numTicks": 49,
+          "min": -12,
+          "max": 12,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": -12,
+            "max": 12,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MID",
+          "paramGuiObjectNameMaximized": "MID",
+          "displayType": "slider-vertical",
+          "controlId": "mid",
+          "displayName": "MID",
+          "units": "dB",
+          "numTicks": 49,
+          "min": -12,
+          "max": 12,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": -12,
+            "max": 12,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "HIGH MID",
+          "paramGuiObjectNameMaximized": "HIGH MID",
+          "displayType": "slider-vertical",
+          "controlId": "highmid",
+          "displayName": "HIGH MID",
+          "units": "dB",
+          "numTicks": 49,
+          "min": -12,
+          "max": 12,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": -12,
+            "max": 12,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "HIGH",
+          "paramGuiObjectNameMaximized": "HIGH",
+          "displayType": "slider-vertical",
+          "controlId": "high",
+          "displayName": "HIGH",
+          "units": "dB",
+          "numTicks": 49,
+          "min": -12,
+          "max": 12,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": -12,
+            "max": 12,
+            "taper": "t50"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Octobot",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.5,
+      "octdown": 1,
+      "octup": 1
+    },
+    "info": {
+      "displayName": "OCTOBOT",
+      "audioGuiObjectNameMinimized": "OCTOBOT",
+      "audioGuiObjectNameMaximized": "OCTOBOT",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DIRECT",
+          "paramGuiObjectNameMaximized": "DIRECT",
+          "displayName": "DIRECT",
+          "controlId": "level",
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DOWN",
+          "paramGuiObjectNameMaximized": "DOWN",
+          "displayName": "DOWN",
+          "controlId": "octdown",
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SIZZLE",
+          "paramGuiObjectNameMaximized": "SIZZLE",
+          "displayName": "SIZZLE",
+          "controlId": "octup",
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Or120Bass",
+    "defaultDspUnitParameters": {
+      "volume": -13.573416,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "4x12m",
+      "gain": 0.566162,
+      "treb": 0.67,
+      "mid": 0.313726,
+      "bass": 0.505882,
+      "sag": "match",
+      "bias": 0.5,
+      "master": 0.498039
+    },
+    "info": {
+      "displayName": "GRUNGE BASS",
+      "audioGuiObjectNameMinimized": "GRUNGE BASS",
+      "audioGuiObjectNameMaximized": "GRUNGE BASS",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Overdrive",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.5,
+      "gain": 0.5,
+      "low": 0.5,
+      "mid": 0.5,
+      "high": 0.5
+    },
+    "info": {
+      "displayName": "OVERDRIVE",
+      "audioGuiObjectNameMinimized": "OVERDRIVE",
+      "audioGuiObjectNameMaximized": "OVERDRIVE",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t30r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30ri",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LOW",
+          "paramGuiObjectNameMaximized": "LOW",
+          "displayType": "knob",
+          "controlId": "low",
+          "displayName": "LOW",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MID",
+          "paramGuiObjectNameMaximized": "MID",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MID",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "HIGH",
+          "paramGuiObjectNameMaximized": "HIGH",
+          "displayType": "knob",
+          "controlId": "high",
+          "displayName": "HIGH",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Passthru",
+    "defaultDspUnitParameters": {},
+    "info": {
+      "audioGuiObjectNameMinimized": "",
+      "audioGuiObjectNameMaximized": "",
+      "displayName": "Pass Thru",
+      "category": "utility",
+      "subcategory": "utility"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Right"
+        }
+      ],
+      "uiParameters": []
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Phaser",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.99,
+      "rate": 0.376297,
+      "depth": 0.99,
+      "feedback": 0.72,
+      "shape": "sine"
+    },
+    "info": {
+      "displayName": "PHASER",
+      "audioGuiObjectNameMinimized": "PHASER",
+      "audioGuiObjectNameMaximized": "PHASER",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "tapParameter": "rate",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rate",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 0.08,
+          "max": 10,
+          "numTicks": 91,
+          "taper": "t10",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t10i",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DEPTH",
+          "paramGuiObjectNameMaximized": "DEPTH",
+          "displayType": "knob",
+          "controlId": "depth",
+          "displayName": "DEPTH",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Plexi87Bass",
+    "defaultDspUnitParameters": {
+      "volume": -11.261283,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "4x12g",
+      "gain": 0.5,
+      "treb": 0.670588,
+      "mid": 0.301961,
+      "bass": 0.784314,
+      "sag": "match",
+      "bias": 0.5,
+      "presence": 0.5,
+      "blend": 0.5
+    },
+    "info": {
+      "displayName": "70S ROCK",
+      "audioGuiObjectNameMinimized": "70S ROCK",
+      "audioGuiObjectNameMaximized": "70S ROCK",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Redhead",
+    "defaultDspUnitParameters": {
+      "volume": -15.295096,
+      "compressorPreset": "Low1",
+      "gatePreset": "off",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimSWRRedhead2x10",
+      "gain": 0.667,
+      "treb": 0.5,
+      "mid": 0.233333,
+      "midfreq": 1005,
+      "bass": 0.667,
+      "Transparency": true,
+      "Turbo": false,
+      "AuralEnhancer": 0.689
+    },
+    "info": {
+      "displayName": "SLAP BASS",
+      "audioGuiObjectNameMinimized": "SLAP BASS",
+      "audioGuiObjectNameMaximized": "SLAP BASS",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_ReverseDelay",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.75,
+      "time": 0.4,
+      "feedback": 0.3,
+      "attenuate": 1,
+      "chase": 0.65
+    },
+    "info": {
+      "displayName": "REVERSE",
+      "audioGuiObjectNameMinimized": "REVERSE",
+      "audioGuiObjectNameMaximized": "REVERSE",
+      "category": "effect",
+      "subcategory": "delay"
+    },
+    "ui": {
+      "hasBypass": true,
+      "hasTap": true,
+      "tapParameter": "time",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0.001,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "taper": "t50",
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TIME",
+          "paramGuiObjectNameMaximized": "TIME",
+          "displayType": "multi",
+          "controlId": "time",
+          "displayName": "TIME",
+          "units": "ms",
+          "min": 0.03,
+          "max": 1,
+          "numTicks": 971,
+          "remap": {
+            "units": "ms",
+            "format": "%0.0f",
+            "min": 30,
+            "max": 1000
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FEEDBACK",
+          "paramGuiObjectNameMaximized": "FEEDBACK",
+          "displayType": "knob",
+          "controlId": "feedback",
+          "displayName": "FEEDBACK",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_RumbleV38x10Lite",
+    "defaultDspUnitParameters": {
+      "volume": -7.958493,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimBassmanTV1x15",
+      "gain": 0.67,
+      "treb": 0.5,
+      "mid": 0.5,
+      "midHi": 0.5,
+      "bass": 0.75,
+      "contour": false,
+      "Bright": false
+    },
+    "info": {
+      "displayName": "BIG RUMBLE",
+      "audioGuiObjectNameMinimized": "BIG RUMBLE",
+      "audioGuiObjectNameMaximized": "BIG RUMBLE",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_RumbleV3Lite",
+    "defaultDspUnitParameters": {
+      "volume": -3,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimRumbleV3_2x10",
+      "gain": 0.67,
+      "treb": 0.5,
+      "mid": 0.5,
+      "midHi": 0.5,
+      "bass": 0.5,
+      "contour": false,
+      "Bright": false
+    },
+    "info": {
+      "displayName": "RUMBLE",
+      "audioGuiObjectNameMinimized": "RUMBLE",
+      "audioGuiObjectNameMaximized": "RUMBLE",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "units": "",
+            "format": "%0.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_SVT",
+    "defaultDspUnitParameters": {
+      "volume": -16.220806,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimAmpegSVT8x10",
+      "gain": 0.5,
+      "treb": 0.611,
+      "mid": 0.333333,
+      "MidFreqLowMidHi": "Mid",
+      "bass": 0.611,
+      "UltraLo": "Off",
+      "UltraHi": false,
+      "sag": "match",
+      "bias": 0.5
+    },
+    "info": {
+      "displayName": "ARENA BASS",
+      "audioGuiObjectNameMinimized": "ARENA BASS",
+      "audioGuiObjectNameMaximized": "ARENA BASS",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_SimpleCompressor",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "type": "medium"
+    },
+    "info": {
+      "displayName": "COMPRESSOR",
+      "audioGuiObjectNameMinimized": "COMPRESSOR",
+      "audioGuiObjectNameMaximized": "COMPRESSOR",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "TYPE",
+          "paramGuiObjectNameMaximized": "TYPE",
+          "controlId": "type",
+          "displayName": "TYPE",
+          "displayType": "multi",
+          "listItems": [ "low", "medium", "high", "super" ],
+          "remap": { "listItems": [ "LOW", "MID", "HIGH", "MAX" ] },
+          "remapMinimized": { "listItems": [ "LOW", "MID", "HIGH", "MAX" ] }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_SineTremolo",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.86,
+      "rate": 6.56,
+      "duty": 0.5,
+      "dist": 0,
+      "shape": 0
+    },
+    "info": {
+      "displayName": "TREMOLO",
+      "audioGuiObjectNameMinimized": "TREMOLO",
+      "audioGuiObjectNameMaximized": "TREMOLO",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "tapParameter": "rate",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "taper": "t30",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rate",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 1.3,
+          "max": 10,
+          "numTicks": 91,
+          "taper": "t50",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "fixme": "//FIXME: This file is an auto-generated stub, and someone needs to go through it",
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_SmallRoomReverb",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.5,
+      "decay": 0.5,
+      "dwell": 0.5,
+      "diffuse": 0.5,
+      "tone": 0.5
+    },
+    "info": {
+      "displayName": "ROOM RVRB",
+      "audioGuiObjectNameMinimized": "ROOM RVRB",
+      "audioGuiObjectNameMaximized": "ROOM RVRB",
+      "category": "effect",
+      "subcategory": "reverb"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0.001,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DECAY",
+          "paramGuiObjectNameMaximized": "DECAY",
+          "displayType": "knob",
+          "controlId": "decay",
+          "displayName": "DECAY",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TONE",
+          "paramGuiObjectNameMaximized": "TONE",
+          "displayType": "knob",
+          "controlId": "tone",
+          "displayName": "TONE",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_StepFilter",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 1,
+      "rate": 5.07,
+      "reson": 0.5,
+      "loFrq": 0.5,
+      "hiFrq": 0.5
+    },
+    "info": {
+      "displayName": "STEP FILTER",
+      "audioGuiObjectNameMinimized": "STEP FILTER",
+      "audioGuiObjectNameMaximized": "STEP FILTER",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "hasTap": false,
+      "tapParameter": "rate",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rate",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 0.08,
+          "max": 10,
+          "numTicks": 91,
+          "taper": "t10",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t10i",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "RESONATE",
+          "paramGuiObjectNameMaximized": "RESONATE",
+          "displayType": "knob",
+          "controlId": "reson",
+          "displayName": "RESONATE",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LOW FREQ",
+          "paramGuiObjectNameMaximized": "LOW FREQ",
+          "displayType": "knob",
+          "controlId": "loFrq",
+          "displayName": "LOW FREQ",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "HI FREQ",
+          "paramGuiObjectNameMaximized": "HI FREQ",
+          "displayType": "knob",
+          "controlId": "hiFrq",
+          "displayName": "HI FREQ",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_StudioPreampBass",
+    "defaultDspUnitParameters": {
+      "volume": 0,
+      "gatePreset": "off",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimFenderPro8x10",
+      "compressorPreset": "Off",
+      "gain": 0.5,
+      "treb": 0.5,
+      "mid": 0.5,
+      "bass": 0.5
+    },
+    "info": {
+      "displayName": "STUDIO 1",
+      "audioGuiObjectNameMinimized": "STUDIO 1",
+      "audioGuiObjectNameMaximized": "STUDIO 1",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_StudioTubePreampBass",
+    "defaultDspUnitParameters": {
+      "volume": -8.263186,
+      "compressorPreset": "Off",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimAmpegSVT8x10",
+      "gain": 0.888889,
+      "treb": 0.5,
+      "mid": 0.277778,
+      "midfreq": 1005,
+      "bass": 0.5
+    },
+    "info": {
+      "displayName": "STUDIO 2",
+      "audioGuiObjectNameMinimized": "STUDIO 2",
+      "audioGuiObjectNameMaximized": "STUDIO 2",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayType": "knob",
+          "controlId": "bass",
+          "displayName": "BASS",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayType": "knob",
+          "controlId": "mid",
+          "displayName": "MIDDLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayType": "knob",
+          "controlId": "treb",
+          "displayName": "TREBLE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "VOLUME",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f",
+            "units": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_SuperBassmanVintage",
+    "defaultDspUnitParameters": {
+      "volume": -9.867807,
+      "compressorPreset": "Low1",
+      "gatePreset": "low",
+      "gateDetectorPosition": "jack",
+      "cabsimType": "cabSimNeo8x10",
+      "gain": 0.67,
+      "bass": 0.5,
+      "mid": 0.467,
+      "treb": 0.38,
+      "deep": false,
+      "bright": false,
+      "master": 0.333333,
+      "sag": "match"
+    },
+    "info": {
+      "displayName": "BASSMAN 2K",
+      "audioGuiObjectNameMinimized": "BASSMAN 2K",
+      "audioGuiObjectNameMaximized": "BASSMAN 2K",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayName": "GAIN",
+          "controlId": "gain",
+          "numTicks": 91,
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "BASS",
+          "paramGuiObjectNameMaximized": "BASS",
+          "displayName": "BASS",
+          "controlId": "bass",
+          "numTicks": 91,
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "MIDDLE",
+          "paramGuiObjectNameMaximized": "MIDDLE",
+          "displayName": "MIDDLE",
+          "controlId": "mid",
+          "numTicks": 91,
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TREBLE",
+          "paramGuiObjectNameMaximized": "TREBLE",
+          "displayName": "TREBLE",
+          "controlId": "treb",
+          "numTicks": 91,
+          "displayType": "knob",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOLUME",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayName": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t20r",
+          "remap": {
+            "units": "",
+            "min": 1,
+            "max": 10,
+            "taper": "t20ri",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Sustain",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "bypassType": "PostNoPreKill",
+      "sensitivity": 0.5,
+      "outputLevel": 0.5
+    },
+    "info": {
+      "displayName": "SUSTAIN",
+      "audioGuiObjectNameMinimized": "SUSTAIN",
+      "audioGuiObjectNameMaximized": "SUSTAIN",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SENSE",
+          "paramGuiObjectNameMaximized": "SENSE",
+          "displayType": "knob",
+          "controlId": "sensitivity",
+          "displayName": "SENSE",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "outputLevel",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t50",
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_TapeDelayLite",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "bypassType": "Post",
+      "wetLvl": 0.5,
+      "dlyTime": 0.4,
+      "feedback": 0.25,
+      "wowLevel": 0.5
+    },
+    "info": {
+      "displayName": "ECHO",
+      "audioGuiObjectNameMinimized": "ECHO",
+      "audioGuiObjectNameMaximized": "ECHO",
+      "category": "effect",
+      "subcategory": "delay"
+    },
+    "ui": {
+      "hasBypass": true,
+      "hasTap": true,
+      "tapParameter": "dlyTime",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "wetLvl",
+          "displayName": "LEVEL",
+          "min": 0.001,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "TIME",
+          "paramGuiObjectNameMaximized": "TIME",
+          "displayType": "multi",
+          "controlId": "dlyTime",
+          "displayName": "TIME",
+          "units": "ms",
+          "min": 0.03,
+          "max": 1,
+          "numTicks": 971,
+          "taper": "t50",
+          "remap": {
+            "format": "%0.0f",
+            "min": 30,
+            "max": 1000,
+            "taper": "t50"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FEEDBACK",
+          "paramGuiObjectNameMaximized": "FEEDBACK",
+          "displayType": "knob",
+          "controlId": "feedback",
+          "displayName": "FEEDBACK",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "WOW",
+          "paramGuiObjectNameMaximized": "WOW",
+          "displayType": "knob",
+          "controlId": "wowLevel",
+          "displayName": "WOW",
+          "min": 0,
+          "max": 1,
+          "taper": "t50",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_TriangleFlanger",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 1,
+      "rate": 0.269562,
+      "depth": 0.666667,
+      "feedback": 0.777778,
+      "phase": 0.25
+    },
+    "info": {
+      "displayName": "FLANGER",
+      "audioGuiObjectNameMinimized": "FLANGER",
+      "audioGuiObjectNameMaximized": "FLANGER",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "tapParameter": "rate",
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "taper": "t30",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f",
+            "taper": "t30i"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rate",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 0.08,
+          "max": 10,
+          "numTicks": 91,
+          "taper": "t10",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t10i",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DEPTH",
+          "paramGuiObjectNameMaximized": "DEPTH",
+          "displayType": "knob",
+          "controlId": "depth",
+          "displayName": "DEPTH",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FEEDBACK",
+          "paramGuiObjectNameMaximized": "FEEDBACK",
+          "displayType": "knob",
+          "controlId": "feedback",
+          "displayName": "FEEDBACK",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_VariFuzz",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.1,
+      "tone": "loose",
+      "gain": 1
+    },
+    "info": {
+      "displayName": "FUZZ",
+      "audioGuiObjectNameMinimized": "FUZZ",
+      "audioGuiObjectNameMaximized": "FUZZ",
+      "category": "effect",
+      "subcategory": "stomp"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0.001,
+          "max": 1,
+          "taper": "t30",
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "GAIN",
+          "paramGuiObjectNameMaximized": "GAIN",
+          "displayType": "knob",
+          "controlId": "gain",
+          "displayName": "GAIN",
+          "numTicks": 91,
+          "min": 0,
+          "max": 1,
+          "taper": "t30",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "VARI",
+          "paramGuiObjectNameMaximized": "VARI",
+          "displayType": "multi",
+          "controlId": "tone",
+          "displayName": "VARI",
+          "listItems": [ "tight", "normal", "loose" ],
+          "remap": { "listItems": [ "TIGHT", "NORMAL", "LOOSE" ] },
+          "remapMinimized": { "listItems": [ "TIGHT", "NORMAL", "LOOSE" ] }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Vibratone",
+    "defaultDspUnitParameters": {
+      "bypass": false,
+      "level": 0.96,
+      "rotor": 5.67,
+      "depth": 0.18,
+      "feedback": 0.68,
+      "phase": 0.52
+    },
+    "info": {
+      "displayName": "VIBRATONE",
+      "audioGuiObjectNameMinimized": "VIBRATONE",
+      "audioGuiObjectNameMaximized": "VIBRATONE",
+      "category": "effect",
+      "subcategory": "mod"
+    },
+    "ui": {
+      "hasBypass": true,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "left"
+        },
+        {
+          "index": 1,
+          "displayName": "right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "LEVEL",
+          "paramGuiObjectNameMaximized": "LEVEL",
+          "displayType": "knob",
+          "controlId": "level",
+          "displayName": "LEVEL",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "taper": "t30",
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "taper": "t30i",
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "SPEED",
+          "paramGuiObjectNameMaximized": "SPEED",
+          "displayType": "knob",
+          "controlId": "rotor",
+          "displayName": "SPEED",
+          "units": "Hz",
+          "min": 0.67,
+          "max": 5.67,
+          "numTicks": 91,
+          "taper": "t10r",
+          "remap": {
+            "format": "%2.1f",
+            "min": 1,
+            "max": 10,
+            "taper": "t10ri",
+            "units": ""
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "DEPTH",
+          "paramGuiObjectNameMaximized": "DEPTH",
+          "displayType": "knob",
+          "controlId": "depth",
+          "displayName": "DEPTH",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "FEEDBACK",
+          "paramGuiObjectNameMaximized": "FEEDBACK",
+          "displayType": "knob",
+          "controlId": "feedback",
+          "displayName": "FEEDBACK",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        },
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "PHASE",
+          "paramGuiObjectNameMaximized": "PHASE",
+          "displayType": "knob",
+          "controlId": "phase",
+          "displayName": "PHASE",
+          "min": 0,
+          "max": 1,
+          "numTicks": 91,
+          "remap": {
+            "min": 1,
+            "max": 10,
+            "format": "%2.1f"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "DUBS_Volume",
+    "defaultDspUnitParameters": {
+      "volume": -9,
+      "gatePreset": "off",
+      "cabsimType": "none",
+      "bypass": false
+    },
+    "info": {
+      "displayName": "Passthru Amp",
+      "audioGuiObjectNameMinimized": "PASSTHRU AMP",
+      "audioGuiObjectNameMaximized": "PASSTHRU AMP",
+      "category": "effect",
+      "subcategory": "amp"
+    },
+    "ui": {
+      "hasBypass": false,
+      "inputs": [
+        {
+          "index": 0,
+          "displayName": "In Left"
+        },
+        {
+          "index": 1,
+          "displayName": "In Right"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "displayName": "Out Left"
+        },
+        {
+          "index": 1,
+          "displayName": "Out Right"
+        }
+      ],
+      "uiParameters": [
+        {
+          "controlType": "continuous",
+          "paramGuiObjectNameMinimized": "VOL",
+          "paramGuiObjectNameMaximized": "VOLUME",
+          "displayType": "knob",
+          "controlId": "volume",
+          "displayName": "Volume",
+          "numTicks": 91,
+          "units": "dB",
+          "min": -60,
+          "max": 0,
+          "taper": "t50"
+        },
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "Cab",
+          "paramGuiObjectNameMaximized": "Cabinet",
+          "controlId": "cabsimType",
+          "displayName": "Cabinet",
+          "displayType": "multi",
+          "listItems": [ "none", "57champ", "65prince", "ga15rvt", "57dlx", "61brwn", "65dlx", "1x12ss", "65twn", "exlsr", "2x12ss", "3x10bm", "59bman", "2x12c", "4x12m", "4x12g", "4x12v" ],
+          "remap": { "listItems": [ "NONE", "'57 Champ", "'65 Princeton", "'66 GA-15", "'57 Deluxe", "'61 Brown", "'65 Deluxe", "1X12 SuperSonic", "'65 Twin", "Excelsior", "2X12 SuperSonic", "'57 Bandmaster", "'59 Bassman", "2x12 Blue", "4x12 75W", "4x12 GB", "4x12 V30" ] },
+          "remapMinimized": { "listItems": [ "NONE", "'57 Champ", "'65 Prnce", "'66 GA-15", "'57 Dlx", "'61 Brwn", "'65 Dlx", "1X12 SS", "'65 Twin", "Excl- sior", "2X12 SS", "'57 Band", "'59 Bman", "2x12 Blue", "4x12 75W", "4x12 GB", "4x12 V30" ] }
+        },
+        {
+          "controlType": "list",
+          "paramGuiObjectNameMinimized": "GATE",
+          "paramGuiObjectNameMaximized": "NOISE GATE",
+          "controlId": "gatePreset",
+          "displayName": "Noise Gate",
+          "displayType": "multi",
+          "listItems": [ "off", "low", "mid", "high", "super" ],
+          "remap": { "listItems": [ "OFF", "LOW", "MEDIUM", "HIGH", "SUPER" ] },
+          "remapMinimized": { "listItems": [ "OFF", "LOW", "MED", "HIGH", "SUPR" ] }
+        }
+      ]
+    }
+  },
+  {
+    "nodeType": "dspUnit",
+    "FenderId": "Default",
+    "defaultDspUnitParameters": {},
+    "info": {
+      "audioGuiObjectNameMinimized": "",
+      "audioGuiObjectNameMaximized": "",
+      "displayName": "unknown",
+      "category": "utility",
+      "subcategory": "utility"
+    },
+    "ui": {
+      "inputs": [],
+      "outputs": [],
+      "uiParameters": [
+        {
+          "controlId": "bypass",
+          "controlType": "listBool",
+          "displayType": "knob",
+          "displayName": "Bypass",
+          "paramGuiObjectNameMinimized": "Bypass",
+          "paramGuiObjectNameMaximized": "Bypass"
+        },
+        {
+          "controlId": "bypassType",
+          "displayType": "multi",
+          "displayName": "Bypass Type",
+          "paramGuiObjectNameMinimized": "Bypass Type",
+          "paramGuiObjectNameMaximized": "Bypass Type",
+          "controlType": "list",
+          "listItems": [ "Pre", "Post" ]
+        },
+        {
+          "controlId": "clipState",
+          "displayType": "knob",
+          "displayName": "Clip",
+          "paramGuiObjectNameMinimized": "Clip",
+          "paramGuiObjectNameMaximized": "Clip",
+          "controlType": "listBool"
+        },
+        {
+          "controlId": "tapTime",
+          "displayType": "knob",
+          "displayName": "Tap",
+          "paramGuiObjectNameMinimized": "Tap",
+          "paramGuiObjectNameMaximized": "Tap",
+          "controlType": "continuous",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "controlId": "muteInput",
+          "displayType": "multi",
+          "displayName": "Mute Input",
+          "paramGuiObjectNameMinimized": "Mute Input",
+          "paramGuiObjectNameMaximized": "Mute Input",
+          "controlType": "listBool"
+        },
+        {
+          "controlId": "muteOutput",
+          "displayType": "multi",
+          "displayName": "Mute Output",
+          "paramGuiObjectNameMinimized": "Mute Output",
+          "paramGuiObjectNameMaximized": "Mute Output",
+          "controlType": "listBool"
+        }
+      ]
+    }
+]
