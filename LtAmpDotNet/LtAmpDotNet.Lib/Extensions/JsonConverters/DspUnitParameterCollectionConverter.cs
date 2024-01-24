@@ -13,9 +13,9 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
     [JsonConverter(typeof(DspUnitParameterCollectionConverter))]
     public class DspUnitParameterCollectionConverter : JsonConverter<List<DspUnitParameter>>
     {
-        public override void WriteJson(JsonWriter writer, List<DspUnitParameter> value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, List<DspUnitParameter>? value, JsonSerializer serializer)
         {
-            JToken t = JToken.FromObject(value);
+            JToken t = JToken.FromObject(value!);
 
             if (t.Type != JTokenType.Object)
             {
@@ -39,7 +39,7 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
             List<DspUnitParameter> parameters = new List<DspUnitParameter>();
             foreach (var prop in jObject)
             {
-                parameters.Add(new DspUnitParameter() { Name = prop.Key, Value = prop.Value });
+                parameters.Add(new DspUnitParameter() { Name = prop.Key, Value = prop.Value! });
             }
 
             if (jObject != null && jObject.Count > 1)

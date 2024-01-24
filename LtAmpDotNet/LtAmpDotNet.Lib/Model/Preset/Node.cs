@@ -14,30 +14,30 @@ namespace LtAmpDotNet.Lib.Model.Preset
     {
 
         public Node() { }
-        public Node(DspUnitDefinition definition, string nodeId = null)
+        public Node(DspUnitDefinition definition, string? nodeId = null)
         {
             FenderId = definition.FenderId;
-            NodeId = nodeId ?? definition.Info.SubCategory;
-            DspUnitParameters = definition.DefaultDspUnitParameters;
+            NodeId = nodeId ?? definition?.Info?.SubCategory;
+            DspUnitParameters = definition?.DefaultDspUnitParameters;
         }
 
-        public Node(string fenderId, string node = null) : this(LtAmpDevice.DspUnitDefinitions.FirstOrDefault(x => x.FenderId == fenderId), node) { }
+        public Node(string fenderId, string? node = null) : this(LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
 
         [JsonProperty("FenderId")]
-        public string FenderId { get; set; }
+        public string? FenderId { get; set; }
 
         [JsonProperty("nodeId")]
-        public string NodeId { get; set; }
+        public string? NodeId { get; set; }
 
         [JsonProperty("nodeType")]
-        public string NodeType => "dspUnit";
+        public string? NodeType => "dspUnit";
 
         [JsonProperty("dspUnitParameters")]
         [JsonConverter(typeof(DspUnitParameterCollectionConverter))]
-        public List<DspUnitParameter> DspUnitParameters { get; set; }
+        public List<DspUnitParameter>? DspUnitParameters { get; set; }
 
         [JsonIgnore]
-        public DspUnitDefinition Definition => LtAmpDevice.DspUnitDefinitions.FirstOrDefault(x => x.FenderId == FenderId);
+        public DspUnitDefinition Definition => LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == FenderId)!;
     }
 
     public static class NodeType

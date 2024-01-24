@@ -10,40 +10,40 @@ namespace LtAmpDotNet.Lib.Model.Profile
     public class DspUnitUiParameter
     {
         [JsonProperty("controlType")]
-        public string ControlType { get; set; }
+        public string? ControlType { get; set; }
 
         [JsonProperty("paramGuiObjectNameMinimized")]
-        public string ParamGuiObjectNameMinimized { get; set; }
+        public string? ParamGuiObjectNameMinimized { get; set; }
 
         [JsonProperty("paramGuiObjectNameMaximized")]
-        public string ParamGuiObjectNameMaximized { get; set; }
+        public string? ParamGuiObjectNameMaximized { get; set; }
 
         [JsonProperty("controlId")]
-        public string ControlId { get; set; }
+        public string? ControlId { get; set; }
 
         [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
         [JsonProperty("numTicks")]
         public int NumTicks { get; set; }
 
         [JsonProperty("displayType")]
-        public string DisplayType { get; set; }
+        public string? DisplayType { get; set; }
 
         [JsonProperty("min")]
-        public float Min { get; set; }
+        public float? Min { get; set; }
 
         [JsonProperty("max")]
-        public float Max { get; set; }
+        public float? Max { get; set; }
 
         [JsonProperty("taper")]
-        public string Taper { get; set; }
+        public string? Taper { get; set; }
 
         [JsonProperty("listItems")]
-        public IEnumerable<string> ListItems { get; set; }
+        public IEnumerable<string>? ListItems { get; set; }
 
         [JsonProperty("remap")]
-        public DspUnitUiParametersRemap Remap { get; set; }
+        public DspUnitUiParametersRemap? Remap { get; set; }
     }
     public static class ControlType
     {

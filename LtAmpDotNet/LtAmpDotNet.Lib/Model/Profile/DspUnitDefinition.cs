@@ -14,29 +14,29 @@ namespace LtAmpDotNet.Lib.Model.Profile
     public class DspUnitDefinition
     {
         [JsonIgnore]
-        public string DisplayName { get => Info.DisplayName; }
+        public string? DisplayName { get => Info?.DisplayName; }
 
         [JsonProperty("nodeType")]
-        public string NodeType { get; set; }
+        public string? NodeType { get; set; }
 
         [JsonProperty("FenderId")]
-        public string FenderId { get; set; }
+        public string? FenderId { get; set; }
 
         [JsonProperty("defaultDspUnitParameters")]
         [JsonConverter(typeof(DspUnitParameterCollectionConverter))]
-        public List<DspUnitParameter> DefaultDspUnitParameters { get; set; }
+        public List<DspUnitParameter>? DefaultDspUnitParameters { get; set; }
 
         [JsonProperty("info")]
-        public DspUnitInfo Info { get; set; }
+        public DspUnitInfo? Info { get; set; }
 
         [JsonProperty("ui")]
-        public DspUnitUi Ui { get; set; }
+        public DspUnitUi? Ui { get; set; }
 
         public Node ToNode()
         {
             return new Node()
             {
-                NodeId = Info.SubCategory,
+                NodeId = Info?.SubCategory,
                 FenderId = FenderId,
                 DspUnitParameters = DefaultDspUnitParameters,
             };

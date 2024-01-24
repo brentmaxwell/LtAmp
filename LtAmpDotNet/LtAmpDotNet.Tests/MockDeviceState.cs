@@ -1,4 +1,5 @@
 using LtAmpDotNet.Lib;
+using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 using System.Security.Cryptography.X509Certificates;
@@ -7,11 +8,13 @@ namespace LtAmpDotNet.Tests
 {
     public class MockDeviceState
     {
-        public string firmwareVersion { get; set; }
-        public string productId { get; set; }
-        public uint[] qaSlots { get; set; }
-        public float usbGain { get; set; }
-        //public ModalContext modalContext { get; set; }
+        public List<string>? initializationStrings { get; set; }
+        public string? firmwareVersion { get; set; }
+        public string? productId { get; set; }
+        public uint[]? qaSlots { get; set; }
+        public float? usbGain { get; set; }
+        public List<string>? Presets { get; set; }
+        public ModalContext? modalContext { get; set; }
 
         public static MockDeviceState Load()
         {

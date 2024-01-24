@@ -13,6 +13,6 @@ namespace LtAmpDotNet.Lib.Model.Profile
         public int Index { get; set; }
 
         [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
     }
 }

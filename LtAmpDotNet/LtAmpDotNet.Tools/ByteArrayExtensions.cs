@@ -9,7 +9,7 @@ namespace LtAmpDotNet.Tools
 {
     public static class ByteArrayExtensions
     {
-        public static int[] Locate(this byte[] self, byte[] candidate)
+        public static int[]? Locate(this byte[] self, byte[] candidate)
         {
             if (IsEmptyLocate(self, candidate))
                 return null;

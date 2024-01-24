@@ -12,11 +12,13 @@ using System.Windows.Markup;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Lib.Extensions;
+using LtAmpDotNet.Lib.Device;
 
 namespace LtAmpDotNet.Lib
 {
     public partial class LtAmpDevice : IDisposable
     {
+        public const int NUM_OF_PRESETS = 60;
 
         #region public properties
 
@@ -24,76 +26,56 @@ namespace LtAmpDotNet.Lib
         {
             get { return _isOpen; }
         }
-        public static LtDeviceInfo DeviceInfo { get; set; }
-        public static List<DspUnitDefinition> DspUnitDefinitions { get; set; }
+        //public static LtDeviceInfo DeviceInfo { get; set; }
+        public static List<DspUnitDefinition>? DspUnitDefinitions { get; set; }
         public ErrorType ErrorType { get; set; }
 
         #endregion
 
         #region private fields and properties
 
-        private HidDevice _device { get; set; }
-        private HidStream _deviceStream { get; set; }
-        private ReportDescriptor _descriptor { get; set; }
-        private HidDeviceInputReceiver _inputReceiver { get; set; }
+        private IUsbAmpDevice _device { get; set; }
         private bool _isOpen;
-        private int _reportLength = 0;
-        private byte[] _inputBuffer;
-        private byte[] _dataBuffer = new byte[0];
+        private byte[]? _inputBuffer;
         private bool disposedValue;
-
-        private TimerCallback _heartbeatCallback { get; set; }
+        private TimerCallback? _heartbeatCallback { get; set; }
         
         #endregion
+
         public LtAmpDevice()
         {
-            DeviceInfo = new LtDeviceInfo();
+            _device = new UsbAmpDevice();
             ImportDspUnitDefinitions();
-            DeviceInfo.Presets = new List<Preset>(LtDeviceInfo.NUM_OF_PRESETS);
-            for(var i = DeviceInfo.Presets.Count; i <= LtDeviceInfo.NUM_OF_PRESETS; i++)
-            {
-                DeviceInfo.Presets.Add(new Preset());
-            }
+        }
+
+        public LtAmpDevice(IUsbAmpDevice device) : this()
+        {
+            _device = device;
         }
         
         public void Open(bool waitAndConnect = true)
         {
             DeviceConnected += LtDevice_DeviceConnected;
-            _device = DeviceList.Local.GetHidDeviceOrNull(LtDeviceInfo.VENDOR_ID, LtDeviceInfo.PRODUCT_ID);
-            if(_device != null)
-            {
-                Connect();
-            }
-            else
-            {
-                DeviceList.Local.Changed += UsbDevices_Changed;
-            }
-        }
-        
-        public void Connect()
-        {
-            _inputBuffer = new byte[_device.GetMaxInputReportLength()];
-            _descriptor = _device.GetReportDescriptor();
-            _inputReceiver = _descriptor.CreateHidDeviceInputReceiver();
-            _inputReceiver.Received += InputReceiver_Received;
-            _deviceStream = _device.Open();
-            if (_deviceStream == null)
-            {
-                throw new IOException("Could not open connection to device");
-            }
-            _deviceStream.Closed += _deviceStream_Closed;
-            _inputReceiver.Start(_deviceStream);
+            _device.MessageReceived += OnMessageReceived;
+            _device.MessageSent += OnMessageSent;
+            _device.Open();
+            _inputBuffer = new byte[_device.ReportLength.GetValueOrDefault()];
             InitializeConnection();
             Timer heartbeatTimer = new Timer(1000);
             heartbeatTimer.Elapsed += HeartbeatTimer_Elapsed;
             heartbeatTimer.Start();
             _isOpen = true;
-            DeviceConnected.Invoke(this, null);
+            DeviceConnected.Invoke(this, null!);
+        }
+
+        private void OnMessageSent(FenderMessageLT message)
+        {
+            MessageSent?.Invoke(message);
         }
 
         public void Close()
         {
-            _deviceStream.Close();
+            _device.Close();
             _isOpen = false;
         }
 
@@ -103,10 +85,10 @@ namespace LtAmpDotNet.Lib
             {
                 if (disposing)
                 {
-                    if(_deviceStream != null)
+                    if(_device != null)
                     {
-                        _deviceStream.Close();
-                        _deviceStream.Dispose();
+                        _device.Close();
+                        _device.Dispose();
                     }
                 }
                 disposedValue = true;
@@ -122,7 +104,7 @@ namespace LtAmpDotNet.Lib
 
         public void GetAllPresets()
         {
-            for (int i = 1; i <= LtDeviceInfo.NUM_OF_PRESETS; i++)
+            for (int i = 1; i <= NUM_OF_PRESETS; i++)
             {
                 GetPreset(i);
                 Thread.Sleep(100);
@@ -131,14 +113,7 @@ namespace LtAmpDotNet.Lib
 
         public void SendMessage(FenderMessageLT message)
         {
-            foreach (var packet in message.ToUsbMessage())
-            {
-                _deviceStream.Write(packet);
-            }
-            if (message.TypeCase != FenderMessageLT.TypeOneofCase.Heartbeat)
-            {
-                MessageSent?.Invoke(message);
-            }
+            _device.Write(message);
         }
 
         #region private event handlers
@@ -146,17 +121,7 @@ namespace LtAmpDotNet.Lib
         private void _deviceStream_Closed(object? sender, EventArgs e)
         {
             _isOpen = false;
-            DeviceDisconnected.Invoke(this, null);
-        }
-
-        private void UsbDevices_Changed(object? sender, DeviceListChangedEventArgs e)
-        {
-            _device = DeviceList.Local.GetHidDeviceOrNull(LtDeviceInfo.VENDOR_ID, LtDeviceInfo.PRODUCT_ID);
-            if (_device != null)
-            {
-                DeviceList.Local.Changed -= UsbDevices_Changed;
-                Connect();
-            }
+            DeviceDisconnected?.Invoke(this, null!);
         }
 
         private void LtDevice_DeviceConnected(object sender, EventArgs e)
@@ -176,63 +141,32 @@ namespace LtAmpDotNet.Lib
             });
         }
 
-        private void InputReceiver_Received(object? sender, EventArgs e)
-        {
-            while (_inputReceiver.Stream.CanRead)
-            {
-                var inputBuffer = _inputReceiver.Stream.Read();
-                var tag = inputBuffer[2];
-                var length = inputBuffer[3];
-                var bufferStart = _dataBuffer.Length;
-                Array.Resize(ref _dataBuffer, _dataBuffer.Length + length);
-                Buffer.BlockCopy(inputBuffer, 4, _dataBuffer, bufferStart, length);
-                if (tag == (byte)UsbHidMessageTag.End)
-                {
-                    var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
-                    OnMessageReceived(message);
-                    _dataBuffer = new byte[0];
-                }
-                inputBuffer = new byte[_reportLength];
-            }
-        }
-
         private void OnMessageReceived(FenderMessageLT message)
         {
             switch (message.TypeCase)
             {
                 case FenderMessageLT.TypeOneofCase.AuditionPresetStatus:
-                    DeviceInfo.AuditioningPreset = Preset.FromString(message.AuditionPresetStatus.PresetData);
                     AuditionPresetStatusMessageReceived?.Invoke(message.AuditionPresetStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.AuditionStateStatus:
-                    DeviceInfo.IsAuditioning = message.AuditionStateStatus.IsAuditioning;
-                    if (!DeviceInfo.IsAuditioning)
-                    {
-                        DeviceInfo.AuditioningPreset = null;
-                    }
                     AuditionStateStatusMessageReceived?.Invoke(message.AuditionStateStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.ClearPresetStatus:
                     ClearPresetStatusMessageReceived?.Invoke(message.ClearPresetStatus);
-                    DeviceInfo.Presets[message.ClearPresetStatus.SlotIndex] = new Preset();
                     break;
                 case FenderMessageLT.TypeOneofCase.ConnectionStatus:
-                    DeviceInfo.IsConnected = message.ConnectionStatus.IsConnected;
                     ConnectionStatusMessageReceived?.Invoke(message.ConnectionStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.CurrentDisplayedPresetIndexStatus:
-                    DeviceInfo.DisplayedPresetIndex = message.CurrentDisplayedPresetIndexStatus.CurrentDisplayedPresetIndex;
                     CurrentDisplayedPresetIndexStatusMessageReceived?.Invoke(message.CurrentDisplayedPresetIndexStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexStatus:
-                    DeviceInfo.ActivePresetIndex = message.CurrentLoadedPresetIndexStatus.CurrentLoadedPresetIndex;
                     CurrentLoadedPresetIndexStatusMessageReceived?.Invoke(message.CurrentLoadedPresetIndexStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
                     CurrentLoadedPresetIndexBypassStatusMessageReceived?.Invoke(message.CurrentLoadedPresetIndexBypassStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.CurrentPresetStatus:
-                    DeviceInfo.CurrentPreset = Preset.FromString(message.CurrentPresetStatus.CurrentPresetData);
                     CurrentPresetStatusMessageReceived?.Invoke(message.CurrentPresetStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.DspUnitParameterStatus:
@@ -242,8 +176,7 @@ namespace LtAmpDotNet.Lib
                     ExitAuditionPresetStatusMessageReceived?.Invoke(message.ExitAuditionPresetStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.FirmwareVersionStatus:
-                    DeviceInfo.FirmwareVersion = message.FirmwareVersionStatus.Version;
-                    FirmwareVersionStatusMessageReceived?.Invoke(message.FirmwareVersionStatus);
+                     FirmwareVersionStatusMessageReceived?.Invoke(message.FirmwareVersionStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.FrameBufferMessage:
                     FrameBufferMessageReceived?.Invoke(message.FrameBufferMessage);
@@ -264,38 +197,30 @@ namespace LtAmpDotNet.Lib
                     LT4FootswitchModeStatusMessageReceived?.Invoke(message.Lt4FootswitchModeStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.MemoryUsageStatus:
-                    DeviceInfo.MemoryUsageStatus = message.MemoryUsageStatus;
                     MemoryUsageStatusMessageReceived?.Invoke(message.MemoryUsageStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.ModalStatusMessage:
-                    DeviceInfo.ModalContext = message.ModalStatusMessage.Context;
-                    DeviceInfo.ModalState = message.ModalStatusMessage.State;
                     ModalStatusMessageMessageReceived?.Invoke(message.ModalStatusMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.NewPresetSavedStatus:
                     NewPresetSavedStatusMessageReceived?.Invoke(message.NewPresetSavedStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.PresetEditedStatus:
-                    DeviceInfo.IsPresetEdited = message.PresetEditedStatus.PresetEdited;
                     PresetEditedStatusMessageReceived?.Invoke(message.PresetEditedStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.PresetJSONMessage:
-                    DeviceInfo.Presets[message.PresetJSONMessage.SlotIndex] = Preset.FromString(message.PresetJSONMessage.Data);
                     PresetJSONMessageReceived?.Invoke(message.PresetJSONMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.PresetSavedStatus:
                     PresetSavedStatusMessageReceived?.Invoke(message.PresetSavedStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.ProcessorUtilization:
-                    DeviceInfo.ProcessorUtilization = message.ProcessorUtilization;
                     ProcessorUtilizationMessageReceived?.Invoke(message.ProcessorUtilization);
                     break;
                 case FenderMessageLT.TypeOneofCase.ProductIdentificationStatus:
-                    DeviceInfo.ProductId = message.ProductIdentificationStatus.Id;
                     ProductIdentificationStatusMessageReceived?.Invoke(message.ProductIdentificationStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.QASlotsStatus:
-                    DeviceInfo.FootswitchPresets = message.QASlotsStatus.Slots.ToArray();
                     QASlotsStatusMessageReceived?.Invoke(message.QASlotsStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.ReplaceNodeStatus:
@@ -315,14 +240,13 @@ namespace LtAmpDotNet.Lib
                     UnsupportedMessageStatusReceived?.Invoke(message.UnsupportedMessageStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.UsbGainStatus:
-                    DeviceInfo.UsbGain = message.UsbGainStatus.ValueDB;
                     UsbGainStatusMessageReceived?.Invoke(message.UsbGainStatus);
                     break;
                 case FenderMessageLT.TypeOneofCase.ActiveDisplay:
                     ActiveDisplayMessageReceived?.Invoke(message.ActiveDisplay);
-                    UnknownMessageReceived?.Invoke(message);
                     break;
                 default:
+                    UnknownMessageReceived?.Invoke(message);
                     break;
             }
             MessageReceived?.Invoke(message);
@@ -342,8 +266,6 @@ namespace LtAmpDotNet.Lib
                 Thread.Sleep(100);
                 GetProductIdentification();
                 Thread.Sleep(100);
-                GetLineOutGain();
-                Thread.Sleep(100);
                 GetQASlots();
                 Thread.Sleep(100);
                 GetUsbGain();
@@ -352,7 +274,7 @@ namespace LtAmpDotNet.Lib
             SetModalState(ModalContext.SyncEnd);
         }
 
-        private void ImportDspUnitDefinitions(string deviceType = null)
+        private void ImportDspUnitDefinitions(string? deviceType = null)
         {
             var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang", "dsp_units.json"));
             DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Lib.Extensions
 {
-    public static class Commands
+    public static class MessageExtensions
     {
         public static byte[][] ToUsbMessage(this IMessage message)
         {

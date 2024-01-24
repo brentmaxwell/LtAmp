@@ -10,10 +10,10 @@ namespace LtAmpDotNet.Lib.Model.Preset
     public class Connection
     {
         [JsonProperty("input")]
-        public InputOutput Input { get; set; }
+        public InputOutput? Input { get; set; }
 
         [JsonProperty("output")]
-        public InputOutput Output { get; set; }
+        public InputOutput? Output { get; set; }
     }
 
     public class InputOutput
@@ -22,7 +22,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public int Index { get; set; }
 
         [JsonProperty("nodeId")]
-        public string NodeId { get; set; }
+        public string? NodeId { get; set; }
     }
 
 }
