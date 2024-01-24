@@ -3,7 +3,6 @@ using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Tests.Mock;
-using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 using System.Security.Cryptography.X509Certificates;
@@ -79,7 +78,7 @@ namespace LtAmpDotNet.Tests
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.IsTrue(LtAmpDevice.DspUnitDefinitions?.Count > 0);
+            Assert.That(LtAmpDevice.DspUnitDefinitions?.Count, Is.GreaterThan(0));
         }
 
         [Test]
