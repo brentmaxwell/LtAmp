@@ -78,7 +78,7 @@ namespace LtAmpDotNet.Tests
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.IsTrue(LtAmpDevice.DspUnitDefinitions?.Count > 0);
+            Assert.That(LtAmpDevice.DspUnitDefinitions?.Count, Is.GreaterThan(0));
         }
 
         [Test]
