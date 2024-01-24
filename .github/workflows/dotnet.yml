@@ -3,7 +3,6 @@
 name: .NET
 on:
   push:
-    branches: [ "main", "develop" ]
   pull_request:
     branches: [ "main", "develop" ]
 jobs:
@@ -17,11 +16,10 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./LtDotNet
+      working-directory: ./LtAmpDotNet
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./LtDotNet
-# tests are disabled until the mocked amplifier is complete
-#    - name: Test
-#      run: dotnet test --no-build --verbosity normal
-#      working-directory: ./LtDotNet
+      working-directory: ./LtAmpDotNet
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: ./LtAmpDotNet

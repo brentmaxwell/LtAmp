@@ -16,7 +16,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public DspUnitParameterType ParameterType { get; set; }
 
         [JsonIgnore]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonIgnore]
         public dynamic Value
@@ -26,17 +26,17 @@ namespace LtAmpDotNet.Lib.Model.Preset
                 switch (ParameterType)
                 {
                     case DspUnitParameterType.Boolean:
-                        return boolValue;
+                        return boolValue.GetValueOrDefault();
                     case DspUnitParameterType.String:
-                        return stringValue;
+                        return stringValue!;
                     case DspUnitParameterType.Float:
-                        return floatValue;
+                        return floatValue.GetValueOrDefault();
                     case DspUnitParameterType.Integer:
-                        return intValue;
+                        return intValue.GetValueOrDefault();
                     case DspUnitParameterType.None:
                         if (boolValue.HasValue)
                             return boolValue.Value;
-                        if (stringValue.Length > 0)
+                        if (stringValue?.Length > 0)
                             return stringValue;
                         if (floatValue.HasValue)
                             return floatValue.Value;
@@ -44,7 +44,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
                             return intValue.Value;
                         break;
                 }
-                return null;
+                return null!;
             }
             set
             {

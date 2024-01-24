@@ -10,18 +10,18 @@ namespace LtAmpDotNet.Lib.Model.Profile
     public class DspUnitUiParametersRemap
     {
         [JsonProperty("min")]
-        public float Min { get; set; }
+        public float? Min { get; set; }
 
         [JsonProperty("max")]
-        public float Max { get; set; }
+        public float? Max { get; set; }
 
         [JsonProperty("taper")]
-        public string Taper { get; set; }
+        public string? Taper { get; set; }
 
         [JsonProperty("format")]
-        public string Format { get; set; }
+        public string? Format { get; set; }
 
         [JsonProperty("listItems")]
-        public IEnumerable<string> ListItems { get; set; }
+        public IEnumerable<string>? ListItems { get; set; }
     }
 }

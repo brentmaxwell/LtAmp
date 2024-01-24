@@ -9,9 +9,9 @@ namespace LtAmpDotNet.Lib.Model
 {
     public static class MessageFactory
     {
-        public static FenderMessageLT Create(IMessage message)
+        public static FenderMessageLT Create(IMessage message, ResponseType responseType = ResponseType.Unsolicited)
         {
-            FenderMessageLT fenderMessage = new FenderMessageLT() { ResponseType = ResponseType.Unsolicited };
+            FenderMessageLT fenderMessage = new FenderMessageLT() { ResponseType = responseType };
             switch (message.GetType().Name)
             {
                 case "IndexPot":

@@ -1,6 +1,8 @@
 ﻿using Google.Protobuf;
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model;
+using LtAmpDotNet.Lib.Model.Preset;
+using Newtonsoft.Json;
 using System.Text;
 
 namespace LtAmpDotNet.Tools
@@ -10,14 +12,25 @@ namespace LtAmpDotNet.Tools
         private static LtAmpDevice amp = new LtAmpDevice();
         static void Main(string[] args)
         {
-            amp = new Lib.LtAmpDevice();
-            amp.MessageReceived += Amp_MessageReceived;
-            amp.DeviceConnected += Amp_DeviceConnected;
-            amp.Open();
+            //amp = new Lib.LtAmpDevice();
+            //amp.MessageReceived += Amp_MessageReceived;
+            //amp.MessageSent += Amp_MessageSent;
+            ////amp.DeviceConnected += Amp_DeviceConnected;
+            //amp.Open();
+            List<Preset>? presets = JsonConvert.DeserializeObject<List<Preset>>(File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang", "default_presets.json")));
+            foreach (var preset in presets!)
+            {
+                Console.WriteLine(preset);
+            }
             //var input = args[0];
             //var output = args[1];
             //DecodeTestStrings(input, output);
-            Console.Read();
+            //Console.Read();
+        }
+
+        private static void Amp_MessageSent(FenderMessageLT message)
+        {
+            Console.WriteLine($">> {message.ToString()}");
         }
 
         private static void Amp_DeviceConnected(object sender, EventArgs e)
@@ -27,7 +40,7 @@ namespace LtAmpDotNet.Tools
 
         private static void Amp_MessageReceived(FenderMessageLT message)
         {
-            Console.WriteLine(message.ToString());
+            Console.WriteLine($"<< {message.ToString()}");
         }
 
         public static void DecodeTestStrings(string inputFilename, string outputFilename)
@@ -37,11 +50,10 @@ namespace LtAmpDotNet.Tools
             IEnumerable<byte[]> incomingData = new List<byte[]>();
             using (var outputFile = new StreamWriter(outputFilename))
             {
-                while (!inputFile.EndOfStream)
+                while (!inputFile!.EndOfStream)
                 {
-                    var line = inputFile.ReadLine().Split("\t");
-                    var data = Convert.FromHexString(line[6]);
-                    byte messageNum;
+                    var line = inputFile?.ReadLine()?.Split("\t");
+                    var data = Convert.FromHexString(line![6]);
                     if (data.Length > 0)
                     {
                         if (data[0] == 0x00)

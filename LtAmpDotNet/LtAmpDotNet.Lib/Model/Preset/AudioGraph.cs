@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Lib.Model.Preset
 {
-    public class AudioGraph : ObservableAmpData, INotifyPropertyChanged
+    public class AudioGraph
     {
         [JsonProperty("Connections")]
-        public ICollection<Connection> Connections { get; set; }
+        public ICollection<Connection>? Connections { get; set; }
 
         [JsonProperty("nodes")]
-        public ICollection<Node> Nodes { get; set; }
+        public ICollection<Node>? Nodes { get; set; }
     }
 }

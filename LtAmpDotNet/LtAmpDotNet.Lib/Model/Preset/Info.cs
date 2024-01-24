@@ -9,57 +9,34 @@ using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Lib.Model.Preset
 {
-    public class Info : ObservableAmpData
+    public class Info
     {
-        private string _author;
-
         [JsonProperty("author")]
-        public string Author
-        {
-            get => _author;
-            set => SetProperty(ref _author, value);
-        }
-
-        private int _bpm;
+        public string? Author { get; set; }
 
         [JsonProperty("bpm")]
-        public int BPM
-        {
-            get => _bpm;
-            set => SetProperty(ref _bpm, value);
-        }
-
-        private int _createdAt;
+        public int? BPM { get; set; }
 
         [JsonProperty("created_at")]
-        public int CreatedAt
-        {
-            get => _createdAt;
-            set => SetProperty(ref _createdAt, value);
-        }
-
-        private string _displayName;
+        public int? CreatedAt { get; set; }
 
         [JsonProperty("displayName")]
-        public string DisplayNameRaw
-        {
-            get => _displayName;
-            set => SetProperty(ref _displayName, value);
-        }
+        public string? DisplayNameRaw { get; set; }
 
         [JsonIgnore]
         public string[] DisplayName
         {
-            get => Enumerable.Range(0, _displayName.Length / 8).Select(i => _displayName.Substring(i * 8, 8).Trim()).ToArray();
+            get => Enumerable.Range(0, DisplayNameRaw!.Length / 8).Select(i => DisplayNameRaw.Substring(i * 8, 8).Trim()).ToArray();
             set
             {
                 if (value.Length == 2)
                 {
-                    _displayName = value[0].PadRight(8) + value[1].PadRight(8);
+                    DisplayNameRaw = value[0].PadRight(8) + value[1].PadRight(8);
                 }
             }
         }
 
+        [JsonIgnore]
         public string FormattedDisplayName
         {
             get
@@ -68,49 +45,19 @@ namespace LtAmpDotNet.Lib.Model.Preset
             }
         }
 
-        private bool _isFactoryDefault;
-
         [JsonProperty("is_factory_default")]
-        public bool IsFactoryDefault
-        {
-            get => _isFactoryDefault;
-            set => SetProperty(ref _isFactoryDefault, value);
-        }
-
-        private Guid _presetId;
+        public bool? IsFactoryDefault { get; set; }
 
         [JsonProperty("preset_id")]
-        public Guid PresetId
-        {
-            get => _presetId;
-            set => SetProperty(ref _presetId, value);
-        }
-
-        private string _productId;
+        public Guid? PresetId { get; set; }
 
         [JsonProperty("product_id")]
-        public string ProductId
-        {
-            get => _productId;
-            set => SetProperty(ref _productId, value);
-        }
-
-        private string _sourceId;
+        public string? ProductId { get; set; }
 
         [JsonProperty("source_id")]
-        public string SourceId
-        {
-            get => _sourceId;
-            set => SetProperty(ref _sourceId, value);
-        }
-
-        private long _timestamp;
+        public string? SourceId { get; set; }
 
         [JsonProperty("timestamp")]
-        public long Timestamp
-        {
-            get => _timestamp;
-            set => SetProperty(ref _timestamp, value);
-        }
+        public long? Timestamp { get; set; }
     }
 }
