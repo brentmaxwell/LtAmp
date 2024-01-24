@@ -11,7 +11,7 @@ namespace LtDotNet.Tests
         public string productId { get; set; }
         public uint[] qaSlots { get; set; }
         public float usbGain { get; set; }
-        public ModalContext modalContext { get; set; }
+        //public ModalContext modalContext { get; set; }
 
         public static MockDeviceState Load()
         {

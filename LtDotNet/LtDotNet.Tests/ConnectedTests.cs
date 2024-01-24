@@ -23,7 +23,10 @@ namespace LtDotNet.Tests
         [OneTimeTearDown]
         public void Teardown()
         {
-            amp.Close();
+            if(amp.IsOpen)
+            {
+                amp.Close();
+            }
             amp.Dispose();
         }
 
