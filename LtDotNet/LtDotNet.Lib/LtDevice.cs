@@ -349,7 +349,7 @@ namespace LtDotNet.Lib
             SetModalState(ModalContext.SyncEnd);
         }
 
-        private void ImportDspUnitDefinitions(string deviceType)
+        private void ImportDspUnitDefinitions(string deviceType = null)
         {
             var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang", "dsp_units.json"));
             DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);
