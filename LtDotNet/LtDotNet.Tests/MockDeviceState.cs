@@ -16,7 +16,7 @@ namespace LtDotNet.Tests
         public static MockDeviceState Load()
         {
             var filePath = Path.Join(Environment.CurrentDirectory, "mockAmpState.json");
-            return JsonConvert.DeserializeObject<ExpectedValues>(File.ReadAllText(filePath));
+            return JsonConvert.DeserializeObject<MockDeviceState>(File.ReadAllText(filePath));
 
         }
     }

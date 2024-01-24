@@ -24,7 +24,7 @@ namespace LtDotNet.Tests
         public void Teardown()
         {
             amp.Close();
-            amp Dispose();
+            amp.Dispose();
         }
 
         public void Open(TestCallback callback)
