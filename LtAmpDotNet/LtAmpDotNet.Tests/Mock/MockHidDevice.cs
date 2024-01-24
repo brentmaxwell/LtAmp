@@ -6,13 +6,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LtDotNet.Lib;
+using LtAmpDotNet.Lib;
 
-<<<<<<<< HEAD:LtAmpDotNet/LtAmpDotNet.Tests/Mock/MockHidDevice.cs
-namespace LtDotNet.Tests.Mock
-========
-namespace LtAmpDotNet.Lib.MockDevice
->>>>>>>> develop:LtAmpDotNet/LtAmpDotNet.Lib/MockDevice/MockHidDevice.cs
+namespace LtAmpDotNet.Tests.Mock
 {
     internal class MockHidDevice : HidDevice
     {

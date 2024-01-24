@@ -41,12 +41,12 @@ namespace LtAmpDotNet.Tests
         [Category("Initialization")]
         public void LoadDspUnits()
         {
-            var dspUnits = LtDevice.DspUnitDefinitions.GroupBy(x => x.Info.SubCategory).ToDictionary(y => y.Key, y => y.ToList());
+            var dspUnits = LtAmpDevice.DspUnitDefinitions.GroupBy(x => x.Info.SubCategory).ToDictionary(y => y.Key, y => y.ToList());
             foreach (var unitType in dspUnits)
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.IsTrue(LtDevice.DspUnitDefinitions.Count > 0);
+            Assert.IsTrue(LtAmpDevice.DspUnitDefinitions.Count > 0);
         }
 
         [Test, Explicit]

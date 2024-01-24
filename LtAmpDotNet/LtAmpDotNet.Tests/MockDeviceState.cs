@@ -1,9 +1,9 @@
-using LtDotNet.Lib;
+using LtAmpDotNet.Lib;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 using System.Security.Cryptography.X509Certificates;
 
-namespace LtDotNet.Tests
+namespace LtAmpDotNet.Tests
 {
     public class MockDeviceState
     {
