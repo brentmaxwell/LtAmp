@@ -1,4 +1,4 @@
-﻿using HidSharp;
+using HidSharp;
 using HidSharp.Reports;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LtDotNet.Lib.MockDevice
+namespace LtDotNet.Tests.Mock
 {
     internal class MockHidDevice : HidDevice
     {

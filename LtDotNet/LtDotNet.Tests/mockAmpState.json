@@ -1,0 +1,13 @@
+{
+  "firmwareVersion": "2.1.4",
+  "productId": "mustang-lt-25",
+  "modalContext": "",
+  "qaSlots": [4, 5],
+  "usbGain": 0.3,
+  "currentLoadedPreset": 1,
+  "currentDiaplayedPreset": 1,
+  "isAuditioning": false,
+  "isPresetEdited": false,
+  "presets" [
+  ]
+}

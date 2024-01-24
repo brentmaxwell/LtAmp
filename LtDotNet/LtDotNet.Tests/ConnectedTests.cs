@@ -5,18 +5,26 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace LtDotNet.Tests
 {
+    [TestFixture]
     public class ConnectedTests
     {
         private LtDevice amp;
-        private ExpectedValues expectedValues;
+        private MockDeviceState mockDeviceState;
 
         public delegate void TestCallback(bool isConnected);
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
-            expectedValues = ExpectedValues.Load();
+            mockDeviceState = MockDeviceState.Load();
             amp = new LtDevice();
+        }
+        
+        [OneTimeTearDown]
+        public void Teardown()
+        {
+            amp.Close();
+            amp Dispose();
         }
 
         public void Open(TestCallback callback)
@@ -24,8 +32,22 @@ namespace LtDotNet.Tests
             amp.DeviceConnected += (sender, eventArgs) => { callback(true); };
             amp.Open();
         }
-
+        
+        
         [Test]
+        [Category("Initialization")]
+        public void LoadDspUnits()
+        {
+            var dspUnits = LtDevice.DspUnitDefinitions.GroupBy(x => x.Info.SubCategory).ToDictionary(y => y.Key, y => y.ToList());
+            foreach (var unitType in dspUnits)
+            {
+                Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
+            }
+            Assert.IsTrue(LtDevice.DspUnitDefinitions.Count > 0);
+        }
+
+        [Test, Explicit]
+        [Category("Initialization")]
         public void OpenAndConnect()
         {
             if (!amp.IsOpen)
@@ -44,27 +66,8 @@ namespace LtDotNet.Tests
 
         }
 
-        [Test]
-        public void LoadDspUnits()
-        {
-            if (!amp.IsOpen)
-            {
-                var wait = new AutoResetEvent(false);
-                Open(callback =>
-                {
-                    wait.Set();
-                });
-                wait.WaitOne(TimeSpan.FromSeconds(5));
-            }
-            var dspUnits = LtDevice.DspUnitDefinitions.GroupBy(x => x.Info.SubCategory).ToDictionary(y => y.Key, y => y.ToList());
-            foreach (var unitType in dspUnits)
-            {
-                Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
-            }
-            Assert.IsTrue(LtDevice.DspUnitDefinitions.Count > 0);
-        }
-
-        [Test]
+        [Test, Explicit]
+        [Category("Device Information")]
         public void GetFirmwareVersion()
         {
             var wait = new AutoResetEvent(false);
@@ -89,10 +92,11 @@ namespace LtDotNet.Tests
             Console.WriteLine($"Firmware Version: {LtDevice.DeviceInfo.FirmwareVersion}");
             Console.WriteLine($"Message data: {messageVersion}");
             Assert.That(messageVersion, Is.EqualTo(LtDevice.DeviceInfo.FirmwareVersion));
-            Assert.That(messageVersion, Is.EqualTo(expectedValues.firmwareVersion));
+            Assert.That(messageVersion, Is.EqualTo(mockDeviceState.firmwareVersion));
         }
 
-        [Test]
+        [Test, Explicit]
+        [Category("Device Information")]
         public void GetProductInformationVersion()
         {
             var wait = new AutoResetEvent(false);
@@ -117,10 +121,11 @@ namespace LtDotNet.Tests
             Console.WriteLine($"ProductId: {LtDevice.DeviceInfo.ProductId}");
             Console.WriteLine($"Message data: {messageId}");
             Assert.That(messageId, Is.EqualTo(LtDevice.DeviceInfo.ProductId));
-            Assert.That(messageId, Is.EqualTo(expectedValues.productId));
+            Assert.That(messageId, Is.EqualTo(mockDeviceState.productId));
         }
 
-        [Test]
+        [Test, Explicit]
+        [Category("Device Settings")]
         public void SetFootswitch()
         {
             var wait = new AutoResetEvent(false);
@@ -134,23 +139,21 @@ namespace LtDotNet.Tests
                 wait.Reset();
             }
 
-            uint slotA = 0;
-            uint slotB = 0;
+            uint[] slots = {0, 0};
             amp.QASlotsStatusMessageReceived += (message) =>
             {
-                slotA = message.Slots[0];
-                slotB = message.Slots[1];
+                slots = message.Slots;
                 wait.Set();
             };
-            amp.SetQASlots(new uint[] { expectedValues.slotA, expectedValues.slotB });
+            amp.SetQASlots(mockDeviceState);
             wait.WaitOne(TimeSpan.FromSeconds(5));
-            Console.Write($"Slot A: {expectedValues.slotA}, {slotA}");
-            Console.Write($"Slot B: {expectedValues.slotB}, {slotB}");
-            Assert.That(slotA, Is.EqualTo(expectedValues.slotA));
-            Assert.That(slotB, Is.EqualTo(expectedValues.slotB));
+            Console.Write($"Slot A: {mockDeviceState.qaSlots[0]}, {slots[0]}");
+            Console.Write($"Slot A: {mockDeviceState.qaSlots[1]}, {slots[1]}");
+            Assert.That(slots, Is.EqualTo(mockDeviceState.qaSlots));
         }
 
-        [Test]
+        [Test, Explicit]
+        [Category("Device Settings")]
         public void SetUsbGain()
         {
             var wait = new AutoResetEvent(false);
@@ -170,13 +173,14 @@ namespace LtDotNet.Tests
                 valueDb = message.ValueDB;
                 wait.Set();
             };
-            amp.SetUsbGain(expectedValues.usbGain);
+            amp.SetUsbGain(mockDeviceState.usbGain);
             wait.WaitOne(TimeSpan.FromSeconds(5));
-            Console.Write($"USB Gain: {expectedValues.usbGain}");
-            Assert.That(valueDb, Is.InRange(expectedValues.usbGain - 0.01, expectedValues.usbGain + 0.01));
+            Console.Write($"USB Gain: {mockDeviceState.usbGain}");
+            Assert.That(valueDb, Is.InRange(mockDeviceState.usbGain - 0.01, mockDeviceState.usbGain + 0.01));
         }
 
-        [Test]
+        [Test, Explicit]
+        [Category("Device Settings")]
         public void Tuner()
         {
             var wait = new AutoResetEvent(false);
@@ -210,26 +214,6 @@ namespace LtDotNet.Tests
             Console.WriteLine($"{(ModalContext)modalContextReceived}: {(ModalState)modalStateReceived}");
             Assert.That((ModalContext)modalContextReceived, Is.EqualTo(ModalContext.TunerDisable));
             Assert.That((ModalState)modalStateReceived, Is.EqualTo(ModalState.Ok));
-
-
         }
     }
-
-
-    public class ExpectedValues
-    {
-        public string firmwareVersion { get; set; }
-        public string productId { get; set; }
-        public uint slotA { get; set; }
-        public uint slotB { get; set; }
-        public float usbGain { get; set; }
-
-        public static ExpectedValues Load()
-        {
-            var filePath = Path.Join(Environment.CurrentDirectory, "expectedValues.json");
-            return JsonConvert.DeserializeObject<ExpectedValues>(File.ReadAllText(filePath));
-
-        }
-    }
-
 }

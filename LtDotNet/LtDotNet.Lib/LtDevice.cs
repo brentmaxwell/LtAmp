@@ -1,4 +1,4 @@
-﻿using Google.Protobuf.Collections;
+using Google.Protobuf.Collections;
 using HidSharp;
 using HidSharp.Reports;
 using HidSharp.Reports.Input;
@@ -48,6 +48,7 @@ namespace LtDotNet.Lib
         public LtDevice()
         {
             DeviceInfo = new LtDeviceInfo();
+            ImportDspUnitDefinitions();
             DeviceInfo.Presets = new List<Preset>(LtDeviceInfo.NUM_OF_PRESETS);
             for(var i = DeviceInfo.Presets.Count; i <= LtDeviceInfo.NUM_OF_PRESETS; i++)
             {
@@ -93,6 +94,7 @@ namespace LtDotNet.Lib
         public void Close()
         {
             _deviceStream.Close();
+            _isOpen = false;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -156,7 +158,7 @@ namespace LtDotNet.Lib
 
         private void LtDevice_DeviceConnected(object sender, EventArgs e)
         {
-            ImportDspUnitDefinitions(DeviceInfo.ProductId);
+            //ImportDspUnitDefinitions(DeviceInfo.ProductId);
         }
 
         private void HeartbeatTimer_Elapsed(object? sender, ElapsedEventArgs e)
