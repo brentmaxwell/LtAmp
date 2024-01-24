@@ -3,7 +3,6 @@ using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Tests.Mock;
-using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 using System.Security.Cryptography.X509Certificates;
