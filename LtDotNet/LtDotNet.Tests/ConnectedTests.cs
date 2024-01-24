@@ -145,7 +145,7 @@ namespace LtDotNet.Tests
                 slots = message.Slots.ToArray();
                 wait.Set();
             };
-            amp.SetQASlots(mockDeviceState);
+            amp.SetQASlots(mockDeviceState.qaSlots);
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.Write($"Slot A: {mockDeviceState.qaSlots[0]}, {slots[0]}");
             Console.Write($"Slot A: {mockDeviceState.qaSlots[1]}, {slots[1]}");
