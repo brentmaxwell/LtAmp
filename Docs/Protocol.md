@@ -63,3 +63,6 @@ It's also necessary to send a [`heartbeat`](/Docs/protobuf.md#heartbeat) message
 ```
 >>> { "responseType": "UNSOLICITED", "heartbeat": { "dummyField": true } }
 ```
+
+## Preset format
+The presets are sent and received as JSON ([schema](/Docs/json.md)).
