@@ -1,6 +1,6 @@
 ﻿namespace LtAmpDotNet
 {
-    partial class FormMain
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ltDeviceInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.statusLabelCurrentPreset = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripPresetList = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLabelFootSwitch = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLabelConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitterVuMeter = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBoxPresets = new System.Windows.Forms.ListBox();
+            this.viewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.currentPresetPanel1 = new LtAmpDotNet.Panels.CurrentPresetPanel();
             this.panelVuMeter = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +51,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vUMeterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.ltDeviceInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).BeginInit();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -58,17 +59,11 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewModelBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ltDeviceInfoBindingSource
-            // 
-            this.ltDeviceInfoBindingSource.DataSource = typeof(LtAmpDotNet.Lib.LtDeviceInfo);
-            // 
-            // presetBindingSource
-            // 
-            this.presetBindingSource.DataSource = typeof(LtAmpDotNet.Lib.Model.Preset.Preset);
             // 
             // toolStripContainer1
             // 
@@ -82,11 +77,11 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitterVuMeter);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panelVuMeter);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 402);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 340);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(800, 450);
+            this.toolStripContainer1.Size = new System.Drawing.Size(800, 388);
             this.toolStripContainer1.TabIndex = 8;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -98,9 +93,11 @@
             // 
             this.statusStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.Sound;
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabelCurrentPreset,
+            this.toolStripPresetList,
             this.toolStripStatusLabel1,
+            this.statusLabelFootSwitch,
             this.statusLabelConnectionStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
@@ -108,17 +105,28 @@
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // statusLabelCurrentPreset
+            // toolStripPresetList
             // 
-            this.statusLabelCurrentPreset.Name = "statusLabelCurrentPreset";
-            this.statusLabelCurrentPreset.Size = new System.Drawing.Size(14, 19);
-            this.statusLabelCurrentPreset.Text = "#";
+            this.toolStripPresetList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripPresetList.Image = ((System.Drawing.Image)(resources.GetObject("toolStripPresetList.Image")));
+            this.toolStripPresetList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripPresetList.Name = "toolStripPresetList";
+            this.toolStripPresetList.Size = new System.Drawing.Size(27, 22);
+            this.toolStripPresetList.Text = "#";
+            this.toolStripPresetList.ToolTipText = "Presets";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(688, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(660, 19);
             this.toolStripStatusLabel1.Spring = true;
+            // 
+            // statusLabelFootSwitch
+            // 
+            this.statusLabelFootSwitch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.statusLabelFootSwitch.Name = "statusLabelFootSwitch";
+            this.statusLabelFootSwitch.Size = new System.Drawing.Size(15, 19);
+            this.statusLabelFootSwitch.Text = "[]";
             // 
             // statusLabelConnectionStatus
             // 
@@ -135,7 +143,7 @@
             this.splitterVuMeter.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitterVuMeter.Location = new System.Drawing.Point(597, 0);
             this.splitterVuMeter.Name = "splitterVuMeter";
-            this.splitterVuMeter.Size = new System.Drawing.Size(3, 402);
+            this.splitterVuMeter.Size = new System.Drawing.Size(3, 340);
             this.splitterVuMeter.TabIndex = 10;
             this.splitterVuMeter.TabStop = false;
             // 
@@ -154,22 +162,35 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Size = new System.Drawing.Size(600, 402);
-            this.splitContainer1.SplitterDistance = 130;
+            this.splitContainer1.Panel2.Controls.Add(this.currentPresetPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(600, 340);
+            this.splitContainer1.SplitterDistance = 349;
             this.splitContainer1.TabIndex = 8;
             // 
             // listBoxPresets
             // 
-            this.listBoxPresets.DataBindings.Add(new System.Windows.Forms.Binding("SelectedIndex", this.ltDeviceInfoBindingSource, "ActivePresetIndex", true));
-            this.listBoxPresets.DataSource = this.presetBindingSource;
+            this.listBoxPresets.DataSource = this.viewModelBindingSource;
             this.listBoxPresets.DisplayMember = "FormattedDisplayName";
             this.listBoxPresets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPresets.FormattingEnabled = true;
             this.listBoxPresets.ItemHeight = 15;
             this.listBoxPresets.Location = new System.Drawing.Point(0, 0);
             this.listBoxPresets.Name = "listBoxPresets";
-            this.listBoxPresets.Size = new System.Drawing.Size(130, 402);
+            this.listBoxPresets.Size = new System.Drawing.Size(349, 340);
             this.listBoxPresets.TabIndex = 0;
+            // 
+            // viewModelBindingSource
+            // 
+            this.viewModelBindingSource.DataMember = "Presets";
+            this.viewModelBindingSource.DataSource = typeof(LtAmpDotNet.ViewModels.MainFormViewModel);
+            // 
+            // currentPresetPanel1
+            // 
+            this.currentPresetPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentPresetPanel1.Location = new System.Drawing.Point(0, 0);
+            this.currentPresetPanel1.Name = "currentPresetPanel1";
+            this.currentPresetPanel1.Size = new System.Drawing.Size(247, 340);
+            this.currentPresetPanel1.TabIndex = 0;
             // 
             // panelVuMeter
             // 
@@ -178,12 +199,13 @@
             this.panelVuMeter.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelVuMeter.Location = new System.Drawing.Point(600, 0);
             this.panelVuMeter.Name = "panelVuMeter";
-            this.panelVuMeter.Size = new System.Drawing.Size(200, 402);
+            this.panelVuMeter.Size = new System.Drawing.Size(200, 340);
             this.panelVuMeter.TabIndex = 9;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem});
@@ -207,25 +229,26 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // viewToolStripMenuItem
@@ -247,20 +270,24 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // FormMain
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "json";
+            this.saveFileDialog1.Filter = "JSON Files|*.json|All Files|*.*";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 388);
             this.Controls.Add(this.toolStripContainer1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormMain";
+            this.Name = "MainForm";
             this.Text = "LtAmpDotNet";
-            ((System.ComponentModel.ISupportInitialize)(this.ltDeviceInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).EndInit();
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -271,8 +298,10 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.viewModelBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -280,11 +309,8 @@
         }
 
         #endregion
-        private BindingSource presetBindingSource;
-        private BindingSource ltDeviceInfoBindingSource;
         private ToolStripContainer toolStripContainer1;
         private StatusStrip statusStrip1;
-        private ToolStripStatusLabel statusLabelCurrentPreset;
         private ToolStripStatusLabel statusLabelConnectionStatus;
         private SplitContainer splitContainer1;
         private ListBox listBoxPresets;
@@ -300,5 +326,10 @@
         private ToolStripMenuItem vUMeterToolStripMenuItem;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ContextMenuStrip contextMenuStrip1;
+        private Panels.CurrentPresetPanel currentPresetPanel1;
+        private BindingSource viewModelBindingSource;
+        private ToolStripDropDownButton toolStripPresetList;
+        private ToolStripStatusLabel statusLabelFootSwitch;
+        private SaveFileDialog saveFileDialog1;
     }
 }

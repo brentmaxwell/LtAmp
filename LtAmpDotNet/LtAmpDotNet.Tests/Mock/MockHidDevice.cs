@@ -14,7 +14,7 @@ using static LtAmpDotNet.Lib.LtAmpDevice;
 
 namespace LtAmpDotNet.Tests.Mock
 {
-    internal class MockHidDevice : IUsbAmpDevice
+    public class MockHidDevice : IUsbAmpDevice
     {
         public MockDeviceState DeviceState;
         private bool _isOpen;
