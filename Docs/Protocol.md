@@ -24,12 +24,12 @@ The tags I've identified are as follows:
 
 For multi-packet messages, it's necessary to drop the `0x00` padding and the tag and length bytes of each packet and concatenate them to get the message.
 
-The value in each message is a protobuf encoded message ([`FenderMessageLT`](doc/protobuf.md#fendermessagelt)) that contains a [`responseType`](doc/protobuf.md#ResponseType) and a submessage containing the data for the message ([documentation](doc/protobuf.md)).
+The value in each message is a protobuf encoded message ([`FenderMessageLT`](/Docs/protobuf.md#fendermessagelt)) that contains a [`responseType`](/Docs/protobuf.md#ResponseType) and a submessage containing the data for the message ([documentation](/Docs/protobuf.md)).
 
-The [protobuf definition files](Schema/protobuf) were extracted from the Fender Mustang LT Desktop executable.
+The [protobuf definition files](/Schema/protobuf/) were extracted from the Fender Mustang LT Desktop executable.
 
 ## Connection process
-The Fender Tone LT Desktop app initializes the connection by sending `SYNC_BEGIN` [`modalStatusMessage`](doc/protobuf.md#modalstatusmessage), and a [`firmwareVersionRequest`](doc/protobuf.md#firmwareversionrequest), followed by a [`retrievePreset`](doc/protobuf.md#retrievepreset) message for all 60 presets:
+The Fender Tone LT Desktop app initializes the connection by sending `SYNC_BEGIN` [`modalStatusMessage`](/Docs/protobuf.md#modalstatusmessage), and a [`firmwareVersionRequest`](/Docs/protobuf.md#firmwareversionrequest), followed by a [`retrievePreset`](/Docs/protobuf.md#retrievepreset) message for all 60 presets:
 _(>>> is host to amp, <<< is amp to host)_
 ```
 >>> { "responseType": "UNSOLICITED", "modalStatusMessage": { "context": "SYNC_BEGIN", "state": "OK" } }
@@ -50,7 +50,7 @@ _(>>> is host to amp, <<< is amp to host)_
 <<< { "responseType": "IS_LAST_ACK", "presetJSONMessage": { "data": "{...}", "slotIndex": 60   } }
 ```
 
-In my testing, initializing the connection to the amp only required a `SYNC_BEGIN` [`modalStatusMessage`](doc/protobuf.md#modalstatusmessage), followed by a `SYNC_END` [`modalStatusMessage`](doc/protobuf.md#modalstatusmessage), in order to clear the synchronization message from the screen.
+In my testing, initializing the connection to the amp only required a `SYNC_BEGIN` [`modalStatusMessage`](/Docs/protobuf.md#modalstatusmessage), followed by a `SYNC_END` [`modalStatusMessage`](/Docs/protobuf.md#modalstatusmessage), in order to clear the synchronization message from the screen.
 ```
 >>> { "responseType": "UNSOLICITED", "modalStatusMessage": { "context": "SYNC_BEGIN", "state": "OK" } }
 <<< { "responseType": "IS_LAST_ACK", "modalStatusMessage": { "context": "SYNC_BEGIN", "state": "OK" } }
@@ -59,7 +59,7 @@ In my testing, initializing the connection to the amp only required a `SYNC_BEGI
 <<< { "responseType": "IS_LAST_ACK", "modalStatusMessage": { "context": "SYNC_END", "state": "OK" } }
 ```
 
-It's also necessary to send a [`heartbeat`](doc/protobuf.md#heartbeat) message every second to keep the connection open.
+It's also necessary to send a [`heartbeat`](/Docs/protobuf.md#heartbeat) message every second to keep the connection open.
 ```
 >>> { "responseType": "UNSOLICITED", "heartbeat": { "dummyField": true } }
 ```
