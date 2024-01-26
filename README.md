@@ -2,7 +2,7 @@
 Reverse engineering the USB protocol of the Fender Mustang LT series guitar amps.
 
 ## Protocol Documentation
-Communication with the amp is over USB HID using protobuf. Documentation can be found [here](/Docs/Protocol.md)
+Communication with the amp is over USB HID using [protobuf](https://github.com/protocolbuffers/protobuf). Documentation can be found [here](/Docs/Protocol.md)
 
 ## LtAmpDotNet
 A .NET Core library for communicating with the amp. It uses [HidSharp](https://github.com/IntergatedCircuits/HidSharp) for cross-platfrom compatibility.
@@ -10,7 +10,7 @@ A .NET Core library for communicating with the amp. It uses [HidSharp](https://g
 A cross-platform GUI is in the roadmap.
 
 ## Roadmap
-Initally, this has been deceloped in dotnet to allow for quick scaffolding of the protocol.
+Initally, this has been developed in .NET Core to allow for quick scaffolding of the protocol.
 
 ### Future plans:
 - Cross-platform GUI
