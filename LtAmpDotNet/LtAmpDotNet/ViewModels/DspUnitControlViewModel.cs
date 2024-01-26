@@ -18,7 +18,8 @@ namespace LtAmpDotNet.ViewModels
         private string _fenderId;
         private DspUnitDefinition _dspUnitDefinition;
         private Node _node;
-        
+        private List<DspUnitParameterViewModel> _parameters;
+
         public string NodeType
         {
             get => _nodeType;
@@ -55,16 +56,21 @@ namespace LtAmpDotNet.ViewModels
             }
         }
 
-        public List<DspUnitParameter> Parameters
+        public List<DspUnitParameterViewModel> Parameters
         {
-            get => _node?.DspUnitParameters;
-            set
-            {
-                var oldValue = _node?.DspUnitParameters;
-                _node.DspUnitParameters = value;
-                OnPropertyChanged("Node.DspUnitParameters");
-                OnValueChanged("Node.DspUnitParameters", oldValue, value);
-            }
+            get => _node?.DspUnitParameters.Select(x =>
+            new DspUnitParameterViewModel
+            (
+                _node.Definition.Ui.UiParameters.SingleOrDefault(y => y.ControlId == x.Name),
+                x
+            )).ToList();
+            //set
+            //{
+            //    var oldValue = _node?.DspUnitParameters;
+            //    _node.DspUnitParameters = value;
+            //    OnPropertyChanged("Node.DspUnitParameters");
+            //    OnValueChanged("Node.DspUnitParameters", oldValue, value);
+            //}
         }
 
         public DspUnitDefinition DspUnitDefinition
@@ -72,8 +78,8 @@ namespace LtAmpDotNet.ViewModels
             get => _dspUnitDefinition;
             set
             {
-                SetProperty(ref _dspUnitDefinition, value);
                 _node = new Node(value);
+                SetProperty(ref _dspUnitDefinition, value);
             }
         }
 
@@ -94,6 +100,7 @@ namespace LtAmpDotNet.ViewModels
         public DspUnitControlViewModel(Node node)
         {
             Node = node;
+            _nodeType = node?.NodeId;
         }
     }
 }

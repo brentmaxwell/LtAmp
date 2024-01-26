@@ -13,15 +13,24 @@ using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels.DspUnitControlViews
 {
-    public partial class DspUnitControlViewBase : UserControl, IDspUnitControlView
+    public class DspUnitControlViewBase : UserControl, IDspUnitControlView
     {
+        public DspUnitControlViewModel ViewModel { get; set; }
         public DspUnitControlViewBase()
         {
             Dock = DockStyle.Fill;
         }
 
         private protected Node _node;
-        public virtual Node Node { get => _node ; set => _node = value; }
+        public virtual Node Node
+        {
+            get => ViewModel.Node;
+            set
+            {
+                ViewModel.Node = value;
+                Refresh();
+            }
+        }
 
         public event EventHandler ChangesApplied;
 

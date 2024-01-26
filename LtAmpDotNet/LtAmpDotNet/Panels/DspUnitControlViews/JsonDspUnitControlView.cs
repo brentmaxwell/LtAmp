@@ -20,15 +20,6 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
             InitializeComponent();
         }
 
-        public override Node Node {
-            get => _node;
-            set
-            {
-                _node = value;
-                Refresh();
-            }
-        }
-
         public override void Refresh()
         {
             textBoxNode.Text = _node.ToString(Formatting.Indented);

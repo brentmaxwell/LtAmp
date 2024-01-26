@@ -13,4 +13,10 @@
     <ProjectReference Include="..\LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Panels\DspUnitControlViews\PropertyGridUnitControlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

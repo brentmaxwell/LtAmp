@@ -21,6 +21,17 @@ namespace LtAmpDotNet.Panels
         private DspUnitControlViewBase unitControl;
         private DspUnitControlViewModel viewModel = new DspUnitControlViewModel();
 
+
+        public string NodeType
+        {
+            get => viewModel.NodeType;
+            set
+            {
+                viewModel.NodeType = value;
+                labelDspUnitType.Text = viewModel.NodeType;
+            }
+        }
+
         public DspUnitControlViewModel ViewModel
         {
             get => viewModel;
@@ -30,6 +41,7 @@ namespace LtAmpDotNet.Panels
                 if (viewModel != null)
                 {
                     unitControl.Node = viewModel.Node;
+                    labelDspUnitType.Text = viewModel.NodeType;
                     viewModel.ValueChanged += viewModel_ValueChanged;
                 }
             }
@@ -38,19 +50,32 @@ namespace LtAmpDotNet.Panels
         public DspUnitControl()
         {
             InitializeComponent();
-            unitControl = new JsonDspUnitControlView();
+            unitControl = new PropertyGridUnitControlView();
             panelControl.Controls.Add(unitControl);
             
         }
 
         private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)
         {
-            unitControl.Node = viewModel.Node;
+            switch (e.PropertyName)
+            {
+                case "DspUnitControlViewModel.Node":
+                    unitControl.Node = viewModel.Node;
+                    break;
+                case "DspUnitControlViewModel.NodeType":
+                    labelDspUnitType.Text = (string)e.NewValue;
+                    break;
+            }
         }
 
         private void jsonToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            unitControl = new JsonDspUnitControlView();
+        }
 
+        private void propertyGridToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            unitControl = new PropertyGridUnitControlView();
         }
 
         private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
