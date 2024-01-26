@@ -1,6 +1,7 @@
 ﻿using LtAmpDotNet.Base;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
+using LtAmpDotNet.Panels.DspUnitControlViews;
 using LtAmpDotNet.ViewModels;
 using NUnit.Framework.Constraints;
 using System;
@@ -17,70 +18,50 @@ namespace LtAmpDotNet.Panels
 {
     public partial class DspUnitControl : UserControl
     {
-        private DspUnitControlViewModel _viewModel;
+        private DspUnitControlViewBase unitControl;
+        private DspUnitControlViewModel viewModel = new DspUnitControlViewModel();
 
-        public bool HasBypass {
-            get
-            {
-                return _viewModel.DspUnitDefinition.Ui.HasBypass;
-            }
-        }
         public DspUnitControlViewModel ViewModel
         {
-            get => _viewModel;
+            get => viewModel;
             set
             {
-                _viewModel = value;
-                _viewModel.PropertyChanged += _viewModel_PropertyChanged;
+                viewModel = value;
+                if (viewModel != null)
+                {
+                    unitControl.Node = viewModel.Node;
+                    viewModel.ValueChanged += viewModel_ValueChanged;
+                }
             }
-        }
-
-        public string DspUnitType
-        {
-            get => _viewModel.NodeType;
-            set => _viewModel.NodeType = value;
-        }
-
-        public DspUnitDefinition DspUnitDefinition
-        {
-            get => _viewModel.DspUnitDefinition;
-            set
-            {
-                _viewModel.DspUnitDefinition = value;
-                propertyGrid1.Refresh();
-            }
-        }
-
-        public Node Node
-        {
-            get => _viewModel.Node;
-            set {
-                _viewModel.Node = value;
-                propertyGrid1.Refresh();
-            }
-        }
-
-        public bool Bypass
-        {
-            get => HasBypass ? checkBoxBypass.Checked : false;
-            set => checkBoxBypass.Checked = value;
         }
 
         public DspUnitControl()
         {
             InitializeComponent();
-            checkBoxBypass.CheckedChanged += CheckBoxBypass_CheckedChanged;
-            propertyGrid1.SelectedObject = _viewModel;
+            unitControl = new JsonDspUnitControlView();
+            panelControl.Controls.Add(unitControl);
+            
         }
 
-        private void CheckBoxBypass_CheckedChanged(object? sender, EventArgs e)
+        private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)
+        {
+            unitControl.Node = viewModel.Node;
+        }
+
+        private void jsonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBoxBypass_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxBypass.ForeColor = checkBoxBypass.Checked ? Color.Green : Color.FromKnownColor(KnownColor.ControlText);
-        }
-
-        private void _viewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            propertyGrid1.Refresh();
+            ViewModel.Bypass = checkBoxBypass.Checked;
+            unitControl.Refresh();
         }
     }
 }

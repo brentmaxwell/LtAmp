@@ -12,14 +12,14 @@ namespace LtAmpDotNet.Lib.Model.Preset
 {
     public class Node
     {
-        public static Node New(string nodeId) {
+        public static Node Create(string nodeId) {
             if (nodeId == NodeIds.AMP)
             {
-                return JsonConvert.DeserializeObject<Node>("{\"dspUnitParameters\":{\"cabsimType\":\"none\",\"treb\":\".5\",\"mid\": 0.5,\"volume\": 0,\"gateDetectorPosition\":\"jack\",\"gain\":0.5,\"gatePreset\":\"off\",\"bass\":0.5},\"FenderId\":\"DUBS_LinearGain\",\"nodeType\":\"dspUnit\",\"nodeId\":\"amp\"}");
+                return Node.FromString("{\"dspUnitParameters\":{\"cabsimType\":\"none\",\"treb\":\".5\",\"mid\": 0.5,\"volume\": 0,\"gateDetectorPosition\":\"jack\",\"gain\":0.5,\"gatePreset\":\"off\",\"bass\":0.5},\"FenderId\":\"DUBS_LinearGain\",\"nodeType\":\"dspUnit\",\"nodeId\":\"amp\"}");
             }
             else
             {
-                return JsonConvert.DeserializeObject<Node>("{\"nodeId\":\"mod\",\"nodeType\":\"dspUnit\",\"FenderId\":\"DUBS_Passthru\",\"dspUnitParameters\":{\"bypass\": false,\"bypassType\":\"Post\"}}");
+                return Node.FromString("{\"nodeId\":\"mod\",\"nodeType\":\"dspUnit\",\"FenderId\":\"DUBS_Passthru\",\"dspUnitParameters\":{\"bypass\": false,\"bypassType\":\"Post\"}}");
             }
             
         }
@@ -51,6 +51,21 @@ namespace LtAmpDotNet.Lib.Model.Preset
 
         [JsonIgnore]
         public DspUnitDefinition Definition => LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == FenderId)!;
+
+        public static Node? FromString(string json)
+        {
+            return JsonConvert.DeserializeObject<Node>(json);
+        }
+
+        public override string ToString()
+        {
+            return ToString(Formatting.None);
+        }
+
+        public string ToString(Formatting jsonFormatting = Formatting.Indented)
+        {
+            return JsonConvert.SerializeObject(this, jsonFormatting);
+        }
     }
 
     public static class NodeType

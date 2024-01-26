@@ -1,4 +1,5 @@
-﻿using LtAmpDotNet.Lib.Model.Preset;
+﻿using LtAmpDotNet.Base;
+using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,29 @@ namespace LtAmpDotNet.Panels
 {
     public partial class CurrentPresetPanel : UserControl
     {
-        private CurrentPresetPanelViewModel _viewModel = new CurrentPresetPanelViewModel(Preset.New);
+        private CurrentPresetPanelViewModel viewModel;
 
         public CurrentPresetPanelViewModel ViewModel
         {
-            get { return _viewModel; }
+            get { return viewModel; }
             set {
-                labelPresetName.Text = value.PresetName;
-                _viewModel = value;
-                _viewModel.PropertyChanged += _viewModel_PropertyChanged;
+                viewModel = value;
+                if(viewModel != null)
+                {
+                    labelPresetName.Text = viewModel.PresetName;
+                    dspUnitControlAmp.ViewModel = viewModel.AmpViewModel;
+                    dspUnitControlStomp.ViewModel = viewModel.StompViewModel;
+                    dspUnitControlMod.ViewModel = viewModel.ModViewModel;
+                    dspUnitControlDelay.ViewModel = viewModel.DelayViewModel;
+                    dspUnitControlReverb.ViewModel = viewModel.ReverbViewModel;
+                    viewModel.ValueChanged += viewModel_ValueChanged;
+                }
             }
         }
 
-        private void _viewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)
         {
-            //throw new NotImplementedException();
+            
         }
 
         public CurrentPresetPanel()

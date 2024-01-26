@@ -34,14 +34,12 @@
             this.labelDspUnitType = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuView = new System.Windows.Forms.ToolStripDropDownButton();
-            this.propertyGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.propertyGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelControl = new System.Windows.Forms.Panel();
             this.checkBoxBypass = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxDspUnit
@@ -81,7 +79,7 @@
             // 
             this.menuView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jSONToolStripMenuItem,
+            this.jsonToolStripMenuItem,
             this.controlsToolStripMenuItem,
             this.propertyGridToolStripMenuItem});
             this.menuView.Image = ((System.Drawing.Image)(resources.GetObject("menuView.Image")));
@@ -90,41 +88,35 @@
             this.menuView.Size = new System.Drawing.Size(45, 20);
             this.menuView.Text = "View";
             // 
-            // propertyGridToolStripMenuItem
+            // jsonToolStripMenuItem
             // 
-            this.propertyGridToolStripMenuItem.Name = "propertyGridToolStripMenuItem";
-            this.propertyGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.propertyGridToolStripMenuItem.Text = "Property Grid";
+            this.jsonToolStripMenuItem.Name = "jsonToolStripMenuItem";
+            this.jsonToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.jsonToolStripMenuItem.Text = "JSON";
+            this.jsonToolStripMenuItem.Click += new System.EventHandler(this.jsonToolStripMenuItem_Click);
             // 
             // controlsToolStripMenuItem
             // 
             this.controlsToolStripMenuItem.Name = "controlsToolStripMenuItem";
-            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.controlsToolStripMenuItem.Text = "Controls";
+            this.controlsToolStripMenuItem.Click += new System.EventHandler(this.controlsToolStripMenuItem_Click);
             // 
-            // jSONToolStripMenuItem
+            // propertyGridToolStripMenuItem
             // 
-            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jSONToolStripMenuItem.Text = "JSON";
+            this.propertyGridToolStripMenuItem.Name = "propertyGridToolStripMenuItem";
+            this.propertyGridToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.propertyGridToolStripMenuItem.Text = "Property Grid";
             // 
-            // panel1
+            // panelControl
             // 
-            this.panel1.Controls.Add(this.propertyGrid1);
-            this.panel1.Controls.Add(this.checkBoxBypass);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(671, 403);
-            this.panel1.TabIndex = 5;
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(671, 299);
-            this.propertyGrid1.TabIndex = 0;
+            this.panelControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl.Location = new System.Drawing.Point(0, 23);
+            this.panelControl.Name = "panelControl";
+            this.panelControl.Size = new System.Drawing.Size(671, 299);
+            this.panelControl.TabIndex = 5;
             // 
             // checkBoxBypass
             // 
@@ -132,26 +124,27 @@
             this.checkBoxBypass.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxBypass.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.checkBoxBypass.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxBypass.Location = new System.Drawing.Point(0, 299);
+            this.checkBoxBypass.Location = new System.Drawing.Point(0, 322);
             this.checkBoxBypass.Name = "checkBoxBypass";
             this.checkBoxBypass.Size = new System.Drawing.Size(671, 104);
-            this.checkBoxBypass.TabIndex = 1;
+            this.checkBoxBypass.TabIndex = 6;
             this.checkBoxBypass.Text = "Bypass";
             this.checkBoxBypass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxBypass.UseVisualStyleBackColor = true;
+            this.checkBoxBypass.CheckedChanged += new System.EventHandler(this.checkBoxBypass_CheckedChanged);
             // 
             // DspUnitControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControl);
+            this.Controls.Add(this.checkBoxBypass);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.comboBoxDspUnit);
             this.Name = "DspUnitControl";
             this.Size = new System.Drawing.Size(671, 448);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,11 +156,10 @@
         private ToolStripStatusLabel labelDspUnitType;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripDropDownButton menuView;
-        private ToolStripMenuItem jSONToolStripMenuItem;
+        private ToolStripMenuItem jsonToolStripMenuItem;
         private ToolStripMenuItem controlsToolStripMenuItem;
         private ToolStripMenuItem propertyGridToolStripMenuItem;
-        private Panel panel1;
-        private PropertyGrid propertyGrid1;
+        private Panel panelControl;
         private CheckBox checkBoxBypass;
     }
 }

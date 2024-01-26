@@ -37,7 +37,6 @@ namespace LtAmpDotNet.ViewModels
 			get => _currentPresetIndex;
 			set
 			{
-				OnBeforePropertyChanged();
                 CurrentPresetViewModel = new CurrentPresetPanelViewModel(_presets[value]);
                 SetProperty(ref _currentPresetIndex, value);
 			}
@@ -48,9 +47,11 @@ namespace LtAmpDotNet.ViewModels
 			get => _presets[_currentPresetIndex];
 			set
 			{
-				_presets[_currentPresetIndex] = value;
+				var oldValue = _presets[_currentPresetIndex];
+                _presets[_currentPresetIndex] = value;
                 CurrentPresetViewModel = new CurrentPresetPanelViewModel(value);
-                OnPropertyChanged("CurrentPreset");
+				OnPropertyChanged("CurrentPreset");
+                OnValueChanged("CurrentPreset", oldValue, value);
             }
 		}
 
@@ -86,7 +87,7 @@ namespace LtAmpDotNet.ViewModels
 		{
 			for (var i = 0; i <= NUM_OF_PRESETS; i++)
 			{
-				_presets.Add(Preset.New);
+				_presets.Add(Preset.Create());
 			}
         }
 

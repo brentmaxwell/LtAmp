@@ -5,6 +5,8 @@ using LtAmpDotNet.Tests.Mock;
 using LtAmpDotNet.Tests;
 using LtAmpDotNet.Extensions;
 using System;
+using LtAmpDotNet.Base;
+using System.ComponentModel;
 
 namespace LtAmpDotNet
 {
@@ -12,8 +14,6 @@ namespace LtAmpDotNet
     {
         private LtAmpDevice amp = new LtAmpDevice(new MockHidDevice(MockDeviceState.Load()));
         private MainFormViewModel viewModel = new MainFormViewModel();
-
-        
 
         public MainForm()
         {
@@ -28,6 +28,7 @@ namespace LtAmpDotNet
             viewModelBindingSource.DataSource = viewModel;
             viewModelBindingSource.CurrentChanged += presetItemChanged;
             viewModelBindingSource.DataSourceChanged += viewModelBindingSource_DataSourceChanged;
+            viewModelBindingSource.ListChanged += ViewModelBindingSource_ListChanged;
         }
 
         private void SubscribeToEvents()
@@ -60,8 +61,7 @@ namespace LtAmpDotNet
 
         private void Amp_DeviceConnected(object sender, EventArgs e)
         {
-            viewModel.BeforePropertyChanged += viewModel_BeforePropertyChanged;
-            viewModel.PropertyChanged += viewModel_PropertyChanged;
+            viewModel.ValueChanged += viewModel_ValueChanged;
             amp.GetAllPresets();
             amp.GetQASlots();
             BindData();
@@ -87,22 +87,18 @@ namespace LtAmpDotNet
 
         #region data source events
 
+        private void ViewModelBindingSource_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            createToolStripPresetList();
+        }
+
         private void viewModelBindingSource_DataSourceChanged(object? sender, EventArgs e)
         {
             createToolStripPresetList();
         }
 
-        private void viewModel_BeforePropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case "MainFormViewModel.CurrentPresetIndex":
-                    ((ToolStripMenuItem)toolStripPresetList.DropDownItems[viewModel.CurrentPresetIndex]).Checked = false;
-                    break;
-            }
-        }
 
-        private void viewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
@@ -111,8 +107,8 @@ namespace LtAmpDotNet
                     statusLabelConnectionStatus.BackColor = viewModel.ConnectionStatus ? Color.Green : Color.FromKnownColor(KnownColor.Control);
                     break;
                 case "MainFormViewModel.CurrentPresetIndex":
-                    setCurrentPreset(viewModel.CurrentPresetIndex);
-                    currentPresetPanel1.ViewModel = viewModel.CurrentPresetViewModel;
+                    ((ToolStripMenuItem)toolStripPresetList.DropDownItems[(int)e.PreviousValue]).Checked = false;
+                    setControlsToCurrentPresetIndex(viewModel.CurrentPresetIndex);
                     break;
                 case "MainFormViewModel.FootswitchPresets":
                     statusLabelFootSwitch.Text = $"[ {viewModel.FootswitchPresets[0]}: {viewModel.Presets[(int)viewModel.FootswitchPresets[0]].FormattedDisplayName} , {viewModel.FootswitchPresets[1]}: {viewModel.Presets[(int)viewModel.FootswitchPresets[1]].FormattedDisplayName} ]";
@@ -127,11 +123,35 @@ namespace LtAmpDotNet
 
         #region control events
 
-        private void vUMeterToolStripMenuItem_Click(object sender, EventArgs e)
+        #region menu events
+
+        private void menuItemExport_Click(object sender, EventArgs e)
+        {
+            exportFileDialog.FileName = $"{viewModel.CurrentPreset.FormattedDisplayName}.json";
+            if (exportFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(exportFileDialog.FileName, viewModel.CurrentPreset.ToString());
+            }
+        }
+
+        private void menuItemImport_Click(object sender, EventArgs e)
+        {
+            if (importFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var presetData = File.ReadAllText(importFileDialog.FileName);
+                viewModel.CurrentPreset = Preset.FromString(presetData);
+                amp.SetCurrentPreset(viewModel.CurrentPreset);
+                amp.SaveCurrentPreset();
+            }
+        }
+
+        private void menuItemVuMeter_Click(object sender, EventArgs e)
         {
             vUMeterToolStripMenuItem.Checked = !vUMeterToolStripMenuItem.Checked;
             panelVuMeter.Visible = vUMeterToolStripMenuItem.Checked;
         }
+
+        #endregion
 
         private void presetItemChanged(object? sender, EventArgs e)
         {
@@ -151,30 +171,26 @@ namespace LtAmpDotNet
 
         #endregion
 
-        private void setCurrentPreset(int index)
+        private void setControlsToCurrentPresetIndex(int index)
         {
             
             listBoxPresets.TryInvoke(new MethodInvoker(delegate
             {
                 listBoxPresets.SelectedIndex = index;
             }));
+
             ((ToolStripMenuItem)toolStripPresetList.DropDownItems[index]).Checked = true;
             toolStripPresetList.Text = $"{index}: {viewModel.Presets[index].FormattedDisplayName}";
+
             if (index > 0)
             {
                 viewModel.CurrentPresetViewModel = new CurrentPresetPanelViewModel(viewModel.Presets[viewModel.CurrentPresetIndex]);
+                currentPresetPanel1.ViewModel = viewModel.CurrentPresetViewModel;
             }
         }
 
         #endregion
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFileDialog1.FileName = $"{viewModel.CurrentPreset.FormattedDisplayName}.json";
-            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(saveFileDialog1.FileName, viewModel.CurrentPreset.ToString());
-            }
-        }
+
     }
 }

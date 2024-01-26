@@ -1,6 +1,7 @@
 ﻿using LtAmpDotNet.Base;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
+using LtAmpDotNet.Panels.DspUnitControlViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace LtAmpDotNet.ViewModels
 {
     public class DspUnitControlViewModel : ViewModelBase
     {
+        private IDspUnitControlView viewControl;
         private string _nodeType;
         private string _fenderId;
         private DspUnitDefinition _dspUnitDefinition;
@@ -25,16 +27,43 @@ namespace LtAmpDotNet.ViewModels
 
         public string Name
         {
-            get => _node.Definition.DisplayName!;
+            get => _node?.Definition.DisplayName;
         }
 
         public string FenderId
         {
-            get => _node.FenderId;
+            get => _node?.FenderId;
             set
             {
                 _node.FenderId = value;
                 SetProperty(ref _fenderId, value);
+            }
+        }
+
+        public bool? Bypass
+        {
+            get => _dspUnitDefinition.Ui.HasBypass ? _node?.DspUnitParameters?.SingleOrDefault(x => x.Name == "bypass")?.Value : false;
+            set
+            {
+                if (_dspUnitDefinition.Ui.HasBypass)
+                {
+                    var oldValue = Bypass;
+                    _node.DspUnitParameters.SingleOrDefault(x => x.Name == "bypass").Value = value;
+                    OnPropertyChanged("Node.DspUnitParameters");
+                    OnValueChanged("Node.DspUnitParameters", oldValue, value);
+                }
+            }
+        }
+
+        public List<DspUnitParameter> Parameters
+        {
+            get => _node?.DspUnitParameters;
+            set
+            {
+                var oldValue = _node?.DspUnitParameters;
+                _node.DspUnitParameters = value;
+                OnPropertyChanged("Node.DspUnitParameters");
+                OnValueChanged("Node.DspUnitParameters", oldValue, value);
             }
         }
 
@@ -58,10 +87,9 @@ namespace LtAmpDotNet.ViewModels
             }
         }
 
-        public DspUnitControlViewModel()
-        {
+        public DspUnitControlViewModel() { }
 
-        }
+        public DspUnitControlViewModel(string type) : this(Node.Create(type)) { }
 
         public DspUnitControlViewModel(Node node)
         {
