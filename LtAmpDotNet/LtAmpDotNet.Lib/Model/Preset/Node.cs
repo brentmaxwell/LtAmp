@@ -12,8 +12,17 @@ namespace LtAmpDotNet.Lib.Model.Preset
 {
     public class Node
     {
-
-        public Node() { }
+        public static Node New(string nodeId) {
+            if (nodeId == NodeIds.AMP)
+            {
+                return JsonConvert.DeserializeObject<Node>("{\"dspUnitParameters\":{\"cabsimType\":\"none\",\"treb\":\".5\",\"mid\": 0.5,\"volume\": 0,\"gateDetectorPosition\":\"jack\",\"gain\":0.5,\"gatePreset\":\"off\",\"bass\":0.5},\"FenderId\":\"DUBS_LinearGain\",\"nodeType\":\"dspUnit\",\"nodeId\":\"amp\"}");
+            }
+            else
+            {
+                return JsonConvert.DeserializeObject<Node>("{\"nodeId\":\"mod\",\"nodeType\":\"dspUnit\",\"FenderId\":\"DUBS_Passthru\",\"dspUnitParameters\":{\"bypass\": false,\"bypassType\":\"Post\"}}");
+            }
+            
+        }
         public Node(DspUnitDefinition definition, string? nodeId = null)
         {
             FenderId = definition.FenderId;
@@ -21,6 +30,10 @@ namespace LtAmpDotNet.Lib.Model.Preset
             DspUnitParameters = definition?.DefaultDspUnitParameters;
         }
 
+        public Node()
+        {
+
+        }
         public Node(string fenderId, string? node = null) : this(LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
 
         [JsonProperty("FenderId")]
@@ -47,7 +60,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public const string DSP_UNIT = "dspUnit";
     }
 
-    public static class NodeId
+    public static class NodeIds
     {
         public const string NONE = "";
         public const string PRESET = "preset";

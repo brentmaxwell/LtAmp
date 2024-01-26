@@ -34,7 +34,7 @@ namespace LtAmpDotNet.Lib.Model.Profile
 
         public Node ToNode()
         {
-            return new Node()
+            return new Node(Info?.SubCategory)
             {
                 NodeId = Info?.SubCategory,
                 FenderId = FenderId,
@@ -151,7 +151,7 @@ namespace LtAmpDotNet.Lib.Model.Profile
 
     
 
-    public static class DspUnitType
+    public static class DspUnitTypes
     {
         public const string AMP = "amp";
         public const string STOMP = "stomp";

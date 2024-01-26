@@ -15,13 +15,17 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
     {
         public override void WriteJson(JsonWriter writer, DspUnitParameter? value, JsonSerializer serializer)
         {
-            if(value?.ParameterType == DspUnitParameterType.String)
+            switch(value?.ParameterType)
             {
-                writer.WriteRaw($"{value.Name}: \"{value.Value}\"");
-            }
-            else
-            {
-                writer.WriteRaw($"{value?.Name}: {value?.Value.ToString()}");
+                case DspUnitParameterType.String:
+                    writer.WriteRaw($"\"{value.Name}\": \"{value.Value}\"");
+                    break;
+                case DspUnitParameterType.Boolean:
+                    writer.WriteRaw($"\"{value?.Name}\": {value?.Value.ToString().ToLower()}");
+                    break;
+                default:
+                    writer.WriteRaw($"\"{value?.Name}\": {value?.Value.ToString()}");
+                    break;
             }
         }
 
