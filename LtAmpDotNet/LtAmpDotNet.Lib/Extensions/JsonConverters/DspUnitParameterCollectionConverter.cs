@@ -16,22 +16,8 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
         public override void WriteJson(JsonWriter writer, List<DspUnitParameter>? value, JsonSerializer serializer)
         {
             var dValue = value.ToDictionary(x => x.Name, x => x.Value);
-
             JToken t = JToken.FromObject(dValue!);
-
-            //if (t.Type != JTokenType.Object)
-            //{
-                t.WriteTo(writer);
-            //}
-            //else
-            //{
-            //    JObject o = (JObject)t;
-            //    IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
-
-            //    o.AddFirst(new JProperty("Keys", new JArray(propertyNames)));
-
-            //    o.WriteTo(writer);
-            //}
+            t.WriteTo(writer);
         }
 
         public override List<DspUnitParameter>? ReadJson(JsonReader reader, Type objectType, List<DspUnitParameter>? existingValue, bool hasExistingValue, JsonSerializer serializer)

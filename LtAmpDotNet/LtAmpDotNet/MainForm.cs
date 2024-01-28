@@ -7,6 +7,7 @@ using LtAmpDotNet.Extensions;
 using System;
 using LtAmpDotNet.Base;
 using System.ComponentModel;
+using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet
 {

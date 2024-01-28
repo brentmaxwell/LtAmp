@@ -13,6 +13,7 @@ using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Lib.Extensions;
 using LtAmpDotNet.Lib.Device;
+using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet.Lib
 {
@@ -30,11 +31,13 @@ namespace LtAmpDotNet.Lib
         public static List<DspUnitDefinition>? DspUnitDefinitions { get; set; }
         public ErrorType ErrorType { get; set; }
 
+        public event EventHandler? DeviceReady;
+        public event EventHandler? DeviceClosed;
         #endregion
 
         #region private fields and properties
 
-        private IUsbAmpDevice _device { get; set; }
+        private IAmpDevice _device { get; set; }
         private bool _isOpen;
         private byte[]? _inputBuffer;
         private bool disposedValue;
@@ -48,7 +51,7 @@ namespace LtAmpDotNet.Lib
             ImportDspUnitDefinitions();
         }
 
-        public LtAmpDevice(IUsbAmpDevice device) : this()
+        public LtAmpDevice(IAmpDevice device) : this()
         {
             _device = device;
         }

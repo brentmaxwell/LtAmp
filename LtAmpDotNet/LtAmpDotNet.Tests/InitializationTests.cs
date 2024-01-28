@@ -2,6 +2,7 @@ using HidSharp;
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Model.Preset;
+using LtAmpDotNet.Lib.Models.Protobuf;
 using LtAmpDotNet.Tests.Mock;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;

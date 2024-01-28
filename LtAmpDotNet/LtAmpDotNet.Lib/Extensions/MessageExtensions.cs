@@ -37,9 +37,10 @@ namespace LtAmpDotNet.Lib.Extensions
             return packets;
         }
 
-        public static IEnumerable<IEnumerable<T>> Split<T>(this T[] arr, int size)
+        public static T[][] Split<T>(this T[] arr, int chunkSize)
         {
-            return arr.Select((s, i) => arr.Skip(i * size).Take(size)).Where(a => a.Any());
+            return arr.Select((s, i) => arr.Skip(i * chunkSize).Take(chunkSize).ToArray()).Where(a => a.Any()).ToArray();
+
         }
     }
 }

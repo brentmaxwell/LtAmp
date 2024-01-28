@@ -2,8 +2,8 @@
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model;
 using LtAmpDotNet.Lib.Model.Preset;
+using LtAmpDotNet.Lib.Models.Protobuf;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace LtAmpDotNet.Tools
 {

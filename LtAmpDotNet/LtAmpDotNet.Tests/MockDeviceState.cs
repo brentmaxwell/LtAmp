@@ -1,5 +1,6 @@
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model.Preset;
+using LtAmpDotNet.Lib.Models.Protobuf;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 using System.Security.Cryptography.X509Certificates;

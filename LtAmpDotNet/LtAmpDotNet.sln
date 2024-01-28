@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpVirtualUsb", "LtAmpVir
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpDotNet", "LtAmpDotNet\LtAmpDotNet.csproj", "{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LtAmpDotNet.Cli", "LtAmpDotNet.Cli\LtAmpDotNet.Cli.csproj", "{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
