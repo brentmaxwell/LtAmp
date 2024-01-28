@@ -21,5 +21,5 @@ Initally, this has been deceloped in dotnet to allow for quick scaffolding of th
 - Keyboard shortcuts to control effect parameters; specifically to be able to set up conplex changes via macros
 - MIDI control of effect parameters
 - Integrated VU meter to monitor sound levels from the USB audio inteface for volume leveling across presets (and maybe a spectrogram if the latency isnt too bad)
-- Cooy and paste effect units between presets
+- Copy and paste effect units between presets
 
