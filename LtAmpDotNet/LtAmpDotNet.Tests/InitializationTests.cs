@@ -13,7 +13,7 @@ namespace LtAmpDotNet.Tests
     [TestFixture]
     public class InitializationTests
     {
-        private LtAmpDevice amp;
+        private LtAmplifier amp;
         private MockDeviceState mockDeviceState;
 
         public delegate void TestCallback(bool isConnected);
@@ -22,7 +22,7 @@ namespace LtAmpDotNet.Tests
         public void Setup()
         {
             mockDeviceState = MockDeviceState.Load();
-            amp = new LtAmpDevice(new MockHidDevice(mockDeviceState));
+            amp = new LtAmplifier(new MockHidDevice(mockDeviceState));
         }
         
         [OneTimeTearDown]
@@ -37,7 +37,7 @@ namespace LtAmpDotNet.Tests
 
         public void Open(TestCallback callback)
         {
-            amp.DeviceConnected += (sender, eventArgs) => { callback(true); };
+            amp.AmplifierConnected += (sender, eventArgs) => { callback(true); };
             amp.Open();
         }
         
@@ -49,19 +49,19 @@ namespace LtAmpDotNet.Tests
         {
             var wait = new AutoResetEvent(false);
             List<FenderMessageLT> messages = new List<FenderMessageLT>();
-            amp.MessageReceived += (message) =>
+            amp.MessageReceived += (sender, eventArgs) =>
             {
-                if(!(message.TypeCase == FenderMessageLT.TypeOneofCase.ModalStatusMessage && message.ModalStatusMessage.Context == ModalContext.SyncBegin))
+                if(!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message.ModalStatusMessage.Context == ModalContext.SyncBegin))
                 {
-                    messages.Add(message);
+                    messages.Add(eventArgs.Message);
                 }
                 wait.Set();
             };
-
             Open(callback =>
             {
                 wait.Set();
             });
+            wait.WaitOne(TimeSpan.FromSeconds(5));
             for (var i = 0; i < 5; i++)
             {
                 wait.WaitOne(TimeSpan.FromSeconds(5));
@@ -74,12 +74,12 @@ namespace LtAmpDotNet.Tests
         [Order(2)]
         public void LoadDspUnits()
         {
-            var dspUnits = LtAmpDevice.DspUnitDefinitions?.GroupBy(x => x.Info.SubCategory).ToDictionary(y => y.Key, y => y.ToList());
+            var dspUnits = LtAmplifier.DspUnitDefinitions?.GroupBy(x => x.Info!.SubCategory!).ToDictionary(y => y.Key, y => y.ToList());
             foreach (var unitType in dspUnits!)
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.That(LtAmpDevice.DspUnitDefinitions?.Count, Is.GreaterThan(0));
+            Assert.That(LtAmplifier.DspUnitDefinitions?.Count, Is.GreaterThan(0));
         }
 
         [Test]
@@ -98,9 +98,9 @@ namespace LtAmpDotNet.Tests
             }
 
             string messageVersion = "";
-            amp.FirmwareVersionStatusMessageReceived += (message) =>
+            amp.FirmwareVersionStatusMessageReceived += (sender, eventArgs) =>
             {
-                messageVersion = message.Version;
+                messageVersion = eventArgs.Message.FirmwareVersionStatus.Version;
                 wait.Set();
             };
             amp.GetFirmwareVersion();
@@ -125,9 +125,9 @@ namespace LtAmpDotNet.Tests
             }
 
             string messageId = "";
-            amp.ProductIdentificationStatusMessageReceived += (message) =>
+            amp.ProductIdentificationStatusMessageReceived += (sender, eventArgs) =>
             {
-                messageId = message.Id;
+                messageId = eventArgs.Message.ProductIdentificationStatus.Id;
                 wait.Set();
             };
             amp.GetProductIdentification();
@@ -152,9 +152,9 @@ namespace LtAmpDotNet.Tests
             }
 
             uint[] slots = {0, 0};
-            amp.QASlotsStatusMessageReceived += (message) =>
+            amp.QASlotsStatusMessageReceived += (sender, eventArgs) =>
             {
-                slots = message.Slots.ToArray();
+                slots = eventArgs.Message.QASlotsStatus.Slots.ToArray();
                 wait.Set();
             };
             amp.SetQASlots(mockDeviceState?.qaSlots!);
@@ -180,9 +180,9 @@ namespace LtAmpDotNet.Tests
             }
 
             float valueDb = 0;
-            amp.UsbGainStatusMessageReceived += (message) =>
+            amp.UsbGainStatusMessageReceived += (sender, eventArgs) =>
             {
-                valueDb = message.ValueDB;
+                valueDb = eventArgs.Message.UsbGainStatus.ValueDB;
                 wait.Set();
             };
             amp.SetUsbGain(mockDeviceState.usbGain.GetValueOrDefault());
@@ -192,7 +192,7 @@ namespace LtAmpDotNet.Tests
         }
 
 
-        [Test, Explicit]
+        [Test]
         [Category("Device Information")]
         public void GetPreset([Range(1,60)] int index)
         {
@@ -209,10 +209,10 @@ namespace LtAmpDotNet.Tests
 
             int slotIndex = 0;
             Preset? preset = null;
-            amp.PresetJSONMessageReceived += (message) =>
+            amp.PresetJSONMessageReceived += (sender, eventArgs) =>
             {
-                slotIndex = message.SlotIndex;
-                preset = JsonConvert.DeserializeObject<Preset>(message.Data);
+                slotIndex = eventArgs.Message.PresetJSONMessage.SlotIndex;
+                preset = JsonConvert.DeserializeObject<Preset>(eventArgs.Message.PresetJSONMessage.Data);
                 wait.Set();
             };
             amp.GetPreset(index);
@@ -242,10 +242,10 @@ namespace LtAmpDotNet.Tests
 
             int modalContextReceived = -1;
             int modalStateReceived = -1;
-            amp.ModalStatusMessageMessageReceived += (message) =>
+            amp.ModalStatusMessageMessageReceived += (sender, eventArgs) =>
             {
-                modalContextReceived = (int)message.Context;
-                modalStateReceived = (int)message.State;
+                modalContextReceived = (int)eventArgs.Message.ModalStatusMessage.Context;
+                modalStateReceived = (int)eventArgs.Message.ModalStatusMessage.State;
                 wait.Set();
             };
             amp.SetModalState(ModalContext.TunerEnable);

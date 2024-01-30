@@ -8,11 +8,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpDotNet.Tools", "LtAmpD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpDotNet.Tests", "LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj", "{1CFA5C01-9F65-4018-ACB1-97E6388E34CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpVirtualUsb", "LtAmpVirtualUsb\LtAmpVirtualUsb.csproj", "{39681B88-4A23-4EA6-8AFA-D48A4F016BBB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpDotNet", "LtAmpDotNet\LtAmpDotNet.csproj", "{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LtAmpDotNet.Cli", "LtAmpDotNet.Cli\LtAmpDotNet.Cli.csproj", "{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LtAmpDotNet.Cli", "LtAmpDotNet.Cli\LtAmpDotNet.Cli.csproj", "{8837C9ED-AE32-4F0C-B662-30C5A4F7CE2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +30,6 @@ Global
 		{1CFA5C01-9F65-4018-ACB1-97E6388E34CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CFA5C01-9F65-4018-ACB1-97E6388E34CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CFA5C01-9F65-4018-ACB1-97E6388E34CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39681B88-4A23-4EA6-8AFA-D48A4F016BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39681B88-4A23-4EA6-8AFA-D48A4F016BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39681B88-4A23-4EA6-8AFA-D48A4F016BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39681B88-4A23-4EA6-8AFA-D48A4F016BBB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA97DDB2-B503-4F7A-A8A2-EA25E304C520}.Release|Any CPU.ActiveCfg = Release|Any CPU

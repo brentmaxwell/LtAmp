@@ -1,4 +1,5 @@
-﻿using LtAmpDotNet.Lib.Models.Protobuf;
+﻿using LtAmpDotNet.Lib.Events;
+using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet.Lib.Device
 {
@@ -13,34 +14,42 @@ namespace LtAmpDotNet.Lib.Device
         public bool IsOpen { get; }
 
         /// <summary>
-        /// Data length for reports communicated from the amplifier
-        /// </summary>
-        public int? ReportLength { get; }
-
-        /// <summary>
         /// Fired when the amplifier opens and connects
         /// </summary>
-        public event EventHandler? Opened;
+        public event EventHandler? DeviceOpened;
+
+        void OnDeviceOpened(EventArgs e);
 
         /// <summary>
         /// Fired when the connection to the amplifier is closed
         /// </summary>
-        public event EventHandler? Closed;
+        public event EventHandler? DeviceClosed;
+
+        public void OnDeviceClosed(EventArgs e);
 
         /// <summary>
         /// Fired when a message is received from the amplifier
         /// </summary>
         public event MessageReceivedEventHandler? MessageReceived;
+        void OnMessageReceived(FenderMessageEventArgs e);
 
         /// <summary>
         /// Fired when a message is sent to the amplifier
         /// </summary>
         public event MessageSentEventHandler? MessageSent;
 
+        void OnMessageSent(FenderMessageEventArgs e);
+
         /// <summary>
         /// Opens a connection to the amplifier
         /// </summary>
         public void Open();
+
+        /// <summary>
+        /// Opens a connection to the amplifier
+        /// <paramref name="continueTry">Try to connect repeatedly</paramref>
+        /// </summary>
+        public void Open(bool continueTry);
 
         /// <summary>
         /// Closes the amplifier connection

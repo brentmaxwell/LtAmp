@@ -15,13 +15,13 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
 {
     public class DspUnitControlViewBase : UserControl, IDspUnitControlView
     {
-        public DspUnitControlViewModel ViewModel { get; set; }
+        public DspUnitControlViewModel? ViewModel { get; set; }
         public DspUnitControlViewBase()
         {
             Dock = DockStyle.Fill;
         }
 
-        private protected Node _node;
+        private protected Node? _node;
         public virtual Node Node
         {
             get => ViewModel.Node;
@@ -32,14 +32,14 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
             }
         }
 
-        public event EventHandler ChangesApplied;
+        public event EventHandler? ChangesApplied;
 
         private protected void OnChangesApplied(object sender, EventArgs e)
         {
             ChangesApplied?.Invoke(sender, e);
         }
 
-        public virtual void Refresh()
+        public virtual new void Refresh()
         {
 
         }

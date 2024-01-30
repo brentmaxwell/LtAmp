@@ -109,19 +109,19 @@ namespace LtAmpDotNet.Base
             get { return _parameters.SingleOrDefault(x => x.Name == (string)_key).GetType(); }
         }
 
-        public override bool CanResetValue(object component) => false;
+        public override bool CanResetValue(object? component) => false;
 
-        public override void SetValue(object component, object value)
+        public override void SetValue(object? component, object? value)
         {
             _parameters.SingleOrDefault(x => x.Name == (string)_key).Value = value;
         }
 
-        public override object GetValue(object component)
+        public override object GetValue(object? component)
         {
             return _parameters.SingleOrDefault(x => x.Name == (string)_key).Value;
         }
 
-        public override void ResetValue(object component)
+        public override void ResetValue(object? component)
         {
             throw new NotImplementedException();
         }

@@ -34,7 +34,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         {
 
         }
-        public Node(string fenderId, string? node = null) : this(LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
+        public Node(string fenderId, string? node = null) : this(LtAmplifier.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
 
         [JsonProperty("FenderId")]
         public string? FenderId { get; set; }
@@ -50,7 +50,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public List<DspUnitParameter>? DspUnitParameters { get; set; }
 
         [JsonIgnore]
-        public DspUnitDefinition Definition => LtAmpDevice.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == FenderId)!;
+        public DspUnitDefinition Definition => LtAmplifier.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == FenderId)!;
 
         public static Node? FromString(string json)
         {

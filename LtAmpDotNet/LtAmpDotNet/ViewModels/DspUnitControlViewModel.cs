@@ -61,7 +61,7 @@ namespace LtAmpDotNet.ViewModels
             get => _node?.DspUnitParameters.Select(x =>
             new DspUnitParameterViewModel
             (
-                _node.Definition.Ui.UiParameters.SingleOrDefault(y => y.ControlId == x.Name),
+                _node.Definition!.Ui!.UiParameters.SingleOrDefault(y => y.ControlId == x.Name),
                 x
             )).ToList();
             //set

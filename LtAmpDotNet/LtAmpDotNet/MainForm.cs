@@ -8,12 +8,13 @@ using System;
 using LtAmpDotNet.Base;
 using System.ComponentModel;
 using LtAmpDotNet.Lib.Models.Protobuf;
+using LtAmpDotNet.Lib.Events;
 
 namespace LtAmpDotNet
 {
     public partial class MainForm : Form
     {
-        private LtAmpDevice amp = new LtAmpDevice(new MockHidDevice(MockDeviceState.Load()));
+        private LtAmplifier amp = new LtAmplifier(new MockHidDevice(MockDeviceState.Load()));
         private MainFormViewModel viewModel = new MainFormViewModel();
 
         public MainForm()
@@ -34,8 +35,8 @@ namespace LtAmpDotNet
 
         private void SubscribeToEvents()
         {
-            amp.DeviceConnected += Amp_DeviceConnected;
-            amp.DeviceDisconnected += Amp_DeviceDisconnected;
+            amp.AmplifierConnected += Amp_DeviceConnected;
+            amp.AmplifierDisconnected += Amp_DeviceDisconnected;
             amp.PresetJSONMessageReceived += Amp_PresetJSONMessageReceived;
             amp.QASlotsStatusMessageReceived += Amp_QASlotsStatusMessageReceived;
         }
@@ -60,7 +61,7 @@ namespace LtAmpDotNet
 
         #region amplifier events
 
-        private void Amp_DeviceConnected(object sender, EventArgs e)
+        private void Amp_DeviceConnected(object? sender, EventArgs e)
         {
             viewModel.ValueChanged += viewModel_ValueChanged;
             amp.GetAllPresets();
@@ -69,19 +70,19 @@ namespace LtAmpDotNet
             viewModel.ConnectionStatus = true;
         }
 
-        private void Amp_DeviceDisconnected(object sender, EventArgs e)
+        private void Amp_DeviceDisconnected(object? sender, EventArgs e)
         {
             viewModel.ConnectionStatus = false;
         }
 
-        private void Amp_QASlotsStatusMessageReceived(QASlotsStatus message)
+        private void Amp_QASlotsStatusMessageReceived(object? sender, FenderMessageEventArgs eventArgs)
         {
-            viewModel.FootswitchPresets = message.Slots.ToArray();
+            viewModel.FootswitchPresets = eventArgs.Message.QASlotsStatus.Slots.ToArray();
         }
 
-        private void Amp_PresetJSONMessageReceived(PresetJSONMessage message)
+        private void Amp_PresetJSONMessageReceived(object? sender, FenderMessageEventArgs eventArgs)
         {
-            viewModel.Presets[message.SlotIndex] = Preset.FromString(message.Data);
+            viewModel.Presets[eventArgs.Message.PresetJSONMessage.SlotIndex] = Preset.FromString(eventArgs.Message.PresetJSONMessage.Data);
         }
 
         #endregion
@@ -159,7 +160,7 @@ namespace LtAmpDotNet
             switch(sender)
             {
                 case ToolStripMenuItem:
-                    viewModel.CurrentPresetIndex = (int)((ToolStripMenuItem)sender).Tag;
+                    viewModel.CurrentPresetIndex = (int)((ToolStripMenuItem)sender).Tag!;
                     break;
                 case ListBox:
                     viewModel.CurrentPresetIndex = listBoxPresets.SelectedIndex;
@@ -174,7 +175,6 @@ namespace LtAmpDotNet
 
         private void setControlsToCurrentPresetIndex(int index)
         {
-            
             listBoxPresets.TryInvoke(new MethodInvoker(delegate
             {
                 listBoxPresets.SelectedIndex = index;

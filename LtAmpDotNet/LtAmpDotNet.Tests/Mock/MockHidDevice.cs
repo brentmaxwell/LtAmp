@@ -10,9 +10,11 @@ using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Model;
 using Newtonsoft.Json;
-using static LtAmpDotNet.Lib.LtAmpDevice;
+using static LtAmpDotNet.Lib.LtAmplifier;
 using LtAmpDotNet.Lib.Models.Protobuf;
 using LtAmpDotNet.Lib.Extensions;
+using LtAmpDotNet.Lib.Events;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 
 namespace LtAmpDotNet.Tests.Mock
 {
@@ -24,8 +26,8 @@ namespace LtAmpDotNet.Tests.Mock
         public int? ReportLength => 65;
 
 
-        public event EventHandler? Opened;
-        public event EventHandler? Closed;
+        public event EventHandler? DeviceOpened;
+        public event EventHandler? DeviceClosed;
         public event MessageReceivedEventHandler? MessageReceived;
         public event MessageSentEventHandler? MessageSent;
 
@@ -52,6 +54,32 @@ namespace LtAmpDotNet.Tests.Mock
 
         public void Open()
         {
+            DeviceOpened?.Invoke(this, new EventArgs());
+        }
+
+        public void Open(bool continueTry)
+        {
+            OnDeviceOpened(new EventArgs());
+        }
+
+        public void OnDeviceOpened(EventArgs e)
+        {
+            DeviceOpened?.Invoke(this, new EventArgs());
+        }
+
+        public void OnDeviceClosed(EventArgs e)
+        {
+            DeviceClosed?.Invoke(this, new EventArgs());
+        }
+
+        public void OnMessageReceived(FenderMessageEventArgs e)
+        {
+            MessageReceived?.Invoke(this, e);
+        }
+
+        public void OnMessageSent(FenderMessageEventArgs e)
+        {
+            MessageSent?.Invoke(this, e);
         }
 
         public void Write(FenderMessageLT message)
@@ -59,12 +87,13 @@ namespace LtAmpDotNet.Tests.Mock
             var inBinaryMessage = message.ToUsbMessage();
             var inStringMessage = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
             FenderMessageLT outMessage = new FenderMessageLT();
-            MessageSent?.Invoke(message);
+            OnMessageSent(new FenderMessageEventArgs(message));
+            
         }
 
-        private void MockHidDevice_MessageSent(FenderMessageLT message)
+        private void MockHidDevice_MessageSent(object sender, FenderMessageEventArgs eventArgs)
         {
-            var inBuffer = message.ToUsbMessage();
+            var inBuffer = eventArgs.Message.ToUsbMessage();
             foreach (var line in inBuffer)
             {
                 var inputBuffer = line;
@@ -75,53 +104,47 @@ namespace LtAmpDotNet.Tests.Mock
                 Buffer.BlockCopy(inputBuffer!, 3, _dataBuffer, bufferStart, length.GetValueOrDefault());
                 if (tag == (byte)UsbHidMessageTag.End)
                 {
-                    InputReceived?.Invoke(FenderMessageLT.Parser.ParseFrom(_dataBuffer));
+                    var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
+                    InputReceived?.Invoke(this, new FenderMessageEventArgs(message));
                     _dataBuffer = new byte[0];
                 }
             }
         }
 
-        private void MockHidDevice_InputReceived(FenderMessageLT message)
+        private void MockHidDevice_InputReceived(object sender, FenderMessageEventArgs eventArgs)
         {
-            FenderMessageLT outMessage;
-            switch(message.TypeCase)
+            FenderMessageLT outMessage = new FenderMessageLT();
+            switch(eventArgs.Message.TypeCase)
             {
                 case FenderMessageLT.TypeOneofCase.FirmwareVersionRequest:
                     outMessage = MessageFactory.Create(new FirmwareVersionStatus() { Version = DeviceState.firmwareVersion }, ResponseType.IsLastAck);
-                    MessageReceived?.Invoke(outMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.ProductIdentificationRequest:
                     outMessage = MessageFactory.Create(new ProductIdentificationStatus() { Id = DeviceState.productId }, ResponseType.IsLastAck);
-                    MessageReceived?.Invoke(outMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.QASlotsRequest:
                     outMessage = MessageFactory.Create(new QASlotsStatus(), ResponseType.IsLastAck);
                     outMessage.QASlotsStatus.Slots.AddRange(DeviceState.qaSlots);
-                    MessageReceived?.Invoke(outMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.QASlotsSet:
                     outMessage = MessageFactory.Create(new QASlotsStatus(), ResponseType.IsLastAck);
-                    outMessage.QASlotsStatus.Slots.AddRange(message.QASlotsSet.Slots.ToArray());
-                    MessageReceived?.Invoke(outMessage);
+                    outMessage.QASlotsStatus.Slots.AddRange(eventArgs.Message.QASlotsSet.Slots.ToArray());
                     break;
                 case FenderMessageLT.TypeOneofCase.UsbGainRequest:
                     outMessage = MessageFactory.Create(new UsbGainStatus() { ValueDB = DeviceState.usbGain.GetValueOrDefault() }, ResponseType.IsLastAck);
-                    MessageReceived?.Invoke(outMessage);
                     break;
                 case FenderMessageLT.TypeOneofCase.UsbGainSet:
-                    outMessage = MessageFactory.Create(new UsbGainStatus() { ValueDB = message.UsbGainSet.ValueDB }, ResponseType.IsLastAck);
-                    MessageReceived?.Invoke(outMessage);
+                    outMessage = MessageFactory.Create(new UsbGainStatus() { ValueDB = eventArgs.Message.UsbGainSet.ValueDB }, ResponseType.IsLastAck);
                     break;
                 case FenderMessageLT.TypeOneofCase.ModalStatusMessage:
-                    outMessage = MessageFactory.Create(new ModalStatusMessage() { Context = message.ModalStatusMessage.Context, State = ModalState.Ok }, ResponseType.IsLastAck);
-                    MessageReceived?.Invoke(outMessage);
+                    outMessage = MessageFactory.Create(new ModalStatusMessage() { Context = eventArgs.Message.ModalStatusMessage.Context, State = ModalState.Ok }, ResponseType.IsLastAck);
                     break;
                 case FenderMessageLT.TypeOneofCase.RetrievePreset:
-                    var index = message.RetrievePreset.Slot;
+                    var index = eventArgs.Message.RetrievePreset.Slot;
                     outMessage = MessageFactory.Create(new PresetJSONMessage() { Data = DeviceState?.Presets![index - 1], SlotIndex = index });
-                    MessageReceived?.Invoke(outMessage);
                     break;
             }
+            OnMessageReceived(new FenderMessageEventArgs(outMessage));
         }
     }
 }

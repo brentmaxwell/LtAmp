@@ -12,9 +12,6 @@ namespace LtAmpDotNet.Lib.Model.Preset
 {
     public class Preset
     {
-        [JsonProperty("data")]
-        public string? Raw { get; set; }
-
         [JsonProperty("audioGraph")]
         public AudioGraph? AudioGraph { get; set; }
 
@@ -22,19 +19,19 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public Info? Info { get; set; }
 
         [JsonProperty("nodeId")]
-        public string? NodeId { get; set; }
+        public string? NodeId { get; set; } = "preset";
 
         [JsonProperty("nodeType")]
-        public string? NodeType { get; set; }
+        public string? NodeType { get; set; } = "preset";
 
         [JsonProperty("numInputs")]
-        public int? NumOfInputs { get; set; }
+        public int? NumOfInputs { get; set; } = 2;
 
         [JsonProperty("numOutputs")]
-        public int? NumOfOutputs { get; set; }
+        public int? NumOfOutputs { get; set; } = 2;
 
         [JsonProperty("version")]
-        public string Version { get; set; }
+        public string Version { get; set; } = "1.1";
 
         [JsonIgnore]
         public string[] DisplayName {

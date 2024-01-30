@@ -1,7 +1,10 @@
 ﻿using HidSharp;
 using HidSharp.Reports.Input;
+using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Extensions;
 using LtAmpDotNet.Lib.Models.Protobuf;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace LtAmpDotNet.Lib.Device
 {
@@ -22,19 +25,17 @@ namespace LtAmpDotNet.Lib.Device
         #endregion
 
         #region Public Properties
-
-        public int? ReportLength => _device?.GetMaxInputReportLength();
-
         public bool IsOpen => _isOpen;
 
         #endregion
 
         #region Events
         
-        public event EventHandler? Opened;
-        public event EventHandler? Closed;
+        public event EventHandler? DeviceOpened;
+        public event EventHandler? DeviceClosed;
         public event MessageReceivedEventHandler? MessageReceived;
         public event MessageSentEventHandler? MessageSent;
+        private TimerCallback? _heartbeatCallback { get; set; }
 
         #endregion
 
@@ -54,6 +55,11 @@ namespace LtAmpDotNet.Lib.Device
         /// Input receiver for the incoming data
         /// </summary>
         private HidDeviceInputReceiver? _inputReceiver;
+        
+        // /// <summary>
+        // /// Data length for reports communicated from the amplifier
+        // /// </summary>
+        private int? ReportLength => _device?.GetMaxInputReportLength();
 
         /// <summary>
         /// Buffer to store the data as it comes in to string together multi-report messages
@@ -95,11 +101,16 @@ namespace LtAmpDotNet.Lib.Device
 
         #region Public Methods
 
+        public void Open()
+        {
+            Open(true);
+        }
+
         /// <summary>
         /// Opens a connection to the amplifier
         /// </summary>
         /// <exception cref="IOException">Thrown when there is a connection issue with the device</exception>
-        public void Open()
+        public void Open(bool continueTry = true)
         {
             if (_device == null)
             {
@@ -114,21 +125,25 @@ namespace LtAmpDotNet.Lib.Device
                 {
                     throw new IOException("Could not open connection to device");
                 }
-                _stream.Closed += Stream_Closed; ;
+                _stream.Closed += Stream_DeviceClosed; ;
                 _inputReceiver.Start(_stream);
+                Timer heartbeatTimer = new Timer(1000);
+                heartbeatTimer.Elapsed += HeartbeatTimer_Elapsed;
+                heartbeatTimer.Start();
+                OnDeviceOpened(new EventArgs());
             }
-            else
+            else if(continueTry)
             {
                 DeviceList.Local.Changed += UsbDevices_Changed;
             }
-            Opened?.Invoke(this, new EventArgs());
         }
         
         public void Close()
         {
             _isOpen = false;
             _stream?.Close();
-            Closed?.Invoke(this, new EventArgs());
+            OnDeviceClosed(new EventArgs());
+            
         }
 
         public void Write(FenderMessageLT message)
@@ -139,7 +154,7 @@ namespace LtAmpDotNet.Lib.Device
             }
             if (message.TypeCase != FenderMessageLT.TypeOneofCase.Heartbeat)
             {
-                MessageSent?.Invoke(message);
+                OnMessageSent(new FenderMessageEventArgs(message));
             }
         }
        
@@ -168,7 +183,38 @@ namespace LtAmpDotNet.Lib.Device
 
         #endregion
 
-        #region Private Methods
+        #region Private Events
+
+        public void OnDeviceOpened(EventArgs e)
+        {
+            DeviceOpened?.Invoke(this, e);
+        }
+
+        public void OnDeviceClosed(EventArgs e)
+        {
+            DeviceClosed?.Invoke(this, new EventArgs());
+        }
+
+        public void OnMessageReceived(FenderMessageEventArgs e)
+        {
+            MessageReceived?.Invoke(this, e);
+        }
+
+        public void OnMessageSent(FenderMessageEventArgs e)
+        {
+            MessageSent?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Triggered on change of USB devices connected; used to auto connect.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UsbDevices_Changed(object? sender, DeviceListChangedEventArgs e)
+        {
+            DeviceList.Local.Changed -= UsbDevices_Changed;
+            Open(true);
+        }
 
         /// <summary>
         /// Parses the data recevied from the input receiver, and triggers a MessageReceived event with the parsed FenderMessageLT
@@ -188,21 +234,24 @@ namespace LtAmpDotNet.Lib.Device
                 if (tag == (byte)UsbHidMessageTag.End)
                 {
                     var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
-                    MessageReceived?.Invoke(message);
+                    OnMessageReceived(new FenderMessageEventArgs(message));
+                    
                     _dataBuffer = new byte[0];
                 }
                 inputBuffer = new byte[ReportLength.GetValueOrDefault()];
             }
         }
         
-        /// <summary>
-        /// Triggered on change of USB devices connected; used to auto connect.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UsbDevices_Changed(object? sender, DeviceListChangedEventArgs e)
+        private void HeartbeatTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            Open();
+            Write(new FenderMessageLT()
+            {
+                ResponseType = ResponseType.Unsolicited,
+                Heartbeat = new Heartbeat()
+                {
+                    DummyField = true
+                }
+            });
         }
 
         /// <summary>
@@ -210,12 +259,19 @@ namespace LtAmpDotNet.Lib.Device
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Stream_Closed(object? sender, EventArgs e)
+        private void Stream_DeviceClosed(object? sender, EventArgs e)
         {
             _isOpen = false;
-            Closed?.Invoke(this, e);
+            OnDeviceClosed(e);
         }
 
         #endregion
+    }
+
+    public enum UsbHidMessageTag
+    {
+        Start = 0x33,
+        Continue = 0x34,
+        End = 0x35,
     }
 }

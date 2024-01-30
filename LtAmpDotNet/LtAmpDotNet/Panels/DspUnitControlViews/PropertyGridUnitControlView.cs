@@ -20,7 +20,7 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
 
         private DspUnitControlViewModel _viewModel = new DspUnitControlViewModel();
 
-        public DspUnitControlViewModel ViewModel
+        public new DspUnitControlViewModel ViewModel
         {
             get => _viewModel;
             set

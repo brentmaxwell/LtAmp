@@ -1,0 +1,11 @@
+public class EffectCategory
+{
+    [JsonProperty("cantegoryName")]
+    public string CategoryName { get; set; }
+ 
+    [JsonProperty("menuName18Max")]
+    public string MenuName { get; set }
+    
+    [JsonProperty("dspUnits")]
+    public DspUnits dspUnits { get; set; }
+}
