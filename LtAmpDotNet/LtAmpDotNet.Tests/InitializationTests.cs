@@ -193,7 +193,7 @@ namespace LtAmpDotNet.Tests
 
 
         [Test]
-        [Category("Device Information")]
+        [Category("Presets")]
         public void GetPreset([Range(1,60)] int index)
         {
             var wait = new AutoResetEvent(false);
@@ -226,7 +226,7 @@ namespace LtAmpDotNet.Tests
         }
 
         [Test]
-        [Category("Device Settings")]
+        [Category("Device Features")]
         public void Tuner()
         {
             var wait = new AutoResetEvent(false);

@@ -13,11 +13,17 @@ namespace LtAmpDotNet.Lib
 
         #region public properties
 
+        /// <summary>
+        /// Current state of the amp connection
+        /// </summary>
         public bool IsOpen
         {
             get { return _isOpen; }
         }
-        
+
+        /// <summary>
+        /// Contains an error type when the amp send an UnsupportedMessageStatus message
+        /// </summary>
         public ErrorType ErrorType { get; set; }
         
         #endregion
@@ -27,17 +33,36 @@ namespace LtAmpDotNet.Lib
         private IAmpDevice _device { get; set; }
         private bool _isOpen;
         private bool _disposedValue;
-        
+
         #endregion
 
+        #region Constructors
+
+        /// <summary>
+        /// Creates an instance of LtAmplifier for the default USB connection
+        /// </summary>
         public LtAmplifier() : this(new UsbAmpDevice()){ }
 
+
+        /// <summary>
+        /// Creates an instance of LtAmplifier with a specific devices
+        /// </summary>
+        /// <param name="device">The device to connect with</param>
         public LtAmplifier(IAmpDevice device)
         {
+            SetupEventHandlers();
             _device = device;
             ImportDspUnitDefinitions();
         }
-        
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Open the connection to the amp
+        /// </summary>
+        /// <param name="continueTry">True to continue trying to connect until successful</param>
         public void Open(bool continueTry = true)
         {
             _device.MessageReceived += IAmpDevice_OnMessageReceived;
@@ -47,6 +72,9 @@ namespace LtAmpDotNet.Lib
             _device.Open(continueTry);
         }
 
+        /// <summary>
+        /// Closes the amp connection
+        /// </summary>
         public void Close()
         {
             _isOpen = false;
@@ -75,135 +103,13 @@ namespace LtAmpDotNet.Lib
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Sends a specific message to the amp
+        /// </summary>
+        /// <param name="message">Message to send</param>
         public void SendMessage(FenderMessageLT message)
         {
             _device.Write(message);
-        }
-
-        #region private event handlers
-
-        private void IAmpDevice_Opened(object? sender, EventArgs e){
-            InitializeConnection();
-            AmplifierConnected?.Invoke(this, null!);
-            _isOpen = true;
-        }
-
-        private void IAmpDevice_Closed(object? sender, EventArgs e){
-            _isOpen = false;
-            AmplifierDisconnected?.Invoke(this, null!);
-        }
-
-        private void IAmpDevice_OnMessageSent(object sender, FenderMessageEventArgs eventArgs) => MessageSent?.Invoke(this, eventArgs);
-
-        private void IAmpDevice_OnMessageReceived(object sender, FenderMessageEventArgs eventArgs)
-        {
-            switch (eventArgs.MessageType)
-            {
-                case FenderMessageLT.TypeOneofCase.AuditionPresetStatus:
-                    AuditionPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.AuditionStateStatus:
-                    AuditionStateStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ClearPresetStatus:
-                    ClearPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ConnectionStatus:
-                    ConnectionStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.CurrentDisplayedPresetIndexStatus:
-                    CurrentDisplayedPresetIndexStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexStatus:
-                    CurrentLoadedPresetIndexStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
-                    CurrentLoadedPresetIndexBypassStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.CurrentPresetStatus:
-                    CurrentPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.DspUnitParameterStatus:
-                    DspUnitParameterStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ExitAuditionPresetStatus:
-                    ExitAuditionPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.FirmwareVersionStatus:
-                    FirmwareVersionStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.FrameBufferMessage:
-                    FrameBufferMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.IndexButton:
-                    IndexButtonMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.IndexEncoder:
-                    IndexEncoderMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.IndexPot:
-                    IndexPotMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.LineOutGainStatus:
-                    LineOutGainStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.Lt4FootswitchModeStatus:
-                    LT4FootswitchModeStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.MemoryUsageStatus:
-                    MemoryUsageStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ModalStatusMessage:
-                    ModalStatusMessageMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.NewPresetSavedStatus:
-                    NewPresetSavedStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.PresetEditedStatus:
-                    PresetEditedStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.PresetJSONMessage:
-                    PresetJSONMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.PresetSavedStatus:
-                    PresetSavedStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ProcessorUtilization:
-                    ProcessorUtilizationMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ProductIdentificationStatus:
-                    ProductIdentificationStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.QASlotsStatus:
-                    QASlotsStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ReplaceNodeStatus:
-                    ReplaceNodeStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.SetDspUnitParameterStatus:
-                    SetDspUnitParameterStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ShiftPresetStatus:
-                    ShiftPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.SwapPresetStatus:
-                    SwapPresetStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.UnsupportedMessageStatus:
-                    ErrorType = eventArgs.Message.UnsupportedMessageStatus.Status;
-                    UnsupportedMessageStatusReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.UsbGainStatus:
-                    UsbGainStatusMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                case FenderMessageLT.TypeOneofCase.ActiveDisplay:
-                    ActiveDisplayMessageReceived?.Invoke(this, eventArgs);
-                    break;
-                default:
-                    UnknownMessageReceived?.Invoke(this, eventArgs);
-                    break;
-            }
-            MessageReceived?.Invoke(this, eventArgs);
         }
 
         #endregion
@@ -235,5 +141,37 @@ namespace LtAmpDotNet.Lib
         }
 
         #endregion   
+
+        #region private event handlers
+
+        private void IAmpDevice_Opened(object? sender, EventArgs e){
+            InitializeConnection();
+            AmplifierConnected?.Invoke(this, null!);
+            _isOpen = true;
+        }
+
+        private void IAmpDevice_Closed(object? sender, EventArgs e){
+            _isOpen = false;
+            AmplifierDisconnected?.Invoke(this, null!);
+        }
+
+        private void IAmpDevice_OnMessageSent(object sender, FenderMessageEventArgs eventArgs) => MessageSent?.Invoke(this, eventArgs);
+
+        private void IAmpDevice_OnMessageReceived(object sender, FenderMessageEventArgs eventArgs)
+        {
+            if (MessageEventHandlers.ContainsKey(eventArgs.MessageType))
+            {
+                MessageEventHandlers[eventArgs.MessageType](eventArgs);
+            }
+            else
+            {
+                UnknownMessageReceived?.Invoke(this, eventArgs);
+            }
+            MessageReceived?.Invoke(this, eventArgs);
+        }
+
+        #endregion
+
+        
     }
 }

@@ -22,13 +22,13 @@ namespace LtAmpDotNet.Panels
         private DspUnitControlViewModel viewModel = new DspUnitControlViewModel();
 
 
-        public string NodeType
+        public NodeIdType NodeId
         {
-            get => viewModel.NodeType;
+            get => viewModel.NodeId;
             set
             {
-                viewModel.NodeType = value;
-                labelDspUnitType.Text = viewModel.NodeType;
+                viewModel.NodeId = value;
+                labelDspUnitType.Text = viewModel.NodeId.ToString();
             }
         }
 
@@ -41,7 +41,7 @@ namespace LtAmpDotNet.Panels
                 if (viewModel != null)
                 {
                     unitControl.Node = viewModel.Node;
-                    labelDspUnitType.Text = viewModel.NodeType;
+                    labelDspUnitType.Text = viewModel.NodeId.ToString();
                     viewModel.ValueChanged += viewModel_ValueChanged;
                 }
             }

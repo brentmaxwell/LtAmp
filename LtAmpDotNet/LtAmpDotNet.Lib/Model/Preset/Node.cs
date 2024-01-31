@@ -1,7 +1,7 @@
 ﻿using LtAmpDotNet.Lib.Extensions.JsonConverters;
 using LtAmpDotNet.Lib.Model.Profile;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,8 @@ namespace LtAmpDotNet.Lib.Model.Preset
 {
     public class Node
     {
-        public static Node Create(string nodeId) {
-            if (nodeId == NodeIds.AMP)
+        public static Node Create(NodeIdType nodeId) {
+            if (nodeId == NodeIdType.amp)
             {
                 return Node.FromString("{\"dspUnitParameters\":{\"cabsimType\":\"none\",\"treb\":\".5\",\"mid\": 0.5,\"volume\": 0,\"gateDetectorPosition\":\"jack\",\"gain\":0.5,\"gatePreset\":\"off\",\"bass\":0.5},\"FenderId\":\"DUBS_LinearGain\",\"nodeType\":\"dspUnit\",\"nodeId\":\"amp\"}");
             }
@@ -23,10 +23,10 @@ namespace LtAmpDotNet.Lib.Model.Preset
             }
             
         }
-        public Node(DspUnitDefinition definition, string? nodeId = null)
+        public Node(DspUnitDefinition definition, NodeIdType nodeId)
         {
             FenderId = definition.FenderId;
-            NodeId = nodeId ?? definition?.Info?.SubCategory;
+            NodeId = nodeId;
             DspUnitParameters = definition?.DefaultDspUnitParameters;
         }
 
@@ -34,13 +34,15 @@ namespace LtAmpDotNet.Lib.Model.Preset
         {
 
         }
-        public Node(string fenderId, string? node = null) : this(LtAmplifier.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
+
+        public Node(string fenderId, NodeIdType node) : this(LtAmplifier.DspUnitDefinitions?.FirstOrDefault(x => x.FenderId == fenderId)!, node) { }
 
         [JsonProperty("FenderId")]
         public string? FenderId { get; set; }
 
         [JsonProperty("nodeId")]
-        public string? NodeId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public NodeIdType NodeId { get; set; }
 
         [JsonProperty("nodeType")]
         public string? NodeType => "dspUnit";
@@ -75,15 +77,25 @@ namespace LtAmpDotNet.Lib.Model.Preset
         public const string DSP_UNIT = "dspUnit";
     }
 
-    public static class NodeIds
+    //public static class NodeIds
+    //{
+    //    public const string NONE = "";
+    //    public const string PRESET = "preset";
+    //    public const string AMP = "amp";
+    //    public const string STOMP = "stomp";
+    //    public const string MOD = "mod";
+    //    public const string DELAY = "delay";
+    //    public const string REVERB = "reverb";
+    //}
+
+    public enum NodeIdType
     {
-        public const string NONE = "";
-        public const string PRESET = "preset";
-        public const string AMP = "amp";
-        public const string STOMP = "stomp";
-        public const string MOD = "mod";
-        public const string DELAY = "delay";
-        public const string REVERB = "reverb";
+        none = 0,
+        amp = 1,
+        stomp = 2,
+        mod = 3,
+        delay = 4,
+        reverb = 5
     }
 
     public enum FenderId

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Enum = System.Enum;
 
 namespace LtAmpDotNet.Lib.Model.Profile
 {
@@ -32,21 +33,11 @@ namespace LtAmpDotNet.Lib.Model.Profile
         [JsonProperty("ui")]
         public DspUnitUi? Ui { get; set; }
 
-        public Node ToNode()
+        public Node ToNode(NodeIdType nodeId)
         {
-            return new Node(Info?.SubCategory)
-            {
-                NodeId = Info?.SubCategory,
-                FenderId = FenderId,
-                DspUnitParameters = DefaultDspUnitParameters,
-            };
+            return new Node(this, nodeId);
         }
     }
-
-    
-    
-
-    
 
     //public class TaperValue
     //{

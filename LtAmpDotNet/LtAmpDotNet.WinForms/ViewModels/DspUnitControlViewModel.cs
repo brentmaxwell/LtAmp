@@ -14,13 +14,13 @@ namespace LtAmpDotNet.ViewModels
     public class DspUnitControlViewModel : ViewModelBase
     {
         private IDspUnitControlView viewControl;
-        private string _nodeType;
+        private NodeIdType _nodeType;
         private string _fenderId;
         private DspUnitDefinition _dspUnitDefinition;
         private Node _node;
         private List<DspUnitParameterViewModel> _parameters;
 
-        public string NodeType
+        public NodeIdType NodeId
         {
             get => _nodeType;
             set => SetProperty(ref _nodeType, value);
@@ -78,7 +78,7 @@ namespace LtAmpDotNet.ViewModels
             get => _dspUnitDefinition;
             set
             {
-                _node = new Node(value);
+                _node = new Node(value, NodeId);
                 SetProperty(ref _dspUnitDefinition, value);
             }
         }
@@ -95,12 +95,12 @@ namespace LtAmpDotNet.ViewModels
 
         public DspUnitControlViewModel() { }
 
-        public DspUnitControlViewModel(string type) : this(Node.Create(type)) { }
+        public DspUnitControlViewModel(NodeIdType type) : this(Node.Create(type)) { }
 
         public DspUnitControlViewModel(Node node)
         {
             Node = node;
-            _nodeType = node?.NodeId;
+            _nodeType = node.NodeId;
         }
     }
 }

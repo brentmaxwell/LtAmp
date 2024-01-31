@@ -7,7 +7,29 @@
     <Title>LtAmpDotNet.Lib</Title>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <ApplicationIcon>Resources\LtAmpDotNet.ico</ApplicationIcon>
+    <Version>0.1.0-a</Version>
+    <Authors>Brent Maxwell</Authors>
+    <Description>A library to control the Fender LT series of amplifiers.</Description>
+    <Copyright>Copyright © 2024 Brent Maxwell</Copyright>
+    <PackageProjectUrl>https://github.com/brentmaxwell/LtAmp/</PackageProjectUrl>
+    <PackageIcon>LtAmpDotNet.png</PackageIcon>
+    <RepositoryUrl>https://github.com/brentmaxwell/LtAmp/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\LtAmpDotNet.ico" />
+    <None Remove="Resources\LtAmpDotNet.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LtAmpDotNet.ico" />
+    <EmbeddedResource Include="Resources\LtAmpDotNet.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </EmbeddedResource>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.25.2" />

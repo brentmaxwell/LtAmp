@@ -53,5 +53,115 @@ namespace LtAmpDotNet.Lib
         public event EventHandler<FenderMessageEventArgs>? SwapPresetStatusMessageReceived;
         public event EventHandler<FenderMessageEventArgs>? UnsupportedMessageStatusReceived;
         public event EventHandler<FenderMessageEventArgs>? UsbGainStatusMessageReceived;
+
+
+        private Dictionary<FenderMessageLT.TypeOneofCase, Action<FenderMessageEventArgs>> MessageEventHandlers = 
+            new Dictionary<FenderMessageLT.TypeOneofCase, Action<FenderMessageEventArgs>>();
+        private void SetupEventHandlers()
+        {
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.AuditionPresetStatus,
+                (eventArgs) => AuditionPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.AuditionStateStatus,
+                (eventArgs) => AuditionStateStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ClearPresetStatus,
+                (eventArgs) => ClearPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ConnectionStatus,
+                (eventArgs) => ConnectionStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.CurrentDisplayedPresetIndexStatus,
+                (eventArgs) => CurrentDisplayedPresetIndexStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexStatus,
+                (eventArgs) => CurrentLoadedPresetIndexStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.CurrentLoadedPresetIndexBypassStatus,
+                (eventArgs) => CurrentLoadedPresetIndexBypassStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.CurrentPresetStatus,
+                (eventArgs) => CurrentPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.DspUnitParameterStatus,
+                (eventArgs) => DspUnitParameterStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ExitAuditionPresetStatus,
+                (eventArgs) => ExitAuditionPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.FirmwareVersionStatus,
+                (eventArgs) => FirmwareVersionStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.FrameBufferMessage,
+                (eventArgs) => FrameBufferMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.IndexButton,
+                (eventArgs) => IndexButtonMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.IndexEncoder,
+                (eventArgs) => IndexEncoderMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.IndexPot,
+                (eventArgs) => IndexPotMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.LineOutGainStatus,
+                (eventArgs) => LineOutGainStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.Lt4FootswitchModeStatus,
+                (eventArgs) => LT4FootswitchModeStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.MemoryUsageStatus,
+                (eventArgs) => MemoryUsageStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ModalStatusMessage,
+                (eventArgs) => ModalStatusMessageMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.NewPresetSavedStatus,
+                (eventArgs) => NewPresetSavedStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.PresetEditedStatus,
+                (eventArgs) => PresetEditedStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.PresetJSONMessage,
+                (eventArgs) => PresetJSONMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.PresetSavedStatus,
+                (eventArgs) => PresetSavedStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ProcessorUtilization,
+                (eventArgs) => ProcessorUtilizationMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ProductIdentificationStatus,
+                (eventArgs) => ProductIdentificationStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.QASlotsStatus,
+                (eventArgs) => QASlotsStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ReplaceNodeStatus,
+                (eventArgs) => ReplaceNodeStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.SetDspUnitParameterStatus,
+                (eventArgs) => SetDspUnitParameterStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ShiftPresetStatus,
+                (eventArgs) => ShiftPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.SwapPresetStatus,
+                (eventArgs) => SwapPresetStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.UsbGainStatus,
+                (eventArgs) => UsbGainStatusMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.ActiveDisplay,
+                (eventArgs) => ActiveDisplayMessageReceived?.Invoke(this, eventArgs));
+            MessageEventHandlers.Add(
+                FenderMessageLT.TypeOneofCase.UnsupportedMessageStatus,
+                (eventArgs) =>
+                {
+                    ErrorType = eventArgs.Message.UnsupportedMessageStatus.Status;
+                    UnsupportedMessageStatusReceived?.Invoke(this, eventArgs);
+                });
+        }
     }
 }

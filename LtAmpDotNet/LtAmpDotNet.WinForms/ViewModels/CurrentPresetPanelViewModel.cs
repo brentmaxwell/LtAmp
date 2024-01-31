@@ -42,15 +42,15 @@ namespace LtAmpDotNet.ViewModels
             get => _preset;
             set
             {
-                if (value != null)
+                if (value != null && value.Info != null && value.AudioGraph?.Nodes != null)
                 {
                     _presetName = value.FormattedDisplayName;
                     _bpm = value.Info.BPM;
-                    AmpViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIds.AMP));
-                    StompViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIds.STOMP));
-                    ModViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIds.MOD));
-                    DelayViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIds.DELAY));
-                    ReverbViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIds.REVERB));
+                    AmpViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp));
+                    StompViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp));
+                    ModViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod));
+                    DelayViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay));
+                    ReverbViewModel = new DspUnitControlViewModel(value.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb));
 
                 }
                 SetProperty(ref _preset, value);

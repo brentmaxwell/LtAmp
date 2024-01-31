@@ -8,22 +8,27 @@ namespace LtAmpDotNet.Lib
     {
         #region Auditioning
 
-        // AuditionPreset
-        // response: AuditionPresetStatus
+        /// <summary>
+        /// Sets the audition preset
+        /// </summary>
+        /// <param name="preset">The preset to audition</param>
         public void SetAuditionPreset(Preset preset)
         {
             SendMessage(MessageFactory.Create(new AuditionPreset() { PresetData = preset.ToString() }));
         }
 
-        // AuditionStateRequest
-        // response: AuditionStateStatus
+        /// <summary>
+        /// Gets the current audition state
+        /// </summary>
         public void GetAuditionState()
         {
             SendMessage(MessageFactory.Create(new AuditionStateRequest() { Request = true }));
         }
 
-        // ExitAuditionPreset
-        // response: ExitAuditionPresetStatus
+        /// <summary>
+        /// Exits audition mode
+        /// </summary>
+        /// <param name="exitStatus"></param>
         public void ExitAuditionPreset(bool exitStatus = true)
         {
             SendMessage(MessageFactory.Create(new ExitAuditionPreset() { Exit = exitStatus }));
@@ -33,92 +38,130 @@ namespace LtAmpDotNet.Lib
 
         #region Preset management
 
-        // CurrentPresetRequest
-        // response: CurrentPresetStatus
+        /// <summary>
+        /// Gets the current preset
+        /// </summary>
         public void GetCurrentPreset()
         {
             SendMessage(MessageFactory.Create(new CurrentPresetRequest() { Request = true }));
         }
 
-        // CurrentPresetSet
-        // response: CurrentPresetStatus
+        /// <summary>
+        /// Sets the current preset
+        /// </summary>
+        /// <param name="preset">The preset to set</param>
         public void SetCurrentPreset(Preset preset)
         {
             SendMessage(MessageFactory.Create(new CurrentPresetSet() { CurrentPresetData = preset.ToString() }));
         }
 
-        // LoadPreset
-        // response: CurrentLoadedPresetIndexStatus
+        /// <summary>
+        /// Changes to the specified preset
+        /// </summary>
+        /// <param name="slotIndex">The bank index to switch to</param>
         public void LoadPreset(int slotIndex)
         {
             SendMessage(MessageFactory.Create(new LoadPreset() { PresetIndex = slotIndex }));
         }
 
-        // ShiftPreset
-        // response: ShiftPresetStatus
+        /// <summary>
+        /// Moves the specified preset to a new position, and shifts the other presets
+        /// </summary>
+        /// <param name="from">The preset to shift</param>
+        /// <param name="to">The location to shift it to</param>
         public void ShiftPreset(int from, int to)
         {
             SendMessage(MessageFactory.Create(new ShiftPreset() { IndexToShiftFrom = from, IndexToShiftTo = to }));
         }
 
-        // SwapPreset
-        // response: SwapPresetStatus
-        public void SwapPreset(int slotIndexA, int slotIndexB)
+        /// <summary>
+        /// Swaps two preset locations
+        /// </summary>
+        /// <param name="slotIndexes">The location of the presets to swap</param>
+        public void SwapPreset(int[] slotIndexes)
         {
-            SendMessage(MessageFactory.Create(new SwapPreset() { IndexA = slotIndexA, IndexB = slotIndexB }));
+            SendMessage(MessageFactory.Create(new SwapPreset() { IndexA = slotIndexes[0], IndexB = slotIndexes[1] }));
         }
 
-        // RetrievePreset
-        // response: PresetJsonMessage
+        /// <summary>
+        /// Gets the preset in the specified bank
+        /// </summary>
+        /// <param name="slotIndex">The bank to retrieve</param>
         public void GetPreset(int slotIndex)
         {
             SendMessage(MessageFactory.Create(new RetrievePreset() { Slot = slotIndex }));
         }
-        
-        // SaveCurrentPreset
-        // response: PresetSavedStatus
+
+        /// <summary>
+        /// Saves the current preset in the current bank.
+        /// response: PresetSavedStatus
+        /// </summary>
         public void SaveCurrentPreset()
         {
             SendMessage(MessageFactory.Create(new SaveCurrentPreset() { Save = true }));
         }
 
-        // SaveCurrentPresetTo
-        // response: PresetSavedStatus
+        /// <summary>
+        /// Saves the current preset to the specified bank with the specified name
+        /// response: PresetSavedStatus
+        /// </summary>
+        /// <param name="slotIndex"></param>
+        /// <param name="name"></param>
         public void SaveCurrentPresetTo(int slotIndex, string name)
         {
             SendMessage(MessageFactory.Create(new SaveCurrentPresetTo() { PresetName = name, PresetSlot = slotIndex }));
         }
 
-        // SavePresetAs
-        // response: PresetSavedStatus
+        /// <summary>
+        /// Saves a preset to a specified bank
+        /// response: PresetSavedStatus
+        /// </summary>
+        /// <param name="slotIndex">The bank to save to</param>
+        /// <param name="preset">The preset to save</param>
+        /// <param name="loadPreset">Unknown; the official application always sends true</param>
         public void SavePresetAs(int slotIndex, Preset preset, bool loadPreset = true)
         {
             SendMessage(MessageFactory.Create(new SavePresetAs() { PresetSlot = slotIndex, PresetData = preset.ToString(), IsLoadPreset = loadPreset }));
         }
 
-        // RenamePresetAt
+        /// <summary>
+        /// Renames the preset at the specified bank
+        /// </summary>
+        /// <param name="slotIndex">The bank to rename</param>
+        /// <param name="name">The new preset name</param>
         public void RenamePresetAt(int slotIndex, string name)
         {
             SendMessage(MessageFactory.Create(new RenamePresetAt() { PresetName = name, PresetSlot = slotIndex }));
         }
 
 
-        // ClearPreset
-        // response: ClearPresetStatus
+        /// <summary>
+        /// Clears the preset in the specified bank
+        /// response: ClearPresetStatus
+        /// </summary>
+        /// <param name="slotIndex">The bank to clear</param>
+        /// <param name="loadPreset">Unknown; the official application always sends true</param>
+
         public void ClearPreset(int slotIndex, bool isLoadPreset = true)
         {
             SendMessage(MessageFactory.Create(new ClearPreset() { SlotIndex = slotIndex, IsLoadPreset = isLoadPreset }));
         }
 
-        // ConnectionStatusRequest
-        // response: ConnectionStatus
+        /// <summary>
+        /// Gets the current connection status as reported by the amp 
+        /// response: ConnectionStatus
+        /// </summary>
         public void GetConnectionStatus()
         {
             SendMessage(MessageFactory.Create(new ConnectionStatusRequest() { Request = true }));
         }
 
-        // SetDspUnitParameter
-        // response: setDspUnitParameterStatus
+        /// <summary>
+        /// Sets a single parameter in a DspUnit 
+        /// response: setDspUnitParameterStatus
+        /// </summary>
+        /// <param name="nodeId">The unit type to set</param>
+        /// <param name="parameter">The parameter to set</param>
         public void SetDspUnitParameter(string nodeId, DspUnitParameter parameter)
         {
             var message = MessageFactory.Create(new SetDspUnitParameter()

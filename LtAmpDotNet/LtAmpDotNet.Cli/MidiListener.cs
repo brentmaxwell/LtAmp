@@ -77,7 +77,6 @@ namespace LtAmpDotNet.Cli
 
         private void MidiIn_MessageReceived(object? sender, MidiInMessageEventArgs e)
         {
-            
             switch (e.MidiEvent.CommandCode)
             {
                 case MidiCommandCode.ControlChange:

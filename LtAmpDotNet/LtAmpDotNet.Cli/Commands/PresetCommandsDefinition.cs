@@ -104,7 +104,7 @@ namespace LtAmpDotNet.Cli.Commands
                 Console.WriteLine($"{eventArgs.Message.SwapPresetStatus.IndexA}: {eventArgs.Message.SwapPresetStatus.IndexB}");
                 wait.Set();
             };
-            Program.amp.SwapPreset(presetBankIndexA, presetBankIndexB);
+            Program.amp.SwapPreset(new int[] { presetBankIndexA, presetBankIndexB });
             wait.WaitOne(TimeSpan.FromSeconds(5));
         }
 
