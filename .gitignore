@@ -41,3 +41,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+/LtAmpDotNet/LtAmpDotNet.WinForms/DataModels/DspUnitDefinitionViewModel.txt
+/LtAmpDotNet/LtAmpDotNet.WinForms/DataModels/ParameterValueModel.txt
+/LtAmpDotNet/LtAmpDotNet.WinForms/DataModels/PresetViewModel.txt
