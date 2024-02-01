@@ -1,10 +1,11 @@
-﻿using System.CommandLine;
+﻿using LtAmpDotNet.Lib.Events;
+using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
 {
-    internal class UsbGainCommandDefinition
+    internal class UsbGainCommandDefinition : BaseCommandDefinition
     {
-        internal Command CommandDefinition { get; set; }
+        internal override Command CommandDefinition { get; set; }
 
         internal UsbGainCommandDefinition()
         {
@@ -25,26 +26,22 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void UsbGainGet()
         {
-            var wait = new AutoResetEvent(false);
-            Program.amp.UsbGainStatusMessageReceived += (sender, eventArgs) =>
+            Open();
+            if(Amp != null)
             {
-                Console.WriteLine($"{eventArgs.Message.UsbGainStatus.ValueDB}");
-                wait.Set();
-            };
-            Program.amp.GetUsbGain();
-            wait.WaitOne(TimeSpan.FromSeconds(5));
+                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(Amp.GetUsbGain, handler => Amp.UsbGainStatusMessageReceived += handler, 5);
+                Console.WriteLine($"{eventArgs?.Message?.UsbGainStatus.ValueDB}");
+            }
         }
 
         internal void UsbGainSet(float gainValue)
         {
-            var wait = new AutoResetEvent(false);
-            Program.amp.UsbGainStatusMessageReceived += (sender, eventArgs) =>
+            Open();
+            if (Amp != null)
             {
-                Console.WriteLine($"{eventArgs.Message.UsbGainStatus.ValueDB}");
-                wait.Set();
-            };
-            Program.amp.SetUsbGain(gainValue);
-            wait.WaitOne(TimeSpan.FromSeconds(5));
+                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.SetUsbGain(gainValue), handler => Amp.UsbGainStatusMessageReceived += handler, 5);
+                Console.WriteLine($"{eventArgs?.Message?.UsbGainStatus.ValueDB}");
+            }
         }
     }
 }

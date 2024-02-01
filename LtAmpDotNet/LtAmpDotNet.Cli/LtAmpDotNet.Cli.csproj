@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
+    <ProjectReference Include="..\LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj" />
   </ItemGroup>
 
 </Project>

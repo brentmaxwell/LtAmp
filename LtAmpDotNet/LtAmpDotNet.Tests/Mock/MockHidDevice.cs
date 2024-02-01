@@ -23,7 +23,7 @@ namespace LtAmpDotNet.Tests.Mock
         public MockDeviceState DeviceState;
         private bool _isOpen;
         public bool IsOpen => _isOpen;
-        public int? ReportLength => 65;
+        public static int? ReportLength => 65;
 
 
         public event EventHandler? DeviceOpened;
@@ -33,8 +33,9 @@ namespace LtAmpDotNet.Tests.Mock
 
         private event MessageReceivedEventHandler InputReceived;
 
-        private byte[] _dataBuffer = Array.Empty<byte>();
+        private byte[] _dataBuffer = [];
 
+        public MockHidDevice() : this(MockDeviceState.Load()) { }
         public MockHidDevice(MockDeviceState deviceState)
         {
             DeviceState = deviceState;
@@ -47,10 +48,7 @@ namespace LtAmpDotNet.Tests.Mock
             _isOpen = false;
         }
 
-        public void Dispose()
-        {
-            _isOpen = false;
-        }
+        public void Dispose() => _isOpen = false;
 
         public void Open()
         {
@@ -64,12 +62,12 @@ namespace LtAmpDotNet.Tests.Mock
 
         public void OnDeviceOpened(EventArgs e)
         {
-            DeviceOpened?.Invoke(this, new EventArgs());
+            DeviceOpened?.Invoke(this, e);
         }
 
         public void OnDeviceClosed(EventArgs e)
         {
-            DeviceClosed?.Invoke(this, new EventArgs());
+            DeviceClosed?.Invoke(this, e);
         }
 
         public void OnMessageReceived(FenderMessageEventArgs e)
@@ -84,17 +82,13 @@ namespace LtAmpDotNet.Tests.Mock
 
         public void Write(FenderMessageLT message)
         {
-            var inBinaryMessage = message.ToUsbMessage();
-            var inStringMessage = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
-            FenderMessageLT outMessage = new FenderMessageLT();
-            OnMessageSent(new FenderMessageEventArgs(message));
-            
+            MockHidDevice_MessageSent(this, new FenderMessageEventArgs(message));   
         }
 
         private void MockHidDevice_MessageSent(object sender, FenderMessageEventArgs eventArgs)
         {
-            var inBuffer = eventArgs.Message.ToUsbMessage();
-            foreach (var line in inBuffer)
+            var inBuffer = eventArgs.Message?.ToUsbMessage();
+            foreach (var line in inBuffer!)
             {
                 var inputBuffer = line;
                 var tag = inputBuffer?[1];
@@ -106,15 +100,15 @@ namespace LtAmpDotNet.Tests.Mock
                 {
                     var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
                     InputReceived?.Invoke(this, new FenderMessageEventArgs(message));
-                    _dataBuffer = new byte[0];
+                    _dataBuffer = [];
                 }
             }
         }
 
         private void MockHidDevice_InputReceived(object sender, FenderMessageEventArgs eventArgs)
         {
-            FenderMessageLT outMessage = new FenderMessageLT();
-            switch(eventArgs.Message.TypeCase)
+            FenderMessageLT outMessage = new();
+            switch(eventArgs.Message?.TypeCase)
             {
                 case FenderMessageLT.TypeOneofCase.FirmwareVersionRequest:
                     outMessage = MessageFactory.Create(new FirmwareVersionStatus() { Version = DeviceState.firmwareVersion }, ResponseType.IsLastAck);

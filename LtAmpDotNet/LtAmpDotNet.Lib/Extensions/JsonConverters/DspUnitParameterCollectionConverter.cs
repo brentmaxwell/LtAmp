@@ -13,9 +13,9 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
     [JsonConverter(typeof(DspUnitParameterCollectionConverter))]
     public class DspUnitParameterCollectionConverter : JsonConverter<List<DspUnitParameter>>
     {
-        public override void WriteJson(JsonWriter writer, List<DspUnitParameter>? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, List<DspUnitParameter> value, JsonSerializer serializer)
         {
-            var dValue = value.ToDictionary(x => x.Name, x => x.Value);
+            Dictionary<string, dynamic> dValue = value.ToDictionary(x => x.Name!, x => x.Value);
             JToken t = JToken.FromObject(dValue!);
             t.WriteTo(writer);
         }

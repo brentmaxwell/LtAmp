@@ -36,7 +36,7 @@ namespace LtAmpDotNet.Lib.Model.Preset
         [JsonIgnore]
         public string[] DisplayName {
             get => Info?.DisplayName!;
-            set => Info.DisplayName = value;
+            set => Info!.DisplayName = value;
         }
 
         [JsonIgnore]

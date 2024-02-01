@@ -19,11 +19,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json" />
+    <None Remove="Resources\JsonDefinitions\mustang\profile.json" />
     <None Remove="Resources\LtAmpDotNet.ico" />
     <None Remove="Resources\LtAmpDotNet.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\profile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\LtAmpDotNet.ico" />
     <EmbeddedResource Include="Resources\LtAmpDotNet.png">
       <Pack>True</Pack>
@@ -39,19 +47,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="JsonDefinitions\mustang\default_presets.json">
+    <None Update="Resources\JsonDefinitions\mustang\presets\default_presets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="JsonDefinitions\mustang\dsp_units.json">
+    <None Update="Resources\JsonDefinitions\rumble\dsp_units.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="JsonDefinitions\mustang\profile.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="JsonDefinitions\rumble\dsp_units.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="JsonDefinitions\rumble\profile.json">
+    <None Update="Resources\JsonDefinitions\rumble\profile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

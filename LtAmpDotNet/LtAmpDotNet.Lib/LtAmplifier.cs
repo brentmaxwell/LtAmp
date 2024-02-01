@@ -3,6 +3,7 @@ using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Lib.Models.Protobuf;
 using Newtonsoft.Json;
+using System.Resources;
 
 namespace LtAmpDotNet.Lib
 {
@@ -22,7 +23,8 @@ namespace LtAmpDotNet.Lib
         {
             try
             {
-                var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "JsonDefinitions", "mustang", "dsp_units.json"));
+                
+                var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "Resources", "JsonDefinitions", "mustang", "dsp_units", "dsp_units.json"));
                 DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);
             }
             catch (Exception ex)
@@ -37,7 +39,7 @@ namespace LtAmpDotNet.Lib
         public bool IsOpen => _isOpen;
 
         /// <summary>Contains an error type when the amp send an UnsupportedMessageStatus message</summary>
-        public ErrorType ErrorType { get; set; }
+        public ErrorType? ErrorType { get; set; }
 
         #endregion
 
@@ -53,6 +55,10 @@ namespace LtAmpDotNet.Lib
 
         /// <summary>Creates an instance of LtAmplifier for the default USB connection</summary>
         public LtAmplifier() : this(new UsbAmpDevice()){ }
+
+        /// <summary>Creates an instance of LtAmplifier with a specific devices</summary>
+        /// <param name="importDspDefinitions">False to ignore the json dsp unit definitions</param>
+        public LtAmplifier(bool importDspDefinitions) : this(new UsbAmpDevice(), importDspDefinitions) { }
 
         /// <summary>Creates an instance of LtAmplifier with a specific devices</summary>
         /// <param name="device">The device to connect with</param>
@@ -170,7 +176,7 @@ namespace LtAmpDotNet.Lib
         /// <param name="eventArgs"></param>
         private void IAmpDevice_OnMessageReceived(object sender, FenderMessageEventArgs eventArgs)
         {
-            if (MessageEventHandlers.TryGetValue(eventArgs.MessageType, out Action<FenderMessageEventArgs>? value))
+            if (MessageEventHandlers.TryGetValue(eventArgs.MessageType.GetValueOrDefault(), out Action<FenderMessageEventArgs>? value))
             {
                 value(eventArgs);
             }
@@ -180,6 +186,8 @@ namespace LtAmpDotNet.Lib
             }
             MessageReceived?.Invoke(this, eventArgs);
         }
+
+        
 
         #endregion
     }

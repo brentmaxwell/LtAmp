@@ -51,7 +51,7 @@ namespace LtAmpDotNet.Tests
             List<FenderMessageLT> messages = new List<FenderMessageLT>();
             amp.MessageReceived += (sender, eventArgs) =>
             {
-                if(!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message.ModalStatusMessage.Context == ModalContext.SyncBegin))
+                if(!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message?.ModalStatusMessage.Context == ModalContext.SyncBegin))
                 {
                     messages.Add(eventArgs.Message);
                 }

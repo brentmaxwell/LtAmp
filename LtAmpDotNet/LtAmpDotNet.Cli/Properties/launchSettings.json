@@ -1,7 +1,8 @@
 {
   "profiles": {
     "LtAmpDotNet.Cli": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "qa get"
     }
   }
 }
