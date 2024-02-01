@@ -8,129 +8,126 @@ using Timer = System.Timers.Timer;
 
 namespace LtAmpDotNet.Lib.Device
 {
+    /// <summary>
+    /// Represents a USB connection to the amplifier
+    /// </summary>
     public class UsbAmpDevice : IAmpDevice
     {
         #region Constants
 
-        /// <summary>
-        /// Default vendor ID to connect to
-        /// </summary>
+        /// <summary>Default vendor ID to connect to</summary>
         public const int VENDOR_ID = 0x1ed8;
 
-        /// <summary>
-        /// Default product ID to connect to 
-        /// </summary>
+        /// <summary>Default product ID to connect to</summary>
         public const int PRODUCT_ID = 0x0037;
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>State of the connection to the amplifier</summary>
         public bool IsOpen => _isOpen;
 
         #endregion
 
         #region Events
         
+        /// <summary>Triggered when the device connection is opened and successful</summary>
         public event EventHandler? DeviceOpened;
+
+        /// <summary>Triggered when the device connection closes</summary>
         public event EventHandler? DeviceClosed;
-        public event MessageReceivedEventHandler? MessageReceived;
+
+        /// <summary>Triggered when a message is sent to the amp</summary>
         public event MessageSentEventHandler? MessageSent;
-        private TimerCallback? _heartbeatCallback { get; set; }
+
+        /// <summary>Triggered when a message is received from the amp</summary>
+        public event MessageReceivedEventHandler? MessageReceived;
 
         #endregion
 
         #region Fields
 
-        /// <summary>
-        /// Holds the HidDevice object underlying the connection
-        /// </summary>
+        /// <summary>Holds the HidDevice object underlying the connection</summary>
         private HidDevice? _device;
         
-        /// <summary>
-        /// Holds the HidStream object underlying the connection
-        /// </summary>
+        /// <summary>Holds the HidStream object underlying the connection</summary>
         private HidStream? _stream;
 
-        /// <summary>
-        /// Input receiver for the incoming data
-        /// </summary>
+        /// <summary>Input receiver for the incoming data</summary>
         private HidDeviceInputReceiver? _inputReceiver;
-        
-        // /// <summary>
-        // /// Data length for reports communicated from the amplifier
-        // /// </summary>
-        private int? ReportLength => _device?.GetMaxInputReportLength();
 
-        /// <summary>
-        /// Buffer to store the data as it comes in to string together multi-report messages
-        /// </summary>
-        private byte[] _dataBuffer = Array.Empty<byte>();
+        /// <summary>Timer for the heartbeat</summary>
+        private readonly Timer heartbeatTimer = new(1000);
 
-        /// <summary>
-        /// Holds the open state of the amp;
-        /// </summary>
+        /// <summary>Data length for reports communicated from the amplifier</summary>
+        private int? _reportLength => _device?.GetMaxInputReportLength();
+
+        /// <summary>Buffer to store the data as it comes in to string together multi-report messages</summary>
+        private byte[] _dataBuffer = [];
+
+        /// <summary>Holds the open state of the amp</summary>
         private bool _isOpen = false;
 
-        /// <summary>
-        /// for disposing
-        /// </summary>
+        /// <summary>for disposing</summary>
         private bool _disposedValue;
 
         #endregion
 
         #region Constructors
 
-        /// <summary>
-        /// Default constructor; will use the first available device connected with the default VID/PID
-        /// </summary>
-        public UsbAmpDevice()
-        {
+        /// <summary>Default constructor; will use the first available device connected with the default VID/PID</summary>
+        public UsbAmpDevice() { }
 
-        }
-
-        /// <summary>
-        /// Uses the HidDevice specified
-        /// </summary>
+        /// <summary>Uses the HidDevice specified</summary>
         /// <param name="device"></param>
-        public UsbAmpDevice(HidDevice device)
-        {
-            _device = device;
-        }
+        public UsbAmpDevice(HidDevice device) => _device = device;
 
         #endregion
 
         #region Public Methods
 
-        public void Open()
-        {
-            Open(true);
-        }
+        /// <summary>Opens a connection to the amplifier</summary>
+        public void Open() => Open(true);
 
-        /// <summary>
-        /// Opens a connection to the amplifier
-        /// </summary>
+        /// <summary>Opens a connection to the amplifier</summary>
+        /// <param name="continueTry">True to wait for the device to be enumerated on the computer, or false to fail after one try</param>
         /// <exception cref="IOException">Thrown when there is a connection issue with the device</exception>
         public void Open(bool continueTry = true)
         {
             if (_device == null)
             {
-                _device = DeviceList.Local.GetHidDeviceOrNull(VENDOR_ID, PRODUCT_ID);
-            }
-            if (_device != null && _stream == null)
-            {
-                _inputReceiver = _device.GetReportDescriptor().CreateHidDeviceInputReceiver();
-                _inputReceiver.Received += InputReceiver_Received;
-                _stream = _device.Open();
-                if (_stream == null)
+                try
                 {
-                    throw new IOException("Could not open connection to device");
+                    DeviceList.Local.Changed -= UsbDevices_Changed;
+                    _device = DeviceList.Local.GetHidDeviceOrNull(VENDOR_ID, PRODUCT_ID);
                 }
-                _stream.Closed += Stream_DeviceClosed; ;
-                _inputReceiver.Start(_stream);
-                Timer heartbeatTimer = new Timer(1000);
-                heartbeatTimer.Elapsed += HeartbeatTimer_Elapsed;
-                heartbeatTimer.Start();
-                OnDeviceOpened(new EventArgs());
+                catch(Exception ex)
+                {
+                    throw (new Exception($"Exception trying to enumerate USB devices: {ex.Message}", ex));
+                }
+            }
+            if (_device != null && _device.CanOpen && _stream == null )
+            {
+                try
+                {
+                    _inputReceiver = _device.GetReportDescriptor().CreateHidDeviceInputReceiver();
+                    _inputReceiver.Received += InputReceiver_Received;
+                    _stream = _device.Open();
+                    if (_stream == null)
+                    {
+                        throw new IOException("Could not open connection to device");
+                    }
+                    _stream.Closed += Stream_DeviceClosed;
+                    _inputReceiver.Start(_stream);
+                    heartbeatTimer.Elapsed += HeartbeatTimer_Elapsed;
+                    heartbeatTimer.Start();
+                    OnDeviceOpened(new EventArgs());
+                }
+                catch(Exception ex)
+                {
+                    throw (new Exception($"Exception opening device {_device.GetFriendlyName()}: {ex.Message}", ex));
+                }
             }
             else if(continueTry)
             {
@@ -138,6 +135,7 @@ namespace LtAmpDotNet.Lib.Device
             }
         }
         
+        /// <summary>Closes the connection to the amplifier</summary>
         public void Close()
         {
             _isOpen = false;
@@ -146,11 +144,15 @@ namespace LtAmpDotNet.Lib.Device
             
         }
 
+        /// <summary>Sends a message to the amp</summary>
+        /// <param name="message">The message to send to the amp</param>
+        /// <exception cref="Exception">Thrown when the device is not connected</exception>
         public void Write(FenderMessageLT message)
         {
+            if (_stream == null) throw (new Exception($"Exception: device is not connected"));
             foreach (var packet in message.ToUsbMessage())
             {
-                _stream?.Write(packet);
+                _stream.Write(packet);
             }
             if (message.TypeCase != FenderMessageLT.TypeOneofCase.Heartbeat)
             {
@@ -158,13 +160,16 @@ namespace LtAmpDotNet.Lib.Device
             }
         }
        
+        /// <summary>Disposes underlying objects</summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-        
+
+        /// <summary>Disposes underlying objects</summary>
+        /// <param name="disposing"></param>
         public void Dispose(bool disposing)
         {
             if (!_disposedValue)
@@ -185,29 +190,23 @@ namespace LtAmpDotNet.Lib.Device
 
         #region Private Events
 
-        public void OnDeviceOpened(EventArgs e)
-        {
-            DeviceOpened?.Invoke(this, e);
-        }
+        /// <summary>Triggers the DeviceOpened event</summary>
+        /// <param name="e"></param>
+        public void OnDeviceOpened(EventArgs e) => DeviceOpened?.Invoke(this, e);
 
-        public void OnDeviceClosed(EventArgs e)
-        {
-            DeviceClosed?.Invoke(this, new EventArgs());
-        }
+        /// <summary>Triggers the DeviceClosed event</summary>
+        /// <param name="e"></param>
+        public void OnDeviceClosed(EventArgs e) => DeviceClosed?.Invoke(this, new EventArgs());
 
-        public void OnMessageReceived(FenderMessageEventArgs e)
-        {
-            MessageReceived?.Invoke(this, e);
-        }
+        /// <summary>Triggers the MessageReceived event</summary>
+        /// <param name="e"></param>
+        public void OnMessageReceived(FenderMessageEventArgs e) => MessageReceived?.Invoke(this, e);
 
-        public void OnMessageSent(FenderMessageEventArgs e)
-        {
-            MessageSent?.Invoke(this, e);
-        }
+        /// <summary>Triggers the MessageSent event</summary>
+        /// <param name="e"></param>
+        public void OnMessageSent(FenderMessageEventArgs e) => MessageSent?.Invoke(this, e);
 
-        /// <summary>
-        /// Triggered on change of USB devices connected; used to auto connect.
-        /// </summary>
+        /// <summary>Triggered on change of USB devices connected; used to auto connect.</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UsbDevices_Changed(object? sender, DeviceListChangedEventArgs e)
@@ -216,16 +215,15 @@ namespace LtAmpDotNet.Lib.Device
             Open(true);
         }
 
-        /// <summary>
-        /// Parses the data recevied from the input receiver, and triggers a MessageReceived event with the parsed FenderMessageLT
-        /// </summary>
+        /// <summary>Parses the data recevied from the input receiver, and triggers a MessageReceived event with the parsed FenderMessageLT message</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void InputReceiver_Received(object? sender, EventArgs e)
         {
-            while ((_inputReceiver?.Stream.CanRead).GetValueOrDefault())
+            if (_inputReceiver == null || !_inputReceiver.IsRunning) throw (new Exception($"Exception: device is not connected"));
+            while (_inputReceiver.Stream.CanRead)
             {
-                var inputBuffer = _inputReceiver?.Stream.Read();
+                var inputBuffer = _inputReceiver.Stream.Read();
                 var tag = inputBuffer?[2];
                 var length = inputBuffer?[3];
                 var bufferStart = _dataBuffer.Length;
@@ -235,13 +233,16 @@ namespace LtAmpDotNet.Lib.Device
                 {
                     var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
                     OnMessageReceived(new FenderMessageEventArgs(message));
-                    
-                    _dataBuffer = new byte[0];
+                    _dataBuffer = [];
                 }
-                inputBuffer = new byte[ReportLength.GetValueOrDefault()];
             }
         }
         
+        /// <summary>
+        /// Ticks with the heartbeatTimer to send a heartbeat message to the amp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HeartbeatTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             Write(new FenderMessageLT()
@@ -268,10 +269,16 @@ namespace LtAmpDotNet.Lib.Device
         #endregion
     }
 
+    /// <summary>
+    /// The first byte of a USB data packet from the amp
+    /// </summary>
     public enum UsbHidMessageTag
     {
+        /// <summary>First packet in a series</summary>
         Start = 0x33,
+        /// <summary>A message in a series of data packets</summary>
         Continue = 0x34,
+        /// <summary>Last or only packet in a series</summary>
         End = 0x35,
     }
 }

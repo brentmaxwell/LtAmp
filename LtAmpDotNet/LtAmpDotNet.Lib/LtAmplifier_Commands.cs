@@ -140,7 +140,7 @@ namespace LtAmpDotNet.Lib
         /// response: ClearPresetStatus
         /// </summary>
         /// <param name="slotIndex">The bank to clear</param>
-        /// <param name="loadPreset">Unknown; the official application always sends true</param>
+        /// <param name="isLoadPreset">Unknown; the official application always sends true</param>
 
         public void ClearPreset(int slotIndex, bool isLoadPreset = true)
         {
@@ -186,8 +186,6 @@ namespace LtAmpDotNet.Lib
             }
             SendMessage(message);
         }
-
-        // ReplaceNode
         public void ReplaceNode(string nodeId, string fenderId)
         {
             SendMessage(MessageFactory.Create(new ReplaceNode() { NodeIdToReplace = nodeId, FenderIdToReplaceWith = fenderId }));
@@ -197,21 +195,29 @@ namespace LtAmpDotNet.Lib
 
         #region Device Info
 
-        // ModalState
-        // response: ModalState
+        /// <summary>
+        /// Sets the modal state of the amp
+        /// response: ModalState
+        /// </summary>
+        /// <param name="modalContext">The state to set</param>
         public void SetModalState(ModalContext modalContext)
         {
             SendMessage(MessageFactory.Create(new ModalStatusMessage() { Context = modalContext, State = ModalState.Ok }));
         }
 
-        // FirmwareVersionRequest
-        // response: FirmwareVersionStatus
+        /// <summary>
+        /// Requests the current firmware version of the amp
+        /// response: FirmwareVersionStatus
+        /// </summary>
         public void GetFirmwareVersion()
         {
             SendMessage(MessageFactory.Create(new FirmwareVersionRequest() { Request = true }));
         }
 
-        // MemoryUsageRequest
+        /// <summary>
+        /// Gets the memory usage of the amp
+        /// response: MemoryUsageStatus
+        /// </summary>
         public void GetMemoryUsage()
         {
             SendMessage(MessageFactory.Create(new MemoryUsageRequest() { Request = true }));
@@ -259,6 +265,7 @@ namespace LtAmpDotNet.Lib
 
         #region pre-formed commands
 
+        /// <summary>retrieves all presets from the amp</summary>
         public void GetAllPresets()
         {
             for (int i = 1; i <= NUM_OF_PRESETS; i++)
@@ -268,6 +275,8 @@ namespace LtAmpDotNet.Lib
             }
         }
 
+        /// <summary>Sets the tuner on or off</summary>
+        /// <param name="on_off">True for on; false for off</param>
         public void SetTuner(bool on_off)
         {
             SetModalState(on_off ? ModalContext.TunerEnable : ModalContext.TunerDisable);

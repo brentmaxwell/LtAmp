@@ -11,14 +11,15 @@ namespace LtAmpDotNet.Lib.Extensions
 {
     public static class MessageExtensions
     {
-        public static byte[][] ToUsbMessage(this IMessage message)
+        public static byte[][] ToUsbMessage(this IMessage message, int packetLength = 65)
         {
+            packetLength = packetLength - 4;
             byte[] data = message.ToByteArray();
-            var chunks = data.Split(61).ToList();
+            var chunks = data.Split(packetLength).ToList();
             byte[][] packets = new byte[chunks.Count()][];
             for (int i = 0; i < chunks.Count(); i++)
             {
-                packets[i] = new byte[65];
+                packets[i] = new byte[packetLength];
                 if (i + 1 == chunks.Count())
                 {
                     packets[i][1] = 0x35;
