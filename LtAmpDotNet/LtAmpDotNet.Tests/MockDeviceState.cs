@@ -1,9 +1,5 @@
-using LtAmpDotNet.Lib;
-using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Models.Protobuf;
 using Newtonsoft.Json;
-using NUnit.Framework.Constraints;
-using System.Security.Cryptography.X509Certificates;
 
 namespace LtAmpDotNet.Tests
 {
@@ -19,7 +15,7 @@ namespace LtAmpDotNet.Tests
 
         public static MockDeviceState Load()
         {
-            var filePath = Path.Join(Environment.CurrentDirectory, "mockAmpState.json");
+            string filePath = Path.Join(Environment.CurrentDirectory, "mockAmpState.json");
             return JsonConvert.DeserializeObject<MockDeviceState>(File.ReadAllText(filePath));
 
         }

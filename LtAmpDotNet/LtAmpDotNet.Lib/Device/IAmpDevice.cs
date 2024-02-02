@@ -1,4 +1,4 @@
-﻿using LtAmpDotNet.Lib.Events;
+using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet.Lib.Device
@@ -16,10 +16,10 @@ namespace LtAmpDotNet.Lib.Device
         public event EventHandler? DeviceClosed;
 
         /// <summary>Fired when a message is received from the amplifier</summary>
-        public event MessageReceivedEventHandler? MessageReceived;
+        public event EventHandler<FenderMessageEventArgs>? MessageReceived;
 
         /// <summary>Fired when a message is sent to the amplifier</summary>
-        public event MessageSentEventHandler? MessageSent;
+        public event EventHandler<FenderMessageEventArgs>? MessageSent;
 
         /// <summary>Opens a connection to the amplifier</summary>
         public void Open();
@@ -37,3 +37,4 @@ namespace LtAmpDotNet.Lib.Device
 
     }
 }
+

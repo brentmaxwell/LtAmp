@@ -1,15 +1,5 @@
 ﻿using LtAmpDotNet.Base;
-using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels
 {
@@ -19,10 +9,11 @@ namespace LtAmpDotNet.Panels
 
         public CurrentPresetPanelViewModel ViewModel
         {
-            get { return viewModel; }
-            set {
+            get => viewModel;
+            set
+            {
                 viewModel = value;
-                if(viewModel != null)
+                if (viewModel != null)
                 {
                     labelPresetName.Text = viewModel.PresetName;
                     dspUnitControlAmp.ViewModel = viewModel.AmpViewModel;
@@ -37,7 +28,7 @@ namespace LtAmpDotNet.Panels
 
         private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)
         {
-            
+
         }
 
         public CurrentPresetPanel()

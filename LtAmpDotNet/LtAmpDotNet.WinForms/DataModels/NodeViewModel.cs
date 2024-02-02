@@ -1,12 +1,4 @@
-﻿using LtAmpDotNet.Lib.Model.Preset;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LtAmpDotNet.DataModels
+﻿namespace LtAmpDotNet.DataModels
 {
     public class NodeViewModel
     {

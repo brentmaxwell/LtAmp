@@ -1,21 +1,15 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HidSharp.Utility;
-using LtAmpDotNet.Lib.Model.Preset;
+using Newtonsoft.Json.Linq;
 
 namespace LtAmpDotNet.Lib.Extensions.JsonConverters
 {
     [JsonConverter(typeof(DspUnitParameterCollectionConverter))]
     public class DspUnitParameterCollectionConverter : JsonConverter<List<DspUnitParameter>>
     {
-        public override void WriteJson(JsonWriter writer, List<DspUnitParameter> value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, List<DspUnitParameter>? value, JsonSerializer serializer)
         {
-            Dictionary<string, dynamic> dValue = value.ToDictionary(x => x.Name!, x => x.Value);
+            Dictionary<string, dynamic> dValue = value!.ToDictionary(x => x.Name!, x => x.Value);
             JToken t = JToken.FromObject(dValue!);
             t.WriteTo(writer);
         }
@@ -24,18 +18,13 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
         {
             JObject jObject = JObject.Load(reader);
 
-            List<DspUnitParameter> parameters = new List<DspUnitParameter>();
-            foreach (var prop in jObject)
+            List<DspUnitParameter> parameters = [];
+            foreach (KeyValuePair<string, JToken?> prop in jObject)
             {
                 parameters.Add(new DspUnitParameter() { Name = prop.Key, Value = prop.Value! });
             }
 
-            if (jObject != null && jObject.Count > 1)
-            {
-                return parameters;
-            }
-
-            return null;
+            return jObject != null && jObject.Count > 1 ? parameters : null;
         }
     }
 }

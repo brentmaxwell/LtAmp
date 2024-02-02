@@ -1,37 +1,25 @@
-using HidSharp;
-using HidSharp.Reports;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Device;
-using LtAmpDotNet.Lib.Model;
-using Newtonsoft.Json;
-using static LtAmpDotNet.Lib.LtAmplifier;
-using LtAmpDotNet.Lib.Models.Protobuf;
-using LtAmpDotNet.Lib.Extensions;
 using LtAmpDotNet.Lib.Events;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using LtAmpDotNet.Lib.Extensions;
+using LtAmpDotNet.Lib.Model;
+using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet.Tests.Mock
 {
     public class MockHidDevice : IAmpDevice
     {
         public MockDeviceState DeviceState;
-        private bool _isOpen;
-        public bool IsOpen => _isOpen;
+
+        public bool IsOpen { get; private set; }
         public static int? ReportLength => 65;
 
 
         public event EventHandler? DeviceOpened;
         public event EventHandler? DeviceClosed;
-        public event MessageReceivedEventHandler? MessageReceived;
-        public event MessageSentEventHandler? MessageSent;
+        public event EventHandler<FenderMessageEventArgs>? MessageReceived;
+        public event EventHandler<FenderMessageEventArgs>? MessageSent;
 
-        private event MessageReceivedEventHandler InputReceived;
+        private event EventHandler<FenderMessageEventArgs> InputReceived;
 
         private byte[] _dataBuffer = [];
 
@@ -45,10 +33,13 @@ namespace LtAmpDotNet.Tests.Mock
 
         public void Close()
         {
-            _isOpen = false;
+            IsOpen = false;
         }
 
-        public void Dispose() => _isOpen = false;
+        public void Dispose()
+        {
+            IsOpen = false;
+        }
 
         public void Open()
         {
@@ -82,33 +73,33 @@ namespace LtAmpDotNet.Tests.Mock
 
         public void Write(FenderMessageLT message)
         {
-            MockHidDevice_MessageSent(this, new FenderMessageEventArgs(message));   
+            MockHidDevice_MessageSent(this, new FenderMessageEventArgs(message));
         }
 
-        private void MockHidDevice_MessageSent(object sender, FenderMessageEventArgs eventArgs)
+        private void MockHidDevice_MessageSent(object? sender, FenderMessageEventArgs eventArgs)
         {
-            var inBuffer = eventArgs.Message?.ToUsbMessage();
-            foreach (var line in inBuffer!)
+            byte[][]? inBuffer = eventArgs.Message?.ToUsbMessage();
+            foreach (byte[] line in inBuffer!)
             {
-                var inputBuffer = line;
-                var tag = inputBuffer?[1];
-                var length = inputBuffer?[2];
-                var bufferStart = _dataBuffer.Length;
+                byte[]? inputBuffer = line;
+                byte? tag = inputBuffer?[1];
+                byte? length = inputBuffer?[2];
+                int bufferStart = _dataBuffer.Length;
                 Array.Resize(ref _dataBuffer, _dataBuffer.Length + length.GetValueOrDefault());
                 Buffer.BlockCopy(inputBuffer!, 3, _dataBuffer, bufferStart, length.GetValueOrDefault());
                 if (tag == (byte)UsbHidMessageTag.End)
                 {
-                    var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
+                    FenderMessageLT message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
                     InputReceived?.Invoke(this, new FenderMessageEventArgs(message));
                     _dataBuffer = [];
                 }
             }
         }
 
-        private void MockHidDevice_InputReceived(object sender, FenderMessageEventArgs eventArgs)
+        private void MockHidDevice_InputReceived(object? sender, FenderMessageEventArgs eventArgs)
         {
             FenderMessageLT outMessage = new();
-            switch(eventArgs.Message?.TypeCase)
+            switch (eventArgs.Message?.TypeCase)
             {
                 case FenderMessageLT.TypeOneofCase.FirmwareVersionRequest:
                     outMessage = MessageFactory.Create(new FirmwareVersionStatus() { Version = DeviceState.firmwareVersion }, ResponseType.IsLastAck);
@@ -134,7 +125,7 @@ namespace LtAmpDotNet.Tests.Mock
                     outMessage = MessageFactory.Create(new ModalStatusMessage() { Context = eventArgs.Message.ModalStatusMessage.Context, State = ModalState.Ok }, ResponseType.IsLastAck);
                     break;
                 case FenderMessageLT.TypeOneofCase.RetrievePreset:
-                    var index = eventArgs.Message.RetrievePreset.Slot;
+                    int index = eventArgs.Message.RetrievePreset.Slot;
                     outMessage = MessageFactory.Create(new PresetJSONMessage() { Data = DeviceState?.Presets![index - 1], SlotIndex = index });
                     break;
             }

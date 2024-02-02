@@ -1,17 +1,6 @@
 ﻿using LtAmpDotNet.Base;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.ViewModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels.DspUnitControlViews
 {
@@ -29,12 +18,13 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
                 propertyGrid1.SelectedObject = new ParameterPropertyGridAdapter(_viewModel?.Parameters);
             }
         }
-        public PropertyGridUnitControlView(): base()
+        public PropertyGridUnitControlView() : base()
         {
             InitializeComponent();
         }
 
-        public override Node Node {
+        public override Node Node
+        {
             get => _viewModel.Node;
             set
             {
@@ -56,9 +46,9 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
             {
                 OnChangesApplied(this, e);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Cannot apply json: {ex.Message}","Error applying node",MessageBoxButtons.OK);
+                MessageBox.Show($"Cannot apply json: {ex.Message}", "Error applying node", MessageBoxButtons.OK);
             }
         }
 

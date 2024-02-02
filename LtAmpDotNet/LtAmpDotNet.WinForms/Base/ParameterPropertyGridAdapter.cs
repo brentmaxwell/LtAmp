@@ -1,20 +1,13 @@
 ﻿using LtAmpDotNet.ViewModels;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace LtAmpDotNet.Base
 {
     public class ParameterPropertyGridAdapter : ICustomTypeDescriptor
     {
 
-        private List<DspUnitParameterViewModel> _parameters;
+        private readonly List<DspUnitParameterViewModel> _parameters;
         public AttributeCollection GetAttributes()
         {
             return TypeDescriptor.GetAttributes(this, true);
@@ -67,8 +60,8 @@ namespace LtAmpDotNet.Base
 
         public PropertyDescriptorCollection GetProperties(Attribute[]? attributes)
         {
-            ArrayList properties = new ArrayList();
-            foreach (var item in _parameters)
+            ArrayList properties = [];
+            foreach (DspUnitParameterViewModel item in _parameters)
             {
                 properties.Add(new DspUnitParameterPropertyDescriptor(_parameters, item.Name));
             }
@@ -92,9 +85,9 @@ namespace LtAmpDotNet.Base
 
     public class DspUnitParameterPropertyDescriptor : PropertyDescriptor
     {
-        private List<DspUnitParameterViewModel> _parameters;
-        object _key;
-        public DspUnitParameterPropertyDescriptor(List<DspUnitParameterViewModel> parameters, object key): base(key.ToString(), null)
+        private readonly List<DspUnitParameterViewModel> _parameters;
+        private readonly object _key;
+        public DspUnitParameterPropertyDescriptor(List<DspUnitParameterViewModel> parameters, object key) : base(key.ToString(), null)
         {
             _parameters = parameters;
             _key = key;
@@ -104,12 +97,12 @@ namespace LtAmpDotNet.Base
 
         public override bool IsReadOnly => false;
 
-        public override Type PropertyType
-        {
-            get { return _parameters.SingleOrDefault(x => x.Name == (string)_key).GetType(); }
-        }
+        public override Type PropertyType => _parameters.SingleOrDefault(x => x.Name == (string)_key).GetType();
 
-        public override bool CanResetValue(object? component) => false;
+        public override bool CanResetValue(object? component)
+        {
+            return false;
+        }
 
         public override void SetValue(object? component, object? value)
         {
@@ -126,6 +119,9 @@ namespace LtAmpDotNet.Base
             throw new NotImplementedException();
         }
 
-        public override bool ShouldSerializeValue(object component) => false;
+        public override bool ShouldSerializeValue(object component)
+        {
+            return false;
+        }
     }
 }

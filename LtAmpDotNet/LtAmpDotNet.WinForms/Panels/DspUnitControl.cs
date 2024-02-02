@@ -1,18 +1,7 @@
 ﻿using LtAmpDotNet.Base;
 using LtAmpDotNet.Lib.Model.Preset;
-using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Panels.DspUnitControlViews;
 using LtAmpDotNet.ViewModels;
-using NUnit.Framework.Constraints;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels
 {
@@ -52,7 +41,7 @@ namespace LtAmpDotNet.Panels
             InitializeComponent();
             unitControl = new PropertyGridUnitControlView();
             panelControl.Controls.Add(unitControl);
-            
+
         }
 
         private void viewModel_ValueChanged(object? sender, ValueChangedEventArgs e)

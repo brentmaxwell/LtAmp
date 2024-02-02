@@ -2,41 +2,25 @@ using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Lib.Models.Protobuf;
-using Newtonsoft.Json;
-using System.Resources;
+using static LtAmpDotNet.Lib.Models.Protobuf.FenderMessageLT;
 
 namespace LtAmpDotNet.Lib
 {
     /// <summary>
     /// Represents an amplifier device
     /// </summary>
-    public partial class LtAmplifier : IDisposable
+    public partial class LtAmplifier : IDisposable, ILtAmplifier
     {
         /// <summary>number of presets available in the amplifier</summary>
         public const int NUM_OF_PRESETS = 60;
 
         /// <summary>definitions of all parts of the presets and DspUnits in the amplifier</summary>
         public static List<DspUnitDefinition>? DspUnitDefinitions { get; set; }
-        
-        /// <summary>Imports the DspUnit definitions from the JSON configuration files</summary>
-        private static void ImportDspUnitDefinitions()
-        {
-            try
-            {
-                
-                var rawData = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "Resources", "JsonDefinitions", "mustang", "dsp_units", "dsp_units.json"));
-                DspUnitDefinitions = JsonConvert.DeserializeObject<List<DspUnitDefinition>>(rawData);
-            }
-            catch (Exception ex)
-            {
-                throw (new Exception($"Exception opening DspUnit definitions file: {ex.Message}", ex));
-            }
-        }
 
         #region public properties
 
         /// <summary>Current state of the amp connection</summary>
-        public bool IsOpen => _isOpen;
+        public bool IsOpen { get; private set; }
 
         /// <summary>Contains an error type when the amp send an UnsupportedMessageStatus message</summary>
         public ErrorType? ErrorType { get; set; }
@@ -46,7 +30,6 @@ namespace LtAmpDotNet.Lib
         #region private fields and properties
 
         private readonly IAmpDevice _device;
-        private bool _isOpen;
         private bool _disposedValue;
 
         #endregion
@@ -54,20 +37,15 @@ namespace LtAmpDotNet.Lib
         #region Constructors
 
         /// <summary>Creates an instance of LtAmplifier for the default USB connection</summary>
-        public LtAmplifier() : this(new UsbAmpDevice()){ }
-
-        /// <summary>Creates an instance of LtAmplifier with a specific devices</summary>
-        /// <param name="importDspDefinitions">False to ignore the json dsp unit definitions</param>
-        public LtAmplifier(bool importDspDefinitions) : this(new UsbAmpDevice(), importDspDefinitions) { }
+        public LtAmplifier() : this(new UsbAmpDevice()) { }
 
         /// <summary>Creates an instance of LtAmplifier with a specific devices</summary>
         /// <param name="device">The device to connect with</param>
-        /// <param name="importDspDefinitions">False to ignore the json dsp unit definitions</param>
-        public LtAmplifier(IAmpDevice device, bool importDspDefinitions = true)
+        public LtAmplifier(IAmpDevice device)
         {
             SetupMessageEventHandlers();
             _device = device;
-            if(importDspDefinitions) ImportDspUnitDefinitions();
+            DspUnitDefinitions = DspUnitDefinition.Load();
         }
 
         #endregion
@@ -85,10 +63,25 @@ namespace LtAmpDotNet.Lib
             _device.Open(continueTry);
         }
 
+        /// <summary>Asynchronously open the connection to the amp</summary>
+        /// <param name="continueTry">True to continue trying to connect until successful</param>
+        public async Task OpenAsync(bool continueTry = true)
+        {
+            TaskCompletionSource tcs = new TaskCompletionSource();
+            void eventHandler(object? sender, EventArgs eventArgs)
+            {
+                AmplifierConnected -= eventHandler;
+                tcs.SetResult();
+            }
+            AmplifierConnected += eventHandler;
+            Open(continueTry);
+            await tcs.Task;
+        }
+
         /// <summary>Closes the amp connection</summary>
         public void Close()
         {
-            _isOpen = false;
+            IsOpen = false;
             _device.Close();
         }
 
@@ -100,7 +93,7 @@ namespace LtAmpDotNet.Lib
             {
                 if (disposing)
                 {
-                    if(_device != null)
+                    if (_device != null)
                     {
                         _device.Close();
                         _device.Dispose();
@@ -119,7 +112,30 @@ namespace LtAmpDotNet.Lib
 
         /// <summary>Sends a specific message to the amp</summary>
         /// <param name="message">Message to send</param>
-        public void SendMessage(FenderMessageLT message) => _device.Write(message);
+        public void SendMessage(FenderMessageLT message)
+        {
+            _device.Write(message);
+        }
+
+        /// <summary>Asynchronously sends a specific message to the amp</summary>
+        /// <param name="message">Message to send</param>
+        /// <param name="responseMessage">The message to wait for</param>
+        /// <returns>Resposne message from the amp</returns>
+        public async Task<FenderMessageLT> SendMessageAsync(FenderMessageLT message, TypeOneofCase responseMessage = TypeOneofCase.None)
+        {
+            TaskCompletionSource<FenderMessageLT> tcs = new TaskCompletionSource<FenderMessageLT>();
+            void eventHandler(object? sender, FenderMessageEventArgs eventArgs)
+            {
+                if (eventArgs.MessageType == TypeOneofCase.None || eventArgs.MessageType == responseMessage)
+                {
+                    MessageReceived -= eventHandler;
+                    tcs.SetResult(eventArgs.Message!);
+                }
+            }
+            MessageReceived += eventHandler;
+            SendMessage(message);
+            return await tcs.Task;
+        }
 
         #endregion
 
@@ -152,29 +168,34 @@ namespace LtAmpDotNet.Lib
         /// <summary>Triggered when the device is opened</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void IAmpDevice_Opened(object? sender, EventArgs e){
+        private void IAmpDevice_Opened(object? sender, EventArgs e)
+        {
             InitializeConnection();
             AmplifierConnected?.Invoke(this, null!);
-            _isOpen = true;
+            IsOpen = true;
         }
 
         /// <summary>Triggered when the device is closed</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void IAmpDevice_Closed(object? sender, EventArgs e){
-            _isOpen = false;
+        private void IAmpDevice_Closed(object? sender, EventArgs e)
+        {
+            IsOpen = false;
             AmplifierDisconnected?.Invoke(this, null!);
         }
 
         /// <summary>Internal trigger for data sent to the amp</summary>
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
-        private void IAmpDevice_OnMessageSent(object sender, FenderMessageEventArgs eventArgs) => MessageSent?.Invoke(this, eventArgs);
+        private void IAmpDevice_OnMessageSent(object? sender, FenderMessageEventArgs eventArgs)
+        {
+            MessageSent?.Invoke(this, eventArgs);
+        }
 
         /// <summary>Internal trigger for data received from the amp</summary>
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
-        private void IAmpDevice_OnMessageReceived(object sender, FenderMessageEventArgs eventArgs)
+        private void IAmpDevice_OnMessageReceived(object? sender, FenderMessageEventArgs eventArgs)
         {
             if (MessageEventHandlers.TryGetValue(eventArgs.MessageType.GetValueOrDefault(), out Action<FenderMessageEventArgs>? value))
             {
@@ -187,7 +208,7 @@ namespace LtAmpDotNet.Lib
             MessageReceived?.Invoke(this, eventArgs);
         }
 
-        
+
 
         #endregion
     }

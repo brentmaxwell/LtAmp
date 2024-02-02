@@ -1,21 +1,19 @@
-using LtAmpDotNet.Lib;
-using LtAmpDotNet.Lib.Model.Preset;
-using LtAmpDotNet.ViewModels;
-using LtAmpDotNet.Tests.Mock;
-using LtAmpDotNet.Tests;
-using LtAmpDotNet.Extensions;
-using System;
 using LtAmpDotNet.Base;
-using System.ComponentModel;
-using LtAmpDotNet.Lib.Models.Protobuf;
+using LtAmpDotNet.Extensions;
+using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Events;
+using LtAmpDotNet.Lib.Model.Preset;
+using LtAmpDotNet.Tests;
+using LtAmpDotNet.Tests.Mock;
+using LtAmpDotNet.ViewModels;
+using System.ComponentModel;
 
 namespace LtAmpDotNet
 {
     public partial class MainForm : Form
     {
-        private LtAmplifier amp = new LtAmplifier(new MockHidDevice(MockDeviceState.Load()));
-        private MainFormViewModel viewModel = new MainFormViewModel();
+        private readonly LtAmplifier amp = new LtAmplifier(new MockHidDevice(MockDeviceState.Load()));
+        private readonly MainFormViewModel viewModel = new MainFormViewModel();
 
         public MainForm()
         {
@@ -23,7 +21,7 @@ namespace LtAmpDotNet
             SubscribeToEvents();
             amp.Open();
         }
-        
+
         private void BindData()
         {
             createToolStripPresetList();
@@ -46,10 +44,12 @@ namespace LtAmpDotNet
         private void createToolStripPresetList()
         {
             toolStripPresetList.DropDownItems.Clear();
-            for (var i = 0; i < viewModel.Presets.Count; i++)
+            for (int i = 0; i < viewModel.Presets.Count; i++)
             {
-                ToolStripMenuItem menuItem = new ToolStripMenuItem($"{i}: {viewModel.Presets[i].FormattedDisplayName}");
-                menuItem.Tag = i;
+                ToolStripMenuItem menuItem = new ToolStripMenuItem($"{i}: {viewModel.Presets[i].FormattedDisplayName}")
+                {
+                    Tag = i
+                };
                 menuItem.Click += presetItemChanged;
                 toolStripPresetList.DropDownItems.Add(menuItem);
             }
@@ -140,7 +140,7 @@ namespace LtAmpDotNet
         {
             if (importFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var presetData = File.ReadAllText(importFileDialog.FileName);
+                string presetData = File.ReadAllText(importFileDialog.FileName);
                 viewModel.CurrentPreset = Preset.FromString(presetData);
                 amp.SetCurrentPreset(viewModel.CurrentPreset);
                 amp.SaveCurrentPreset();
@@ -157,7 +157,7 @@ namespace LtAmpDotNet
 
         private void presetItemChanged(object? sender, EventArgs e)
         {
-            switch(sender)
+            switch (sender)
             {
                 case ToolStripMenuItem:
                     viewModel.CurrentPresetIndex = (int)((ToolStripMenuItem)sender).Tag!;

@@ -1,48 +1,43 @@
-﻿using LtAmpDotNet.Lib.Events;
-using System.CommandLine;
+﻿using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
 {
     internal class FootswitchCommandDefinition : BaseCommandDefinition
     {
-        internal override Command CommandDefinition { get; set; }
-
-        internal FootswitchCommandDefinition()
+        internal FootswitchCommandDefinition() : base("qa", "Footswitch")
         {
-            var presetIndexArgument = new Argument<uint>("bank", "Index of the preset bank");
-            var qaCommand = new Command("qa", "Footswitch");
+            Argument<uint> presetIndexArgumentA = new Argument<uint>("bankA", "Index of the preset bank");
+            Argument<uint> presetIndexArgumentB = new Argument<uint>("bankB", "Index of the preset bank");
 
-            var qaGetCommand = new Command("get", "Get footswitch preset indexes");
+            Command qaGetCommand = new Command("get", "Get footswitch preset indexes");
             qaGetCommand.SetHandler(FootswitchGet);
-            qaCommand.AddCommand(qaGetCommand);
+            AddCommand(qaGetCommand);
 
-            var qaSetCommand = new Command("set", "Set footswitch preset indexes");
-            qaSetCommand.AddArgument(presetIndexArgument);
-            qaSetCommand.AddArgument(presetIndexArgument);
-            qaSetCommand.SetHandler(FootswitchSet, presetIndexArgument, presetIndexArgument);
-            qaCommand.AddCommand(qaSetCommand);
-
-            CommandDefinition = qaCommand;
+            Command qaSetCommand = new Command("set", "Set footswitch preset indexes");
+            qaSetCommand.AddArgument(presetIndexArgumentA);
+            qaSetCommand.AddArgument(presetIndexArgumentB);
+            qaSetCommand.SetHandler(FootswitchSet, presetIndexArgumentA, presetIndexArgumentB);
+            AddCommand(qaSetCommand);
         }
 
-        internal void FootswitchGet()
+        internal async Task FootswitchGet()
         {
-            Open();
-            if(Amp != null)
+            await Open();
+            if (Amp != null)
             {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(Amp.GetQASlots, handler => Amp.QASlotsStatusMessageReceived += handler, 5);
-                Console.WriteLine($"[{eventArgs?.Message?.QASlotsStatus.Slots[0]}],[{eventArgs?.Message?.QASlotsStatus.Slots[1]}]");
+                Lib.Models.Protobuf.QASlotsStatus result = await Amp.GetQASlotsAsync();
+                Console.WriteLine($"[{result.Slots[0]}],[{result.Slots[1]}]");
             }
         }
 
-        internal void FootswitchSet(uint presetBankIndexA, uint presetBankIndexB)
+        internal async Task FootswitchSet(uint presetBankIndexA, uint presetBankIndexB)
         {
-            Open();
+            await Open();
             if (Amp != null)
             {
                 uint[] slots = [presetBankIndexA, presetBankIndexB];
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.SetQASlots(slots), handler => Amp.QASlotsStatusMessageReceived += handler, 5);
-                Console.WriteLine($"[{eventArgs?.Message?.QASlotsStatus.Slots[0]}],[{eventArgs?.Message?.QASlotsStatus.Slots[1]}]");
+                Lib.Models.Protobuf.QASlotsStatus result = await Amp.SetQASlotsAsync(slots);
+                Console.WriteLine($"[{result.Slots[0]}],[{result.Slots[1]}]");
             }
         }
     }

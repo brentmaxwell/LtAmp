@@ -1,46 +1,40 @@
-﻿using LtAmpDotNet.Lib.Events;
-using System.CommandLine;
+﻿using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
 {
     internal class UsbGainCommandDefinition : BaseCommandDefinition
     {
-        internal override Command CommandDefinition { get; set; }
-
-        internal UsbGainCommandDefinition()
+        internal UsbGainCommandDefinition() : base("gain", "USB Gain")
         {
-            var usbGainArgument = new Argument<float>("value", "USB Gain value (dB)");
-            var usbGainCommand = new Command("gain", "USB Gain");
+            Argument<float> usbGainArgument = new Argument<float>("value", "USB Gain value (dB)");
 
-            var usabGainGetCommand = new Command("get", "Get footswitch preset indexes");
+            Command usabGainGetCommand = new Command("get", "Get footswitch preset indexes");
             usabGainGetCommand.SetHandler(UsbGainGet);
-            usbGainCommand.AddCommand(usabGainGetCommand);
+            AddCommand(usabGainGetCommand);
 
-            var usbGainSetCommand = new Command("set", "Set footswitch preset indexes");
+            Command usbGainSetCommand = new Command("set", "Set footswitch preset indexes");
             usbGainSetCommand.AddArgument(usbGainArgument);
             usbGainSetCommand.SetHandler(UsbGainSet, usbGainArgument);
-            usbGainCommand.AddCommand(usbGainSetCommand);
-
-            CommandDefinition = usbGainCommand;
+            AddCommand(usbGainSetCommand);
         }
 
-        internal void UsbGainGet()
+        internal async Task UsbGainGet()
         {
-            Open();
-            if(Amp != null)
+            await Open();
+            if (Amp != null)
             {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(Amp.GetUsbGain, handler => Amp.UsbGainStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.UsbGainStatus.ValueDB}");
+                Lib.Models.Protobuf.UsbGainStatus result = await Amp.GetUsbGainAsync();
+                Console.WriteLine($"{result.ValueDB}");
             }
         }
 
-        internal void UsbGainSet(float gainValue)
+        internal async void UsbGainSet(float gainValue)
         {
-            Open();
+            await Open();
             if (Amp != null)
             {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.SetUsbGain(gainValue), handler => Amp.UsbGainStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.UsbGainStatus.ValueDB}");
+                Lib.Models.Protobuf.UsbGainStatus result = await Amp.SetUsbGainAsync(gainValue);
+                Console.WriteLine($"{result.ValueDB}");
             }
         }
     }

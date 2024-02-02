@@ -1,21 +1,11 @@
 ﻿using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels.DspUnitControlViews
 {
     public partial class JsonDspUnitControlView : DspUnitControlViewBase, IDspUnitControlView
     {
-        public JsonDspUnitControlView(): base()
+        public JsonDspUnitControlView() : base()
         {
             InitializeComponent();
         }
@@ -35,13 +25,13 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
         {
             try
             {
-                Node = Node.FromString(textBoxNode.Text );
+                Node = Node.FromString(textBoxNode.Text);
                 toolStrip1.Visible = false;
                 OnChangesApplied(this, e);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Cannot apply json: {ex.Message}","Error applying node",MessageBoxButtons.OK);
+                MessageBox.Show($"Cannot apply json: {ex.Message}", "Error applying node", MessageBoxButtons.OK);
             }
         }
 

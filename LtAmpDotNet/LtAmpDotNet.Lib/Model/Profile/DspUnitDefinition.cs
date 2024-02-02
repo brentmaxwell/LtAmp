@@ -1,21 +1,14 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using LtAmpDotNet.Lib.Extensions.JsonConverters;
+﻿using LtAmpDotNet.Lib.Extensions.JsonConverters;
 using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Enum = System.Enum;
+using System.Reflection;
 
 namespace LtAmpDotNet.Lib.Model.Profile
 {
     public class DspUnitDefinition
     {
         [JsonIgnore]
-        public string? DisplayName { get => Info?.DisplayName; }
+        public string? DisplayName => Info?.DisplayName;
 
         [JsonProperty("nodeType")]
         public string? NodeType { get; set; }
@@ -36,6 +29,20 @@ namespace LtAmpDotNet.Lib.Model.Profile
         public Node ToNode(NodeIdType nodeId)
         {
             return new Node(this, nodeId);
+        }
+
+        public static List<DspUnitDefinition> Load()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "LtAmpDotNet.Lib.Resources.JsonDefinitions.mustang.dsp_units.dsp_units.json";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    return JsonConvert.DeserializeObject<List<DspUnitDefinition>>(result);
+                }
+            }
         }
     }
 
@@ -140,7 +147,7 @@ namespace LtAmpDotNet.Lib.Model.Profile
     //    };
     //}
 
-    
+
 
     public static class DspUnitTypes
     {

@@ -1,15 +1,5 @@
 ﻿using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.Panels.DspUnitControlViews
 {
@@ -39,7 +29,7 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
             ChangesApplied?.Invoke(sender, e);
         }
 
-        public virtual new void Refresh()
+        public new virtual void Refresh()
         {
 
         }

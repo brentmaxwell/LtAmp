@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LtAmpDotNet.Base
+﻿namespace LtAmpDotNet.Base
 {
     public class ValueChangedEventArgs
     {
@@ -16,9 +10,9 @@ namespace LtAmpDotNet.Base
         }
 
         public string PropertyName { get; }
-        
+
         public object PreviousValue { get; }
-        
+
         public object NewValue { get; }
     }
 }

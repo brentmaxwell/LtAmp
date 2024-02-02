@@ -1,11 +1,5 @@
-﻿using LtAmpDotNet.Lib.Events;
+using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Models.Protobuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static LtAmpDotNet.Lib.Models.Protobuf.FenderMessageLT;
 
 namespace LtAmpDotNet.Lib
 {
@@ -98,7 +92,7 @@ namespace LtAmpDotNet.Lib
         public event EventHandler<FenderMessageEventArgs>? UnsupportedMessageStatusReceived;
         /// <summary></summary>
         public event EventHandler<FenderMessageEventArgs>? UsbGainStatusMessageReceived;
-        
+
         /// <summary>Contains event handlers to trigger message events</summary>
         private Dictionary<FenderMessageLT.TypeOneofCase, Action<FenderMessageEventArgs>> MessageEventHandlers = [];
 
@@ -205,11 +199,49 @@ namespace LtAmpDotNet.Lib
                 { FenderMessageLT.TypeOneofCase.UnsupportedMessageStatus,
                     (eventArgs) =>
                     {
-                        ErrorType = eventArgs.Message.UnsupportedMessageStatus.Status;
+                        ErrorType = eventArgs.Message?.UnsupportedMessageStatus.Status;
                         UnsupportedMessageStatusReceived?.Invoke(this, eventArgs);
                     }
                 }
             };
         }
+
+        /// <summary>Executes the command, and waits for the event to respond before continuing.</summary>
+        /// <param name="action">the action to run</param>
+        /// <param name="eventHandler">the event to wait for</param>
+        /// <param name="waitTime">timeout (in seconds)</param>
+        public static EventArgs? WaitForEvent(Action action, Action<EventHandler> eventHandler, int waitTime = 5)
+        {
+            EventArgs? returnVal = null;
+            AutoResetEvent wait = new AutoResetEvent(false);
+            eventHandler((sender, eventArgs) =>
+            {
+                returnVal = eventArgs;
+                wait.Set();
+            });
+            action.Invoke();
+            wait.WaitOne(TimeSpan.FromSeconds(waitTime));
+            return returnVal;
+        }
+
+        /// <summary>Executes the command, and waits for the event to respond before continuing.</summary>
+        /// <param name="action">the action to run</param>
+        /// <param name="eventHandler">the event to wait for</param>
+        /// <param name="waitTime">timeout (in seconds)</param>
+        public static T? WaitForEvent<T>(Action action, Action<EventHandler<T>> eventHandler, int waitTime = 5)
+        {
+            T? returnVal = default;
+            AutoResetEvent wait = new AutoResetEvent(false);
+            eventHandler((sender, eventArgs) =>
+            {
+                returnVal = eventArgs;
+                wait.Set();
+            });
+            action.Invoke();
+            wait.WaitOne(TimeSpan.FromSeconds(waitTime));
+            return returnVal;
+        }
+
+
     }
 }

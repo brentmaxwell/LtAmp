@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HidSharp.Utility;
-using LtAmpDotNet.Lib.Model.Preset;
+using Newtonsoft.Json.Linq;
 
 namespace LtAmpDotNet.Lib.Extensions.JsonConverters
 {
@@ -15,7 +9,7 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
     {
         public override void WriteJson(JsonWriter writer, DspUnitParameter? value, JsonSerializer serializer)
         {
-            switch(value?.ParameterType)
+            switch (value?.ParameterType)
             {
                 case DspUnitParameterType.String:
                     writer.WriteRaw($"\"{value.Name}\": \"{value.Value}\"");
@@ -33,7 +27,8 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
         {
             JObject jObject = JObject.Load(reader);
             DspUnitParameter parameters = new DspUnitParameter();
-            foreach(var prop in jObject) { 
+            foreach (KeyValuePair<string, JToken?> prop in jObject)
+            {
                 parameters = new DspUnitParameter() { Name = prop.Key, Value = prop.Value! };
             }
             return parameters;

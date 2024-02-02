@@ -1,4 +1,4 @@
-﻿using HidSharp;
+using HidSharp;
 using HidSharp.Reports.Input;
 using LtAmpDotNet.Lib.Events;
 using LtAmpDotNet.Lib.Extensions;
@@ -26,12 +26,12 @@ namespace LtAmpDotNet.Lib.Device
         #region Public Properties
 
         /// <summary>State of the connection to the amplifier</summary>
-        public bool IsOpen => _isOpen;
+        public bool IsOpen { get; private set; } = false;
 
         #endregion
 
         #region Events
-        
+
         /// <summary>Triggered when the device connection is opened and successful</summary>
         public event EventHandler? DeviceOpened;
 
@@ -39,10 +39,10 @@ namespace LtAmpDotNet.Lib.Device
         public event EventHandler? DeviceClosed;
 
         /// <summary>Triggered when a message is sent to the amp</summary>
-        public event MessageSentEventHandler? MessageSent;
+        public event EventHandler<FenderMessageEventArgs>? MessageSent;
 
         /// <summary>Triggered when a message is received from the amp</summary>
-        public event MessageReceivedEventHandler? MessageReceived;
+        public event EventHandler<FenderMessageEventArgs>? MessageReceived;
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace LtAmpDotNet.Lib.Device
 
         /// <summary>Holds the HidDevice object underlying the connection</summary>
         private HidDevice? _device;
-        
+
         /// <summary>Holds the HidStream object underlying the connection</summary>
         private HidStream? _stream;
 
@@ -66,9 +66,6 @@ namespace LtAmpDotNet.Lib.Device
         /// <summary>Buffer to store the data as it comes in to string together multi-report messages</summary>
         private byte[] _dataBuffer = [];
 
-        /// <summary>Holds the open state of the amp</summary>
-        private bool _isOpen = false;
-
         /// <summary>for disposing</summary>
         private bool _disposedValue;
 
@@ -81,14 +78,20 @@ namespace LtAmpDotNet.Lib.Device
 
         /// <summary>Uses the HidDevice specified</summary>
         /// <param name="device"></param>
-        public UsbAmpDevice(HidDevice device) => _device = device;
+        public UsbAmpDevice(HidDevice device)
+        {
+            _device = device;
+        }
 
         #endregion
 
         #region Public Methods
 
         /// <summary>Opens a connection to the amplifier</summary>
-        public void Open() => Open(true);
+        public void Open()
+        {
+            Open(true);
+        }
 
         /// <summary>Opens a connection to the amplifier</summary>
         /// <param name="continueTry">True to wait for the device to be enumerated on the computer, or false to fail after one try</param>
@@ -102,12 +105,12 @@ namespace LtAmpDotNet.Lib.Device
                     DeviceList.Local.Changed -= UsbDevices_Changed;
                     _device = DeviceList.Local.GetHidDeviceOrNull(VENDOR_ID, PRODUCT_ID);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    throw (new Exception($"Exception trying to enumerate USB devices: {ex.Message}", ex));
+                    throw new Exception($"Exception trying to enumerate USB devices: {ex.Message}", ex);
                 }
             }
-            if (_device != null && _device.CanOpen && _stream == null )
+            if (_device != null && _device.CanOpen && _stream == null)
             {
                 try
                 {
@@ -124,24 +127,24 @@ namespace LtAmpDotNet.Lib.Device
                     heartbeatTimer.Start();
                     OnDeviceOpened(new EventArgs());
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    throw (new Exception($"Exception opening device {_device.GetFriendlyName()}: {ex.Message}", ex));
+                    throw new Exception($"Exception opening device {_device.GetFriendlyName()}: {ex.Message}", ex);
                 }
             }
-            else if(continueTry)
+            else if (continueTry)
             {
                 DeviceList.Local.Changed += UsbDevices_Changed;
             }
         }
-        
+
         /// <summary>Closes the connection to the amplifier</summary>
         public void Close()
         {
-            _isOpen = false;
+            IsOpen = false;
             _stream?.Close();
             OnDeviceClosed(new EventArgs());
-            
+
         }
 
         /// <summary>Sends a message to the amp</summary>
@@ -149,8 +152,12 @@ namespace LtAmpDotNet.Lib.Device
         /// <exception cref="Exception">Thrown when the device is not connected</exception>
         public void Write(FenderMessageLT message)
         {
-            if (_stream == null) throw (new Exception($"Exception: device is not connected"));
-            foreach (var packet in message.ToUsbMessage())
+            if (_stream == null)
+            {
+                throw new Exception($"Exception: device is not connected");
+            }
+
+            foreach (byte[] packet in message.ToUsbMessage())
             {
                 _stream.Write(packet);
             }
@@ -159,7 +166,7 @@ namespace LtAmpDotNet.Lib.Device
                 OnMessageSent(new FenderMessageEventArgs(message));
             }
         }
-       
+
         /// <summary>Disposes underlying objects</summary>
         public void Dispose()
         {
@@ -192,19 +199,31 @@ namespace LtAmpDotNet.Lib.Device
 
         /// <summary>Triggers the DeviceOpened event</summary>
         /// <param name="e"></param>
-        public void OnDeviceOpened(EventArgs e) => DeviceOpened?.Invoke(this, e);
+        public void OnDeviceOpened(EventArgs e)
+        {
+            DeviceOpened?.Invoke(this, e);
+        }
 
         /// <summary>Triggers the DeviceClosed event</summary>
         /// <param name="e"></param>
-        public void OnDeviceClosed(EventArgs e) => DeviceClosed?.Invoke(this, new EventArgs());
+        public void OnDeviceClosed(EventArgs e)
+        {
+            DeviceClosed?.Invoke(this, new EventArgs());
+        }
 
         /// <summary>Triggers the MessageReceived event</summary>
         /// <param name="e"></param>
-        public void OnMessageReceived(FenderMessageEventArgs e) => MessageReceived?.Invoke(this, e);
+        public void OnMessageReceived(FenderMessageEventArgs e)
+        {
+            MessageReceived?.Invoke(this, e);
+        }
 
         /// <summary>Triggers the MessageSent event</summary>
         /// <param name="e"></param>
-        public void OnMessageSent(FenderMessageEventArgs e) => MessageSent?.Invoke(this, e);
+        public void OnMessageSent(FenderMessageEventArgs e)
+        {
+            MessageSent?.Invoke(this, e);
+        }
 
         /// <summary>Triggered on change of USB devices connected; used to auto connect.</summary>
         /// <param name="sender"></param>
@@ -220,24 +239,28 @@ namespace LtAmpDotNet.Lib.Device
         /// <param name="e"></param>
         private void InputReceiver_Received(object? sender, EventArgs e)
         {
-            if (_inputReceiver == null || !_inputReceiver.IsRunning) throw (new Exception($"Exception: device is not connected"));
+            if (_inputReceiver == null || !_inputReceiver.IsRunning)
+            {
+                throw new Exception($"Exception: device is not connected");
+            }
+
             while (_inputReceiver.Stream.CanRead)
             {
-                var inputBuffer = _inputReceiver.Stream.Read();
-                var tag = inputBuffer?[2];
-                var length = inputBuffer?[3];
-                var bufferStart = _dataBuffer.Length;
+                byte[]? inputBuffer = _inputReceiver.Stream.Read();
+                byte? tag = inputBuffer?[2];
+                byte? length = inputBuffer?[3];
+                int bufferStart = _dataBuffer.Length;
                 Array.Resize(ref _dataBuffer, _dataBuffer.Length + length.GetValueOrDefault());
                 Buffer.BlockCopy(inputBuffer!, 4, _dataBuffer, bufferStart, length.GetValueOrDefault());
                 if (tag == (byte)UsbHidMessageTag.End)
                 {
-                    var message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
+                    FenderMessageLT message = FenderMessageLT.Parser.ParseFrom(_dataBuffer);
                     OnMessageReceived(new FenderMessageEventArgs(message));
                     _dataBuffer = [];
                 }
             }
         }
-        
+
         /// <summary>
         /// Ticks with the heartbeatTimer to send a heartbeat message to the amp
         /// </summary>
@@ -262,7 +285,7 @@ namespace LtAmpDotNet.Lib.Device
         /// <param name="e"></param>
         private void Stream_DeviceClosed(object? sender, EventArgs e)
         {
-            _isOpen = false;
+            IsOpen = false;
             OnDeviceClosed(e);
         }
 

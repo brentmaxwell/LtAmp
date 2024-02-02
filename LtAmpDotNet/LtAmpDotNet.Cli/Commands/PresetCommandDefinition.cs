@@ -7,63 +7,62 @@ namespace LtAmpDotNet.Cli.Commands
 {
     internal class PresetCommandDefinition : BaseCommandDefinition
     {
-        internal override Command CommandDefinition { get; set; }
-        internal PresetCommandDefinition()
+        internal PresetCommandDefinition() : base("preset", "Presets")
         {
-            var presetNameArgument = new Argument<string>("name", "Name of preset");
+            Argument<string> presetNameArgument = new Argument<string>("name", "Name of preset");
 
-            var presetIndexArgument = new Argument<int>("bank", "Index of the preset bank");
-            presetIndexArgument.FromAmong(Enumerable.Range(1, LtAmplifier.NUM_OF_PRESETS).Select(x => x.ToString()).ToArray());
+            Argument<int> presetIndexArgument = new Argument<int>("bank", "Index of the preset bank");
+            Argument<int> presetIndexArgumentA = new Argument<int>("bankA", "Index of the preset bank");
+            Argument<int> presetIndexArgumentB = new Argument<int>("bankB", "Index of the preset bank");
 
-            var filenameOption = new Option<string>("--file", "Filename to parse");
+
+            Option<string> filenameOption = new Option<string>("--file", "Filename to parse");
             filenameOption.LegalFileNamesOnly();
 
-            var presetCommand = new Command("preset", "Presets");
-
-            var presetGetCommand = new Command("get", "Get Presets");
+            Command presetGetCommand = new Command("get", "Get Presets");
             presetGetCommand.AddArgument(presetIndexArgument);
             presetGetCommand.AddOption(filenameOption);
             presetGetCommand.SetHandler(PresetGet, presetIndexArgument, filenameOption);
-            presetCommand.AddCommand(presetGetCommand);
+            AddCommand(presetGetCommand);
 
-            var presetSetCommand = new Command("set", "Set Presets");
+            Command presetSetCommand = new Command("set", "Set Presets");
             presetSetCommand.AddArgument(presetIndexArgument);
             presetSetCommand.AddOption(filenameOption);
             presetSetCommand.SetHandler(PresetSet, presetIndexArgument, filenameOption);
-            presetCommand.AddCommand(presetSetCommand);
+            AddCommand(presetSetCommand);
 
-            var presetRenameCommand = new Command("rename", "Rename preset");
+            Command presetRenameCommand = new Command("rename", "Rename preset");
             presetRenameCommand.AddArgument(presetIndexArgument);
             presetRenameCommand.AddArgument(presetNameArgument);
             presetRenameCommand.SetHandler(PresetRename, presetIndexArgument, presetNameArgument);
-            presetCommand.AddCommand(presetRenameCommand);
+            AddCommand(presetRenameCommand);
 
-            var presetSwapCommand = new Command("swap", "Swap presets");
-            presetSwapCommand.AddArgument(presetIndexArgument);
-            presetSwapCommand.AddArgument(presetIndexArgument);
-            presetSwapCommand.SetHandler(PresetSwap, presetIndexArgument, presetIndexArgument);
-            presetCommand.AddCommand(presetSwapCommand);
+            Command presetSwapCommand = new Command("swap", "Swap presets");
+            presetSwapCommand.AddArgument(presetIndexArgumentA);
+            presetSwapCommand.AddArgument(presetIndexArgumentB);
+            presetSwapCommand.SetHandler(PresetSwap, presetIndexArgumentA, presetIndexArgumentB);
+            AddCommand(presetSwapCommand);
 
-            var presetShiftCommand = new Command("shift", "Shift presets");
-            presetShiftCommand.AddArgument(presetIndexArgument);
-            presetShiftCommand.AddArgument(presetIndexArgument);
-            presetShiftCommand.SetHandler(PresetSwap, presetIndexArgument, presetIndexArgument);
-            presetCommand.AddCommand(presetShiftCommand);
+            Command presetShiftCommand = new Command("shift", "Shift presets");
+            presetShiftCommand.AddArgument(presetIndexArgumentA);
+            presetShiftCommand.AddArgument(presetIndexArgumentB);
+            presetShiftCommand.SetHandler(PresetSwap, presetIndexArgumentA, presetIndexArgumentB);
+            AddCommand(presetShiftCommand);
 
-            var presetClearCommand = new Command("clear", "Clear preset");
+            Command presetClearCommand = new Command("clear", "Clear preset");
             presetClearCommand.AddArgument(presetIndexArgument);
-
-            CommandDefinition = presetCommand;
+            AddCommand(presetClearCommand);
         }
 
-        internal void PresetGet(int presetBankIndex, string? filename = null)
+        internal async Task PresetGet(int presetBankIndex, string? filename = null)
         {
-            Open();
-            if(Amp != null)
+            await Open();
+            if (Amp != null)
             {
                 string outputData = "";
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.GetPreset(presetBankIndex), handler => Amp.PresetJSONMessageReceived += handler, 5);
-                outputData = Preset.FromString(eventArgs!.Message!.PresetJSONMessage.Data)!.ToString();
+                Lib.Models.Protobuf.PresetJSONMessage result = await Amp.GetPresetAsync(presetBankIndex);
+                FenderMessageEventArgs? eventArgs = LtAmplifier.WaitForEvent<FenderMessageEventArgs>(() => Amp.GetPreset(presetBankIndex), handler => Amp.PresetJSONMessageReceived += handler, 5);
+                outputData = Preset.FromString(result.Data)!.ToString();
                 if (filename == null)
                 {
                     Console.WriteLine(outputData);
@@ -75,7 +74,7 @@ namespace LtAmpDotNet.Cli.Commands
             }
         }
 
-        internal void PresetSet(int presetBankIndex, string filename)
+        internal async Task PresetSet(int presetBankIndex, string filename)
         {
             string inputData;
             Preset preset;
@@ -87,11 +86,11 @@ namespace LtAmpDotNet.Cli.Commands
                     preset = Preset.FromString(inputData)!;
                     if (preset != null)
                     {
-                        Open();
-                        if(Amp != null)
+                        await Open();
+                        if (Amp != null)
                         {
-                            FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.SavePresetAs(presetBankIndex, preset), handler => Amp.PresetSavedStatusMessageReceived += handler, 5);
-                            Console.WriteLine($"{eventArgs?.Message?.PresetSavedStatus.Slot}: {eventArgs?.Message?.PresetSavedStatus.Name}");
+                            Lib.Models.Protobuf.PresetSavedStatus result = await Amp.SavePresetAsAsync(presetBankIndex, preset);
+                            Console.WriteLine($"{result.Slot}: {result.Name}");
                         }
                     }
                 }
@@ -100,50 +99,50 @@ namespace LtAmpDotNet.Cli.Commands
                     Console.Error.WriteLine($"Error processing {filename}: {ex.Message}");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.Error.WriteLine($"Error loading {filename}: {ex.Message}");
             }
         }
 
-        internal void PresetRename(int presetBankIndex, string newName)
+        internal async Task PresetRename(int presetBankIndex, string newName)
         {
-            Open();
-            if(Amp != null)
-            {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.RenamePresetAt(presetBankIndex, newName), handler => Amp.PresetSavedStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.PresetSavedStatus.Slot}: {eventArgs?.Message?.PresetSavedStatus.Name}");
-            }
-        }
-
-        internal void PresetSwap(int presetBankIndexA, int presetBankIndexB)
-        {
-            Open();
+            await Open();
             if (Amp != null)
             {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.SwapPreset([presetBankIndexA, presetBankIndexB]), handler => Amp.SwapPresetStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.SwapPresetStatus.IndexA}: {eventArgs?.Message?.SwapPresetStatus.IndexB}");
+                Lib.Models.Protobuf.PresetSavedStatus result = await Amp.RenamePresetAtAsync(presetBankIndex, newName);
+                Console.WriteLine($"{result.Slot}: {result.Name}");
             }
         }
 
-        internal void PresetShift(int presetBankIndexA, int presetBankIndexB)
+        internal async Task PresetSwap(int presetBankIndexA, int presetBankIndexB)
         {
-            Open();
-            if(Amp != null)
-            {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.ShiftPreset(presetBankIndexA, presetBankIndexB), handler => Amp.ShiftPresetStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.ShiftPresetStatus.IndexToShiftFrom}: {eventArgs?.Message?.ShiftPresetStatus.IndexToShiftTo}");
-            }
-            
-        }
-
-        internal void PresetClear(int presetBankIndex)
-        {
-            Open();
+            await Open();
             if (Amp != null)
             {
-                FenderMessageEventArgs? eventArgs = WaitForEvent<FenderMessageEventArgs>(() => Amp.ClearPreset(presetBankIndex), handler => Amp.ClearPresetStatusMessageReceived += handler, 5);
-                Console.WriteLine($"{eventArgs?.Message?.ClearPreset.SlotIndex}");
+                Lib.Models.Protobuf.SwapPresetStatus result = await Amp.SwapPresetAsync(presetBankIndexA, presetBankIndexB);
+                Console.WriteLine($"{result.IndexA}: {result.IndexB}");
+            }
+        }
+
+        internal async Task PresetShift(int presetBankIndexA, int presetBankIndexB)
+        {
+            await Open();
+            if (Amp != null)
+            {
+                Lib.Models.Protobuf.ShiftPresetStatus result = await Amp.ShiftPresetAsync(presetBankIndexA, presetBankIndexB);
+                Console.WriteLine($"{result.IndexToShiftFrom}: {result.IndexToShiftTo}");
+            }
+
+        }
+
+        internal async Task PresetClear(int presetBankIndex)
+        {
+            await Open();
+            if (Amp != null)
+            {
+                Lib.Models.Protobuf.ClearPresetStatus result = await Amp.ClearPresetAsync(presetBankIndex);
+                Console.WriteLine($"{result.SlotIndex}");
             }
         }
     }

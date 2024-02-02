@@ -2,23 +2,17 @@
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
 using LtAmpDotNet.Panels.DspUnitControlViews;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LtAmpDotNet.ViewModels
 {
     public class DspUnitControlViewModel : ViewModelBase
     {
-        private IDspUnitControlView viewControl;
+        private readonly IDspUnitControlView viewControl;
         private NodeIdType _nodeType;
         private string _fenderId;
         private DspUnitDefinition _dspUnitDefinition;
         private Node _node;
-        private List<DspUnitParameterViewModel> _parameters;
+        private readonly List<DspUnitParameterViewModel> _parameters;
 
         public NodeIdType NodeId
         {
@@ -26,10 +20,7 @@ namespace LtAmpDotNet.ViewModels
             set => SetProperty(ref _nodeType, value);
         }
 
-        public string Name
-        {
-            get => _node?.Definition.DisplayName;
-        }
+        public string Name => _node?.Definition.DisplayName;
 
         public string FenderId
         {
@@ -48,7 +39,7 @@ namespace LtAmpDotNet.ViewModels
             {
                 if (_dspUnitDefinition.Ui.HasBypass)
                 {
-                    var oldValue = Bypass;
+                    bool? oldValue = Bypass;
                     _node.DspUnitParameters.SingleOrDefault(x => x.Name == "bypass").Value = value;
                     OnPropertyChanged("Node.DspUnitParameters");
                     OnValueChanged("Node.DspUnitParameters", oldValue, value);
@@ -56,22 +47,12 @@ namespace LtAmpDotNet.ViewModels
             }
         }
 
-        public List<DspUnitParameterViewModel> Parameters
-        {
-            get => _node?.DspUnitParameters.Select(x =>
-            new DspUnitParameterViewModel
-            (
-                _node.Definition!.Ui!.UiParameters.SingleOrDefault(y => y.ControlId == x.Name),
-                x
-            )).ToList();
-            //set
-            //{
-            //    var oldValue = _node?.DspUnitParameters;
-            //    _node.DspUnitParameters = value;
-            //    OnPropertyChanged("Node.DspUnitParameters");
-            //    OnValueChanged("Node.DspUnitParameters", oldValue, value);
-            //}
-        }
+        public List<DspUnitParameterViewModel> Parameters => _node?.DspUnitParameters.Select(x =>
+                                                                      new DspUnitParameterViewModel
+                                                                      (
+                                                                          _node.Definition!.Ui!.UiParameters.SingleOrDefault(y => y.ControlId == x.Name),
+                                                                          x
+                                                                      )).ToList();
 
         public DspUnitDefinition DspUnitDefinition
         {
@@ -85,7 +66,7 @@ namespace LtAmpDotNet.ViewModels
 
         public Node Node
         {
-            get { return _node; }
+            get => _node;
             set
             {
                 SetProperty(ref _node, value);

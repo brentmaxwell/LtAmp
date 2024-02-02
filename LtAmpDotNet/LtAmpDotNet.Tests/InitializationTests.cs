@@ -1,12 +1,8 @@
-using HidSharp;
 using LtAmpDotNet.Lib;
-using LtAmpDotNet.Lib.Device;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Models.Protobuf;
 using LtAmpDotNet.Tests.Mock;
 using Newtonsoft.Json;
-using NUnit.Framework.Constraints;
-using System.Security.Cryptography.X509Certificates;
 
 namespace LtAmpDotNet.Tests
 {
@@ -24,11 +20,11 @@ namespace LtAmpDotNet.Tests
             mockDeviceState = MockDeviceState.Load();
             amp = new LtAmplifier(new MockHidDevice(mockDeviceState));
         }
-        
+
         [OneTimeTearDown]
         public void Teardown()
         {
-            if(amp.IsOpen)
+            if (amp.IsOpen)
             {
                 amp.Close();
             }
@@ -40,18 +36,18 @@ namespace LtAmpDotNet.Tests
             amp.AmplifierConnected += (sender, eventArgs) => { callback(true); };
             amp.Open();
         }
-        
-        
+
+
         [Test]
         [Category("Initialization")]
         [Order(1)]
         public void OpenAndConnect()
         {
-            var wait = new AutoResetEvent(false);
-            List<FenderMessageLT> messages = new List<FenderMessageLT>();
+            AutoResetEvent wait = new AutoResetEvent(false);
+            List<FenderMessageLT> messages = [];
             amp.MessageReceived += (sender, eventArgs) =>
             {
-                if(!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message?.ModalStatusMessage.Context == ModalContext.SyncBegin))
+                if (!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message?.ModalStatusMessage.Context == ModalContext.SyncBegin))
                 {
                     messages.Add(eventArgs.Message);
                 }
@@ -62,7 +58,7 @@ namespace LtAmpDotNet.Tests
                 wait.Set();
             });
             wait.WaitOne(TimeSpan.FromSeconds(5));
-            for (var i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 wait.WaitOne(TimeSpan.FromSeconds(5));
                 Assert.That(messages[i].ToString(), Is.EqualTo(mockDeviceState?.initializationStrings![i]));
@@ -74,19 +70,24 @@ namespace LtAmpDotNet.Tests
         [Order(2)]
         public void LoadDspUnits()
         {
-            var dspUnits = LtAmplifier.DspUnitDefinitions?.GroupBy(x => x.Info!.SubCategory!).ToDictionary(y => y.Key, y => y.ToList());
-            foreach (var unitType in dspUnits!)
+            Dictionary<string, List<Lib.Model.Profile.DspUnitDefinition>>? dspUnits = LtAmplifier.DspUnitDefinitions?.GroupBy(x => x.Info!.SubCategory!).ToDictionary(y => y.Key, y => y.ToList());
+            foreach (KeyValuePair<string, List<Lib.Model.Profile.DspUnitDefinition>> unitType in dspUnits!)
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.That(LtAmplifier.DspUnitDefinitions?.Count, Is.GreaterThan(0));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "amp").Count, Is.EqualTo(20));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "stomp").Count, Is.EqualTo(11));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "mod").Count, Is.EqualTo(7));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "delay").Count, Is.EqualTo(3));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "reverb").Count, Is.EqualTo(5));
+            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "utility").Count, Is.EqualTo(2));
         }
 
         [Test]
         [Category("Device Information")]
         public void GetFirmwareVersion()
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -113,7 +114,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Information")]
         public void GetProductInformationVersion()
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -140,7 +141,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Settings")]
         public void SetFootswitch()
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -151,7 +152,7 @@ namespace LtAmpDotNet.Tests
                 wait.Reset();
             }
 
-            uint[] slots = {0, 0};
+            uint[] slots = { 0, 0 };
             amp.QASlotsStatusMessageReceived += (sender, eventArgs) =>
             {
                 slots = eventArgs.Message.QASlotsStatus.Slots.ToArray();
@@ -168,7 +169,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Settings")]
         public void SetUsbGain()
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -194,9 +195,9 @@ namespace LtAmpDotNet.Tests
 
         [Test]
         [Category("Presets")]
-        public void GetPreset([Range(1,60)] int index)
+        public void GetPreset([Range(1, 60)] int index)
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -229,7 +230,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Features")]
         public void Tuner()
         {
-            var wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new AutoResetEvent(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>

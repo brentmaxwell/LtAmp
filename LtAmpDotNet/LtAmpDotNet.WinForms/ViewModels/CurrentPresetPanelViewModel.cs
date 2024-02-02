@@ -1,10 +1,5 @@
 ﻿using LtAmpDotNet.Base;
 using LtAmpDotNet.Lib.Model.Preset;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LtAmpDotNet.ViewModels
 {
@@ -22,7 +17,8 @@ namespace LtAmpDotNet.ViewModels
         public string PresetName
         {
             get => _presetName;
-            set {
+            set
+            {
                 Preset.Info.DisplayNameRaw = value;
                 SetProperty(ref _presetName, value);
             }
@@ -31,7 +27,8 @@ namespace LtAmpDotNet.ViewModels
         public int? BPM
         {
             get => _bpm;
-            set {
+            set
+            {
                 Preset.Info.BPM = value;
                 SetProperty(ref _bpm, value);
             }
@@ -60,7 +57,8 @@ namespace LtAmpDotNet.ViewModels
         public DspUnitControlViewModel AmpViewModel
         {
             get => _ampViewModel;
-            set {
+            set
+            {
                 SetProperty(ref _ampViewModel, value);
                 ObserveChildProperty(_ampViewModel);
             }

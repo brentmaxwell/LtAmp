@@ -20,17 +20,29 @@
 
   <ItemGroup>
     <None Remove="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json" />
+    <None Remove="Resources\JsonDefinitions\mustang\presets\default_presets.json" />
     <None Remove="Resources\JsonDefinitions\mustang\profile.json" />
+    <None Remove="Resources\JsonDefinitions\rumble\dsp_units.json" />
+    <None Remove="Resources\JsonDefinitions\rumble\profile.json" />
     <None Remove="Resources\LtAmpDotNet.ico" />
     <None Remove="Resources\LtAmpDotNet.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\presets\default_presets.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\JsonDefinitions\mustang\profile.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\rumble\dsp_units.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\rumble\profile.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\LtAmpDotNet.ico" />
     <EmbeddedResource Include="Resources\LtAmpDotNet.png">
@@ -44,18 +56,6 @@
     <PackageReference Include="Google.Protobuf.Tools" Version="3.25.2" />
     <PackageReference Include="HidSharpCore" Version="1.2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Resources\JsonDefinitions\mustang\presets\default_presets.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\JsonDefinitions\rumble\dsp_units.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\JsonDefinitions\rumble\profile.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
