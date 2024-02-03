@@ -6,7 +6,7 @@ namespace LtAmpDotNet.Tools
 {
     internal class Program
     {
-        private static readonly LtAmplifier amp = new LtAmplifier();
+        private static readonly LtAmplifier amp = new();
 
         private static void Main(string[] args)
         {
@@ -53,7 +53,7 @@ namespace LtAmpDotNet.Tools
 
             StreamReader inputFile = File.OpenText(inputFilename);
             IEnumerable<byte[]> incomingData = new List<byte[]>();
-            using (StreamWriter outputFile = new StreamWriter(outputFilename))
+            using (StreamWriter outputFile = new(outputFilename))
             {
                 while (!inputFile!.EndOfStream)
                 {
@@ -103,7 +103,7 @@ namespace LtAmpDotNet.Tools
             //var listBuffer = new byte[listEndOffset - listStartOffset];
             List<byte> listBuffer = [];
             List<byte> fileBuffer = [];
-            using (BinaryReader reader = new BinaryReader(new FileStream(filename, FileMode.Open)))
+            using (BinaryReader reader = new(new FileStream(filename, FileMode.Open)))
             {
                 reader.BaseStream.Seek(listStartOffset, SeekOrigin.Begin);
                 for (int i = listStartOffset; i < listEndOffset; i++)

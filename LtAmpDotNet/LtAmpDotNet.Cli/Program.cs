@@ -5,8 +5,10 @@ namespace LtAmpDotNet.Cli
 {
     internal class Program
     {
+        internal static Configuration? Configuration = default;
         private static async Task Main(string[] args)
         {
+            Configuration.Load();
             RootCommand rootCommand = [];
             rootCommand.AddCommand(new PresetCommandDefinition());
             rootCommand.AddCommand(new FootswitchCommandDefinition());

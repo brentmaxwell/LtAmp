@@ -31,7 +31,7 @@ namespace LtAmpDotNet.Tests
             amp.Dispose();
         }
 
-        public void Open(TestCallback callback)
+        private void Open(TestCallback callback)
         {
             amp.AmplifierConnected += (sender, eventArgs) => { callback(true); };
             amp.Open();
@@ -43,7 +43,7 @@ namespace LtAmpDotNet.Tests
         [Order(1)]
         public void OpenAndConnect()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             List<FenderMessageLT> messages = [];
             amp.MessageReceived += (sender, eventArgs) =>
             {
@@ -87,7 +87,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Information")]
         public void GetFirmwareVersion()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -114,7 +114,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Information")]
         public void GetProductInformationVersion()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -141,7 +141,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Settings")]
         public void SetFootswitch()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -152,10 +152,10 @@ namespace LtAmpDotNet.Tests
                 wait.Reset();
             }
 
-            uint[] slots = { 0, 0 };
+            uint[] slots = [0, 0];
             amp.QASlotsStatusMessageReceived += (sender, eventArgs) =>
             {
-                slots = eventArgs.Message.QASlotsStatus.Slots.ToArray();
+                slots = [.. eventArgs.Message.QASlotsStatus.Slots];
                 wait.Set();
             };
             amp.SetQASlots(mockDeviceState?.qaSlots!);
@@ -169,7 +169,7 @@ namespace LtAmpDotNet.Tests
         [Category("Device Settings")]
         public void SetUsbGain()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -189,7 +189,7 @@ namespace LtAmpDotNet.Tests
             amp.SetUsbGain(mockDeviceState.usbGain.GetValueOrDefault());
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.Write($"USB Gain: {mockDeviceState.usbGain}");
-            Assert.That(valueDb, Is.InRange(mockDeviceState.usbGain - 0.01, mockDeviceState.usbGain + 0.01));
+            Assert.That(valueDb, Is.InRange(mockDeviceState.usbGain! - 0.01, mockDeviceState.usbGain! + 0.01));
         }
 
 
@@ -197,7 +197,7 @@ namespace LtAmpDotNet.Tests
         [Category("Presets")]
         public void GetPreset([Range(1, 60)] int index)
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -221,16 +221,19 @@ namespace LtAmpDotNet.Tests
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.WriteLine($"Slot Index: {slotIndex}");
             Console.WriteLine(JsonConvert.SerializeObject(preset, Formatting.Indented));
-            Assert.That(index, Is.EqualTo(slotIndex));
-            Assert.That(preset, Is.Not.Null.And.InstanceOf<Preset>());
-            Assert.That(preset.Info.DisplayName, Is.EqualTo(expectedPreset?.Info.DisplayName));
+            Assert.Multiple(() =>
+            {
+                Assert.That(index, Is.EqualTo(slotIndex));
+                Assert.That(preset, Is.Not.Null.And.InstanceOf<Preset>());
+                Assert.That(preset.Info.DisplayName, Is.EqualTo(expectedPreset?.Info?.DisplayName));
+            });
         }
 
         [Test]
         [Category("Device Features")]
         public void Tuner()
         {
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             if (!amp.IsOpen)
             {
                 Open(callback =>
@@ -252,15 +255,21 @@ namespace LtAmpDotNet.Tests
             amp.SetModalState(ModalContext.TunerEnable);
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.WriteLine($"{(ModalContext)modalContextReceived}: {(ModalState)modalStateReceived}");
-            Assert.That((ModalContext)modalContextReceived, Is.EqualTo(ModalContext.TunerEnable));
-            Assert.That((ModalState)modalStateReceived, Is.EqualTo(ModalState.Ok));
+            Assert.Multiple(() =>
+            {
+                Assert.That((ModalContext)modalContextReceived, Is.EqualTo(ModalContext.TunerEnable));
+                Assert.That((ModalState)modalStateReceived, Is.EqualTo(ModalState.Ok));
+            });
             Thread.Sleep(5000);
             wait.Reset();
             amp.SetModalState(ModalContext.TunerDisable);
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.WriteLine($"{(ModalContext)modalContextReceived}: {(ModalState)modalStateReceived}");
-            Assert.That((ModalContext)modalContextReceived, Is.EqualTo(ModalContext.TunerDisable));
-            Assert.That((ModalState)modalStateReceived, Is.EqualTo(ModalState.Ok));
+            Assert.Multiple(() =>
+            {
+                Assert.That((ModalContext)modalContextReceived, Is.EqualTo(ModalContext.TunerDisable));
+                Assert.That((ModalState)modalStateReceived, Is.EqualTo(ModalState.Ok));
+            });
         }
     }
 }

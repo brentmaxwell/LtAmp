@@ -7,7 +7,7 @@ namespace LtAmpDotNet.Lib.Model
     {
         public static FenderMessageLT Create(IMessage message, ResponseType responseType = ResponseType.Unsolicited)
         {
-            FenderMessageLT fenderMessage = new FenderMessageLT() { ResponseType = responseType };
+            FenderMessageLT fenderMessage = new() { ResponseType = responseType };
             switch (message.GetType().Name)
             {
                 case "IndexPot":

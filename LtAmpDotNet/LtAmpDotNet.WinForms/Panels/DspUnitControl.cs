@@ -8,7 +8,7 @@ namespace LtAmpDotNet.Panels
     public partial class DspUnitControl : UserControl
     {
         private DspUnitControlViewBase unitControl;
-        private DspUnitControlViewModel viewModel = new DspUnitControlViewModel();
+        private DspUnitControlViewModel viewModel = new();
 
 
         public NodeIdType NodeId

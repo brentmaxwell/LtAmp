@@ -6,14 +6,14 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal FootswitchCommandDefinition() : base("qa", "Footswitch")
         {
-            Argument<uint> presetIndexArgumentA = new Argument<uint>("bankA", "Index of the preset bank");
-            Argument<uint> presetIndexArgumentB = new Argument<uint>("bankB", "Index of the preset bank");
+            Argument<uint> presetIndexArgumentA = new("bankA", "Index of the preset bank");
+            Argument<uint> presetIndexArgumentB = new("bankB", "Index of the preset bank");
 
-            Command qaGetCommand = new Command("get", "Get footswitch preset indexes");
+            Command qaGetCommand = new("get", "Get footswitch preset indexes");
             qaGetCommand.SetHandler(FootswitchGet);
             AddCommand(qaGetCommand);
 
-            Command qaSetCommand = new Command("set", "Set footswitch preset indexes");
+            Command qaSetCommand = new("set", "Set footswitch preset indexes");
             qaSetCommand.AddArgument(presetIndexArgumentA);
             qaSetCommand.AddArgument(presetIndexArgumentB);
             qaSetCommand.SetHandler(FootswitchSet, presetIndexArgumentA, presetIndexArgumentB);

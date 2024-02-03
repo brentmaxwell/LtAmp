@@ -8,7 +8,7 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal TerminalCommandDefinition() : base("term", "Terminal")
         {
-            Command terminalCommand = new Command("term", "Terminal");
+            Command terminalCommand = new("term", "Terminal");
             terminalCommand.SetHandler(Terminal);
         }
 

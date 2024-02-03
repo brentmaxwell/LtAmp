@@ -60,7 +60,7 @@
 
             byte[] buffer = new byte[byteSequence.Length];
 
-            BufferedStream bufStream = new BufferedStream(stream, byteSequence.Length);
+            BufferedStream bufStream = new(stream, byteSequence.Length);
 
             bufStream.Seek(start, SeekOrigin.Begin);
             int i;

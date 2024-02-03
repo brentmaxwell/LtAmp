@@ -7,7 +7,7 @@ namespace LtAmpDotNet.Panels.DspUnitControlViews
     public partial class PropertyGridUnitControlView : DspUnitControlViewBase, IDspUnitControlView
     {
 
-        private DspUnitControlViewModel _viewModel = new DspUnitControlViewModel();
+        private DspUnitControlViewModel _viewModel = new();
 
         public new DspUnitControlViewModel ViewModel
         {

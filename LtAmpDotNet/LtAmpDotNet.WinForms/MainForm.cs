@@ -12,8 +12,8 @@ namespace LtAmpDotNet
 {
     public partial class MainForm : Form
     {
-        private readonly LtAmplifier amp = new LtAmplifier(new MockHidDevice(MockDeviceState.Load()));
-        private readonly MainFormViewModel viewModel = new MainFormViewModel();
+        private readonly LtAmplifier amp = new(new MockHidDevice(MockDeviceState.Load()));
+        private readonly MainFormViewModel viewModel = new();
 
         public MainForm()
         {
@@ -46,7 +46,7 @@ namespace LtAmpDotNet
             toolStripPresetList.DropDownItems.Clear();
             for (int i = 0; i < viewModel.Presets.Count; i++)
             {
-                ToolStripMenuItem menuItem = new ToolStripMenuItem($"{i}: {viewModel.Presets[i].FormattedDisplayName}")
+                ToolStripMenuItem menuItem = new($"{i}: {viewModel.Presets[i].FormattedDisplayName}")
                 {
                     Tag = i
                 };

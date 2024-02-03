@@ -9,47 +9,47 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal PresetCommandDefinition() : base("preset", "Presets")
         {
-            Argument<string> presetNameArgument = new Argument<string>("name", "Name of preset");
+            Argument<string> presetNameArgument = new("name", "Name of preset");
 
-            Argument<int> presetIndexArgument = new Argument<int>("bank", "Index of the preset bank");
-            Argument<int> presetIndexArgumentA = new Argument<int>("bankA", "Index of the preset bank");
-            Argument<int> presetIndexArgumentB = new Argument<int>("bankB", "Index of the preset bank");
+            Argument<int> presetIndexArgument = new("bank", "Index of the preset bank");
+            Argument<int> presetIndexArgumentA = new("bankA", "Index of the preset bank");
+            Argument<int> presetIndexArgumentB = new("bankB", "Index of the preset bank");
 
 
-            Option<string> filenameOption = new Option<string>("--file", "Filename to parse");
+            Option<string> filenameOption = new("--file", "Filename to parse");
             filenameOption.LegalFileNamesOnly();
 
-            Command presetGetCommand = new Command("get", "Get Presets");
+            Command presetGetCommand = new("get", "Get Presets");
             presetGetCommand.AddArgument(presetIndexArgument);
             presetGetCommand.AddOption(filenameOption);
             presetGetCommand.SetHandler(PresetGet, presetIndexArgument, filenameOption);
             AddCommand(presetGetCommand);
 
-            Command presetSetCommand = new Command("set", "Set Presets");
+            Command presetSetCommand = new("set", "Set Presets");
             presetSetCommand.AddArgument(presetIndexArgument);
             presetSetCommand.AddOption(filenameOption);
             presetSetCommand.SetHandler(PresetSet, presetIndexArgument, filenameOption);
             AddCommand(presetSetCommand);
 
-            Command presetRenameCommand = new Command("rename", "Rename preset");
+            Command presetRenameCommand = new("rename", "Rename preset");
             presetRenameCommand.AddArgument(presetIndexArgument);
             presetRenameCommand.AddArgument(presetNameArgument);
             presetRenameCommand.SetHandler(PresetRename, presetIndexArgument, presetNameArgument);
             AddCommand(presetRenameCommand);
 
-            Command presetSwapCommand = new Command("swap", "Swap presets");
+            Command presetSwapCommand = new("swap", "Swap presets");
             presetSwapCommand.AddArgument(presetIndexArgumentA);
             presetSwapCommand.AddArgument(presetIndexArgumentB);
             presetSwapCommand.SetHandler(PresetSwap, presetIndexArgumentA, presetIndexArgumentB);
             AddCommand(presetSwapCommand);
 
-            Command presetShiftCommand = new Command("shift", "Shift presets");
+            Command presetShiftCommand = new("shift", "Shift presets");
             presetShiftCommand.AddArgument(presetIndexArgumentA);
             presetShiftCommand.AddArgument(presetIndexArgumentB);
             presetShiftCommand.SetHandler(PresetSwap, presetIndexArgumentA, presetIndexArgumentB);
             AddCommand(presetShiftCommand);
 
-            Command presetClearCommand = new Command("clear", "Clear preset");
+            Command presetClearCommand = new("clear", "Clear preset");
             presetClearCommand.AddArgument(presetIndexArgument);
             AddCommand(presetClearCommand);
         }

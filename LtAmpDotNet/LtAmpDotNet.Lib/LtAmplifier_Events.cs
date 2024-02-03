@@ -213,7 +213,7 @@ namespace LtAmpDotNet.Lib
         public static EventArgs? WaitForEvent(Action action, Action<EventHandler> eventHandler, int waitTime = 5)
         {
             EventArgs? returnVal = null;
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             eventHandler((sender, eventArgs) =>
             {
                 returnVal = eventArgs;
@@ -231,7 +231,7 @@ namespace LtAmpDotNet.Lib
         public static T? WaitForEvent<T>(Action action, Action<EventHandler<T>> eventHandler, int waitTime = 5)
         {
             T? returnVal = default;
-            AutoResetEvent wait = new AutoResetEvent(false);
+            AutoResetEvent wait = new(false);
             eventHandler((sender, eventArgs) =>
             {
                 returnVal = eventArgs;

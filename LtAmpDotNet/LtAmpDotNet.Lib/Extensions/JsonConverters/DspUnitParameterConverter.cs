@@ -26,7 +26,7 @@ namespace LtAmpDotNet.Lib.Extensions.JsonConverters
         public override DspUnitParameter? ReadJson(JsonReader reader, Type objectType, DspUnitParameter? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             JObject jObject = JObject.Load(reader);
-            DspUnitParameter parameters = new DspUnitParameter();
+            DspUnitParameter parameters = new();
             foreach (KeyValuePair<string, JToken?> prop in jObject)
             {
                 parameters = new DspUnitParameter() { Name = prop.Key, Value = prop.Value! };

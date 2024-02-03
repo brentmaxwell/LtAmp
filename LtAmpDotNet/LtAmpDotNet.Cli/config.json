@@ -1,0 +1,38 @@
+{
+  "midiCommands": [
+    {
+      "commandType": "ControlChange",
+      "command": 20,
+      "value": "EnableTuner"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 22,
+      "value": "SetBypassAll"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 23,
+      "value": "SetBypassStomp"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 24,
+      "value": "SetBypassMod"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 25,
+      "value": "SetBypassDelay"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 26,
+      "value": "SetBypassReverb"
+    },
+    {
+      "commandType": "PatchChange",
+      "value": "LoadPreset"
+    }
+  ]
+}

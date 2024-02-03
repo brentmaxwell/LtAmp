@@ -67,7 +67,7 @@ namespace LtAmpDotNet.Lib
         /// <param name="continueTry">True to continue trying to connect until successful</param>
         public async Task OpenAsync(bool continueTry = true)
         {
-            TaskCompletionSource tcs = new TaskCompletionSource();
+            TaskCompletionSource tcs = new();
             void eventHandler(object? sender, EventArgs eventArgs)
             {
                 AmplifierConnected -= eventHandler;
@@ -123,7 +123,7 @@ namespace LtAmpDotNet.Lib
         /// <returns>Resposne message from the amp</returns>
         public async Task<FenderMessageLT> SendMessageAsync(FenderMessageLT message, TypeOneofCase responseMessage = TypeOneofCase.None)
         {
-            TaskCompletionSource<FenderMessageLT> tcs = new TaskCompletionSource<FenderMessageLT>();
+            TaskCompletionSource<FenderMessageLT> tcs = new();
             void eventHandler(object? sender, FenderMessageEventArgs eventArgs)
             {
                 if (eventArgs.MessageType == TypeOneofCase.None || eventArgs.MessageType == responseMessage)

@@ -6,13 +6,13 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal UsbGainCommandDefinition() : base("gain", "USB Gain")
         {
-            Argument<float> usbGainArgument = new Argument<float>("value", "USB Gain value (dB)");
+            Argument<float> usbGainArgument = new("value", "USB Gain value (dB)");
 
-            Command usabGainGetCommand = new Command("get", "Get footswitch preset indexes");
+            Command usabGainGetCommand = new("get", "Get footswitch preset indexes");
             usabGainGetCommand.SetHandler(UsbGainGet);
             AddCommand(usabGainGetCommand);
 
-            Command usbGainSetCommand = new Command("set", "Set footswitch preset indexes");
+            Command usbGainSetCommand = new("set", "Set footswitch preset indexes");
             usbGainSetCommand.AddArgument(usbGainArgument);
             usbGainSetCommand.SetHandler(UsbGainSet, usbGainArgument);
             AddCommand(usbGainSetCommand);
