@@ -16,7 +16,7 @@ namespace LtAmpDotNet.Cli
             rootCommand.AddCommand(new TerminalCommandDefinition());
             rootCommand.AddCommand(new MidiCommandDefinition());
 
-            Command config = new Command("--config", "Generate config file in user's home directory");
+            Command config = new("--config", "Generate config file in user's home directory");
             config.SetHandler(WriteConfig);
             rootCommand.AddCommand(config);
             await rootCommand.InvokeAsync(args);

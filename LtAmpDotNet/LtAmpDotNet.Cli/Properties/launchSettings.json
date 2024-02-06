@@ -2,7 +2,7 @@
   "profiles": {
     "LtAmpDotNet.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "--config"
+      "commandLineArgs": "preset list"
     }
   }
 }

@@ -15,11 +15,18 @@ namespace LtAmpDotNet.Cli.Commands
             Argument<int> presetIndexArgumentA = new("bankA", "Index of the preset bank");
             Argument<int> presetIndexArgumentB = new("bankB", "Index of the preset bank");
 
+            Option<bool> optionAll = new("-a", "List all preset information");
 
             Option<string> filenameOption = new("--file", "Filename to parse");
             filenameOption.LegalFileNamesOnly();
 
-            Command presetGetCommand = new("get", "Get Presets");
+            Command presetListCommand = new("list", "List presets");
+            presetListCommand.AddOption(optionAll);
+            presetListCommand.SetHandler(PresetList, optionAll);
+            AddCommand(presetListCommand);
+
+
+            Command presetGetCommand = new("get", "Get Preset");
             presetGetCommand.AddArgument(presetIndexArgument);
             presetGetCommand.AddOption(filenameOption);
             presetGetCommand.SetHandler(PresetGet, presetIndexArgument, filenameOption);
@@ -144,6 +151,27 @@ namespace LtAmpDotNet.Cli.Commands
                 Lib.Models.Protobuf.ClearPresetStatus result = await Amp.ClearPresetAsync(presetBankIndex);
                 Console.WriteLine($"{result.SlotIndex}");
             }
+        }
+
+        internal async Task PresetList(bool showAll = false)
+        {
+            await Open();
+            string output = "";
+            for (int i = 1; i <= LtAmplifier.NUM_OF_PRESETS; i++)
+            {
+                Preset preset = Preset.FromString((await Amp.GetPresetAsync(i)).Data);
+                output += $"{i}: {preset.Info.DisplayNameRaw}";
+                if (showAll)
+                {
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp).Definition.Info.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp).Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod).Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay).Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb).Definition.DisplayName,-16}";
+                }
+                output += "\n";
+            }
+            Console.WriteLine(output);
         }
     }
 }
