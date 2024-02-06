@@ -35,7 +35,7 @@ namespace LtAmpDotNet.Lib.Model.Profile
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             string resourceName = "LtAmpDotNet.Lib.Resources.JsonDefinitions.mustang.dsp_units.dsp_units.json";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName)!)
             {
                 using (StreamReader reader = new(stream))
                 {

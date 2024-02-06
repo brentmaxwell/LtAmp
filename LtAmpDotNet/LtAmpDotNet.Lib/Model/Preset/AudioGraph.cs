@@ -7,10 +7,10 @@ namespace LtAmpDotNet.Lib.Model.Preset
     {
         /// <summary>The connections among the parts of the preset</summary>
         [JsonProperty("connections")]
-        public ICollection<Connection>? Connections { get; set; }
+        public ICollection<Connection> Connections { get; set; }
 
         /// <summary>The DSP units and amp for the preset</summary>
         [JsonProperty("nodes")]
-        public ICollection<Node>? Nodes { get; set; }
+        public ICollection<Node> Nodes { get; set; }
     }
 }

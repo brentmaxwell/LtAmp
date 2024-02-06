@@ -31,6 +31,156 @@
       "value": "SetBypassReverb"
     },
     {
+      "commandType": "ControlChange",
+      "command": 28,
+      "value": "SetStompEffect"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 29,
+      "value": "SetStompParameter1"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 30,
+      "value": "SetStompParameter2"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 31,
+      "value": "SetStompParameter3"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 32,
+      "value": "SetStompParameter4"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 33,
+      "value": "SetStompParameter5"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 38,
+      "value": "SetModEffect"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 39,
+      "value": "SetModParameter1"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 40,
+      "value": "SetModParameter2"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 41,
+      "value": "SetModParameter3"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 42,
+      "value": "SetModParameter4"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 43,
+      "value": "SetModParameter5"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 48,
+      "value": "SetDelayEffect"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 49,
+      "value": "SetDelayParameter1"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 50,
+      "value": "SetDelayParameter2"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 51,
+      "value": "SetDelayParameter3"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 52,
+      "value": "SetDelayParameter4"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 53,
+      "value": "SetDelayParameter5"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 58,
+      "value": "SetReverbEffect"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 59,
+      "value": "SetReverbParameter1"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 60,
+      "value": "SetReverbParameter2"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 61,
+      "value": "SetReverbParameter3"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 62,
+      "value": "SetReverbParameter4"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 63,
+      "value": "SetReverbParameter5"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 68,
+      "value": "SetAmpType"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 69,
+      "value": "SetAmpGain"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 70,
+      "value": "SetAmpVolume"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 71,
+      "value": "SetAmpTreble"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 72,
+      "value": "SetAmpMiddle"
+    },
+    {
+      "commandType": "ControlChange",
+      "command": 73,
+      "value": "SetAmpBass"
+    },
+    {
       "commandType": "PatchChange",
       "value": "LoadPreset"
     }

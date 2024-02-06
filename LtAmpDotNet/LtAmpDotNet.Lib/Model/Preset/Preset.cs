@@ -5,10 +5,10 @@ namespace LtAmpDotNet.Lib.Model.Preset
     public class Preset
     {
         [JsonProperty("audioGraph")]
-        public AudioGraph? AudioGraph { get; set; }
+        public AudioGraph AudioGraph { get; set; }
 
         [JsonProperty("info")]
-        public Info? Info { get; set; }
+        public Info Info { get; set; }
 
         [JsonProperty("nodeId")]
         public string? NodeId { get; set; } = "preset";
