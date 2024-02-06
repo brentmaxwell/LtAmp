@@ -16,7 +16,7 @@ namespace LtAmpDotNet.Cli
         [JsonProperty("midiCommands")]
         public List<MidiCommand>? MidiCommands { get; set; }
 
-        internal static string ConfigurationPath = Environment.SpecialFolder.Personal + "LtAmpDotNet";
+        internal static string ConfigurationPath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"LtAmpDotNet");
         internal static string ConfigurationFileName = "config.json";
         internal static string ConfigurationResourceName = "LtAmpDotNet.Cli.config.json";
 
@@ -52,6 +52,16 @@ namespace LtAmpDotNet.Cli
 
                 }
             }
+        }
+
+        public static bool WriteDefaultConfigToUsersHomeDirectory()
+        {
+            if (!File.Exists(Path.Join(ConfigurationPath, ConfigurationFileName)))
+            {
+                Directory.CreateDirectory(ConfigurationPath);
+                File.WriteAllText(Path.Join(ConfigurationPath, ConfigurationFileName), LoadDefaultConfig());
+            }
+            return false;
         }
     }
 
