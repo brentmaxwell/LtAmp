@@ -1,3 +1,4 @@
+using HidSharp;
 using LtAmpDotNet.Extensions;
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model.Preset;
@@ -21,10 +22,10 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal MidiCommandDefinition() : base("midi", "Listen to midi messages")
         {
-            Argument<int> midiDeviceArgument = new(
+            Argument<List<int>> midiDeviceArgument = new(
                name: "deviceId",
                description: "MIDI deviceId",
-               getDefaultValue: () => 0
+               getDefaultValue: () => [0]
             );
 
             AddArgument(midiDeviceArgument);
@@ -61,14 +62,25 @@ namespace LtAmpDotNet.Cli.Commands
             //};
         }
 
-        internal async Task StartListening(int deviceId)
+        internal async Task StartListening(List<int> deviceIds)
         {
-            if (deviceId + 1 > MidiIn.NumberOfDevices)
+            List<MidiIn> midiDevices = [];
+            foreach (int deviceId in deviceIds)
             {
-                Console.Error.WriteLine("Error: No such midi device");
-            }
-            else
-            {
+                if (deviceId + 1 > MidiIn.NumberOfDevices)
+                {
+                    Console.Error.WriteLine($"Error: No such midi device (device {deviceId})");
+                    return;
+                }
+                else
+                {
+                    MidiIn midiIn = new(deviceId);
+                    midiIn.MessageReceived += MidiIn_MessageReceived; ;
+                    midiIn.ErrorReceived += MidiIn_ErrorReceived;
+                    midiIn.Start();
+                    midiDevices.Add(midiIn);
+                }
+
                 if (Program.Configuration?.MidiCommands != null)
                 {
                     Configuration.Load();
@@ -183,10 +195,6 @@ namespace LtAmpDotNet.Cli.Commands
                 await Open();
                 Amp!.MessageReceived += Amp_MessageReceived;
                 Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
-                MidiIn midiIn = new(deviceId);
-                midiIn.MessageReceived += MidiIn_MessageReceived; ;
-                midiIn.ErrorReceived += MidiIn_ErrorReceived;
-                midiIn.Start();
                 Console.WriteLine("Connected");
                 while (true) { Thread.Sleep(100); }
             }

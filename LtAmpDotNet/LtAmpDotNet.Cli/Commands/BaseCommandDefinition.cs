@@ -6,13 +6,13 @@ namespace LtAmpDotNet.Cli.Commands
 {
     internal abstract class BaseCommandDefinition : Command, IDisposable
     {
-        internal LtAmplifier? Amp;
+        internal ILtAmplifier? Amp;
 
         protected BaseCommandDefinition(string name, string? description = null) : base(name, description) { }
 
         internal virtual async Task Open()
         {
-            Amp = new LtAmplifier(new MockHidDevice());
+            Amp = new LtAmplifier();
             await Amp.OpenAsync();
         }
 
