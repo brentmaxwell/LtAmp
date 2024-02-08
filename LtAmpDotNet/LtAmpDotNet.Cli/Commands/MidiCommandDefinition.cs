@@ -20,6 +20,8 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal Dictionary<MidiMessageType, Dictionary<int, Action<int>>> eventCommands = [];
 
+        internal List<MidiInputClient> clients = [];
+
         internal MidiCommandDefinition() : base("midi", "Listen to midi messages")
         {
             Argument<List<uint>> midiDeviceArgument = new(
@@ -39,8 +41,8 @@ namespace LtAmpDotNet.Cli.Commands
         internal async Task Start(List<uint> deviceIds)
         {
             Console.WriteLine("Connecting");
-            await OpenMidi(deviceIds);
             BuildConfig();
+            await OpenMidi(deviceIds);
             await OpenAmp();
             Amp!.MessageReceived += Amp_MessageReceived;
             Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
@@ -53,7 +55,6 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task OpenMidi(List<uint> deviceIds)
         {
-            //List<IMidiInput> midiDevices = [];
             foreach (uint deviceId in deviceIds)
             {
                 try
@@ -61,8 +62,12 @@ namespace LtAmpDotNet.Cli.Commands
                     var device = MidiManager.GetDeviceInfo(deviceId, RtMidi.Net.Enums.MidiDeviceType.Input);
                     MidiInputClient client = new MidiInputClient(device);
                     client.OnMessageReceived += MidiIn_MessageReceived;
+                    client.ActivateMessageReceivedEvent();
+                    client.Open();
+                    clients.Add(client);
+                    Console.WriteLine($"Device {deviceId} connected");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Error connecting to {deviceId}: {ex.Message}");
                     Environment.Exit(1);
@@ -280,7 +285,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void MidiIn_MessageReceived(object? sender, RtMidi.Net.Events.MidiMessageReceivedEventArgs e)
         {
-
+            Console.Write("[MIDI] ");
             switch (e.Message.Type)
             {
                 case RtMidi.Net.Enums.MidiMessageType.ControlChange:
@@ -303,6 +308,7 @@ namespace LtAmpDotNet.Cli.Commands
                     Console.WriteLine($"[MIDI] {e.Message.Type}");
                     break;
             }
+            Console.WriteLine($"{e.Message.Type}");
         }
     }
 }
