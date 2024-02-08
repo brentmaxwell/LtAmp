@@ -63,7 +63,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetGet(int presetBankIndex, string? filename = null)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 string outputData = "";
@@ -93,7 +93,7 @@ namespace LtAmpDotNet.Cli.Commands
                     preset = Preset.FromString(inputData)!;
                     if (preset != null)
                     {
-                        await Open();
+                        await OpenAmp();
                         if (Amp != null)
                         {
                             Lib.Models.Protobuf.PresetSavedStatus result = await Amp.SavePresetAsAsync(presetBankIndex, preset);
@@ -114,7 +114,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetRename(int presetBankIndex, string newName)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.PresetSavedStatus result = await Amp.RenamePresetAtAsync(presetBankIndex, newName);
@@ -124,7 +124,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetSwap(int presetBankIndexA, int presetBankIndexB)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.SwapPresetStatus result = await Amp.SwapPresetAsync(presetBankIndexA, presetBankIndexB);
@@ -134,7 +134,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetShift(int presetBankIndexA, int presetBankIndexB)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.ShiftPresetStatus result = await Amp.ShiftPresetAsync(presetBankIndexA, presetBankIndexB);
@@ -145,7 +145,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetClear(int presetBankIndex)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.ClearPresetStatus result = await Amp.ClearPresetAsync(presetBankIndex);
@@ -155,7 +155,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task PresetList(bool showAll = false)
         {
-            await Open();
+            await OpenAmp();
             string output = "";
             for (int i = 1; i <= LtAmplifier.NUM_OF_PRESETS; i++)
             {

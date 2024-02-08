@@ -20,7 +20,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task UsbGainGet()
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.UsbGainStatus result = await Amp.GetUsbGainAsync();
@@ -30,7 +30,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async void UsbGainSet(float gainValue)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.UsbGainStatus result = await Amp.SetUsbGainAsync(gainValue);

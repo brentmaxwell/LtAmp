@@ -10,9 +10,9 @@ namespace LtAmpDotNet.Cli.Commands
 
         protected BaseCommandDefinition(string name, string? description = null) : base(name, description) { }
 
-        internal virtual async Task Open()
+        internal virtual async Task OpenAmp()
         {
-            Amp = new LtAmplifier(new MockHidDevice());
+            Amp = new LtAmplifier();
             await Amp.OpenAsync();
         }
 

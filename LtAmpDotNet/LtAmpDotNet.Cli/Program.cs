@@ -20,6 +20,7 @@ namespace LtAmpDotNet.Cli
             config.SetHandler(WriteConfig);
             rootCommand.AddCommand(config);
             await rootCommand.InvokeAsync(args);
+
         }
 
         private static void WriteConfig()

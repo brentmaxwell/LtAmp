@@ -14,7 +14,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task Terminal()
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 IMessage definition = (IMessage)Activator.CreateInstance(typeof(FenderMessageLT))!;

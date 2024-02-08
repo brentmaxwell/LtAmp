@@ -22,7 +22,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task FootswitchGet()
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 Lib.Models.Protobuf.QASlotsStatus result = await Amp.GetQASlotsAsync();
@@ -32,7 +32,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal async Task FootswitchSet(uint presetBankIndexA, uint presetBankIndexB)
         {
-            await Open();
+            await OpenAmp();
             if (Amp != null)
             {
                 uint[] slots = [presetBankIndexA, presetBankIndexB];

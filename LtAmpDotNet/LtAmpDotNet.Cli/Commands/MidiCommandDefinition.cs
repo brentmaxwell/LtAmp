@@ -1,12 +1,9 @@
-using Commons.Music.Midi;
-using Commons.Music.Midi.Alsa;
-using Commons.Music.Midi.RtMidi;
-using HidSharp;
 using LtAmpDotNet.Extensions;
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
-using NUnit.Framework.Constraints;
+using RtMidi.Net;
+using RtMidi.Net.Clients;
 using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
@@ -21,75 +18,150 @@ namespace LtAmpDotNet.Cli.Commands
         internal Node? CurrentDelay => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay);
         internal Node? CurrentReverb => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb);
 
-        internal Dictionary<byte, Dictionary<int, Action<int>>> eventCommands = [];
+        internal Dictionary<MidiMessageType, Dictionary<int, Action<int>>> eventCommands = [];
 
         internal MidiCommandDefinition() : base("midi", "Listen to midi messages")
         {
-            Argument<List<string>> midiDeviceArgument = new(
+            Argument<List<uint>> midiDeviceArgument = new(
                name: "deviceId",
                description: "MIDI deviceId",
-               getDefaultValue: () => ["0"]
+               getDefaultValue: () => [0]
             );
 
             AddArgument(midiDeviceArgument);
-            this.SetHandler(StartListening, midiDeviceArgument);
+            this.SetHandler(Start, midiDeviceArgument);
 
             Command midiListCommand = new("list", "List midi devices");
             midiListCommand.SetHandler(ListDevices);
             AddCommand(midiListCommand);
-
-            //eventCommands = new Dictionary<MidiCommandCode, Dictionary<int, Action<int>>>()
-            //{
-            //    {
-            //        MidiCommandCode.ControlChange, new Dictionary<int, Action<int>>()
-            //        {
-            //            { 20, EnableTuner },      // Tuner
-            //            { 22, BypassAll },        // Bypass all
-            //            { 23, (value) => SetBypass(NodeIdType.stomp, value) },  // Stomp Bypass
-            //            { 24, (value) => SetBypass(NodeIdType.mod, value) },    // Mod Bypass
-            //            { 25, (value) => SetBypass(NodeIdType.delay, value) },  // Delay Bypass
-            //            { 26, (value) => SetBypass(NodeIdType.reverb, value) }, // Reverb Bypass
-            //            { 69, (value) => SetDspParameter(NodeIdType.amp, "gain", value) }, // Amp gain
-            //            { 70, (value) => SetDspParameter(NodeIdType.amp, "volume", value) }, // Amp volume
-            //            { 71, (value) => SetDspParameter(NodeIdType.amp, "treble", value) }, // Amp
-            //            { 72, (value) => SetDspParameter(NodeIdType.amp, "mid", value) }, // Amp
-            //            { 73, (value) => SetDspParameter(NodeIdType.amp, "bass", value) }, // Amp
-            //        }
-            //    },
-            //    {
-            //        MidiCommandCode.PatchChange, new Dictionary<int, Action<int>>()
-            //        {
-            //            { 0, LoadPreset }
-            //        }
-            //    }
-            //};
         }
 
-        internal async Task StartListening(List<string> deviceIds)
+        internal async Task Start(List<uint> deviceIds)
         {
-            IMidiAccess access = MidiAccessManager.Default;
-            List<IMidiInput> midiDevices = [];
-            foreach (string deviceId in deviceIds)
+            Console.WriteLine("Connecting");
+            await OpenMidi(deviceIds);
+            BuildConfig();
+            await OpenAmp();
+            Amp!.MessageReceived += Amp_MessageReceived;
+            Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
+            Console.WriteLine("Connected");
+            while ((Console.ReadLine()) != null)
             {
-                IMidiPortDetails? device = access.Inputs.SingleOrDefault(x => x.Id == deviceId);
-                if (device == null)
+
+            }
+        }
+
+        internal async Task OpenMidi(List<uint> deviceIds)
+        {
+            //List<IMidiInput> midiDevices = [];
+            foreach (uint deviceId in deviceIds)
+            {
+                try
                 {
-                    Console.Error.WriteLine($"Error: No such midi device (device {deviceId})");
-                    return;
+                    var device = MidiManager.GetDeviceInfo(deviceId, RtMidi.Net.Enums.MidiDeviceType.Input);
+                    MidiInputClient client = new MidiInputClient(device);
+                    client.OnMessageReceived += MidiIn_MessageReceived;
                 }
-                else
+                catch(Exception ex)
                 {
-                    IMidiInput input = await access.OpenInputAsync(deviceId);
-                    input.MessageReceived += MidiIn_MessageReceived;
-                    midiDevices.Add(input);
+                    Console.WriteLine($"Error connecting to {deviceId}: {ex.Message}");
+                    Environment.Exit(1);
                 }
             }
+        }
+
+        internal void ListDevices()
+        {
+            foreach (var device in MidiManager.GetAvailableDevices())
+            {
+                Console.WriteLine($"{device.Port} {device.Name} {device.Type} {device.Api}");
+            }
+        }
+
+        internal void EnableTuner(int value)
+        {
+            if (Amp != null && Amp.IsOpen)
+            {
+                Amp.SetTuner(value > 64);
+            }
+        }
+
+        internal void LoadPreset(int value)
+        {
+            if (Amp != null && Amp.IsOpen && value > 0 && value <= LtAmplifier.NUM_OF_PRESETS)
+            {
+                Amp.LoadPreset(value);
+            }
+        }
+
+        internal void SetBypass(NodeIdType nodeId, int value)
+        {
+            if (Amp != null && Amp.IsOpen)
+            {
+                Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = "bypass", Value = value > 64 });
+            }
+        }
+
+        internal void BypassAll(int value)
+        {
+            SetBypass(NodeIdType.stomp, value);
+            SetBypass(NodeIdType.mod, value);
+            SetBypass(NodeIdType.delay, value);
+            SetBypass(NodeIdType.reverb, value);
+        }
+
+        internal void SetDspParameter(NodeIdType nodeId, string parameter, int value)
+        {
+            if (Amp != null && Amp.IsOpen)
+            {
+                DspUnitUiParameter currentParameterDefinition = CurrentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
+                DspUnitParameter currentParameter = CurrentStomp?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+                if (currentParameterDefinition != null)
+                {
+                    switch (currentParameter.ParameterType)
+                    {
+                        case DspUnitParameterType.Boolean:
+                            currentParameter.Value = value > 64;
+                            break;
+                        case DspUnitParameterType.String:
+                            int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
+                            currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
+                            break;
+                        case DspUnitParameterType.Integer:
+                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
+                                ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
+                                : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
+                            break;
+                        case DspUnitParameterType.Float:
+                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
+                                ? ((float)value).Remap(0, 128, 0, 91)
+                                : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
+                            break;
+                    }
+                    Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = currentParameterDefinition.ControlId, Value = value });
+                }
+            }
+        }
+
+        internal void SetParameterByIndex(NodeIdType nodeId, int paramNumber, int value)
+        {
+            if (Amp != null && Amp.IsOpen)
+            {
+                if (CurrentStomp?.Definition?.Ui?.UiParameters?.Count() < paramNumber)
+                {
+                    string parameterName = CurrentStomp.Definition.Ui.UiParameters.ToArray()[paramNumber].ControlId!;
+                    SetDspParameter(nodeId, parameterName, value);
+                }
+            }
+        }
+
+        internal void BuildConfig()
+        {
             if (Program.Configuration?.MidiCommands != null)
             {
-                Configuration.Load();
-                eventCommands = new Dictionary<byte, Dictionary<int, Action<int>>>(){
-                    { MidiEvent.CC, new Dictionary<int, Action<int>>() },
-                    { MidiEvent.Program, new Dictionary<int, Action<int>>() }
+                eventCommands = new Dictionary<MidiMessageType, Dictionary<int, Action<int>>>(){
+                    { MidiMessageType.ControlChange, new Dictionary<int, Action<int>>() },
+                    { MidiMessageType.ProgramChange, new Dictionary<int, Action<int>>() }
                 };
                 foreach (MidiCommand item in Program.Configuration.MidiCommands)
                 {
@@ -194,99 +266,6 @@ namespace LtAmpDotNet.Cli.Commands
                     }
                 }
             }
-
-            await Open();
-            Amp!.MessageReceived += Amp_MessageReceived;
-            Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
-            Console.WriteLine("Connected");
-            while (true) { Thread.Sleep(100); }
-        }
-
-        internal void ListDevices()
-        {
-            IMidiAccess access = MidiAccessManager.Default;
-
-            foreach (IMidiPortDetails? device in access.Inputs)
-            {
-                Console.WriteLine($"{device.Id} {device.Name}");
-            }
-        }
-
-        internal void EnableTuner(int value)
-        {
-            if (Amp != null && Amp.IsOpen)
-            {
-                Amp.SetTuner(value > 64);
-            }
-        }
-
-        internal void LoadPreset(int value)
-        {
-            if (Amp != null && Amp.IsOpen && value > 0 && value <= LtAmplifier.NUM_OF_PRESETS)
-            {
-                Amp.LoadPreset(value);
-            }
-        }
-
-        internal void SetBypass(NodeIdType nodeId, int value)
-        {
-            if (Amp != null && Amp.IsOpen)
-            {
-                Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = "bypass", Value = value > 64 });
-            }
-        }
-
-        internal void BypassAll(int value)
-        {
-            SetBypass(NodeIdType.stomp, value);
-            SetBypass(NodeIdType.mod, value);
-            SetBypass(NodeIdType.delay, value);
-            SetBypass(NodeIdType.reverb, value);
-        }
-
-        internal void SetDspParameter(NodeIdType nodeId, string parameter, int value)
-        {
-            if (Amp != null && Amp.IsOpen)
-            {
-                DspUnitUiParameter currentParameterDefinition = CurrentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
-                DspUnitParameter currentParameter = CurrentStomp?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
-                if (currentParameterDefinition != null)
-                {
-                    switch (currentParameter.ParameterType)
-                    {
-                        case DspUnitParameterType.Boolean:
-                            currentParameter.Value = value > 64;
-                            break;
-                        case DspUnitParameterType.String:
-                            int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
-                            currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
-                            break;
-                        case DspUnitParameterType.Integer:
-                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
-                                ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
-                                : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
-                            break;
-                        case DspUnitParameterType.Float:
-                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
-                                ? ((float)value).Remap(0, 128, 0, 91)
-                                : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
-                            break;
-                    }
-                    Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = currentParameterDefinition.ControlId, Value = value });
-                }
-            }
-        }
-
-        internal void SetParameterByIndex(NodeIdType nodeId, int paramNumber, int value)
-        {
-            if (Amp != null && Amp.IsOpen)
-            {
-                if (CurrentStomp?.Definition?.Ui?.UiParameters?.Count() < paramNumber)
-                {
-                    string parameterName = CurrentStomp.Definition.Ui.UiParameters.ToArray()[paramNumber].ControlId!;
-                    SetDspParameter(nodeId, parameterName, value);
-                }
-            }
         }
 
         internal void Amp_MessageReceived(object? sender, Lib.Events.FenderMessageEventArgs e)
@@ -299,32 +278,29 @@ namespace LtAmpDotNet.Cli.Commands
             currentPreset = Preset.FromString(e.Message!.CurrentPresetStatus.CurrentPresetData)!;
         }
 
-        //internal void MidiIn_ErrorReceived(object? sender, MidiInMessageEventArgs e)
-        //{
-        //    Console.WriteLine($"[MIDI] Error: {e.RawMessage}");
-        //}
-
-        internal void MidiIn_MessageReceived(object? sender, MidiReceivedEventArgs e)
+        internal void MidiIn_MessageReceived(object? sender, RtMidi.Net.Events.MidiMessageReceivedEventArgs e)
         {
 
-            switch (e.Data[0])
+            switch (e.Message.Type)
             {
-                case MidiEvent.CC:
-                    if (eventCommands[MidiEvent.CC].ContainsKey(e.Data[1]))
+                case RtMidi.Net.Enums.MidiMessageType.ControlChange:
+                    var ccMessage = (MidiMessageControlChange)e.Message;
+                    if (eventCommands[MidiMessageType.ControlChange].ContainsKey(ccMessage.ControlFunction))
                     {
-                        eventCommands[MidiEvent.CC][e.Data[1]].Invoke(e.Data[2]);
+                        eventCommands[MidiMessageType.ControlChange][ccMessage.ControlFunction].Invoke(ccMessage.Value);
                     }
-                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
+                    Console.WriteLine($"[MIDI] {ccMessage.Type}: {ccMessage.ControlFunction}: {ccMessage.Value}");
                     break;
-                case MidiEvent.Program:
-                    if (eventCommands.TryGetValue(MidiEvent.Program, out Dictionary<int, Action<int>>? patchValue))
+                case RtMidi.Net.Enums.MidiMessageType.ProgramChange:
+                    var pcMessage = (MidiMessageProgramChange)e.Message;
+                    if (eventCommands.TryGetValue(MidiMessageType.ProgramChange, out Dictionary<int, Action<int>>? patchValue))
                     {
-                        patchValue[0].Invoke(e.Data[1]);
+                        patchValue[0].Invoke(pcMessage.Program);
                     }
-                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
+                    Console.WriteLine($"[MIDI] {pcMessage.Type}: {pcMessage.Program}");
                     break;
                 default:
-                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
+                    Console.WriteLine($"[MIDI] {e.Message.Type}");
                     break;
             }
         }
