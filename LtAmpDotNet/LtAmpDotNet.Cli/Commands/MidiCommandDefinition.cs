@@ -46,6 +46,7 @@ namespace LtAmpDotNet.Cli.Commands
             await OpenAmp();
             Amp!.MessageReceived += Amp_MessageReceived;
             Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
+            Amp!.GetCurrentPreset();
             Console.WriteLine("Connected");
             while ((Console.ReadLine()) != null)
             {
@@ -96,6 +97,7 @@ namespace LtAmpDotNet.Cli.Commands
             if (Amp != null && Amp.IsOpen && value > 0 && value <= LtAmplifier.NUM_OF_PRESETS)
             {
                 Amp.LoadPreset(value);
+                Amp!.GetCurrentPreset();
             }
         }
 
@@ -119,32 +121,39 @@ namespace LtAmpDotNet.Cli.Commands
         {
             if (Amp != null && Amp.IsOpen)
             {
-                DspUnitUiParameter currentParameterDefinition = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
-                DspUnitParameter currentParameter = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
-                
-                if (currentParameterDefinition != null)
+                try
                 {
-                    switch (currentParameter.ParameterType)
+                    DspUnitUiParameter currentParameterDefinition = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
+                    DspUnitParameter currentParameter = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+
+                    if (currentParameterDefinition != null)
                     {
-                        case DspUnitParameterType.Boolean:
-                            currentParameter.Value = value > 64;
-                            break;
-                        case DspUnitParameterType.String:
-                            int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
-                            currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
-                            break;
-                        case DspUnitParameterType.Integer:
-                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
-                                ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
-                                : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
-                            break;
-                        case DspUnitParameterType.Float:
-                            currentParameter.Value = currentParameterDefinition.NumTicks > 0
-                                ? ((float)value).Remap(0, 128, 0, 91)
-                                : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
-                            break;
+                        switch (currentParameter.ParameterType)
+                        {
+                            case DspUnitParameterType.Boolean:
+                                currentParameter.Value = value > 64;
+                                break;
+                            case DspUnitParameterType.String:
+                                int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
+                                currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
+                                break;
+                            case DspUnitParameterType.Integer:
+                                currentParameter.Value = currentParameterDefinition.NumTicks > 0
+                                    ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
+                                    : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
+                                break;
+                            case DspUnitParameterType.Float:
+                                currentParameter.Value = currentParameterDefinition.NumTicks > 0
+                                    ? ((float)value).Remap(0, 128, 0, 91)
+                                    : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
+                                break;
+                        }
+                        Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = currentParameterDefinition.ControlId, Value = value });
                     }
-                    Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = currentParameterDefinition.ControlId, Value = value });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error setting DSP parameter");
                 }
             }
         }
