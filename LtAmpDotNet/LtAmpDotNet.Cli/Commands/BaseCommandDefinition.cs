@@ -12,7 +12,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal virtual async Task Open()
         {
-            Amp = new LtAmplifier();
+            Amp = new LtAmplifier(new MockHidDevice());
             await Amp.OpenAsync();
         }
 

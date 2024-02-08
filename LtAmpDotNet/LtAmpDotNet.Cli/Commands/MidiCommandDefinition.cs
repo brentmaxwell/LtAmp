@@ -1,9 +1,12 @@
+using Commons.Music.Midi;
+using Commons.Music.Midi.Alsa;
+using Commons.Music.Midi.RtMidi;
 using HidSharp;
 using LtAmpDotNet.Extensions;
 using LtAmpDotNet.Lib;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
-using NAudio.Midi;
+using NUnit.Framework.Constraints;
 using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
@@ -12,20 +15,20 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal Preset? currentPreset;
 
-        internal Node? currentAmp => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp);
-        internal Node? currentStomp => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp);
-        internal Node? currentMod => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod);
-        internal Node? currentDelay => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay);
-        internal Node? currentReverb => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb);
+        internal Node? CurrentAmp => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp);
+        internal Node? CurrentStomp => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp);
+        internal Node? CurrentMod => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod);
+        internal Node? CurrentDelay => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay);
+        internal Node? CurrentReverb => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb);
 
-        internal Dictionary<MidiCommandCode, Dictionary<int, Action<int>>> eventCommands = [];
+        internal Dictionary<byte, Dictionary<int, Action<int>>> eventCommands = [];
 
         internal MidiCommandDefinition() : base("midi", "Listen to midi messages")
         {
-            Argument<List<int>> midiDeviceArgument = new(
+            Argument<List<string>> midiDeviceArgument = new(
                name: "deviceId",
                description: "MIDI deviceId",
-               getDefaultValue: () => [0]
+               getDefaultValue: () => ["0"]
             );
 
             AddArgument(midiDeviceArgument);
@@ -62,149 +65,150 @@ namespace LtAmpDotNet.Cli.Commands
             //};
         }
 
-        internal async Task StartListening(List<int> deviceIds)
+        internal async Task StartListening(List<string> deviceIds)
         {
-            List<MidiIn> midiDevices = [];
-            foreach (int deviceId in deviceIds)
+            IMidiAccess access = MidiAccessManager.Default;
+            List<IMidiInput> midiDevices = [];
+            foreach (string deviceId in deviceIds)
             {
-                if (deviceId + 1 > MidiIn.NumberOfDevices)
+                IMidiPortDetails? device = access.Inputs.SingleOrDefault(x => x.Id == deviceId);
+                if (device == null)
                 {
                     Console.Error.WriteLine($"Error: No such midi device (device {deviceId})");
                     return;
                 }
                 else
                 {
-                    MidiIn midiIn = new(deviceId);
-                    midiIn.MessageReceived += MidiIn_MessageReceived; ;
-                    midiIn.ErrorReceived += MidiIn_ErrorReceived;
-                    midiIn.Start();
-                    midiDevices.Add(midiIn);
+                    IMidiInput input = await access.OpenInputAsync(deviceId);
+                    input.MessageReceived += MidiIn_MessageReceived;
+                    midiDevices.Add(input);
                 }
-
-                if (Program.Configuration?.MidiCommands != null)
+            }
+            if (Program.Configuration?.MidiCommands != null)
+            {
+                Configuration.Load();
+                eventCommands = new Dictionary<byte, Dictionary<int, Action<int>>>(){
+                    { MidiEvent.CC, new Dictionary<int, Action<int>>() },
+                    { MidiEvent.Program, new Dictionary<int, Action<int>>() }
+                };
+                foreach (MidiCommand item in Program.Configuration.MidiCommands)
                 {
-                    Configuration.Load();
-                    eventCommands = new Dictionary<MidiCommandCode, Dictionary<int, Action<int>>>(){
-                        { MidiCommandCode.ControlChange, new Dictionary<int, Action<int>>() },
-                        { MidiCommandCode.PatchChange, new Dictionary<int, Action<int>>() }
-                    };
-                    foreach (MidiCommand item in Program.Configuration.MidiCommands)
+                    switch (item.Value)
                     {
-                        switch (item.Value)
-                        {
-                            case "EnableTuner":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), EnableTuner);
-                                break;
-                            case "SetBypassAll":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), BypassAll);
-                                break;
-                            case "SetStompBypass":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.stomp, value));
-                                break;
-                            case "SetStompParameter1":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 1, value));
-                                break;
-                            case "SetStompParameter2":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 2, value));
-                                break;
-                            case "SetStompParameter3":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 3, value));
-                                break;
-                            case "SetStompParameter4":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 4, value));
-                                break;
-                            case "SetStompParameter5":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 5, value));
-                                break;
-                            case "SetModBypass":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.mod, value));
-                                break;
-                            case "SetModParameter1":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 1, value));
-                                break;
-                            case "SetModParameter2":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 2, value));
-                                break;
-                            case "SetModParameter3":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 3, value));
-                                break;
-                            case "SetModParameter4":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 4, value));
-                                break;
-                            case "SetModParameter5":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 5, value));
-                                break;
-                            case "SetDelayBypass":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.delay, value));
-                                break;
-                            case "SetDelayParameter1":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 1, value));
-                                break;
-                            case "SetDelayParameter2":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 2, value));
-                                break;
-                            case "SetDelayParameter3":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 3, value));
-                                break;
-                            case "SetDelayParameter4":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 4, value));
-                                break;
-                            case "SetDelayParameter5":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 5, value));
-                                break;
-                            case "SetReverbBypass":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.reverb, value));
-                                break;
-                            case "SetReverbParameter1":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 1, value));
-                                break;
-                            case "SetReverbParameter2":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 2, value));
-                                break;
-                            case "SetReverbParameter3":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 3, value));
-                                break;
-                            case "SetReverbParameter4":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 4, value));
-                                break;
-                            case "SetReverbParameter5":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 5, value));
-                                break;
-                            case "SetAmpGain":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "gain", value));
-                                break;
-                            case "SetAmpVolume":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "volume", value));
-                                break;
-                            case "SetAmpTreble":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "treb", value));
-                                break;
-                            case "SetAmpMiddle":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "mid", value));
-                                break;
-                            case "SetAmpBass":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "bass", value));
-                                break;
-                            case "LoadPreset":
-                                eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), LoadPreset);
-                                break;
-                        }
+                        case "EnableTuner":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), EnableTuner);
+                            break;
+                        case "SetBypassAll":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), BypassAll);
+                            break;
+                        case "SetStompBypass":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.stomp, value));
+                            break;
+                        case "SetStompParameter1":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 1, value));
+                            break;
+                        case "SetStompParameter2":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 2, value));
+                            break;
+                        case "SetStompParameter3":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 3, value));
+                            break;
+                        case "SetStompParameter4":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 4, value));
+                            break;
+                        case "SetStompParameter5":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.stomp, 5, value));
+                            break;
+                        case "SetModBypass":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.mod, value));
+                            break;
+                        case "SetModParameter1":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 1, value));
+                            break;
+                        case "SetModParameter2":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 2, value));
+                            break;
+                        case "SetModParameter3":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 3, value));
+                            break;
+                        case "SetModParameter4":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 4, value));
+                            break;
+                        case "SetModParameter5":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.mod, 5, value));
+                            break;
+                        case "SetDelayBypass":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.delay, value));
+                            break;
+                        case "SetDelayParameter1":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 1, value));
+                            break;
+                        case "SetDelayParameter2":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 2, value));
+                            break;
+                        case "SetDelayParameter3":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 3, value));
+                            break;
+                        case "SetDelayParameter4":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 4, value));
+                            break;
+                        case "SetDelayParameter5":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.delay, 5, value));
+                            break;
+                        case "SetReverbBypass":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetBypass(NodeIdType.reverb, value));
+                            break;
+                        case "SetReverbParameter1":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 1, value));
+                            break;
+                        case "SetReverbParameter2":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 2, value));
+                            break;
+                        case "SetReverbParameter3":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 3, value));
+                            break;
+                        case "SetReverbParameter4":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 4, value));
+                            break;
+                        case "SetReverbParameter5":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetParameterByIndex(NodeIdType.reverb, 5, value));
+                            break;
+                        case "SetAmpGain":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "gain", value));
+                            break;
+                        case "SetAmpVolume":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "volume", value));
+                            break;
+                        case "SetAmpTreble":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "treb", value));
+                            break;
+                        case "SetAmpMiddle":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "mid", value));
+                            break;
+                        case "SetAmpBass":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), (value) => SetDspParameter(NodeIdType.amp, "bass", value));
+                            break;
+                        case "LoadPreset":
+                            eventCommands[item.CommandType].Add(item.Command.GetValueOrDefault(), LoadPreset);
+                            break;
                     }
                 }
-
-                await Open();
-                Amp!.MessageReceived += Amp_MessageReceived;
-                Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
-                Console.WriteLine("Connected");
-                while (true) { Thread.Sleep(100); }
             }
+
+            await Open();
+            Amp!.MessageReceived += Amp_MessageReceived;
+            Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
+            Console.WriteLine("Connected");
+            while (true) { Thread.Sleep(100); }
         }
 
         internal void ListDevices()
         {
-            for (int device = 0; device < MidiIn.NumberOfDevices; device++)
+            IMidiAccess access = MidiAccessManager.Default;
+
+            foreach (IMidiPortDetails? device in access.Inputs)
             {
-                Console.WriteLine($"{device} {MidiIn.DeviceInfo(device).ProductName} {MidiIn.DeviceInfo(device).ProductName}");
+                Console.WriteLine($"{device.Id} {device.Name}");
             }
         }
 
@@ -244,8 +248,8 @@ namespace LtAmpDotNet.Cli.Commands
         {
             if (Amp != null && Amp.IsOpen)
             {
-                DspUnitUiParameter currentParameterDefinition = currentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
-                DspUnitParameter currentParameter = currentStomp?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+                DspUnitUiParameter currentParameterDefinition = CurrentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
+                DspUnitParameter currentParameter = CurrentStomp?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
                 if (currentParameterDefinition != null)
                 {
                     switch (currentParameter.ParameterType)
@@ -254,18 +258,18 @@ namespace LtAmpDotNet.Cli.Commands
                             currentParameter.Value = value > 64;
                             break;
                         case DspUnitParameterType.String:
-                            int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, (float)currentParameterDefinition.ListItems?.Count()), 0);
-                            currentParameter.Value = currentParameterDefinition.ListItems.ToArray()[itemNumber];
+                            int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
+                            currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
                             break;
                         case DspUnitParameterType.Integer:
                             currentParameter.Value = currentParameterDefinition.NumTicks > 0
                                 ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
-                                : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min.Value, currentParameterDefinition.Max.Value), 0);
+                                : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
                             break;
                         case DspUnitParameterType.Float:
                             currentParameter.Value = currentParameterDefinition.NumTicks > 0
                                 ? ((float)value).Remap(0, 128, 0, 91)
-                                : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min.Value, currentParameterDefinition.Max.Value);
+                                : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
                             break;
                     }
                     Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = currentParameterDefinition.ControlId, Value = value });
@@ -277,9 +281,9 @@ namespace LtAmpDotNet.Cli.Commands
         {
             if (Amp != null && Amp.IsOpen)
             {
-                if (currentStomp?.Definition?.Ui?.UiParameters?.Count() < paramNumber)
+                if (CurrentStomp?.Definition?.Ui?.UiParameters?.Count() < paramNumber)
                 {
-                    string parameterName = currentStomp.Definition.Ui.UiParameters.ToArray()[paramNumber].ControlId!;
+                    string parameterName = CurrentStomp.Definition.Ui.UiParameters.ToArray()[paramNumber].ControlId!;
                     SetDspParameter(nodeId, parameterName, value);
                 }
             }
@@ -295,33 +299,32 @@ namespace LtAmpDotNet.Cli.Commands
             currentPreset = Preset.FromString(e.Message!.CurrentPresetStatus.CurrentPresetData)!;
         }
 
-        internal void MidiIn_ErrorReceived(object? sender, MidiInMessageEventArgs e)
-        {
-            Console.WriteLine($"[MIDI] Error: {e.RawMessage}");
-        }
+        //internal void MidiIn_ErrorReceived(object? sender, MidiInMessageEventArgs e)
+        //{
+        //    Console.WriteLine($"[MIDI] Error: {e.RawMessage}");
+        //}
 
-        internal void MidiIn_MessageReceived(object? sender, MidiInMessageEventArgs e)
+        internal void MidiIn_MessageReceived(object? sender, MidiReceivedEventArgs e)
         {
-            switch (e.MidiEvent.CommandCode)
+
+            switch (e.Data[0])
             {
-                case MidiCommandCode.ControlChange:
-                    ControlChangeEvent ccEvent = (ControlChangeEvent)e.MidiEvent;
-                    if (eventCommands[ccEvent.CommandCode].ContainsKey((byte)ccEvent.Controller))
+                case MidiEvent.CC:
+                    if (eventCommands[MidiEvent.CC].ContainsKey(e.Data[1]))
                     {
-                        eventCommands[ccEvent.CommandCode][(byte)ccEvent.Controller].Invoke(ccEvent.ControllerValue);
+                        eventCommands[MidiEvent.CC][e.Data[1]].Invoke(e.Data[2]);
                     }
-                    Console.WriteLine($"[MIDI] {ccEvent.CommandCode}: {ccEvent.Channel}: {ccEvent.Controller}: {ccEvent.ControllerValue}");
+                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
                     break;
-                case MidiCommandCode.PatchChange:
-                    PatchChangeEvent pEvent = (PatchChangeEvent)e.MidiEvent;
-                    if (eventCommands.TryGetValue(pEvent.CommandCode, out Dictionary<int, Action<int>>? patchValue))
+                case MidiEvent.Program:
+                    if (eventCommands.TryGetValue(MidiEvent.Program, out Dictionary<int, Action<int>>? patchValue))
                     {
-                        patchValue[0].Invoke(pEvent.Patch);
+                        patchValue[0].Invoke(e.Data[1]);
                     }
-                    Console.WriteLine($"[MIDI] {pEvent.CommandCode}: {pEvent.Channel}: {pEvent.Patch}");
+                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
                     break;
                 default:
-                    Console.WriteLine($"[MIDI] {e.MidiEvent.CommandCode}: {e.MidiEvent.Channel}: {e.RawMessage}");
+                    Console.WriteLine($"[MIDI] {Convert.ToHexString(e.Data)}");
                     break;
             }
         }

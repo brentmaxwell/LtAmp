@@ -1,187 +1,187 @@
 {
   "midiCommands": [
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 20,
       "value": "EnableTuner"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 22,
       "value": "SetBypassAll"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 23,
       "value": "SetBypassStomp"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 24,
       "value": "SetBypassMod"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 25,
       "value": "SetBypassDelay"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 26,
       "value": "SetBypassReverb"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 28,
       "value": "SetStompEffect"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 29,
       "value": "SetStompParameter1"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 30,
       "value": "SetStompParameter2"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 31,
       "value": "SetStompParameter3"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 32,
       "value": "SetStompParameter4"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 33,
       "value": "SetStompParameter5"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 38,
       "value": "SetModEffect"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 39,
       "value": "SetModParameter1"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 40,
       "value": "SetModParameter2"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 41,
       "value": "SetModParameter3"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 42,
       "value": "SetModParameter4"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 43,
       "value": "SetModParameter5"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 48,
       "value": "SetDelayEffect"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 49,
       "value": "SetDelayParameter1"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 50,
       "value": "SetDelayParameter2"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 51,
       "value": "SetDelayParameter3"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 52,
       "value": "SetDelayParameter4"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 53,
       "value": "SetDelayParameter5"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 58,
       "value": "SetReverbEffect"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 59,
       "value": "SetReverbParameter1"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 60,
       "value": "SetReverbParameter2"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 61,
       "value": "SetReverbParameter3"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 62,
       "value": "SetReverbParameter4"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 63,
       "value": "SetReverbParameter5"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 68,
       "value": "SetAmpType"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 69,
       "value": "SetAmpGain"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 70,
       "value": "SetAmpVolume"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 71,
       "value": "SetAmpTreble"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 72,
       "value": "SetAmpMiddle"
     },
     {
-      "commandType": "ControlChange",
+      "commandType": 176,
       "command": 73,
       "value": "SetAmpBass"
     },
     {
-      "commandType": "PatchChange",
+      "commandType": 192,
       "value": "LoadPreset"
     }
   ]

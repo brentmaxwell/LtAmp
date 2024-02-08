@@ -1,5 +1,5 @@
-﻿using LtAmpDotNet.Lib.Model.Profile;
-using NAudio.Midi;
+﻿using Commons.Music.Midi;
+using LtAmpDotNet.Lib.Model.Profile;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -68,8 +68,7 @@ namespace LtAmpDotNet.Cli
     public class MidiCommand
     {
         [JsonProperty("commandType")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public MidiCommandCode CommandType { get; set; }
+        public byte CommandType { get; set; }
 
         [JsonProperty("command")]
         public int? Command { get; set; }

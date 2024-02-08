@@ -159,15 +159,15 @@ namespace LtAmpDotNet.Cli.Commands
             string output = "";
             for (int i = 1; i <= LtAmplifier.NUM_OF_PRESETS; i++)
             {
-                Preset preset = Preset.FromString((await Amp.GetPresetAsync(i)).Data);
+                Preset preset = Preset.FromString((await Amp!.GetPresetAsync(i)).Data)!;
                 output += $"{i}: {preset.Info.DisplayNameRaw}";
                 if (showAll)
                 {
-                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp).Definition.Info.DisplayName,-16}";
-                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp).Definition.DisplayName,-16}";
-                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod).Definition.DisplayName,-16}";
-                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay).Definition.DisplayName,-16}";
-                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb).Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.amp)!.Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.stomp)!.Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.mod)!.Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay)!.Definition.DisplayName,-16}";
+                    output += $", {preset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb)!.Definition.DisplayName,-16}";
                 }
                 output += "\n";
             }

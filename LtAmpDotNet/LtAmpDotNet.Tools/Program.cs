@@ -6,13 +6,14 @@ namespace LtAmpDotNet.Tools
 {
     internal class Program
     {
-        private static readonly LtAmplifier amp = new();
+        private static LtAmplifier amp;
 
         private static void Main(string[] args)
         {
-            ExtractData(
-                "C:\\Users\\Brent Maxwell\\OneDrive\\Projects\\FenderTone\\fenderTone\\Fender Tone LT Desktop.exe",
-                "C:\\Users\\Brent Maxwell\\OneDrive\\Projects\\FenderTone\\fenderTone\\extracts");
+            OutputEffectsInCsv("C:\\Users\\Brent Maxwell\\OneDrive\\Projects\\FenderTone\\dspUnits.csv");
+            //ExtractData(
+            //    "C:\\Users\\Brent Maxwell\\OneDrive\\Projects\\FenderTone\\fenderTone\\Fender Tone LT Desktop.exe",
+            //    "C:\\Users\\Brent Maxwell\\OneDrive\\Projects\\FenderTone\\fenderTone\\extracts");
             //amp = new Lib.LtAmplifier();
             //amp.MessageReceived += Amp_MessageReceived;
             //amp.MessageSent += Amp_MessageSent;
@@ -183,6 +184,23 @@ namespace LtAmpDotNet.Tools
             //}
             //            File.WriteAllText(,String.Join("\n", items));
 
+        }
+
+        public static void OutputEffectsInCsv(string filename)
+        {
+            amp = new LtAmplifier();
+            string output = "";
+            foreach (Lib.Model.Profile.DspUnitDefinition effect in LtAmplifier.DspUnitDefinitions)
+            {
+                int i = 0;
+                foreach (Lib.Model.Profile.DspUnitUiParameter parameter in effect.Ui.UiParameters)
+                {
+                    i++;
+                    output += $"{effect.Info.Category},{effect.Info.SubCategory},{effect.FenderId},{effect.Info.DisplayName}.{effect.Ui.HasBypass}";
+                    output += $",{i},{parameter.ControlId},{parameter.DisplayName},{parameter.ControlType}\n";
+                }
+            }
+            File.WriteAllText(filename, output);
         }
     }
 }
