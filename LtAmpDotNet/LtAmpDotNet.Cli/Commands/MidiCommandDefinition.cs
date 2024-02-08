@@ -101,7 +101,6 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void SetBypass(NodeIdType nodeId, int value)
         {
-            Console.WriteLine($"SetBypass {nodeId}");
             if (Amp != null && Amp.IsOpen)
             {
                 Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = "bypass", Value = value > 64 });
@@ -118,6 +117,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void SetDspParameter(NodeIdType nodeId, string parameter, int value)
         {
+            Console.WriteLine($"SetDspParameter {nodeId} {parameter} {value}");
             if (Amp != null && Amp.IsOpen)
             {
                 DspUnitUiParameter currentParameterDefinition = CurrentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
