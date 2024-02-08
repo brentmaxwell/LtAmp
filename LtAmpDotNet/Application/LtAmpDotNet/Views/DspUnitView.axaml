@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:LtAmpDotNet.ViewModels"
+			 xmlns:views="clr-namespace:LtAmpDotNet.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LtAmpDotNet.Views.DspUnitView"
+			 x:DataType="vm:DspUnitViewModel">
+	<DockPanel>
+		<ComboBox
+			DockPanel.Dock="Bottom"
+			ItemsSource="{Binding Definitions}"
+			DisplayMemberBinding="{Binding DisplayName}"
+			SelectedValue="{Binding FenderId}"
+			SelectedValueBinding="{Binding FenderId}"/>
+		<TextBlock
+			HorizontalAlignment="Center"
+			DockPanel.Dock="Bottom"
+			Text="{Binding NodeIdType}"/>
+		<StackPanel
+			Orientation="Horizontal"
+			VerticalAlignment="Stretch"
+			HorizontalAlignment="Center"
+			IsVisible="{Binding IsVisible}">
+			<ToggleButton
+				HorizontalAlignment="Right"
+				VerticalAlignment="Stretch"
+				VerticalContentAlignment="Center"
+				IsChecked="{Binding IsBypassing}"
+				IsVisible="{Binding HasBypass}">
+				<TextBlock Text="Bypass"/>
+			</ToggleButton>
+			<ItemsControl Name="ParameterControl"
+				VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch"
+				ItemsSource="{Binding Parameters}"
+				IsEnabled="{Binding !IsBypassing}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel
+							Orientation="Horizontal"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Center"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<views:DspUnitParameterView DataContext="{Binding .}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+		
+	</DockPanel>
+</UserControl>

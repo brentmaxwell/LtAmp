@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+
+    <Platforms>AnyCPU;ARM32</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mock\MockDeviceState.cs" />
+    <Compile Remove="Mock\MockHidDevice.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="mockAmpState.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="NUnit" Version="4.0.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.10.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mock\" />
+  </ItemGroup>
+
+</Project>

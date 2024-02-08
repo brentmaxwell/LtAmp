@@ -1,0 +1,8 @@
+﻿C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Resources\drawable\splash_screen.xml
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Resources\values-night\colors.xml
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Resources\values\colors.xml
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Resources\values\styles.xml
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Icon.png
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\MainActivity.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\AndroidDev.keystore
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Android\Properties\AndroidManifest.xml

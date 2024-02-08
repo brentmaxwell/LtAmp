@@ -1,0 +1,199 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:LtAmpDotNet.ViewModels"
+			 xmlns:controls="clr-namespace:LtAmpDotNet.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LtAmpDotNet.Views.HomeView"
+			 x:DataType="vm:MainViewModel">
+	<DockPanel>
+		<TextBlock
+			Name="PresetNameDisplay"
+			HorizontalAlignment="Center"
+			DockPanel.Dock="Top"
+			Text="{Binding CurrentPreset.DisplayName}">
+			<TextBlock.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Rename" Click="RenameMenuItem_Click"/>
+				</ContextMenu>
+			</TextBlock.ContextMenu>
+		</TextBlock>
+		<TextBox
+			Name="PresetNameEdit"
+			HorizontalAlignment="Stretch"
+			HorizontalContentAlignment="Center"
+			DockPanel.Dock="Top"
+			IsVisible="False"
+			LostFocus="PresetNameEdit_LostFocus"
+			Text="{Binding CurrentPreset.DisplayName}"
+				/>
+		<Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" Margin="4" IsEnabled="{Binding IsAmplifierConnected}">
+			<Border
+				BorderBrush="DarkGray"
+				BorderThickness="2"
+				Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+				<DockPanel>
+					<ComboBox
+						MaxDropDownHeight="400"
+						HorizontalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						ItemsSource="{Binding AmpUnits}"
+						SelectedIndex="{Binding SelectedAmpIndex}"
+						DockPanel.Dock="Top">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<Panel>
+									<TextBlock Text="{Binding DisplayName}"/>
+								</Panel>
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
+					<controls:DspUnitView
+						DataContext="{Binding CurrentPreset.AmpUnit}"
+						VerticalAlignment="Stretch"/>
+				</DockPanel>
+			</Border>
+			<Border
+				BorderBrush="DarkGray"
+				BorderThickness="2"
+				Grid.Row="1" Grid.Column="0"
+						>
+				<DockPanel>
+					<ToggleSplitButton
+						HorizontalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						Content="{Binding CurrentPreset.StompUnit.DisplayName}"
+						IsChecked="{Binding CurrentPreset.StompUnit.IsBypass}"
+						DockPanel.Dock="Top">
+						<ToggleSplitButton.Flyout>
+							<Flyout Placement="BottomEdgeAlignedRight">
+								<ListBox
+									HorizontalAlignment="Stretch"
+									ItemsSource="{Binding StompUnits}"
+									SelectedIndex="{Binding SelectedStompIndex}"
+											>
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Panel>
+												<TextBlock Text="{Binding DisplayName}"/>
+											</Panel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</Flyout>
+						</ToggleSplitButton.Flyout>
+					</ToggleSplitButton>
+					<controls:DspUnitView
+						DataContext="{Binding CurrentPreset.StompUnit}"
+						VerticalAlignment="Stretch"/>
+				</DockPanel>
+			</Border>
+			<Border
+				BorderBrush="DarkGray"
+				BorderThickness="2"
+				Grid.Row="1" Grid.Column="1"
+						>
+				<DockPanel>
+					<ToggleSplitButton
+						HorizontalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						Content="{Binding CurrentPreset.ModUnit.DisplayName}"
+						IsChecked="{Binding CurrentPreset.ModUnit.IsBypass}"
+						DockPanel.Dock="Top">
+						<ToggleSplitButton.Flyout>
+							<Flyout Placement="BottomEdgeAlignedRight">
+								<ListBox
+									HorizontalAlignment="Stretch"
+									ItemsSource="{Binding ModUnits}"
+									SelectedIndex="{Binding SelectedModIndex}"
+											>
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Panel>
+												<TextBlock Text="{Binding DisplayName}"/>
+											</Panel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</Flyout>
+						</ToggleSplitButton.Flyout>
+					</ToggleSplitButton>
+					<controls:DspUnitView
+						DataContext="{Binding CurrentPreset.ModUnit}"
+						VerticalAlignment="Stretch"/>
+				</DockPanel>
+			</Border>
+			<Border
+				BorderBrush="DarkGray"
+				BorderThickness="2"
+				Grid.Row="2" Grid.Column="0"
+						>
+				<DockPanel >
+					<ToggleSplitButton
+						HorizontalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						Content="{Binding CurrentPreset.DelayUnit.DisplayName}"
+						IsChecked="{Binding CurrentPreset.DelayUnit.IsBypass}"
+						DockPanel.Dock="Top">
+						<ToggleSplitButton.Flyout>
+							<Flyout Placement="BottomEdgeAlignedRight">
+								<ListBox
+									HorizontalAlignment="Stretch"
+									ItemsSource="{Binding DelayUnits}"
+									SelectedIndex="{Binding SelectedDelayIndex}"
+											>
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Panel>
+												<TextBlock Text="{Binding DisplayName}"/>
+											</Panel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</Flyout>
+						</ToggleSplitButton.Flyout>
+					</ToggleSplitButton>
+					<controls:DspUnitView
+						DataContext="{Binding CurrentPreset.DelayUnit}"
+						VerticalAlignment="Stretch"/>
+				</DockPanel>
+			</Border>
+			<Border
+				BorderBrush="DarkGray"
+				BorderThickness="2"
+				Grid.Row="2" Grid.Column="1"
+						>
+				<DockPanel >
+					<ToggleSplitButton
+						HorizontalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						Content="{Binding CurrentPreset.ReverbUnit.DisplayName}"
+						IsChecked="{Binding CurrentPreset.ReverbUnit.IsBypass}"
+						DockPanel.Dock="Top">
+						<ToggleSplitButton.Flyout>
+							<Flyout Placement="BottomEdgeAlignedRight">
+								<ListBox
+									HorizontalAlignment="Stretch"
+									ItemsSource="{Binding ReverbUnits}"
+									SelectedIndex="{Binding SelectedReverbIndex}"
+											>
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Panel>
+												<TextBlock Text="{Binding DisplayName}"/>
+											</Panel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</Flyout>
+						</ToggleSplitButton.Flyout>
+					</ToggleSplitButton>
+					<controls:DspUnitView
+						DataContext="{Binding CurrentPreset.ReverbUnit}"
+						VerticalAlignment="Stretch"/>
+				</DockPanel>
+			</Border>
+		</Grid>
+	</DockPanel>
+</UserControl>

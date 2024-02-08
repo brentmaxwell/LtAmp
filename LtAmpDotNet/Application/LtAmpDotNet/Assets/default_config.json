@@ -1,0 +1,16 @@
+{
+  "SelectedMidiDevices": [
+    {
+      "Name": "USB-Midi 0",
+      "Port": 0,
+      "Api": 4,
+      "Type": 0
+    }
+  ],
+  "MidiCommandDefinitions": {
+    "BypassStomp": 23,
+    "BypassMod": 24,
+    "BypassDelay": 25,
+    "BypassReverb": 26
+  }
+}

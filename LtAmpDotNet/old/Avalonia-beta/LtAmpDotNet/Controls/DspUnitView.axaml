@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="clr-namespace:LtAmpDotNet.ViewModels;assembly=LtAmpDotNet"
+		     x:Class="LtAmpDotNet.Controls.DspUnitView"
+			 x:DataType="vm:DspUnitViewModel">
+	<ItemsControl
+		ItemsSource="{Binding Parameters.Values}"
+		VerticalAlignment="Stretch"
+		HorizontalAlignment="Stretch"
+		DockPanel.Dock="Bottom"
+		x:Name="itemControl"
+		>
+		<ItemsControl.ItemsPanel>
+			<ItemsPanelTemplate>
+				<StackPanel
+					Orientation="Horizontal"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Center"
+					
+					/>
+			</ItemsPanelTemplate>
+		</ItemsControl.ItemsPanel>
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<Border
+					BorderBrush="LightGray"
+					BorderThickness="2"
+					>
+					<DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Center">
+						<TextBlock
+							HorizontalAlignment="Center"
+							DockPanel.Dock="Top"
+							Text="{Binding DisplayName}"
+							/>
+						<NumericUpDown
+							Minimum="{Binding DisplayMin}"
+							Maximum="{Binding DisplayMax}"
+							Increment="{Binding DisplaySmallChange}"
+							FormatString="0.00"
+							DockPanel.Dock="Bottom"
+							IsVisible="{Binding IsNumeric}"
+							Value="{Binding DisplayValue}"
+							/>
+						<Panel HorizontalAlignment="Stretch">
+							<Slider
+								Orientation="Vertical"
+								HorizontalAlignment="Center"
+								Minimum="{Binding DisplayMin}"
+								Maximum="{Binding DisplayMax}"
+								SmallChange="{Binding DisplaySmallChange}"
+								LargeChange="{Binding DisplaySmallChange}"
+								IsSnapToTickEnabled="True"
+								TickFrequency="{Binding DisplaySmallChange}"
+								IsVisible="{Binding IsNumeric}"
+								Value="{Binding DisplayValue}"
+								/>
+							<ListBox
+								IsVisible="{Binding IsList}"
+								ItemsSource="{Binding ListItems}"
+								SelectedItem="{Binding Value}"
+								/>
+						</Panel>
+
+					</DockPanel>
+				</Border>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
+</UserControl>

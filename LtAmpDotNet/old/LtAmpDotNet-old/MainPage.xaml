@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:LtAmpDotNet.Views"
+             xmlns:viewModels="clr-namespace:LtAmpDotNet.ViewModels"
+             x:Class="LtAmpDotNet.MainPage">
+    <!--<ContentPage.BindingContext>
+        <viewModels:MainPageViewModel  />
+    </ContentPage.BindingContext>-->
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Picker
+                Title="Preset"
+                SelectedIndexChanged="Picker_SelectedIndexChanged"
+                ItemsSource="{Binding PresetList}"
+                ItemDisplayBinding="{Binding DisplayName}">
+            </Picker>
+            <views:HeaderView Text="{Binding CurrentPreset.DisplayName}"></views:HeaderView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <views:DspUnitView Grid.Row="0" Grid.Column="0"
+                    BindingContext="{Binding CurrentPreset.Stomp}"></views:DspUnitView>
+                <views:DspUnitView Grid.Row="0" Grid.Column="1"
+                    BindingContext="{Binding CurrentPreset.Mod}"></views:DspUnitView>
+                <views:DspUnitView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    BindingContext="{Binding CurrentPreset.Amp}"></views:DspUnitView>
+                <views:DspUnitView Grid.Row="2" Grid.Column="0"
+                    BindingContext="{Binding CurrentPreset.Delay}"></views:DspUnitView>
+                <views:DspUnitView Grid.Row="2" Grid.Column="1"
+                    BindingContext="{Binding CurrentPreset.Reverb}"></views:DspUnitView>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

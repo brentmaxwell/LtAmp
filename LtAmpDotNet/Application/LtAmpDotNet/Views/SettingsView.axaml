@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:LtAmpDotNet.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LtAmpDotNet.Views.SettingsView"
+			 x:DataType="vm:SettingsViewModel">
+	<StackPanel>
+		<TextBlock Text="Midi Devices"/>
+		<ListBox
+			ItemsSource="{Binding AvailableMidiDevices}"
+			SelectedItems="{Binding Settings.SelectedMidiDevices}"
+			SelectionMode="Multiple,Toggle">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Port}"/>
+						<TextBlock Text="{Binding Name}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<TextBlock Text="Midi Commands"/>
+		<ItemsControl ItemsSource="{Binding Settings.MidiCommandDefinitions}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<UniformGrid Columns="8"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<TextBlock Text="{Binding Key}"/>
+						<TextBox Text="{Binding Value}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</StackPanel>
+</UserControl>

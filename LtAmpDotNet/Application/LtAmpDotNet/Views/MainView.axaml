@@ -1,0 +1,109 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vc="clr-namespace:LtAmpDotNet.ViewControls"
+			 xmlns:c="clr-namespace:LtAmpDotNet.Controls"
+             xmlns:vm="clr-namespace:LtAmpDotNet.ViewModels"
+			 xmlns:views="clr-namespace:LtAmpDotNet.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:i="clr-namespace:LtAmpDotNet.Assets"
+             x:Class="LtAmpDotNet.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	<UserControl.Styles>
+		<Style Selector="SplitView">
+			<Setter Property="OpenPaneLength" Value="300"/>
+		</Style>
+	</UserControl.Styles>
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<Menu DockPanel.Dock="Left">
+				<MenuItem Command="{Binding ToggleMenu}">
+					<MenuItem.Header>
+						<PathIcon Data="{StaticResource hamburger_menu}"/>
+					</MenuItem.Header>
+				</MenuItem>
+			</Menu>
+			<Menu DockPanel.Dock="Right">
+				<MenuItem Command="{Binding ToggleConnect}">
+					<MenuItem.Styles>
+						<Style Selector="PathIcon">
+							<Setter Property="Foreground" Value="Red" />
+						</Style>
+						<Style Selector="PathIcon.Connecting">
+							<Setter Property="Foreground" Value="Yellow" />
+						</Style>
+						<Style Selector="PathIcon.Connected">
+							<Setter Property="Foreground" Value="Green" />
+						</Style>
+					</MenuItem.Styles>
+					<MenuItem.Header>
+						<PathIcon Data="{StaticResource connection_status}" Classes.Connected="true"
+							Classes.Disconnected="{Binding !ConnectionStatus}"
+							Classes.Connecting="{Binding ConnectionStatus}"/>
+					</MenuItem.Header>
+				</MenuItem>
+				<MenuItem
+						IsEnabled="{Binding HomeViewModel.CurrentPreset.IsPresetEdited}"
+						Command="{Binding SavePreset}">
+					<MenuItem.Header>
+						<PathIcon Data="{StaticResource save}"/>
+					</MenuItem.Header>
+				</MenuItem>
+				<MenuItem
+					IsEnabled="{Binding HomeViewModel.CurrentPreset.IsPresetEdited}"
+					Command="{Binding RevertPreset}">
+					<MenuItem.Header>
+						<PathIcon Data="{StaticResource revert}"/>
+					</MenuItem.Header>
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+		<SplitView
+			IsPaneOpen="{Binding IsMenuOpen}"
+			Content="{Binding CurrentView}"
+			PaneClosing="SplitView_PaneClosing">
+			<SplitView.Pane>
+				<StackPanel>
+					<StackPanel.Styles>
+						<Style Selector="ItemsControl > MenuItem">
+						</Style>
+						<Style Selector="ListBox, ItemsControl">
+							<Setter Property="ItemsPanel">
+								<ItemsPanelTemplate>
+									<StackPanel/>
+								</ItemsPanelTemplate>
+							</Setter>
+						</Style>
+					</StackPanel.Styles>
+					<ListBox
+						ItemsSource="{Binding ViewList.Keys}"
+						SelectedItem="{Binding CurrentViewName}"
+						Name="Menu1">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<MenuItem Header="{Binding .}"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+					<ListBox Name="Menu2" SelectionMode="Single">
+						<MenuItem
+							Name="FootswitchMenuItem"
+							Header="Footswitch"
+							StaysOpenOnClick="True"
+							PointerPressed="FootswitchFlyout_PointerPressed"
+							PointerExited="MenuItem_PointerExited">
+							<FlyoutBase.AttachedFlyout>
+								<Flyout Placement="BottomEdgeAlignedRight" Closed="Flyout_Closed">
+									<vc:QaSlotsControl DataContext="{Binding QaSlotsViewModel}"/>
+								</Flyout>
+							</FlyoutBase.AttachedFlyout>
+						</MenuItem>
+						<MenuItem Header="Debug" Command="{Binding ToggleDebug}" PointerExited="MenuItem_PointerExited"/>
+					</ListBox>
+					<!--<vc:QaSlotsControl DataContext="{Binding QaSlotsViewModel}"/>-->
+				</StackPanel>
+			</SplitView.Pane>
+		</SplitView>
+	</DockPanel>
+</UserControl>
