@@ -117,11 +117,11 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void SetDspParameter(NodeIdType nodeId, string parameter, int value)
         {
-            Console.WriteLine($"SetDspParameter {nodeId} {parameter} {value}");
             if (Amp != null && Amp.IsOpen)
             {
-                DspUnitUiParameter currentParameterDefinition = CurrentStomp?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
-                DspUnitParameter currentParameter = CurrentStomp?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+                DspUnitUiParameter currentParameterDefinition = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
+                DspUnitParameter currentParameter = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+                
                 if (currentParameterDefinition != null)
                 {
                     switch (currentParameter.ParameterType)
