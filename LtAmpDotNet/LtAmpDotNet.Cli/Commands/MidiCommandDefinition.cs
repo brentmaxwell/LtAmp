@@ -101,6 +101,7 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void SetBypass(NodeIdType nodeId, int value)
         {
+            Console.WriteLine($"SetBypass {nodeId}");
             if (Amp != null && Amp.IsOpen)
             {
                 Amp.SetDspUnitParameter(nodeId, new DspUnitParameter() { Name = "bypass", Value = value > 64 });
@@ -285,7 +286,6 @@ namespace LtAmpDotNet.Cli.Commands
 
         internal void MidiIn_MessageReceived(object? sender, RtMidi.Net.Events.MidiMessageReceivedEventArgs e)
         {
-            Console.Write("[MIDI] ");
             switch (e.Message.Type)
             {
                 case RtMidi.Net.Enums.MidiMessageType.ControlChange:
@@ -295,6 +295,8 @@ namespace LtAmpDotNet.Cli.Commands
                         eventCommands[MidiMessageType.ControlChange][ccMessage.ControlFunction].Invoke(ccMessage.Value);
                     }
                     Console.WriteLine($"[MIDI] {ccMessage.Type}: {ccMessage.ControlFunction}: {ccMessage.Value}");
+                    var configOption = Program.Configuration.MidiCommands.SingleOrDefault(x => x.CommandType == MidiMessageType.ControlChange && x.Command == ccMessage.ControlFunction);
+                    Console.WriteLine(configOption.Value);
                     break;
                 case RtMidi.Net.Enums.MidiMessageType.ProgramChange:
                     var pcMessage = (MidiMessageProgramChange)e.Message;
@@ -308,7 +310,6 @@ namespace LtAmpDotNet.Cli.Commands
                     Console.WriteLine($"[MIDI] {e.Message.Type}");
                     break;
             }
-            Console.WriteLine($"{e.Message.Type}");
         }
     }
 }
