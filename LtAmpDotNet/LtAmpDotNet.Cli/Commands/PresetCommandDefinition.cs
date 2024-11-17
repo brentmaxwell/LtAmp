@@ -25,14 +25,13 @@ namespace LtAmpDotNet.Cli.Commands
             presetListCommand.SetHandler(PresetList, optionAll);
             AddCommand(presetListCommand);
 
-
-            Command presetGetCommand = new("get", "Get Preset");
+            Command presetGetCommand = new("get", "Get preset");
             presetGetCommand.AddArgument(presetIndexArgument);
             presetGetCommand.AddOption(filenameOption);
             presetGetCommand.SetHandler(PresetGet, presetIndexArgument, filenameOption);
             AddCommand(presetGetCommand);
 
-            Command presetSetCommand = new("set", "Set Presets");
+            Command presetSetCommand = new("set", "Set preset");
             presetSetCommand.AddArgument(presetIndexArgument);
             presetSetCommand.AddOption(filenameOption);
             presetSetCommand.SetHandler(PresetSet, presetIndexArgument, filenameOption);
@@ -140,7 +139,6 @@ namespace LtAmpDotNet.Cli.Commands
                 Lib.Models.Protobuf.ShiftPresetStatus result = await Amp.ShiftPresetAsync(presetBankIndexA, presetBankIndexB);
                 Console.WriteLine($"{result.IndexToShiftFrom}: {result.IndexToShiftTo}");
             }
-
         }
 
         internal async Task PresetClear(int presetBankIndex)

@@ -1,0 +1,4 @@
+﻿C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Desktop\Program.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Desktop\StorageService.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Desktop\app.manifest
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\Application\LtAmpDotNet.Desktop\Properties\PublishProfiles\FolderProfile.pubxml

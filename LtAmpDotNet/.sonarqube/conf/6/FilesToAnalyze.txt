@@ -1,0 +1,4 @@
+﻿C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\net.thebrent.dotnet.helpers\Collections\EnumerableExtensions.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\net.thebrent.dotnet.helpers\Collections\ObservableDictionary.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\net.thebrent.dotnet.helpers\Collections\ObservableKeyedCollection.cs
+C:\Users\brent\OneDrive\Projects\FenderTone\LtAmp\LtAmpDotNet\net.thebrent.dotnet.helpers\ExecutableDictionary.cs

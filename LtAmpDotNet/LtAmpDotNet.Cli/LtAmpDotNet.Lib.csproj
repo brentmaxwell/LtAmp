@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>LtAmpDotNet.Lib</Title>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <ApplicationIcon>Resources\LtAmpDotNet.ico</ApplicationIcon>
+    <Version>0.1.0-a</Version>
+    <Authors>Brent Maxwell</Authors>
+    <Description>A library to control the Fender LT series of amplifiers.</Description>
+    <Copyright>Copyright © 2024 Brent Maxwell</Copyright>
+    <PackageProjectUrl>https://github.com/brentmaxwell/LtAmp/</PackageProjectUrl>
+    <PackageIcon>LtAmpDotNet.png</PackageIcon>
+    <RepositoryUrl>https://github.com/brentmaxwell/LtAmp/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json" />
+    <None Remove="Resources\JsonDefinitions\mustang\presets\default_presets.json" />
+    <None Remove="Resources\JsonDefinitions\mustang\profile.json" />
+    <None Remove="Resources\JsonDefinitions\rumble\dsp_units.json" />
+    <None Remove="Resources\JsonDefinitions\rumble\profile.json" />
+    <None Remove="Resources\LtAmpDotNet.ico" />
+    <None Remove="Resources\LtAmpDotNet.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\dsp_units\dsp_units.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\presets\default_presets.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\mustang\profile.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\rumble\dsp_units.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JsonDefinitions\rumble\profile.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LtAmpDotNet.ico" />
+    <EmbeddedResource Include="Resources\LtAmpDotNet.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.25.2" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.25.2" />
+    <PackageReference Include="HidSharpCore" Version="1.2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\Protobuf\" />
+  </ItemGroup>
+
+</Project>

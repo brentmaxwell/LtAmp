@@ -1,0 +1,1 @@
+﻿These tests can be run both on the amp and on the MockHidDevice
