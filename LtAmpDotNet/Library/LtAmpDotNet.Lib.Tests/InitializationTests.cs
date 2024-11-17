@@ -8,7 +8,7 @@ namespace LtAmpDotNet.Lib.Tests
     [TestFixture]
     public class InitializationTests
     {
-        private const bool useMock = false;
+        private const bool useMock = true;
         private LtAmplifier amp;
         private MockDeviceState mockDeviceState;
 

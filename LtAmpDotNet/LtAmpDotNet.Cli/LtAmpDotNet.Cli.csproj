@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
-    <ProjectReference Include="..\LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
