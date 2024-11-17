@@ -1,6 +1,8 @@
 # LtAmp
 Reverse engineering the USB protocol of the Fender Mustang LT series guitar amps.
 
+*** I decided to start over on the application. I didn't like how complicated event messaging was getting ***
+
 ## Protocol Documentation
 Communication with the amp is over USB HID using protobuf. Documentation can be found [here](/Docs/Protocol.md)
 
