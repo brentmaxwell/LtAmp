@@ -1,3 +1,1 @@
-﻿These tests currently require the amp to be connected to run.
-
-I am planning on mocking the amp class to create more unit test coverage.
+﻿These tests can be run both on the amp and on the MockHidDevice

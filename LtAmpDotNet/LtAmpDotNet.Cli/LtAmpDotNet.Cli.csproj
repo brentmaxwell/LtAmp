@@ -11,19 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Commands\Midi\Interfaces\**" />
-    <EmbeddedResource Remove="Commands\Midi\Interfaces\**" />
-    <None Remove="Commands\Midi\Interfaces\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Commands\Midi\LinuxMidi.cs" />
-    <Compile Remove="Commands\Midi\LinuxMidiDevice.cs" />
-    <Compile Remove="Commands\Midi\WindowsMidi.cs" />
-    <Compile Remove="Commands\Midi\WindowsMidiDevice.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="config.json" />
   </ItemGroup>
 
@@ -33,6 +20,7 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="LtAmpDotNet.Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,12 +30,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
+    <ProjectReference Include="..\Library\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
     <ProjectReference Include="..\LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Midi\" />
+    <Folder Include="Config\" />
   </ItemGroup>
 
 </Project>

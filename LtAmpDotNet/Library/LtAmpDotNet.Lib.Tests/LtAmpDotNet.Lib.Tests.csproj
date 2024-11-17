@@ -30,11 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
+    <Folder Include="Mock\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mock\" />
+    <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
   </ItemGroup>
 
 </Project>

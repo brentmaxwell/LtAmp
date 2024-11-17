@@ -1,12 +1,6 @@
-﻿using LtAmpDotNet.Lib.Model.Profile;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Cli
 {
@@ -62,24 +56,24 @@ namespace LtAmpDotNet.Cli
             }
             return false;
         }
-    }
 
-    public class MidiCommand
-    {
-        [JsonProperty("commandType")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public MidiMessageType CommandType { get; set; }
+        internal class MidiCommand
+        {
+            [JsonProperty("commandType")]
+            [JsonConverter(typeof(StringEnumConverter))]
+            public MidiMessageTypeEnum CommandType { get; set; }
 
-        [JsonProperty("command")]
-        public int? Command { get; set; }
+            [JsonProperty("command")]
+            public int? Command { get; set; }
 
-        [JsonProperty("value")]
-        public string Value { get; set; } = "";
-    }
+            [JsonProperty("value")]
+            public string Value { get; set; } = "";
+        }
 
-    public enum MidiMessageType : byte
-    {
-        ControlChange = 0xB0,
-        ProgramChange = 0xC0,
+        internal enum MidiMessageTypeEnum : byte
+        {
+            ControlChange = 0xB0,
+            ProgramChange = 0xC0,
+        }
     }
 }

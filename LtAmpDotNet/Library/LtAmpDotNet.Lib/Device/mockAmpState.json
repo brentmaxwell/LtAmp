@@ -2,8 +2,6 @@
   "initializationStrings": [
     "{ \"responseType\": \"IS_LAST_ACK\", \"firmwareVersionStatus\": { \"version\": \"2.1.4\" } }",
     "{ \"responseType\": \"IS_LAST_ACK\", \"productIdentificationStatus\": { \"id\": \"mustang-lt-25\" } }",
-    "{ \"responseType\": \"IS_LAST_ACK\", \"qASlotsStatus\": { \"slots\": [ 4, 5 ] } }",
-    "{ \"responseType\": \"IS_LAST_ACK\", \"usbGainStatus\": { \"valueDB\": 0.5 } }",
     "{ \"responseType\": \"IS_LAST_ACK\", \"modalStatusMessage\": { \"context\": \"SYNC_END\", \"state\": \"OK\" } }"
   ],
   "firmwareVersion": "2.1.4",

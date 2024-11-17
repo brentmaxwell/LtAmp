@@ -1,5 +1,5 @@
 ﻿using LtAmpDotNet.Lib;
-using LtAmpDotNet.Tests.Mock;
+using LtAmpDotNet.Lib.Device;
 using System.CommandLine;
 
 namespace LtAmpDotNet.Cli.Commands
@@ -8,11 +8,13 @@ namespace LtAmpDotNet.Cli.Commands
     {
         internal ILtAmplifier? Amp;
 
-        protected BaseCommandDefinition(string name, string? description = null) : base(name, description) { }
+        protected BaseCommandDefinition(string name, string? description = null) : base(name, description)
+        {
+        }
 
         internal virtual async Task OpenAmp()
         {
-            Amp = new LtAmplifier();
+            Amp = new LtAmplifier(new UsbAmpDevice());
             await Amp.OpenAsync();
         }
 
@@ -22,4 +24,3 @@ namespace LtAmpDotNet.Cli.Commands
         }
     }
 }
-

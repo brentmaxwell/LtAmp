@@ -8,6 +8,7 @@ namespace LtAmpDotNet.Lib.Tests
     [TestFixture]
     public class InitializationTests
     {
+        private const bool useMock = false;
         private LtAmplifier amp;
         private MockDeviceState mockDeviceState;
 
@@ -17,7 +18,8 @@ namespace LtAmpDotNet.Lib.Tests
         public void Setup()
         {
             mockDeviceState = MockDeviceState.Load();
-            amp = new LtAmplifier(new MockHidDevice(mockDeviceState));
+            amp = useMock ? new LtAmplifier(new MockHidDevice(mockDeviceState))
+                : new LtAmplifier(new UsbAmpDevice());
         }
 
         [OneTimeTearDown]
@@ -38,7 +40,8 @@ namespace LtAmpDotNet.Lib.Tests
 
         [Test]
         [Category("Initialization")]
-        [Order(1)]
+        [Category("Physical Amp Tests")]
+        [Order(2)]
         public void OpenAndConnect()
         {
             AutoResetEvent wait = new(false);
@@ -47,7 +50,7 @@ namespace LtAmpDotNet.Lib.Tests
             {
                 if (!(eventArgs.MessageType == FenderMessageLT.TypeOneofCase.ModalStatusMessage && eventArgs.Message?.ModalStatusMessage.Context == ModalContext.SyncBegin))
                 {
-                    messages.Add(eventArgs.Message);
+                    messages.Add(eventArgs.Message!);
                 }
                 wait.Set();
             };
@@ -56,7 +59,7 @@ namespace LtAmpDotNet.Lib.Tests
                 wait.Set();
             });
             wait.WaitOne(TimeSpan.FromSeconds(5));
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < mockDeviceState?.initializationStrings!.Count; i++)
             {
                 wait.WaitOne(TimeSpan.FromSeconds(5));
                 Assert.That(messages[i].ToString(), Is.EqualTo(mockDeviceState?.initializationStrings![i]));
@@ -65,7 +68,8 @@ namespace LtAmpDotNet.Lib.Tests
 
         [Test]
         [Category("Initialization")]
-        [Order(2)]
+        [Category("Library")]
+        [Order(1)]
         public void LoadDspUnits()
         {
             Dictionary<string, List<Model.Profile.DspUnitDefinition>>? dspUnits = LtAmplifier.DspUnitDefinitions?.GroupBy(x => x.Info!.SubCategory!).ToDictionary(y => y.Key, y => y.ToList());
@@ -73,16 +77,18 @@ namespace LtAmpDotNet.Lib.Tests
             {
                 Console.WriteLine($"{unitType.Key}: {unitType.Value.Count}");
             }
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "amp").Count, Is.EqualTo(20));
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "stomp").Count, Is.EqualTo(11));
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "mod").Count, Is.EqualTo(7));
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "delay").Count, Is.EqualTo(3));
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "reverb").Count, Is.EqualTo(5));
-            Assert.That(LtAmplifier.DspUnitDefinitions.Where(x => x.Info.SubCategory == "utility").Count, Is.EqualTo(2));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "amp").Count, Is.EqualTo(20));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "stomp").Count, Is.EqualTo(11));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "mod").Count, Is.EqualTo(7));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "delay").Count, Is.EqualTo(3));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "reverb").Count, Is.EqualTo(5));
+            Assert.That(LtAmplifier.DspUnitDefinitions!.Where(x => x.Info?.SubCategory == "utility").Count, Is.EqualTo(2));
         }
 
         [Test]
         [Category("Device Information")]
+        [Category("Physical Amp Tests")]
+        [Order(3)]
         public void GetFirmwareVersion()
         {
             AutoResetEvent wait = new(false);
@@ -99,7 +105,7 @@ namespace LtAmpDotNet.Lib.Tests
             string messageVersion = "";
             amp.FirmwareVersionStatusMessageReceived += (sender, eventArgs) =>
             {
-                messageVersion = eventArgs.Message.FirmwareVersionStatus.Version;
+                messageVersion = eventArgs.Message!.FirmwareVersionStatus.Version;
                 wait.Set();
             };
             amp.GetFirmwareVersion();
@@ -110,6 +116,8 @@ namespace LtAmpDotNet.Lib.Tests
 
         [Test]
         [Category("Device Information")]
+        [Category("Physical Amp Tests")]
+        [Order(4)]
         public void GetProductInformationVersion()
         {
             AutoResetEvent wait = new(false);
@@ -126,7 +134,7 @@ namespace LtAmpDotNet.Lib.Tests
             string messageId = "";
             amp.ProductIdentificationStatusMessageReceived += (sender, eventArgs) =>
             {
-                messageId = eventArgs.Message.ProductIdentificationStatus.Id;
+                messageId = eventArgs.Message!.ProductIdentificationStatus.Id;
                 wait.Set();
             };
             amp.GetProductIdentification();
@@ -137,6 +145,7 @@ namespace LtAmpDotNet.Lib.Tests
 
         [Test]
         [Category("Device Settings")]
+        [Order(5)]
         public void SetFootswitch()
         {
             AutoResetEvent wait = new(false);
@@ -149,22 +158,26 @@ namespace LtAmpDotNet.Lib.Tests
                 wait.WaitOne(TimeSpan.FromSeconds(5));
                 wait.Reset();
             }
-
-            uint[] slots = [0, 0];
+            uint[] slots = new uint[2];
             amp.QASlotsStatusMessageReceived += (sender, eventArgs) =>
             {
-                slots = [.. eventArgs.Message.QASlotsStatus.Slots];
+                slots = [.. eventArgs.Message!.QASlotsStatus.Slots ];
                 wait.Set();
             };
+            amp.GetQASlots();
+            wait.WaitOne(TimeSpan.FromSeconds(5));
+            uint[] originalSlots = slots;
             amp.SetQASlots(mockDeviceState?.qaSlots!);
             wait.WaitOne(TimeSpan.FromSeconds(5));
-            Console.Write($"Slot A: {mockDeviceState?.qaSlots![0]}, {slots[0]}");
-            Console.Write($"Slot A: {mockDeviceState?.qaSlots![1]}, {slots[1]}");
+            Console.WriteLine($"Slot A: {mockDeviceState?.qaSlots![0]}, {slots[0]}");
+            Console.WriteLine($"Slot B: {mockDeviceState?.qaSlots![1]}, {slots[1]}");
             Assert.That(slots, Is.EqualTo(mockDeviceState?.qaSlots));
+            amp.SetQASlots(originalSlots);
         }
 
         [Test]
         [Category("Device Settings")]
+        [Order(6)]
         public void SetUsbGain()
         {
             AutoResetEvent wait = new(false);
@@ -181,17 +194,19 @@ namespace LtAmpDotNet.Lib.Tests
             float valueDb = 0;
             amp.UsbGainStatusMessageReceived += (sender, eventArgs) =>
             {
-                valueDb = eventArgs.Message.UsbGainStatus.ValueDB;
+                valueDb = eventArgs.Message!.UsbGainStatus.ValueDB;
                 wait.Set();
             };
             amp.SetUsbGain(mockDeviceState.usbGain.GetValueOrDefault());
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.Write($"USB Gain: {mockDeviceState.usbGain}");
             Assert.That(valueDb, Is.InRange(mockDeviceState.usbGain! - 0.01, mockDeviceState.usbGain! + 0.01));
+            amp.SetUsbGain(0);
         }
 
         [Test]
         [Category("Presets")]
+        [Order(7)]
         public void GetPreset([Range(1, 60)] int index)
         {
             AutoResetEvent wait = new(false);
@@ -209,12 +224,12 @@ namespace LtAmpDotNet.Lib.Tests
             Preset? preset = null;
             amp.PresetJSONMessageReceived += (sender, eventArgs) =>
             {
-                slotIndex = eventArgs.Message.PresetJSONMessage.SlotIndex;
+                slotIndex = eventArgs.Message!.PresetJSONMessage.SlotIndex;
                 preset = JsonConvert.DeserializeObject<Preset>(eventArgs.Message.PresetJSONMessage.Data);
                 wait.Set();
             };
             amp.GetPreset(index);
-            Preset? expectedPreset = JsonConvert.DeserializeObject<Preset>(mockDeviceState?.Presets![slotIndex - 1]!);
+            Preset? expectedPreset = JsonConvert.DeserializeObject<Preset>(mockDeviceState?.Presets![index-1]!);
             wait.WaitOne(TimeSpan.FromSeconds(5));
             Console.WriteLine($"Slot Index: {slotIndex}");
             Console.WriteLine(JsonConvert.SerializeObject(preset, Formatting.Indented));
@@ -222,12 +237,16 @@ namespace LtAmpDotNet.Lib.Tests
             {
                 Assert.That(index, Is.EqualTo(slotIndex));
                 Assert.That(preset, Is.Not.Null.And.InstanceOf<Preset>());
-                Assert.That(preset.Info.DisplayName, Is.EqualTo(expectedPreset?.Info?.DisplayName));
+                if (useMock)
+                {
+                    Assert.That(preset!.Info.DisplayName, Is.EqualTo(expectedPreset?.Info?.DisplayName));
+                }
             });
         }
 
         [Test]
         [Category("Device Features")]
+        [Order(8)]
         public void Tuner()
         {
             AutoResetEvent wait = new(false);
@@ -245,7 +264,7 @@ namespace LtAmpDotNet.Lib.Tests
             int modalStateReceived = -1;
             amp.ModalStatusMessageMessageReceived += (sender, eventArgs) =>
             {
-                modalContextReceived = (int)eventArgs.Message.ModalStatusMessage.Context;
+                modalContextReceived = (int)eventArgs.Message!.ModalStatusMessage.Context;
                 modalStateReceived = (int)eventArgs.Message.ModalStatusMessage.State;
                 wait.Set();
             };

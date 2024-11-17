@@ -1,10 +1,11 @@
-using LtAmpDotNet.Extensions;
 using LtAmpDotNet.Lib;
+using LtAmpDotNet.Lib.Extensions;
 using LtAmpDotNet.Lib.Model.Preset;
 using LtAmpDotNet.Lib.Model.Profile;
 using RtMidi.Net;
 using RtMidi.Net.Clients;
 using System.CommandLine;
+using static LtAmpDotNet.Cli.Configuration;
 
 namespace LtAmpDotNet.Cli.Commands
 {
@@ -18,7 +19,7 @@ namespace LtAmpDotNet.Cli.Commands
         internal Node? CurrentDelay => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.delay);
         internal Node? CurrentReverb => currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == NodeIdType.reverb);
 
-        internal Dictionary<MidiMessageType, Dictionary<int, Action<int>>> eventCommands = [];
+        internal Dictionary<MidiMessageTypeEnum, Dictionary<int, Action<int>>> eventCommands = [];
 
         internal List<MidiInputClient> clients = [];
 
@@ -42,7 +43,7 @@ namespace LtAmpDotNet.Cli.Commands
         {
             Console.WriteLine("Connecting");
             BuildConfig();
-            await OpenMidi(deviceIds);
+            OpenMidi(deviceIds);
             await OpenAmp();
             Amp!.MessageReceived += Amp_MessageReceived;
             Amp!.CurrentPresetStatusMessageReceived += Amp_CurrentPresetStatusMessageReceived;
@@ -54,14 +55,14 @@ namespace LtAmpDotNet.Cli.Commands
             }
         }
 
-        internal async Task OpenMidi(List<uint> deviceIds)
+        internal void OpenMidi(List<uint> deviceIds)
         {
             foreach (uint deviceId in deviceIds)
             {
                 try
                 {
                     var device = MidiManager.GetDeviceInfo(deviceId, RtMidi.Net.Enums.MidiDeviceType.Input);
-                    MidiInputClient client = new MidiInputClient(device);
+                    MidiInputClient client = new(device);
                     client.OnMessageReceived += MidiIn_MessageReceived;
                     client.ActivateMessageReceivedEvent();
                     client.Open();
@@ -123,26 +124,26 @@ namespace LtAmpDotNet.Cli.Commands
             {
                 try
                 {
-                    DspUnitUiParameter currentParameterDefinition = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
-                    DspUnitParameter currentParameter = currentPreset.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
+                    DspUnitUiParameter currentParameterDefinition = currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.Definition.Ui?.UiParameters?.SingleOrDefault(x => x.ControlId == parameter)!;
+                    DspUnitParameter currentParameter = currentPreset?.AudioGraph.Nodes.SingleOrDefault(x => x.NodeId == nodeId)?.DspUnitParameters?.SingleOrDefault(x => x.Name == parameter)!;
 
                     if (currentParameterDefinition != null)
                     {
                         switch (currentParameter.ParameterType)
                         {
-                            case DspUnitParameterType.Boolean:
+                            case DspUnitParameterDataType.Boolean:
                                 currentParameter.Value = value > 64;
                                 break;
-                            case DspUnitParameterType.String:
+                            case DspUnitParameterDataType.String:
                                 int itemNumber = (int)Math.Round(((float)value).Remap(0, 128, 0, currentParameterDefinition.ListItems!.Count()), 0);
                                 currentParameter.Value = currentParameterDefinition.ListItems!.ToArray()[itemNumber];
                                 break;
-                            case DspUnitParameterType.Integer:
+                            case DspUnitParameterDataType.Integer:
                                 currentParameter.Value = currentParameterDefinition.NumTicks > 0
                                     ? (int)Math.Round(((float)value).Remap(0, 128, 0, 91), 0)
                                     : (dynamic)(int)Math.Round(((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value), 0);
                                 break;
-                            case DspUnitParameterType.Float:
+                            case DspUnitParameterDataType.Float:
                                 currentParameter.Value = currentParameterDefinition.NumTicks > 0
                                     ? ((float)value).Remap(0, 128, 0, 91)
                                     : (dynamic)((float)value).Remap(0, 128, currentParameterDefinition.Min!.Value, currentParameterDefinition.Max!.Value);
@@ -153,7 +154,7 @@ namespace LtAmpDotNet.Cli.Commands
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error setting DSP parameter");
+                    Console.WriteLine($"Error setting DSP parameter: {ex.Message}");
                 }
             }
         }
@@ -174,9 +175,9 @@ namespace LtAmpDotNet.Cli.Commands
         {
             if (Program.Configuration?.MidiCommands != null)
             {
-                eventCommands = new Dictionary<MidiMessageType, Dictionary<int, Action<int>>>(){
-                    { MidiMessageType.ControlChange, new Dictionary<int, Action<int>>() },
-                    { MidiMessageType.ProgramChange, new Dictionary<int, Action<int>>() }
+                eventCommands = new Dictionary<MidiMessageTypeEnum, Dictionary<int, Action<int>>>(){
+                    { MidiMessageTypeEnum.ControlChange, new Dictionary<int, Action<int>>() },
+                    { MidiMessageTypeEnum.ProgramChange, new Dictionary<int, Action<int>>() }
                 };
                 foreach (MidiCommand item in Program.Configuration.MidiCommands)
                 {
@@ -299,17 +300,17 @@ namespace LtAmpDotNet.Cli.Commands
             {
                 case RtMidi.Net.Enums.MidiMessageType.ControlChange:
                     var ccMessage = (MidiMessageControlChange)e.Message;
-                    if (eventCommands[MidiMessageType.ControlChange].ContainsKey(ccMessage.ControlFunction))
+                    if (eventCommands[MidiMessageTypeEnum.ControlChange].ContainsKey(ccMessage.ControlFunction))
                     {
-                        eventCommands[MidiMessageType.ControlChange][ccMessage.ControlFunction].Invoke(ccMessage.Value);
+                        eventCommands[MidiMessageTypeEnum.ControlChange][ccMessage.ControlFunction].Invoke(ccMessage.Value);
                     }
                     Console.WriteLine($"[MIDI] {ccMessage.Type}: {ccMessage.ControlFunction}: {ccMessage.Value}");
-                    var configOption = Program.Configuration.MidiCommands.SingleOrDefault(x => x.CommandType == MidiMessageType.ControlChange && x.Command == ccMessage.ControlFunction);
-                    Console.WriteLine(configOption.Value);
+                    var configOption = Program.Configuration?.MidiCommands?.SingleOrDefault(x => x.CommandType == MidiMessageTypeEnum.ControlChange && x.Command == ccMessage.ControlFunction);
+                    Console.WriteLine(configOption?.Value);
                     break;
                 case RtMidi.Net.Enums.MidiMessageType.ProgramChange:
                     var pcMessage = (MidiMessageProgramChange)e.Message;
-                    if (eventCommands.TryGetValue(MidiMessageType.ProgramChange, out Dictionary<int, Action<int>>? patchValue))
+                    if (eventCommands.TryGetValue(MidiMessageTypeEnum.ProgramChange, out Dictionary<int, Action<int>>? patchValue))
                     {
                         patchValue[0].Invoke(pcMessage.Program);
                     }

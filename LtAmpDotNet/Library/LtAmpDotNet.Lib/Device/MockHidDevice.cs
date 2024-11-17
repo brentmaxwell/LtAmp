@@ -145,7 +145,7 @@ namespace LtAmpDotNet.Lib.Device
                     break;
 
                 case FenderMessageLT.TypeOneofCase.CurrentPresetRequest:
-                    outMessage = MessageFactory.Create(new CurrentPresetStatus() { CurrentPresetData = DeviceState?.Presets![DeviceState.CurrentPresetIndex], CurrentSlotIndex = DeviceState.CurrentPresetIndex + 1, CurrentPresetDirtyStatus = false });
+                    outMessage = MessageFactory.Create(new CurrentPresetStatus() { CurrentPresetData = DeviceState?.Presets![DeviceState.CurrentPresetIndex], CurrentSlotIndex = DeviceState!.CurrentPresetIndex + 1, CurrentPresetDirtyStatus = false });
                     break;
             }
             OnMessageReceived(new FenderMessageEventArgs(outMessage));

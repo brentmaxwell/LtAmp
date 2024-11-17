@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="net.thebrent.ltampdotnet" android:versionCode="1" android:versionName="0.1">
-	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="LtAmpDotNet" android:icon="@drawable/Icon" />
-	<uses-sdk />
-</manifest>

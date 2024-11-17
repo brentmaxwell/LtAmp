@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "LtAmpDotNet.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "preset list"
-    }
-  }
-}
