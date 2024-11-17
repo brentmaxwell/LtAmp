@@ -9,269 +9,272 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-/// <summary>Holder for reflection information generated from CurrentLoadedPresetIndexBypassStatus.proto</summary>
-public static partial class CurrentLoadedPresetIndexBypassStatusReflection {
+namespace LtAmpDotNet.Lib.Models.Protobuf {
 
-  #region Descriptor
-  /// <summary>File descriptor for CurrentLoadedPresetIndexBypassStatus.proto</summary>
-  public static pbr::FileDescriptor Descriptor {
-    get { return descriptor; }
-  }
-  private static pbr::FileDescriptor descriptor;
+  /// <summary>Holder for reflection information generated from CurrentLoadedPresetIndexBypassStatus.proto</summary>
+  public static partial class CurrentLoadedPresetIndexBypassStatusReflection {
 
-  static CurrentLoadedPresetIndexBypassStatusReflection() {
-    byte[] descriptorData = global::System.Convert.FromBase64String(
-        string.Concat(
-          "CipDdXJyZW50TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXMucHJvdG8i",
-          "XgokQ3VycmVudExvYWRlZFByZXNldEluZGV4QnlwYXNzU3RhdHVzEiAKGGN1",
-          "cnJlbnRMb2FkZWRQcmVzZXRJbmRleBgBIAIoBRIUCgxieXBhc3NTdGF0dXMY",
-          "AiADKAg="));
-    descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { },
-        new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::CurrentLoadedPresetIndexBypassStatus), global::CurrentLoadedPresetIndexBypassStatus.Parser, new[]{ "CurrentLoadedPresetIndex", "BypassStatus" }, null, null, null, null)
-        }));
+    #region Descriptor
+    /// <summary>File descriptor for CurrentLoadedPresetIndexBypassStatus.proto</summary>
+    public static pbr::FileDescriptor Descriptor {
+      get { return descriptor; }
+    }
+    private static pbr::FileDescriptor descriptor;
+
+    static CurrentLoadedPresetIndexBypassStatusReflection() {
+      byte[] descriptorData = global::System.Convert.FromBase64String(
+          string.Concat(
+            "CipDdXJyZW50TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXMucHJvdG8i",
+            "XgokQ3VycmVudExvYWRlZFByZXNldEluZGV4QnlwYXNzU3RhdHVzEiAKGGN1",
+            "cnJlbnRMb2FkZWRQcmVzZXRJbmRleBgBIAIoBRIUCgxieXBhc3NTdGF0dXMY",
+            "AiADKAhCIqoCH0x0QW1wRG90TmV0LkxpYi5Nb2RlbHMuUHJvdG9idWY="));
+      descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
+          new pbr::FileDescriptor[] { },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus), global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus.Parser, new[]{ "CurrentLoadedPresetIndex", "BypassStatus" }, null, null, null, null)
+          }));
+    }
+    #endregion
+
   }
+  #region Messages
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class CurrentLoadedPresetIndexBypassStatus : pb::IMessage<CurrentLoadedPresetIndexBypassStatus>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<CurrentLoadedPresetIndexBypassStatus> _parser = new pb::MessageParser<CurrentLoadedPresetIndexBypassStatus>(() => new CurrentLoadedPresetIndexBypassStatus());
+    private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<CurrentLoadedPresetIndexBypassStatus> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatusReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CurrentLoadedPresetIndexBypassStatus() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CurrentLoadedPresetIndexBypassStatus(CurrentLoadedPresetIndexBypassStatus other) : this() {
+      _hasBits0 = other._hasBits0;
+      currentLoadedPresetIndex_ = other.currentLoadedPresetIndex_;
+      bypassStatus_ = other.bypassStatus_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CurrentLoadedPresetIndexBypassStatus Clone() {
+      return new CurrentLoadedPresetIndexBypassStatus(this);
+    }
+
+    /// <summary>Field number for the "currentLoadedPresetIndex" field.</summary>
+    public const int CurrentLoadedPresetIndexFieldNumber = 1;
+    private readonly static int CurrentLoadedPresetIndexDefaultValue = 0;
+
+    private int currentLoadedPresetIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CurrentLoadedPresetIndex {
+      get { if ((_hasBits0 & 1) != 0) { return currentLoadedPresetIndex_; } else { return CurrentLoadedPresetIndexDefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        currentLoadedPresetIndex_ = value;
+      }
+    }
+    /// <summary>Gets whether the "currentLoadedPresetIndex" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasCurrentLoadedPresetIndex {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "currentLoadedPresetIndex" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearCurrentLoadedPresetIndex() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "bypassStatus" field.</summary>
+    public const int BypassStatusFieldNumber = 2;
+    private static readonly pb::FieldCodec<bool> _repeated_bypassStatus_codec
+        = pb::FieldCodec.ForBool(16);
+    private readonly pbc::RepeatedField<bool> bypassStatus_ = new pbc::RepeatedField<bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<bool> BypassStatus {
+      get { return bypassStatus_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as CurrentLoadedPresetIndexBypassStatus);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(CurrentLoadedPresetIndexBypassStatus other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CurrentLoadedPresetIndex != other.CurrentLoadedPresetIndex) return false;
+      if(!bypassStatus_.Equals(other.bypassStatus_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasCurrentLoadedPresetIndex) hash ^= CurrentLoadedPresetIndex.GetHashCode();
+      hash ^= bypassStatus_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasCurrentLoadedPresetIndex) {
+        output.WriteRawTag(8);
+        output.WriteInt32(CurrentLoadedPresetIndex);
+      }
+      bypassStatus_.WriteTo(output, _repeated_bypassStatus_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasCurrentLoadedPresetIndex) {
+        output.WriteRawTag(8);
+        output.WriteInt32(CurrentLoadedPresetIndex);
+      }
+      bypassStatus_.WriteTo(ref output, _repeated_bypassStatus_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasCurrentLoadedPresetIndex) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentLoadedPresetIndex);
+      }
+      size += bypassStatus_.CalculateSize(_repeated_bypassStatus_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(CurrentLoadedPresetIndexBypassStatus other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasCurrentLoadedPresetIndex) {
+        CurrentLoadedPresetIndex = other.CurrentLoadedPresetIndex;
+      }
+      bypassStatus_.Add(other.bypassStatus_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            CurrentLoadedPresetIndex = input.ReadInt32();
+            break;
+          }
+          case 18:
+          case 16: {
+            bypassStatus_.AddEntriesFrom(input, _repeated_bypassStatus_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            CurrentLoadedPresetIndex = input.ReadInt32();
+            break;
+          }
+          case 18:
+          case 16: {
+            bypassStatus_.AddEntriesFrom(ref input, _repeated_bypassStatus_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   #endregion
 
 }
-#region Messages
-[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-public sealed partial class CurrentLoadedPresetIndexBypassStatus : pb::IMessage<CurrentLoadedPresetIndexBypassStatus>
-#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    , pb::IBufferMessage
-#endif
-{
-  private static readonly pb::MessageParser<CurrentLoadedPresetIndexBypassStatus> _parser = new pb::MessageParser<CurrentLoadedPresetIndexBypassStatus>(() => new CurrentLoadedPresetIndexBypassStatus());
-  private pb::UnknownFieldSet _unknownFields;
-  private int _hasBits0;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pb::MessageParser<CurrentLoadedPresetIndexBypassStatus> Parser { get { return _parser; } }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pbr::MessageDescriptor Descriptor {
-    get { return global::CurrentLoadedPresetIndexBypassStatusReflection.Descriptor.MessageTypes[0]; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  pbr::MessageDescriptor pb::IMessage.Descriptor {
-    get { return Descriptor; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public CurrentLoadedPresetIndexBypassStatus() {
-    OnConstruction();
-  }
-
-  partial void OnConstruction();
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public CurrentLoadedPresetIndexBypassStatus(CurrentLoadedPresetIndexBypassStatus other) : this() {
-    _hasBits0 = other._hasBits0;
-    currentLoadedPresetIndex_ = other.currentLoadedPresetIndex_;
-    bypassStatus_ = other.bypassStatus_.Clone();
-    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public CurrentLoadedPresetIndexBypassStatus Clone() {
-    return new CurrentLoadedPresetIndexBypassStatus(this);
-  }
-
-  /// <summary>Field number for the "currentLoadedPresetIndex" field.</summary>
-  public const int CurrentLoadedPresetIndexFieldNumber = 1;
-  private readonly static int CurrentLoadedPresetIndexDefaultValue = 0;
-
-  private int currentLoadedPresetIndex_;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int CurrentLoadedPresetIndex {
-    get { if ((_hasBits0 & 1) != 0) { return currentLoadedPresetIndex_; } else { return CurrentLoadedPresetIndexDefaultValue; } }
-    set {
-      _hasBits0 |= 1;
-      currentLoadedPresetIndex_ = value;
-    }
-  }
-  /// <summary>Gets whether the "currentLoadedPresetIndex" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool HasCurrentLoadedPresetIndex {
-    get { return (_hasBits0 & 1) != 0; }
-  }
-  /// <summary>Clears the value of the "currentLoadedPresetIndex" field</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void ClearCurrentLoadedPresetIndex() {
-    _hasBits0 &= ~1;
-  }
-
-  /// <summary>Field number for the "bypassStatus" field.</summary>
-  public const int BypassStatusFieldNumber = 2;
-  private static readonly pb::FieldCodec<bool> _repeated_bypassStatus_codec
-      = pb::FieldCodec.ForBool(16);
-  private readonly pbc::RepeatedField<bool> bypassStatus_ = new pbc::RepeatedField<bool>();
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public pbc::RepeatedField<bool> BypassStatus {
-    get { return bypassStatus_; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override bool Equals(object other) {
-    return Equals(other as CurrentLoadedPresetIndexBypassStatus);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool Equals(CurrentLoadedPresetIndexBypassStatus other) {
-    if (ReferenceEquals(other, null)) {
-      return false;
-    }
-    if (ReferenceEquals(other, this)) {
-      return true;
-    }
-    if (CurrentLoadedPresetIndex != other.CurrentLoadedPresetIndex) return false;
-    if(!bypassStatus_.Equals(other.bypassStatus_)) return false;
-    return Equals(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override int GetHashCode() {
-    int hash = 1;
-    if (HasCurrentLoadedPresetIndex) hash ^= CurrentLoadedPresetIndex.GetHashCode();
-    hash ^= bypassStatus_.GetHashCode();
-    if (_unknownFields != null) {
-      hash ^= _unknownFields.GetHashCode();
-    }
-    return hash;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override string ToString() {
-    return pb::JsonFormatter.ToDiagnosticString(this);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void WriteTo(pb::CodedOutputStream output) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    output.WriteRawMessage(this);
-  #else
-    if (HasCurrentLoadedPresetIndex) {
-      output.WriteRawTag(8);
-      output.WriteInt32(CurrentLoadedPresetIndex);
-    }
-    bypassStatus_.WriteTo(output, _repeated_bypassStatus_codec);
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(output);
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (HasCurrentLoadedPresetIndex) {
-      output.WriteRawTag(8);
-      output.WriteInt32(CurrentLoadedPresetIndex);
-    }
-    bypassStatus_.WriteTo(ref output, _repeated_bypassStatus_codec);
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(ref output);
-    }
-  }
-  #endif
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int CalculateSize() {
-    int size = 0;
-    if (HasCurrentLoadedPresetIndex) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentLoadedPresetIndex);
-    }
-    size += bypassStatus_.CalculateSize(_repeated_bypassStatus_codec);
-    if (_unknownFields != null) {
-      size += _unknownFields.CalculateSize();
-    }
-    return size;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(CurrentLoadedPresetIndexBypassStatus other) {
-    if (other == null) {
-      return;
-    }
-    if (other.HasCurrentLoadedPresetIndex) {
-      CurrentLoadedPresetIndex = other.CurrentLoadedPresetIndex;
-    }
-    bypassStatus_.Add(other.bypassStatus_);
-    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(pb::CodedInputStream input) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    input.ReadRawMessage(this);
-  #else
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-          break;
-        case 8: {
-          CurrentLoadedPresetIndex = input.ReadInt32();
-          break;
-        }
-        case 18:
-        case 16: {
-          bypassStatus_.AddEntriesFrom(input, _repeated_bypassStatus_codec);
-          break;
-        }
-      }
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-          break;
-        case 8: {
-          CurrentLoadedPresetIndex = input.ReadInt32();
-          break;
-        }
-        case 18:
-        case 16: {
-          bypassStatus_.AddEntriesFrom(ref input, _repeated_bypassStatus_codec);
-          break;
-        }
-      }
-    }
-  }
-  #endif
-
-}
-
-#endregion
-
 
 #endregion Designer generated code

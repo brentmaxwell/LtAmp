@@ -9,298 +9,301 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-/// <summary>Holder for reflection information generated from ReplaceNodeStatus.proto</summary>
-public static partial class ReplaceNodeStatusReflection {
+namespace LtAmpDotNet.Lib.Models.Protobuf {
 
-  #region Descriptor
-  /// <summary>File descriptor for ReplaceNodeStatus.proto</summary>
-  public static pbr::FileDescriptor Descriptor {
-    get { return descriptor; }
-  }
-  private static pbr::FileDescriptor descriptor;
+  /// <summary>Holder for reflection information generated from ReplaceNodeStatus.proto</summary>
+  public static partial class ReplaceNodeStatusReflection {
 
-  static ReplaceNodeStatusReflection() {
-    byte[] descriptorData = global::System.Convert.FromBase64String(
-        string.Concat(
-          "ChdSZXBsYWNlTm9kZVN0YXR1cy5wcm90byJFChFSZXBsYWNlTm9kZVN0YXR1",
-          "cxIWCg5ub2RlSWRSZXBsYWNlZBgBIAIoCRIYChBmZW5kZXJJZFJlcGxhY2Vk",
-          "GAIgAigJ"));
-    descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { },
-        new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::ReplaceNodeStatus), global::ReplaceNodeStatus.Parser, new[]{ "NodeIdReplaced", "FenderIdReplaced" }, null, null, null, null)
-        }));
+    #region Descriptor
+    /// <summary>File descriptor for ReplaceNodeStatus.proto</summary>
+    public static pbr::FileDescriptor Descriptor {
+      get { return descriptor; }
+    }
+    private static pbr::FileDescriptor descriptor;
+
+    static ReplaceNodeStatusReflection() {
+      byte[] descriptorData = global::System.Convert.FromBase64String(
+          string.Concat(
+            "ChdSZXBsYWNlTm9kZVN0YXR1cy5wcm90byJFChFSZXBsYWNlTm9kZVN0YXR1",
+            "cxIWCg5ub2RlSWRSZXBsYWNlZBgBIAIoCRIYChBmZW5kZXJJZFJlcGxhY2Vk",
+            "GAIgAigJQiKqAh9MdEFtcERvdE5ldC5MaWIuTW9kZWxzLlByb3RvYnVm"));
+      descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
+          new pbr::FileDescriptor[] { },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus), global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus.Parser, new[]{ "NodeIdReplaced", "FenderIdReplaced" }, null, null, null, null)
+          }));
+    }
+    #endregion
+
   }
+  #region Messages
+  /// <summary>
+  ///
+  /// Status of a ReplaceNode message; also sent when the node is changed at the amp
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ReplaceNodeStatus : pb::IMessage<ReplaceNodeStatus>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ReplaceNodeStatus> _parser = new pb::MessageParser<ReplaceNodeStatus>(() => new ReplaceNodeStatus());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ReplaceNodeStatus> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatusReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReplaceNodeStatus() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReplaceNodeStatus(ReplaceNodeStatus other) : this() {
+      nodeIdReplaced_ = other.nodeIdReplaced_;
+      fenderIdReplaced_ = other.fenderIdReplaced_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReplaceNodeStatus Clone() {
+      return new ReplaceNodeStatus(this);
+    }
+
+    /// <summary>Field number for the "nodeIdReplaced" field.</summary>
+    public const int NodeIdReplacedFieldNumber = 1;
+    private readonly static string NodeIdReplacedDefaultValue = "";
+
+    private string nodeIdReplaced_;
+    /// <summary>
+    /// node replaced (amp, stomp, mod, delay, or reverb)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string NodeIdReplaced {
+      get { return nodeIdReplaced_ ?? NodeIdReplacedDefaultValue; }
+      set {
+        nodeIdReplaced_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "nodeIdReplaced" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNodeIdReplaced {
+      get { return nodeIdReplaced_ != null; }
+    }
+    /// <summary>Clears the value of the "nodeIdReplaced" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNodeIdReplaced() {
+      nodeIdReplaced_ = null;
+    }
+
+    /// <summary>Field number for the "fenderIdReplaced" field.</summary>
+    public const int FenderIdReplacedFieldNumber = 2;
+    private readonly static string FenderIdReplacedDefaultValue = "";
+
+    private string fenderIdReplaced_;
+    /// <summary>
+    /// FenderId of node set
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FenderIdReplaced {
+      get { return fenderIdReplaced_ ?? FenderIdReplacedDefaultValue; }
+      set {
+        fenderIdReplaced_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "fenderIdReplaced" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasFenderIdReplaced {
+      get { return fenderIdReplaced_ != null; }
+    }
+    /// <summary>Clears the value of the "fenderIdReplaced" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearFenderIdReplaced() {
+      fenderIdReplaced_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ReplaceNodeStatus);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ReplaceNodeStatus other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (NodeIdReplaced != other.NodeIdReplaced) return false;
+      if (FenderIdReplaced != other.FenderIdReplaced) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasNodeIdReplaced) hash ^= NodeIdReplaced.GetHashCode();
+      if (HasFenderIdReplaced) hash ^= FenderIdReplaced.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasNodeIdReplaced) {
+        output.WriteRawTag(10);
+        output.WriteString(NodeIdReplaced);
+      }
+      if (HasFenderIdReplaced) {
+        output.WriteRawTag(18);
+        output.WriteString(FenderIdReplaced);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasNodeIdReplaced) {
+        output.WriteRawTag(10);
+        output.WriteString(NodeIdReplaced);
+      }
+      if (HasFenderIdReplaced) {
+        output.WriteRawTag(18);
+        output.WriteString(FenderIdReplaced);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasNodeIdReplaced) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NodeIdReplaced);
+      }
+      if (HasFenderIdReplaced) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FenderIdReplaced);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ReplaceNodeStatus other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasNodeIdReplaced) {
+        NodeIdReplaced = other.NodeIdReplaced;
+      }
+      if (other.HasFenderIdReplaced) {
+        FenderIdReplaced = other.FenderIdReplaced;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            NodeIdReplaced = input.ReadString();
+            break;
+          }
+          case 18: {
+            FenderIdReplaced = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            NodeIdReplaced = input.ReadString();
+            break;
+          }
+          case 18: {
+            FenderIdReplaced = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   #endregion
 
 }
-#region Messages
-/// <summary>
-///
-/// Status of a ReplaceNode message; also sent when the node is changed at the amp
-/// </summary>
-[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-public sealed partial class ReplaceNodeStatus : pb::IMessage<ReplaceNodeStatus>
-#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    , pb::IBufferMessage
-#endif
-{
-  private static readonly pb::MessageParser<ReplaceNodeStatus> _parser = new pb::MessageParser<ReplaceNodeStatus>(() => new ReplaceNodeStatus());
-  private pb::UnknownFieldSet _unknownFields;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pb::MessageParser<ReplaceNodeStatus> Parser { get { return _parser; } }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pbr::MessageDescriptor Descriptor {
-    get { return global::ReplaceNodeStatusReflection.Descriptor.MessageTypes[0]; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  pbr::MessageDescriptor pb::IMessage.Descriptor {
-    get { return Descriptor; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public ReplaceNodeStatus() {
-    OnConstruction();
-  }
-
-  partial void OnConstruction();
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public ReplaceNodeStatus(ReplaceNodeStatus other) : this() {
-    nodeIdReplaced_ = other.nodeIdReplaced_;
-    fenderIdReplaced_ = other.fenderIdReplaced_;
-    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public ReplaceNodeStatus Clone() {
-    return new ReplaceNodeStatus(this);
-  }
-
-  /// <summary>Field number for the "nodeIdReplaced" field.</summary>
-  public const int NodeIdReplacedFieldNumber = 1;
-  private readonly static string NodeIdReplacedDefaultValue = "";
-
-  private string nodeIdReplaced_;
-  /// <summary>
-  /// node replaced (amp, stomp, mod, delay, or reverb)
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public string NodeIdReplaced {
-    get { return nodeIdReplaced_ ?? NodeIdReplacedDefaultValue; }
-    set {
-      nodeIdReplaced_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-  /// <summary>Gets whether the "nodeIdReplaced" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool HasNodeIdReplaced {
-    get { return nodeIdReplaced_ != null; }
-  }
-  /// <summary>Clears the value of the "nodeIdReplaced" field</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void ClearNodeIdReplaced() {
-    nodeIdReplaced_ = null;
-  }
-
-  /// <summary>Field number for the "fenderIdReplaced" field.</summary>
-  public const int FenderIdReplacedFieldNumber = 2;
-  private readonly static string FenderIdReplacedDefaultValue = "";
-
-  private string fenderIdReplaced_;
-  /// <summary>
-  /// FenderId of node set
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public string FenderIdReplaced {
-    get { return fenderIdReplaced_ ?? FenderIdReplacedDefaultValue; }
-    set {
-      fenderIdReplaced_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-  /// <summary>Gets whether the "fenderIdReplaced" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool HasFenderIdReplaced {
-    get { return fenderIdReplaced_ != null; }
-  }
-  /// <summary>Clears the value of the "fenderIdReplaced" field</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void ClearFenderIdReplaced() {
-    fenderIdReplaced_ = null;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override bool Equals(object other) {
-    return Equals(other as ReplaceNodeStatus);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool Equals(ReplaceNodeStatus other) {
-    if (ReferenceEquals(other, null)) {
-      return false;
-    }
-    if (ReferenceEquals(other, this)) {
-      return true;
-    }
-    if (NodeIdReplaced != other.NodeIdReplaced) return false;
-    if (FenderIdReplaced != other.FenderIdReplaced) return false;
-    return Equals(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override int GetHashCode() {
-    int hash = 1;
-    if (HasNodeIdReplaced) hash ^= NodeIdReplaced.GetHashCode();
-    if (HasFenderIdReplaced) hash ^= FenderIdReplaced.GetHashCode();
-    if (_unknownFields != null) {
-      hash ^= _unknownFields.GetHashCode();
-    }
-    return hash;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override string ToString() {
-    return pb::JsonFormatter.ToDiagnosticString(this);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void WriteTo(pb::CodedOutputStream output) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    output.WriteRawMessage(this);
-  #else
-    if (HasNodeIdReplaced) {
-      output.WriteRawTag(10);
-      output.WriteString(NodeIdReplaced);
-    }
-    if (HasFenderIdReplaced) {
-      output.WriteRawTag(18);
-      output.WriteString(FenderIdReplaced);
-    }
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(output);
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (HasNodeIdReplaced) {
-      output.WriteRawTag(10);
-      output.WriteString(NodeIdReplaced);
-    }
-    if (HasFenderIdReplaced) {
-      output.WriteRawTag(18);
-      output.WriteString(FenderIdReplaced);
-    }
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(ref output);
-    }
-  }
-  #endif
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int CalculateSize() {
-    int size = 0;
-    if (HasNodeIdReplaced) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(NodeIdReplaced);
-    }
-    if (HasFenderIdReplaced) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(FenderIdReplaced);
-    }
-    if (_unknownFields != null) {
-      size += _unknownFields.CalculateSize();
-    }
-    return size;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(ReplaceNodeStatus other) {
-    if (other == null) {
-      return;
-    }
-    if (other.HasNodeIdReplaced) {
-      NodeIdReplaced = other.NodeIdReplaced;
-    }
-    if (other.HasFenderIdReplaced) {
-      FenderIdReplaced = other.FenderIdReplaced;
-    }
-    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(pb::CodedInputStream input) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    input.ReadRawMessage(this);
-  #else
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-          break;
-        case 10: {
-          NodeIdReplaced = input.ReadString();
-          break;
-        }
-        case 18: {
-          FenderIdReplaced = input.ReadString();
-          break;
-        }
-      }
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-          break;
-        case 10: {
-          NodeIdReplaced = input.ReadString();
-          break;
-        }
-        case 18: {
-          FenderIdReplaced = input.ReadString();
-          break;
-        }
-      }
-    }
-  }
-  #endif
-
-}
-
-#endregion
-
 
 #endregion Designer generated code

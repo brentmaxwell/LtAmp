@@ -1,4 +1,5 @@
 syntax = "proto2";
+option csharp_namespace = "LtAmpDotNet.Lib.Models.Protobuf";
 
 /*
  * Status of the SetDspUnitParameter message. Also sent when parameters are adjusted on the amp

@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+	<PublishSingleFile>true</PublishSingleFile>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Trimming>full</Trimming>
+	<SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\Midi\Interfaces\**" />
+    <EmbeddedResource Remove="Commands\Midi\Interfaces\**" />
+    <None Remove="Commands\Midi\Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\Midi\LinuxMidi.cs" />
+    <Compile Remove="Commands\Midi\LinuxMidiDevice.cs" />
+    <Compile Remove="Commands\Midi\WindowsMidi.cs" />
+    <Compile Remove="Commands\Midi\WindowsMidiDevice.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio.Midi" Version="2.2.1" />
+    <PackageReference Include="RtMidi.Net" Version="1.3.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LtAmpDotNet.Lib\LtAmpDotNet.Lib.csproj" />
+    <ProjectReference Include="..\LtAmpDotNet.Tests\LtAmpDotNet.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Midi\" />
+  </ItemGroup>
+
+</Project>

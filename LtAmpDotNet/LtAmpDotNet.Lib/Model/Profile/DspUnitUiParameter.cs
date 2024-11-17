@@ -1,16 +1,13 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Converters;
 
 namespace LtAmpDotNet.Lib.Model.Profile
 {
     public class DspUnitUiParameter
     {
         [JsonProperty("controlType")]
-        public string? ControlType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ControlType? ControlType { get; set; }
 
         [JsonProperty("paramGuiObjectNameMinimized")]
         public string? ParamGuiObjectNameMinimized { get; set; }
@@ -45,10 +42,15 @@ namespace LtAmpDotNet.Lib.Model.Profile
         [JsonProperty("remap")]
         public DspUnitUiParametersRemap? Remap { get; set; }
     }
-    public static class ControlType
+
+    /// <summary>The type of data used by the parameter</summary>
+    public enum ControlType
     {
-        public const string CONTINUOUS = "continuous";
-        public const string LIST = "list";
-        public const string LIST_BOOL = "listBool";
+        /// <summary>A control with a continuous range (a number)</summary>
+        continuous = 1,
+        /// <summary>A control with distinct values</summary>
+        list = 2,
+        /// <summary>An on/off control</summary>
+        listBool = 3,
     }
 }

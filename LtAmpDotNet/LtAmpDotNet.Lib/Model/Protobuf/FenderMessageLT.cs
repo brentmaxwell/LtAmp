@@ -9,3910 +9,3914 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-/// <summary>Holder for reflection information generated from FenderMessageLT.proto</summary>
-public static partial class FenderMessageLTReflection {
+namespace LtAmpDotNet.Lib.Models.Protobuf {
 
-  #region Descriptor
-  /// <summary>File descriptor for FenderMessageLT.proto</summary>
-  public static pbr::FileDescriptor Descriptor {
-    get { return descriptor; }
-  }
-  private static pbr::FileDescriptor descriptor;
+  /// <summary>Holder for reflection information generated from FenderMessageLT.proto</summary>
+  public static partial class FenderMessageLTReflection {
 
-  static FenderMessageLTReflection() {
-    byte[] descriptorData = global::System.Convert.FromBase64String(
-        string.Concat(
-          "ChVGZW5kZXJNZXNzYWdlTFQucHJvdG8aDkluZGV4UG90LnByb3RvGhFJbmRl",
-          "eEJ1dHRvbi5wcm90bxoSSW5kZXhFbmNvZGVyLnByb3RvGhBMb2FkUHJlc2V0",
-          "LnByb3RvGiFQcmVzZXRKU09OTWVzc2FnZVJlcXVlc3RfTFQucHJvdG8aF1By",
-          "ZXNldEpTT05NZXNzYWdlLnByb3RvGiFQcm9jZXNzb3JVdGlsaXphdGlvblJl",
-          "cXVlc3QucHJvdG8aGlByb2Nlc3NvclV0aWxpemF0aW9uLnByb3RvGh9GcmFt",
-          "ZUJ1ZmZlck1lc3NhZ2VSZXF1ZXN0LnByb3RvGhhGcmFtZUJ1ZmZlck1lc3Nh",
-          "Z2UucHJvdG8aE0FjdGl2ZURpc3BsYXkucHJvdG8aF01lbW9yeVVzYWdlU3Rh",
-          "dHVzLnByb3RvGhhNZW1vcnlVc2FnZVJlcXVlc3QucHJvdG8aEkxvb3BiYWNr",
-          "VGVzdC5wcm90bxokQ3VycmVudExvYWRlZFByZXNldEluZGV4U3RhdHVzLnBy",
-          "b3RvGhlTZXREc3BVbml0UGFyYW1ldGVyLnByb3RvGhFBdWRpb1N0YXR1cy5w",
-          "cm90bxofU2V0RHNwVW5pdFBhcmFtZXRlclN0YXR1cy5wcm90bxocRHNwVW5p",
-          "dFBhcmFtZXRlclN0YXR1cy5wcm90bxoRUmVwbGFjZU5vZGUucHJvdG8aF1Jl",
-          "cGxhY2VOb2RlU3RhdHVzLnByb3RvGiJQcm9kdWN0SWRlbnRpZmljYXRpb25S",
-          "ZXF1ZXN0LnByb3RvGiFQcm9kdWN0SWRlbnRpZmljYXRpb25TdGF0dXMucHJv",
-          "dG8aHEZpcm13YXJlVmVyc2lvblJlcXVlc3QucHJvdG8aG0Zpcm13YXJlVmVy",
-          "c2lvblN0YXR1cy5wcm90bxoaQ3VycmVudFByZXNldFJlcXVlc3QucHJvdG8a",
-          "FkN1cnJlbnRQcmVzZXRTZXQucHJvdG8aGUN1cnJlbnRQcmVzZXRTdGF0dXMu",
-          "cHJvdG8aFFJldHJpZXZlUHJlc2V0LnByb3RvGhRVc2JHYWluUmVxdWVzdC5w",
-          "cm90bxoTVXNiR2FpblN0YXR1cy5wcm90bxoQVXNiR2FpblNldC5wcm90bxoY",
-          "TGluZU91dEdhaW5SZXF1ZXN0LnByb3RvGhdMaW5lT3V0R2FpblN0YXR1cy5w",
-          "cm90bxoUTGluZU91dEdhaW5TZXQucHJvdG8aFFFBU2xvdHNSZXF1ZXN0LnBy",
-          "b3RvGhNRQVNsb3RzU3RhdHVzLnByb3RvGhBRQVNsb3RzU2V0LnByb3RvGhdQ",
-          "cmVzZXRTYXZlZFN0YXR1cy5wcm90bxoYTW9kYWxTdGF0dXNNZXNzYWdlLnBy",
-          "b3RvGh5VbnN1cHBvcnRlZE1lc3NhZ2VTdGF0dXMucHJvdG8aEUNsZWFyUHJl",
-          "c2V0LnByb3RvGhdDbGVhclByZXNldFN0YXR1cy5wcm90bxoXU2F2ZUN1cnJl",
-          "bnRQcmVzZXQucHJvdG8aGVNhdmVDdXJyZW50UHJlc2V0VG8ucHJvdG8aElNh",
-          "dmVQcmVzZXRBcy5wcm90bxoaTmV3UHJlc2V0U2F2ZWRTdGF0dXMucHJvdG8a",
-          "FFJlbmFtZVByZXNldEF0LnByb3RvGhRBdWRpdGlvblByZXNldC5wcm90bxoa",
-          "QXVkaXRpb25QcmVzZXRTdGF0dXMucHJvdG8aGEV4aXRBdWRpdGlvblByZXNl",
-          "dC5wcm90bxoeRXhpdEF1ZGl0aW9uUHJlc2V0U3RhdHVzLnByb3RvGhpBdWRp",
-          "dGlvblN0YXRlUmVxdWVzdC5wcm90bxoZQXVkaXRpb25TdGF0ZVN0YXR1cy5w",
-          "cm90bxoeTFQ0Rm9vdHN3aXRjaE1vZGVSZXF1ZXN0LnByb3RvGh1MVDRGb290",
-          "c3dpdGNoTW9kZVN0YXR1cy5wcm90bxoPSGVhcnRiZWF0LnByb3RvGhFTaGlm",
-          "dFByZXNldC5wcm90bxoXU2hpZnRQcmVzZXRTdGF0dXMucHJvdG8aEFN3YXBQ",
-          "cmVzZXQucHJvdG8aFlN3YXBQcmVzZXRTdGF0dXMucHJvdG8aFkNvbm5lY3Rp",
-          "b25TdGF0dXMucHJvdG8aHUNvbm5lY3Rpb25TdGF0dXNSZXF1ZXN0LnByb3Rv",
-          "GhpMb2FkUHJlc2V0X1Rlc3RTdWl0ZS5wcm90bxoqQ3VycmVudExvYWRlZFBy",
-          "ZXNldEluZGV4QnlwYXNzU3RhdHVzLnByb3RvGidDdXJyZW50RGlzcGxheWVk",
-          "UHJlc2V0SW5kZXhTdGF0dXMucHJvdG8i9xoKD0ZlbmRlck1lc3NhZ2VMVBIw",
-          "CgxyZXNwb25zZVR5cGUYASACKA4yDS5SZXNwb25zZVR5cGU6C1VOU09MSUNJ",
-          "VEVEEh0KCGluZGV4UG90GAIgASgLMgkuSW5kZXhQb3RIABIjCgtpbmRleEJ1",
-          "dHRvbhgDIAEoCzIMLkluZGV4QnV0dG9uSAASJQoMaW5kZXhFbmNvZGVyGAQg",
-          "ASgLMg0uSW5kZXhFbmNvZGVySAASJwoNYWN0aXZlRGlzcGxheRgFIAEoCzIO",
-          "LkFjdGl2ZURpc3BsYXlIABJDChtwcm9jZXNzb3JVdGlsaXphdGlvblJlcXVl",
-          "c3QYBiABKAsyHC5Qcm9jZXNzb3JVdGlsaXphdGlvblJlcXVlc3RIABI1ChRw",
-          "cm9jZXNzb3JVdGlsaXphdGlvbhgHIAEoCzIVLlByb2Nlc3NvclV0aWxpemF0",
-          "aW9uSAASMQoSbWVtb3J5VXNhZ2VSZXF1ZXN0GAggASgLMhMuTWVtb3J5VXNh",
-          "Z2VSZXF1ZXN0SAASLwoRbWVtb3J5VXNhZ2VTdGF0dXMYCSABKAsyEi5NZW1v",
-          "cnlVc2FnZVN0YXR1c0gAEkMKG3ByZXNldEpTT05NZXNzYWdlUmVxdWVzdF9M",
-          "VBgKIAEoCzIcLlByZXNldEpTT05NZXNzYWdlUmVxdWVzdF9MVEgAEj8KGWZy",
-          "YW1lQnVmZmVyTWVzc2FnZVJlcXVlc3QYCyABKAsyGi5GcmFtZUJ1ZmZlck1l",
-          "c3NhZ2VSZXF1ZXN0SAASMQoSZnJhbWVCdWZmZXJNZXNzYWdlGAwgASgLMhMu",
-          "RnJhbWVCdWZmZXJNZXNzYWdlSAASPQoYbHQ0Rm9vdHN3aXRjaE1vZGVSZXF1",
-          "ZXN0GA0gASgLMhkuTFQ0Rm9vdHN3aXRjaE1vZGVSZXF1ZXN0SAASOwoXbHQ0",
-          "Rm9vdHN3aXRjaE1vZGVTdGF0dXMYDiABKAsyGC5MVDRGb290c3dpdGNoTW9k",
-          "ZVN0YXR1c0gAEjUKFGxvYWRQcmVzZXRfVGVzdFN1aXRlGA8gASgLMhUuTG9h",
-          "ZFByZXNldF9UZXN0U3VpdGVIABIlCgxsb29wYmFja1Rlc3QYHiABKAsyDS5M",
-          "b29wYmFja1Rlc3RIABIvChFwcmVzZXRKU09OTWVzc2FnZRgfIAEoCzISLlBy",
-          "ZXNldEpTT05NZXNzYWdlSAASMwoTY3VycmVudFByZXNldFN0YXR1cxggIAEo",
-          "CzIULkN1cnJlbnRQcmVzZXRTdGF0dXNIABIhCgpsb2FkUHJlc2V0GCEgASgL",
-          "MgsuTG9hZFByZXNldEgAEjMKE3NldERzcFVuaXRQYXJhbWV0ZXIYIiABKAsy",
-          "FC5TZXREc3BVbml0UGFyYW1ldGVySAASPwoZc2V0RHNwVW5pdFBhcmFtZXRl",
-          "clN0YXR1cxgjIAEoCzIaLlNldERzcFVuaXRQYXJhbWV0ZXJTdGF0dXNIABI5",
-          "ChZkc3BVbml0UGFyYW1ldGVyU3RhdHVzGCQgASgLMhcuRHNwVW5pdFBhcmFt",
-          "ZXRlclN0YXR1c0gAEkkKHmN1cnJlbnRMb2FkZWRQcmVzZXRJbmRleFN0YXR1",
-          "cxglIAEoCzIfLkN1cnJlbnRMb2FkZWRQcmVzZXRJbmRleFN0YXR1c0gAEjEK",
-          "EnByZXNldEVkaXRlZFN0YXR1cxgmIAEoCzITLlByZXNldEVkaXRlZFN0YXR1",
-          "c0gAEiMKC3JlcGxhY2VOb2RlGCcgASgLMgwuUmVwbGFjZU5vZGVIABIvChFy",
-          "ZXBsYWNlTm9kZVN0YXR1cxgoIAEoCzISLlJlcGxhY2VOb2RlU3RhdHVzSAAS",
-          "IwoLc2hpZnRQcmVzZXQYKSABKAsyDC5TaGlmdFByZXNldEgAEi8KEXNoaWZ0",
-          "UHJlc2V0U3RhdHVzGCogASgLMhIuU2hpZnRQcmVzZXRTdGF0dXNIABIhCgpz",
-          "d2FwUHJlc2V0GCsgASgLMgsuU3dhcFByZXNldEgAEi0KEHN3YXBQcmVzZXRT",
-          "dGF0dXMYLCABKAsyES5Td2FwUHJlc2V0U3RhdHVzSAASLQoQY3VycmVudFBy",
-          "ZXNldFNldBgtIAEoCzIRLkN1cnJlbnRQcmVzZXRTZXRIABJVCiRjdXJyZW50",
-          "TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXMYLiABKAsyJS5DdXJyZW50",
-          "TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXNIABJPCiFjdXJyZW50RGlz",
-          "cGxheWVkUHJlc2V0SW5kZXhTdGF0dXMYLyABKAsyIi5DdXJyZW50RGlzcGxh",
-          "eWVkUHJlc2V0SW5kZXhTdGF0dXNIABIvChFwcmVzZXRTYXZlZFN0YXR1cxgy",
-          "IAEoCzISLlByZXNldFNhdmVkU3RhdHVzSAASIwoLY2xlYXJQcmVzZXQYMyAB",
-          "KAsyDC5DbGVhclByZXNldEgAEi8KEWNsZWFyUHJlc2V0U3RhdHVzGDQgASgL",
-          "MhIuQ2xlYXJQcmVzZXRTdGF0dXNIABIvChFzYXZlQ3VycmVudFByZXNldBg1",
-          "IAEoCzISLlNhdmVDdXJyZW50UHJlc2V0SAASMwoTc2F2ZUN1cnJlbnRQcmVz",
-          "ZXRUbxg2IAEoCzIULlNhdmVDdXJyZW50UHJlc2V0VG9IABIlCgxzYXZlUHJl",
-          "c2V0QXMYNyABKAsyDS5TYXZlUHJlc2V0QXNIABI1ChRuZXdQcmVzZXRTYXZl",
-          "ZFN0YXR1cxg4IAEoCzIVLk5ld1ByZXNldFNhdmVkU3RhdHVzSAASKQoOcmVu",
-          "YW1lUHJlc2V0QXQYOSABKAsyDy5SZW5hbWVQcmVzZXRBdEgAEikKDmF1ZGl0",
-          "aW9uUHJlc2V0GDogASgLMg8uQXVkaXRpb25QcmVzZXRIABI1ChRhdWRpdGlv",
-          "blByZXNldFN0YXR1cxg7IAEoCzIVLkF1ZGl0aW9uUHJlc2V0U3RhdHVzSAAS",
-          "MQoSZXhpdEF1ZGl0aW9uUHJlc2V0GDwgASgLMhMuRXhpdEF1ZGl0aW9uUHJl",
-          "c2V0SAASPQoYZXhpdEF1ZGl0aW9uUHJlc2V0U3RhdHVzGD0gASgLMhkuRXhp",
-          "dEF1ZGl0aW9uUHJlc2V0U3RhdHVzSAASNQoUYXVkaXRpb25TdGF0ZVJlcXVl",
-          "c3QYPiABKAsyFS5BdWRpdGlvblN0YXRlUmVxdWVzdEgAEjMKE2F1ZGl0aW9u",
-          "U3RhdGVTdGF0dXMYPyABKAsyFC5BdWRpdGlvblN0YXRlU3RhdHVzSAASQwob",
-          "cHJvZHVjdElkZW50aWZpY2F0aW9uU3RhdHVzGGQgASgLMhwuUHJvZHVjdElk",
-          "ZW50aWZpY2F0aW9uU3RhdHVzSAASRQoccHJvZHVjdElkZW50aWZpY2F0aW9u",
-          "UmVxdWVzdBhlIAEoCzIdLlByb2R1Y3RJZGVudGlmaWNhdGlvblJlcXVlc3RI",
-          "ABI5ChZmaXJtd2FyZVZlcnNpb25SZXF1ZXN0GGYgASgLMhcuRmlybXdhcmVW",
-          "ZXJzaW9uUmVxdWVzdEgAEjcKFWZpcm13YXJlVmVyc2lvblN0YXR1cxhnIAEo",
-          "CzIWLkZpcm13YXJlVmVyc2lvblN0YXR1c0gAEjUKFGN1cnJlbnRQcmVzZXRS",
-          "ZXF1ZXN0GGggASgLMhUuQ3VycmVudFByZXNldFJlcXVlc3RIABIpCg5yZXRy",
-          "aWV2ZVByZXNldBhpIAEoCzIPLlJldHJpZXZlUHJlc2V0SAASKQoOdXNiR2Fp",
-          "blJlcXVlc3QYaiABKAsyDy5Vc2JHYWluUmVxdWVzdEgAEicKDXVzYkdhaW5T",
-          "dGF0dXMYayABKAsyDi5Vc2JHYWluU3RhdHVzSAASKQoOcUFTbG90c1JlcXVl",
-          "c3QYbCABKAsyDy5RQVNsb3RzUmVxdWVzdEgAEicKDXFBU2xvdHNTdGF0dXMY",
-          "bSABKAsyDi5RQVNsb3RzU3RhdHVzSAASMQoSbGluZU91dEdhaW5SZXF1ZXN0",
-          "GG4gASgLMhMuTGluZU91dEdhaW5SZXF1ZXN0SAASLwoRbGluZU91dEdhaW5T",
-          "dGF0dXMYbyABKAsyEi5MaW5lT3V0R2FpblN0YXR1c0gAEjEKEm1vZGFsU3Rh",
-          "dHVzTWVzc2FnZRhxIAEoCzITLk1vZGFsU3RhdHVzTWVzc2FnZUgAEiEKCnVz",
-          "YkdhaW5TZXQYciABKAsyCy5Vc2JHYWluU2V0SAASKQoObGluZU91dEdhaW5T",
-          "ZXQYcyABKAsyDy5MaW5lT3V0R2FpblNldEgAEiEKCnFBU2xvdHNTZXQYdCAB",
-          "KAsyCy5RQVNsb3RzU2V0SAASPgoYdW5zdXBwb3J0ZWRNZXNzYWdlU3RhdHVz",
-          "GMgBIAEoCzIZLlVuc3VwcG9ydGVkTWVzc2FnZVN0YXR1c0gAEiAKCWhlYXJ0",
-          "YmVhdBjJASABKAsyCi5IZWFydGJlYXRIABI8Chdjb25uZWN0aW9uU3RhdHVz",
-          "UmVxdWVzdBjKASABKAsyGC5Db25uZWN0aW9uU3RhdHVzUmVxdWVzdEgAEi4K",
-          "EGNvbm5lY3Rpb25TdGF0dXMYywEgASgLMhEuQ29ubmVjdGlvblN0YXR1c0gA",
-          "QgYKBHR5cGUqQgoMUmVzcG9uc2VUeXBlEg8KC1VOU09MSUNJVEVEEAASEAoM",
-          "Tk9UX0xBU1RfQUNLEAESDwoLSVNfTEFTVF9BQ0sQAg=="));
-    descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { global::IndexPotReflection.Descriptor, global::IndexButtonReflection.Descriptor, global::IndexEncoderReflection.Descriptor, global::LoadPresetReflection.Descriptor, global::PresetJSONMessageRequestLTReflection.Descriptor, global::PresetJSONMessageReflection.Descriptor, global::ProcessorUtilizationRequestReflection.Descriptor, global::ProcessorUtilizationReflection.Descriptor, global::FrameBufferMessageRequestReflection.Descriptor, global::FrameBufferMessageReflection.Descriptor, global::ActiveDisplayReflection.Descriptor, global::MemoryUsageStatusReflection.Descriptor, global::MemoryUsageRequestReflection.Descriptor, global::LoopbackTestReflection.Descriptor, global::CurrentLoadedPresetIndexStatusReflection.Descriptor, global::SetDspUnitParameterReflection.Descriptor, global::AudioStatusReflection.Descriptor, global::SetDspUnitParameterStatusReflection.Descriptor, global::DspUnitParameterStatusReflection.Descriptor, global::ReplaceNodeReflection.Descriptor, global::ReplaceNodeStatusReflection.Descriptor, global::ProductIdentificationRequestReflection.Descriptor, global::ProductIdentificationStatusReflection.Descriptor, global::FirmwareVersionRequestReflection.Descriptor, global::FirmwareVersionStatusReflection.Descriptor, global::CurrentPresetRequestReflection.Descriptor, global::CurrentPresetSetReflection.Descriptor, global::CurrentPresetStatusReflection.Descriptor, global::RetrievePresetReflection.Descriptor, global::UsbGainRequestReflection.Descriptor, global::UsbGainStatusReflection.Descriptor, global::UsbGainSetReflection.Descriptor, global::LineOutGainRequestReflection.Descriptor, global::LineOutGainStatusReflection.Descriptor, global::LineOutGainSetReflection.Descriptor, global::QASlotsRequestReflection.Descriptor, global::QASlotsStatusReflection.Descriptor, global::QASlotsSetReflection.Descriptor, global::PresetSavedStatusReflection.Descriptor, global::ModalStatusMessageReflection.Descriptor, global::UnsupportedMessageStatusReflection.Descriptor, global::ClearPresetReflection.Descriptor, global::ClearPresetStatusReflection.Descriptor, global::SaveCurrentPresetReflection.Descriptor, global::SaveCurrentPresetToReflection.Descriptor, global::SavePresetAsReflection.Descriptor, global::NewPresetSavedStatusReflection.Descriptor, global::RenamePresetAtReflection.Descriptor, global::AuditionPresetReflection.Descriptor, global::AuditionPresetStatusReflection.Descriptor, global::ExitAuditionPresetReflection.Descriptor, global::ExitAuditionPresetStatusReflection.Descriptor, global::AuditionStateRequestReflection.Descriptor, global::AuditionStateStatusReflection.Descriptor, global::LT4FootswitchModeRequestReflection.Descriptor, global::LT4FootswitchModeStatusReflection.Descriptor, global::HeartbeatReflection.Descriptor, global::ShiftPresetReflection.Descriptor, global::ShiftPresetStatusReflection.Descriptor, global::SwapPresetReflection.Descriptor, global::SwapPresetStatusReflection.Descriptor, global::ConnectionStatusReflection.Descriptor, global::ConnectionStatusRequestReflection.Descriptor, global::LoadPresetTestSuiteReflection.Descriptor, global::CurrentLoadedPresetIndexBypassStatusReflection.Descriptor, global::CurrentDisplayedPresetIndexStatusReflection.Descriptor, },
-        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ResponseType), }, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::FenderMessageLT), global::FenderMessageLT.Parser, new[]{ "ResponseType", "IndexPot", "IndexButton", "IndexEncoder", "ActiveDisplay", "ProcessorUtilizationRequest", "ProcessorUtilization", "MemoryUsageRequest", "MemoryUsageStatus", "PresetJSONMessageRequestLT", "FrameBufferMessageRequest", "FrameBufferMessage", "Lt4FootswitchModeRequest", "Lt4FootswitchModeStatus", "LoadPresetTestSuite", "LoopbackTest", "PresetJSONMessage", "CurrentPresetStatus", "LoadPreset", "SetDspUnitParameter", "SetDspUnitParameterStatus", "DspUnitParameterStatus", "CurrentLoadedPresetIndexStatus", "PresetEditedStatus", "ReplaceNode", "ReplaceNodeStatus", "ShiftPreset", "ShiftPresetStatus", "SwapPreset", "SwapPresetStatus", "CurrentPresetSet", "CurrentLoadedPresetIndexBypassStatus", "CurrentDisplayedPresetIndexStatus", "PresetSavedStatus", "ClearPreset", "ClearPresetStatus", "SaveCurrentPreset", "SaveCurrentPresetTo", "SavePresetAs", "NewPresetSavedStatus", "RenamePresetAt", "AuditionPreset", "AuditionPresetStatus", "ExitAuditionPreset", "ExitAuditionPresetStatus", "AuditionStateRequest", "AuditionStateStatus", "ProductIdentificationStatus", "ProductIdentificationRequest", "FirmwareVersionRequest", "FirmwareVersionStatus", "CurrentPresetRequest", "RetrievePreset", "UsbGainRequest", "UsbGainStatus", "QASlotsRequest", "QASlotsStatus", "LineOutGainRequest", "LineOutGainStatus", "ModalStatusMessage", "UsbGainSet", "LineOutGainSet", "QASlotsSet", "UnsupportedMessageStatus", "Heartbeat", "ConnectionStatusRequest", "ConnectionStatus" }, new[]{ "Type" }, null, null, null)
-        }));
+    #region Descriptor
+    /// <summary>File descriptor for FenderMessageLT.proto</summary>
+    public static pbr::FileDescriptor Descriptor {
+      get { return descriptor; }
+    }
+    private static pbr::FileDescriptor descriptor;
+
+    static FenderMessageLTReflection() {
+      byte[] descriptorData = global::System.Convert.FromBase64String(
+          string.Concat(
+            "ChVGZW5kZXJNZXNzYWdlTFQucHJvdG8aDkluZGV4UG90LnByb3RvGhFJbmRl",
+            "eEJ1dHRvbi5wcm90bxoSSW5kZXhFbmNvZGVyLnByb3RvGhBMb2FkUHJlc2V0",
+            "LnByb3RvGiFQcmVzZXRKU09OTWVzc2FnZVJlcXVlc3RfTFQucHJvdG8aF1By",
+            "ZXNldEpTT05NZXNzYWdlLnByb3RvGiFQcm9jZXNzb3JVdGlsaXphdGlvblJl",
+            "cXVlc3QucHJvdG8aGlByb2Nlc3NvclV0aWxpemF0aW9uLnByb3RvGh9GcmFt",
+            "ZUJ1ZmZlck1lc3NhZ2VSZXF1ZXN0LnByb3RvGhhGcmFtZUJ1ZmZlck1lc3Nh",
+            "Z2UucHJvdG8aE0FjdGl2ZURpc3BsYXkucHJvdG8aF01lbW9yeVVzYWdlU3Rh",
+            "dHVzLnByb3RvGhhNZW1vcnlVc2FnZVJlcXVlc3QucHJvdG8aEkxvb3BiYWNr",
+            "VGVzdC5wcm90bxokQ3VycmVudExvYWRlZFByZXNldEluZGV4U3RhdHVzLnBy",
+            "b3RvGhlTZXREc3BVbml0UGFyYW1ldGVyLnByb3RvGhFBdWRpb1N0YXR1cy5w",
+            "cm90bxofU2V0RHNwVW5pdFBhcmFtZXRlclN0YXR1cy5wcm90bxocRHNwVW5p",
+            "dFBhcmFtZXRlclN0YXR1cy5wcm90bxoRUmVwbGFjZU5vZGUucHJvdG8aF1Jl",
+            "cGxhY2VOb2RlU3RhdHVzLnByb3RvGiJQcm9kdWN0SWRlbnRpZmljYXRpb25S",
+            "ZXF1ZXN0LnByb3RvGiFQcm9kdWN0SWRlbnRpZmljYXRpb25TdGF0dXMucHJv",
+            "dG8aHEZpcm13YXJlVmVyc2lvblJlcXVlc3QucHJvdG8aG0Zpcm13YXJlVmVy",
+            "c2lvblN0YXR1cy5wcm90bxoaQ3VycmVudFByZXNldFJlcXVlc3QucHJvdG8a",
+            "FkN1cnJlbnRQcmVzZXRTZXQucHJvdG8aGUN1cnJlbnRQcmVzZXRTdGF0dXMu",
+            "cHJvdG8aFFJldHJpZXZlUHJlc2V0LnByb3RvGhRVc2JHYWluUmVxdWVzdC5w",
+            "cm90bxoTVXNiR2FpblN0YXR1cy5wcm90bxoQVXNiR2FpblNldC5wcm90bxoY",
+            "TGluZU91dEdhaW5SZXF1ZXN0LnByb3RvGhdMaW5lT3V0R2FpblN0YXR1cy5w",
+            "cm90bxoUTGluZU91dEdhaW5TZXQucHJvdG8aFFFBU2xvdHNSZXF1ZXN0LnBy",
+            "b3RvGhNRQVNsb3RzU3RhdHVzLnByb3RvGhBRQVNsb3RzU2V0LnByb3RvGhdQ",
+            "cmVzZXRTYXZlZFN0YXR1cy5wcm90bxoYTW9kYWxTdGF0dXNNZXNzYWdlLnBy",
+            "b3RvGh5VbnN1cHBvcnRlZE1lc3NhZ2VTdGF0dXMucHJvdG8aEUNsZWFyUHJl",
+            "c2V0LnByb3RvGhdDbGVhclByZXNldFN0YXR1cy5wcm90bxoXU2F2ZUN1cnJl",
+            "bnRQcmVzZXQucHJvdG8aGVNhdmVDdXJyZW50UHJlc2V0VG8ucHJvdG8aElNh",
+            "dmVQcmVzZXRBcy5wcm90bxoaTmV3UHJlc2V0U2F2ZWRTdGF0dXMucHJvdG8a",
+            "FFJlbmFtZVByZXNldEF0LnByb3RvGhRBdWRpdGlvblByZXNldC5wcm90bxoa",
+            "QXVkaXRpb25QcmVzZXRTdGF0dXMucHJvdG8aGEV4aXRBdWRpdGlvblByZXNl",
+            "dC5wcm90bxoeRXhpdEF1ZGl0aW9uUHJlc2V0U3RhdHVzLnByb3RvGhpBdWRp",
+            "dGlvblN0YXRlUmVxdWVzdC5wcm90bxoZQXVkaXRpb25TdGF0ZVN0YXR1cy5w",
+            "cm90bxoeTFQ0Rm9vdHN3aXRjaE1vZGVSZXF1ZXN0LnByb3RvGh1MVDRGb290",
+            "c3dpdGNoTW9kZVN0YXR1cy5wcm90bxoPSGVhcnRiZWF0LnByb3RvGhFTaGlm",
+            "dFByZXNldC5wcm90bxoXU2hpZnRQcmVzZXRTdGF0dXMucHJvdG8aEFN3YXBQ",
+            "cmVzZXQucHJvdG8aFlN3YXBQcmVzZXRTdGF0dXMucHJvdG8aFkNvbm5lY3Rp",
+            "b25TdGF0dXMucHJvdG8aHUNvbm5lY3Rpb25TdGF0dXNSZXF1ZXN0LnByb3Rv",
+            "GhpMb2FkUHJlc2V0X1Rlc3RTdWl0ZS5wcm90bxoqQ3VycmVudExvYWRlZFBy",
+            "ZXNldEluZGV4QnlwYXNzU3RhdHVzLnByb3RvGidDdXJyZW50RGlzcGxheWVk",
+            "UHJlc2V0SW5kZXhTdGF0dXMucHJvdG8i9xoKD0ZlbmRlck1lc3NhZ2VMVBIw",
+            "CgxyZXNwb25zZVR5cGUYASACKA4yDS5SZXNwb25zZVR5cGU6C1VOU09MSUNJ",
+            "VEVEEh0KCGluZGV4UG90GAIgASgLMgkuSW5kZXhQb3RIABIjCgtpbmRleEJ1",
+            "dHRvbhgDIAEoCzIMLkluZGV4QnV0dG9uSAASJQoMaW5kZXhFbmNvZGVyGAQg",
+            "ASgLMg0uSW5kZXhFbmNvZGVySAASJwoNYWN0aXZlRGlzcGxheRgFIAEoCzIO",
+            "LkFjdGl2ZURpc3BsYXlIABJDChtwcm9jZXNzb3JVdGlsaXphdGlvblJlcXVl",
+            "c3QYBiABKAsyHC5Qcm9jZXNzb3JVdGlsaXphdGlvblJlcXVlc3RIABI1ChRw",
+            "cm9jZXNzb3JVdGlsaXphdGlvbhgHIAEoCzIVLlByb2Nlc3NvclV0aWxpemF0",
+            "aW9uSAASMQoSbWVtb3J5VXNhZ2VSZXF1ZXN0GAggASgLMhMuTWVtb3J5VXNh",
+            "Z2VSZXF1ZXN0SAASLwoRbWVtb3J5VXNhZ2VTdGF0dXMYCSABKAsyEi5NZW1v",
+            "cnlVc2FnZVN0YXR1c0gAEkMKG3ByZXNldEpTT05NZXNzYWdlUmVxdWVzdF9M",
+            "VBgKIAEoCzIcLlByZXNldEpTT05NZXNzYWdlUmVxdWVzdF9MVEgAEj8KGWZy",
+            "YW1lQnVmZmVyTWVzc2FnZVJlcXVlc3QYCyABKAsyGi5GcmFtZUJ1ZmZlck1l",
+            "c3NhZ2VSZXF1ZXN0SAASMQoSZnJhbWVCdWZmZXJNZXNzYWdlGAwgASgLMhMu",
+            "RnJhbWVCdWZmZXJNZXNzYWdlSAASPQoYbHQ0Rm9vdHN3aXRjaE1vZGVSZXF1",
+            "ZXN0GA0gASgLMhkuTFQ0Rm9vdHN3aXRjaE1vZGVSZXF1ZXN0SAASOwoXbHQ0",
+            "Rm9vdHN3aXRjaE1vZGVTdGF0dXMYDiABKAsyGC5MVDRGb290c3dpdGNoTW9k",
+            "ZVN0YXR1c0gAEjUKFGxvYWRQcmVzZXRfVGVzdFN1aXRlGA8gASgLMhUuTG9h",
+            "ZFByZXNldF9UZXN0U3VpdGVIABIlCgxsb29wYmFja1Rlc3QYHiABKAsyDS5M",
+            "b29wYmFja1Rlc3RIABIvChFwcmVzZXRKU09OTWVzc2FnZRgfIAEoCzISLlBy",
+            "ZXNldEpTT05NZXNzYWdlSAASMwoTY3VycmVudFByZXNldFN0YXR1cxggIAEo",
+            "CzIULkN1cnJlbnRQcmVzZXRTdGF0dXNIABIhCgpsb2FkUHJlc2V0GCEgASgL",
+            "MgsuTG9hZFByZXNldEgAEjMKE3NldERzcFVuaXRQYXJhbWV0ZXIYIiABKAsy",
+            "FC5TZXREc3BVbml0UGFyYW1ldGVySAASPwoZc2V0RHNwVW5pdFBhcmFtZXRl",
+            "clN0YXR1cxgjIAEoCzIaLlNldERzcFVuaXRQYXJhbWV0ZXJTdGF0dXNIABI5",
+            "ChZkc3BVbml0UGFyYW1ldGVyU3RhdHVzGCQgASgLMhcuRHNwVW5pdFBhcmFt",
+            "ZXRlclN0YXR1c0gAEkkKHmN1cnJlbnRMb2FkZWRQcmVzZXRJbmRleFN0YXR1",
+            "cxglIAEoCzIfLkN1cnJlbnRMb2FkZWRQcmVzZXRJbmRleFN0YXR1c0gAEjEK",
+            "EnByZXNldEVkaXRlZFN0YXR1cxgmIAEoCzITLlByZXNldEVkaXRlZFN0YXR1",
+            "c0gAEiMKC3JlcGxhY2VOb2RlGCcgASgLMgwuUmVwbGFjZU5vZGVIABIvChFy",
+            "ZXBsYWNlTm9kZVN0YXR1cxgoIAEoCzISLlJlcGxhY2VOb2RlU3RhdHVzSAAS",
+            "IwoLc2hpZnRQcmVzZXQYKSABKAsyDC5TaGlmdFByZXNldEgAEi8KEXNoaWZ0",
+            "UHJlc2V0U3RhdHVzGCogASgLMhIuU2hpZnRQcmVzZXRTdGF0dXNIABIhCgpz",
+            "d2FwUHJlc2V0GCsgASgLMgsuU3dhcFByZXNldEgAEi0KEHN3YXBQcmVzZXRT",
+            "dGF0dXMYLCABKAsyES5Td2FwUHJlc2V0U3RhdHVzSAASLQoQY3VycmVudFBy",
+            "ZXNldFNldBgtIAEoCzIRLkN1cnJlbnRQcmVzZXRTZXRIABJVCiRjdXJyZW50",
+            "TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXMYLiABKAsyJS5DdXJyZW50",
+            "TG9hZGVkUHJlc2V0SW5kZXhCeXBhc3NTdGF0dXNIABJPCiFjdXJyZW50RGlz",
+            "cGxheWVkUHJlc2V0SW5kZXhTdGF0dXMYLyABKAsyIi5DdXJyZW50RGlzcGxh",
+            "eWVkUHJlc2V0SW5kZXhTdGF0dXNIABIvChFwcmVzZXRTYXZlZFN0YXR1cxgy",
+            "IAEoCzISLlByZXNldFNhdmVkU3RhdHVzSAASIwoLY2xlYXJQcmVzZXQYMyAB",
+            "KAsyDC5DbGVhclByZXNldEgAEi8KEWNsZWFyUHJlc2V0U3RhdHVzGDQgASgL",
+            "MhIuQ2xlYXJQcmVzZXRTdGF0dXNIABIvChFzYXZlQ3VycmVudFByZXNldBg1",
+            "IAEoCzISLlNhdmVDdXJyZW50UHJlc2V0SAASMwoTc2F2ZUN1cnJlbnRQcmVz",
+            "ZXRUbxg2IAEoCzIULlNhdmVDdXJyZW50UHJlc2V0VG9IABIlCgxzYXZlUHJl",
+            "c2V0QXMYNyABKAsyDS5TYXZlUHJlc2V0QXNIABI1ChRuZXdQcmVzZXRTYXZl",
+            "ZFN0YXR1cxg4IAEoCzIVLk5ld1ByZXNldFNhdmVkU3RhdHVzSAASKQoOcmVu",
+            "YW1lUHJlc2V0QXQYOSABKAsyDy5SZW5hbWVQcmVzZXRBdEgAEikKDmF1ZGl0",
+            "aW9uUHJlc2V0GDogASgLMg8uQXVkaXRpb25QcmVzZXRIABI1ChRhdWRpdGlv",
+            "blByZXNldFN0YXR1cxg7IAEoCzIVLkF1ZGl0aW9uUHJlc2V0U3RhdHVzSAAS",
+            "MQoSZXhpdEF1ZGl0aW9uUHJlc2V0GDwgASgLMhMuRXhpdEF1ZGl0aW9uUHJl",
+            "c2V0SAASPQoYZXhpdEF1ZGl0aW9uUHJlc2V0U3RhdHVzGD0gASgLMhkuRXhp",
+            "dEF1ZGl0aW9uUHJlc2V0U3RhdHVzSAASNQoUYXVkaXRpb25TdGF0ZVJlcXVl",
+            "c3QYPiABKAsyFS5BdWRpdGlvblN0YXRlUmVxdWVzdEgAEjMKE2F1ZGl0aW9u",
+            "U3RhdGVTdGF0dXMYPyABKAsyFC5BdWRpdGlvblN0YXRlU3RhdHVzSAASQwob",
+            "cHJvZHVjdElkZW50aWZpY2F0aW9uU3RhdHVzGGQgASgLMhwuUHJvZHVjdElk",
+            "ZW50aWZpY2F0aW9uU3RhdHVzSAASRQoccHJvZHVjdElkZW50aWZpY2F0aW9u",
+            "UmVxdWVzdBhlIAEoCzIdLlByb2R1Y3RJZGVudGlmaWNhdGlvblJlcXVlc3RI",
+            "ABI5ChZmaXJtd2FyZVZlcnNpb25SZXF1ZXN0GGYgASgLMhcuRmlybXdhcmVW",
+            "ZXJzaW9uUmVxdWVzdEgAEjcKFWZpcm13YXJlVmVyc2lvblN0YXR1cxhnIAEo",
+            "CzIWLkZpcm13YXJlVmVyc2lvblN0YXR1c0gAEjUKFGN1cnJlbnRQcmVzZXRS",
+            "ZXF1ZXN0GGggASgLMhUuQ3VycmVudFByZXNldFJlcXVlc3RIABIpCg5yZXRy",
+            "aWV2ZVByZXNldBhpIAEoCzIPLlJldHJpZXZlUHJlc2V0SAASKQoOdXNiR2Fp",
+            "blJlcXVlc3QYaiABKAsyDy5Vc2JHYWluUmVxdWVzdEgAEicKDXVzYkdhaW5T",
+            "dGF0dXMYayABKAsyDi5Vc2JHYWluU3RhdHVzSAASKQoOcUFTbG90c1JlcXVl",
+            "c3QYbCABKAsyDy5RQVNsb3RzUmVxdWVzdEgAEicKDXFBU2xvdHNTdGF0dXMY",
+            "bSABKAsyDi5RQVNsb3RzU3RhdHVzSAASMQoSbGluZU91dEdhaW5SZXF1ZXN0",
+            "GG4gASgLMhMuTGluZU91dEdhaW5SZXF1ZXN0SAASLwoRbGluZU91dEdhaW5T",
+            "dGF0dXMYbyABKAsyEi5MaW5lT3V0R2FpblN0YXR1c0gAEjEKEm1vZGFsU3Rh",
+            "dHVzTWVzc2FnZRhxIAEoCzITLk1vZGFsU3RhdHVzTWVzc2FnZUgAEiEKCnVz",
+            "YkdhaW5TZXQYciABKAsyCy5Vc2JHYWluU2V0SAASKQoObGluZU91dEdhaW5T",
+            "ZXQYcyABKAsyDy5MaW5lT3V0R2FpblNldEgAEiEKCnFBU2xvdHNTZXQYdCAB",
+            "KAsyCy5RQVNsb3RzU2V0SAASPgoYdW5zdXBwb3J0ZWRNZXNzYWdlU3RhdHVz",
+            "GMgBIAEoCzIZLlVuc3VwcG9ydGVkTWVzc2FnZVN0YXR1c0gAEiAKCWhlYXJ0",
+            "YmVhdBjJASABKAsyCi5IZWFydGJlYXRIABI8Chdjb25uZWN0aW9uU3RhdHVz",
+            "UmVxdWVzdBjKASABKAsyGC5Db25uZWN0aW9uU3RhdHVzUmVxdWVzdEgAEi4K",
+            "EGNvbm5lY3Rpb25TdGF0dXMYywEgASgLMhEuQ29ubmVjdGlvblN0YXR1c0gA",
+            "QgYKBHR5cGUqQgoMUmVzcG9uc2VUeXBlEg8KC1VOU09MSUNJVEVEEAASEAoM",
+            "Tk9UX0xBU1RfQUNLEAESDwoLSVNfTEFTVF9BQ0sQAkIiqgIfTHRBbXBEb3RO",
+            "ZXQuTGliLk1vZGVscy5Qcm90b2J1Zg=="));
+      descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
+          new pbr::FileDescriptor[] { global::LtAmpDotNet.Lib.Models.Protobuf.IndexPotReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.IndexButtonReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoderReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LoadPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequestLTReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplayReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.AudioStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessageReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetToReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAsReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAtReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.HeartbeatReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequestReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.LoadPresetTestSuiteReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatusReflection.Descriptor, global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatusReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::LtAmpDotNet.Lib.Models.Protobuf.FenderMessageLT), global::LtAmpDotNet.Lib.Models.Protobuf.FenderMessageLT.Parser, new[]{ "ResponseType", "IndexPot", "IndexButton", "IndexEncoder", "ActiveDisplay", "ProcessorUtilizationRequest", "ProcessorUtilization", "MemoryUsageRequest", "MemoryUsageStatus", "PresetJSONMessageRequestLT", "FrameBufferMessageRequest", "FrameBufferMessage", "Lt4FootswitchModeRequest", "Lt4FootswitchModeStatus", "LoadPresetTestSuite", "LoopbackTest", "PresetJSONMessage", "CurrentPresetStatus", "LoadPreset", "SetDspUnitParameter", "SetDspUnitParameterStatus", "DspUnitParameterStatus", "CurrentLoadedPresetIndexStatus", "PresetEditedStatus", "ReplaceNode", "ReplaceNodeStatus", "ShiftPreset", "ShiftPresetStatus", "SwapPreset", "SwapPresetStatus", "CurrentPresetSet", "CurrentLoadedPresetIndexBypassStatus", "CurrentDisplayedPresetIndexStatus", "PresetSavedStatus", "ClearPreset", "ClearPresetStatus", "SaveCurrentPreset", "SaveCurrentPresetTo", "SavePresetAs", "NewPresetSavedStatus", "RenamePresetAt", "AuditionPreset", "AuditionPresetStatus", "ExitAuditionPreset", "ExitAuditionPresetStatus", "AuditionStateRequest", "AuditionStateStatus", "ProductIdentificationStatus", "ProductIdentificationRequest", "FirmwareVersionRequest", "FirmwareVersionStatus", "CurrentPresetRequest", "RetrievePreset", "UsbGainRequest", "UsbGainStatus", "QASlotsRequest", "QASlotsStatus", "LineOutGainRequest", "LineOutGainStatus", "ModalStatusMessage", "UsbGainSet", "LineOutGainSet", "QASlotsSet", "UnsupportedMessageStatus", "Heartbeat", "ConnectionStatusRequest", "ConnectionStatus" }, new[]{ "Type" }, null, null, null)
+          }));
+    }
+    #endregion
+
   }
+  #region Enums
+  /// <summary>
+  ///
+  /// Message response type
+  /// </summary>
+  public enum ResponseType {
+    /// <summary>
+    /// Message sent not as the result of a command
+    /// </summary>
+    [pbr::OriginalName("UNSOLICITED")] Unsolicited = 0,
+    /// <summary>
+    /// Message sent as the result of a command, but NOT the last message in the batch
+    /// </summary>
+    [pbr::OriginalName("NOT_LAST_ACK")] NotLastAck = 1,
+    /// <summary>
+    /// Message sent as the last result of a command
+    /// </summary>
+    [pbr::OriginalName("IS_LAST_ACK")] IsLastAck = 2,
+  }
+
+  #endregion
+
+  #region Messages
+  /// <summary>
+  ///
+  /// Base message type used to communicate with the amp
+  ///
+  /// All messages are of this type, and encapsulate the actual message
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class FenderMessageLT : pb::IMessage<FenderMessageLT>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<FenderMessageLT> _parser = new pb::MessageParser<FenderMessageLT>(() => new FenderMessageLT());
+    private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<FenderMessageLT> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::LtAmpDotNet.Lib.Models.Protobuf.FenderMessageLTReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public FenderMessageLT() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public FenderMessageLT(FenderMessageLT other) : this() {
+      _hasBits0 = other._hasBits0;
+      responseType_ = other.responseType_;
+      switch (other.TypeCase) {
+        case TypeOneofCase.IndexPot:
+          IndexPot = other.IndexPot.Clone();
+          break;
+        case TypeOneofCase.IndexButton:
+          IndexButton = other.IndexButton.Clone();
+          break;
+        case TypeOneofCase.IndexEncoder:
+          IndexEncoder = other.IndexEncoder.Clone();
+          break;
+        case TypeOneofCase.ActiveDisplay:
+          ActiveDisplay = other.ActiveDisplay.Clone();
+          break;
+        case TypeOneofCase.ProcessorUtilizationRequest:
+          ProcessorUtilizationRequest = other.ProcessorUtilizationRequest.Clone();
+          break;
+        case TypeOneofCase.ProcessorUtilization:
+          ProcessorUtilization = other.ProcessorUtilization.Clone();
+          break;
+        case TypeOneofCase.MemoryUsageRequest:
+          MemoryUsageRequest = other.MemoryUsageRequest.Clone();
+          break;
+        case TypeOneofCase.MemoryUsageStatus:
+          MemoryUsageStatus = other.MemoryUsageStatus.Clone();
+          break;
+        case TypeOneofCase.PresetJSONMessageRequestLT:
+          PresetJSONMessageRequestLT = other.PresetJSONMessageRequestLT.Clone();
+          break;
+        case TypeOneofCase.FrameBufferMessageRequest:
+          FrameBufferMessageRequest = other.FrameBufferMessageRequest.Clone();
+          break;
+        case TypeOneofCase.FrameBufferMessage:
+          FrameBufferMessage = other.FrameBufferMessage.Clone();
+          break;
+        case TypeOneofCase.Lt4FootswitchModeRequest:
+          Lt4FootswitchModeRequest = other.Lt4FootswitchModeRequest.Clone();
+          break;
+        case TypeOneofCase.Lt4FootswitchModeStatus:
+          Lt4FootswitchModeStatus = other.Lt4FootswitchModeStatus.Clone();
+          break;
+        case TypeOneofCase.LoadPresetTestSuite:
+          LoadPresetTestSuite = other.LoadPresetTestSuite.Clone();
+          break;
+        case TypeOneofCase.LoopbackTest:
+          LoopbackTest = other.LoopbackTest.Clone();
+          break;
+        case TypeOneofCase.PresetJSONMessage:
+          PresetJSONMessage = other.PresetJSONMessage.Clone();
+          break;
+        case TypeOneofCase.CurrentPresetStatus:
+          CurrentPresetStatus = other.CurrentPresetStatus.Clone();
+          break;
+        case TypeOneofCase.LoadPreset:
+          LoadPreset = other.LoadPreset.Clone();
+          break;
+        case TypeOneofCase.SetDspUnitParameter:
+          SetDspUnitParameter = other.SetDspUnitParameter.Clone();
+          break;
+        case TypeOneofCase.SetDspUnitParameterStatus:
+          SetDspUnitParameterStatus = other.SetDspUnitParameterStatus.Clone();
+          break;
+        case TypeOneofCase.DspUnitParameterStatus:
+          DspUnitParameterStatus = other.DspUnitParameterStatus.Clone();
+          break;
+        case TypeOneofCase.CurrentLoadedPresetIndexStatus:
+          CurrentLoadedPresetIndexStatus = other.CurrentLoadedPresetIndexStatus.Clone();
+          break;
+        case TypeOneofCase.PresetEditedStatus:
+          PresetEditedStatus = other.PresetEditedStatus.Clone();
+          break;
+        case TypeOneofCase.ReplaceNode:
+          ReplaceNode = other.ReplaceNode.Clone();
+          break;
+        case TypeOneofCase.ReplaceNodeStatus:
+          ReplaceNodeStatus = other.ReplaceNodeStatus.Clone();
+          break;
+        case TypeOneofCase.ShiftPreset:
+          ShiftPreset = other.ShiftPreset.Clone();
+          break;
+        case TypeOneofCase.ShiftPresetStatus:
+          ShiftPresetStatus = other.ShiftPresetStatus.Clone();
+          break;
+        case TypeOneofCase.SwapPreset:
+          SwapPreset = other.SwapPreset.Clone();
+          break;
+        case TypeOneofCase.SwapPresetStatus:
+          SwapPresetStatus = other.SwapPresetStatus.Clone();
+          break;
+        case TypeOneofCase.CurrentPresetSet:
+          CurrentPresetSet = other.CurrentPresetSet.Clone();
+          break;
+        case TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
+          CurrentLoadedPresetIndexBypassStatus = other.CurrentLoadedPresetIndexBypassStatus.Clone();
+          break;
+        case TypeOneofCase.CurrentDisplayedPresetIndexStatus:
+          CurrentDisplayedPresetIndexStatus = other.CurrentDisplayedPresetIndexStatus.Clone();
+          break;
+        case TypeOneofCase.PresetSavedStatus:
+          PresetSavedStatus = other.PresetSavedStatus.Clone();
+          break;
+        case TypeOneofCase.ClearPreset:
+          ClearPreset = other.ClearPreset.Clone();
+          break;
+        case TypeOneofCase.ClearPresetStatus:
+          ClearPresetStatus = other.ClearPresetStatus.Clone();
+          break;
+        case TypeOneofCase.SaveCurrentPreset:
+          SaveCurrentPreset = other.SaveCurrentPreset.Clone();
+          break;
+        case TypeOneofCase.SaveCurrentPresetTo:
+          SaveCurrentPresetTo = other.SaveCurrentPresetTo.Clone();
+          break;
+        case TypeOneofCase.SavePresetAs:
+          SavePresetAs = other.SavePresetAs.Clone();
+          break;
+        case TypeOneofCase.NewPresetSavedStatus:
+          NewPresetSavedStatus = other.NewPresetSavedStatus.Clone();
+          break;
+        case TypeOneofCase.RenamePresetAt:
+          RenamePresetAt = other.RenamePresetAt.Clone();
+          break;
+        case TypeOneofCase.AuditionPreset:
+          AuditionPreset = other.AuditionPreset.Clone();
+          break;
+        case TypeOneofCase.AuditionPresetStatus:
+          AuditionPresetStatus = other.AuditionPresetStatus.Clone();
+          break;
+        case TypeOneofCase.ExitAuditionPreset:
+          ExitAuditionPreset = other.ExitAuditionPreset.Clone();
+          break;
+        case TypeOneofCase.ExitAuditionPresetStatus:
+          ExitAuditionPresetStatus = other.ExitAuditionPresetStatus.Clone();
+          break;
+        case TypeOneofCase.AuditionStateRequest:
+          AuditionStateRequest = other.AuditionStateRequest.Clone();
+          break;
+        case TypeOneofCase.AuditionStateStatus:
+          AuditionStateStatus = other.AuditionStateStatus.Clone();
+          break;
+        case TypeOneofCase.ProductIdentificationStatus:
+          ProductIdentificationStatus = other.ProductIdentificationStatus.Clone();
+          break;
+        case TypeOneofCase.ProductIdentificationRequest:
+          ProductIdentificationRequest = other.ProductIdentificationRequest.Clone();
+          break;
+        case TypeOneofCase.FirmwareVersionRequest:
+          FirmwareVersionRequest = other.FirmwareVersionRequest.Clone();
+          break;
+        case TypeOneofCase.FirmwareVersionStatus:
+          FirmwareVersionStatus = other.FirmwareVersionStatus.Clone();
+          break;
+        case TypeOneofCase.CurrentPresetRequest:
+          CurrentPresetRequest = other.CurrentPresetRequest.Clone();
+          break;
+        case TypeOneofCase.RetrievePreset:
+          RetrievePreset = other.RetrievePreset.Clone();
+          break;
+        case TypeOneofCase.UsbGainRequest:
+          UsbGainRequest = other.UsbGainRequest.Clone();
+          break;
+        case TypeOneofCase.UsbGainStatus:
+          UsbGainStatus = other.UsbGainStatus.Clone();
+          break;
+        case TypeOneofCase.QASlotsRequest:
+          QASlotsRequest = other.QASlotsRequest.Clone();
+          break;
+        case TypeOneofCase.QASlotsStatus:
+          QASlotsStatus = other.QASlotsStatus.Clone();
+          break;
+        case TypeOneofCase.LineOutGainRequest:
+          LineOutGainRequest = other.LineOutGainRequest.Clone();
+          break;
+        case TypeOneofCase.LineOutGainStatus:
+          LineOutGainStatus = other.LineOutGainStatus.Clone();
+          break;
+        case TypeOneofCase.ModalStatusMessage:
+          ModalStatusMessage = other.ModalStatusMessage.Clone();
+          break;
+        case TypeOneofCase.UsbGainSet:
+          UsbGainSet = other.UsbGainSet.Clone();
+          break;
+        case TypeOneofCase.LineOutGainSet:
+          LineOutGainSet = other.LineOutGainSet.Clone();
+          break;
+        case TypeOneofCase.QASlotsSet:
+          QASlotsSet = other.QASlotsSet.Clone();
+          break;
+        case TypeOneofCase.UnsupportedMessageStatus:
+          UnsupportedMessageStatus = other.UnsupportedMessageStatus.Clone();
+          break;
+        case TypeOneofCase.Heartbeat:
+          Heartbeat = other.Heartbeat.Clone();
+          break;
+        case TypeOneofCase.ConnectionStatusRequest:
+          ConnectionStatusRequest = other.ConnectionStatusRequest.Clone();
+          break;
+        case TypeOneofCase.ConnectionStatus:
+          ConnectionStatus = other.ConnectionStatus.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public FenderMessageLT Clone() {
+      return new FenderMessageLT(this);
+    }
+
+    /// <summary>Field number for the "responseType" field.</summary>
+    public const int ResponseTypeFieldNumber = 1;
+    private readonly static global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType ResponseTypeDefaultValue = global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType.Unsolicited;
+
+    private global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType responseType_;
+    /// <summary>
+    /// Response type. All messages from the host to the amp are UNSOLICITED
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType ResponseType {
+      get { if ((_hasBits0 & 1) != 0) { return responseType_; } else { return ResponseTypeDefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        responseType_ = value;
+      }
+    }
+    /// <summary>Gets whether the "responseType" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasResponseType {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "responseType" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearResponseType() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "indexPot" field.</summary>
+    public const int IndexPotFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot IndexPot {
+      get { return typeCase_ == TypeOneofCase.IndexPot ? (global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexPot;
+      }
+    }
+
+    /// <summary>Field number for the "indexButton" field.</summary>
+    public const int IndexButtonFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton IndexButton {
+      get { return typeCase_ == TypeOneofCase.IndexButton ? (global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexButton;
+      }
+    }
+
+    /// <summary>Field number for the "indexEncoder" field.</summary>
+    public const int IndexEncoderFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder IndexEncoder {
+      get { return typeCase_ == TypeOneofCase.IndexEncoder ? (global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexEncoder;
+      }
+    }
+
+    /// <summary>Field number for the "activeDisplay" field.</summary>
+    public const int ActiveDisplayFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay ActiveDisplay {
+      get { return typeCase_ == TypeOneofCase.ActiveDisplay ? (global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ActiveDisplay;
+      }
+    }
+
+    /// <summary>Field number for the "processorUtilizationRequest" field.</summary>
+    public const int ProcessorUtilizationRequestFieldNumber = 6;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest ProcessorUtilizationRequest {
+      get { return typeCase_ == TypeOneofCase.ProcessorUtilizationRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProcessorUtilizationRequest;
+      }
+    }
+
+    /// <summary>Field number for the "processorUtilization" field.</summary>
+    public const int ProcessorUtilizationFieldNumber = 7;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization ProcessorUtilization {
+      get { return typeCase_ == TypeOneofCase.ProcessorUtilization ? (global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProcessorUtilization;
+      }
+    }
+
+    /// <summary>Field number for the "memoryUsageRequest" field.</summary>
+    public const int MemoryUsageRequestFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest MemoryUsageRequest {
+      get { return typeCase_ == TypeOneofCase.MemoryUsageRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.MemoryUsageRequest;
+      }
+    }
+
+    /// <summary>Field number for the "memoryUsageStatus" field.</summary>
+    public const int MemoryUsageStatusFieldNumber = 9;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus MemoryUsageStatus {
+      get { return typeCase_ == TypeOneofCase.MemoryUsageStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.MemoryUsageStatus;
+      }
+    }
+
+    /// <summary>Field number for the "presetJSONMessageRequest_LT" field.</summary>
+    public const int PresetJSONMessageRequestLTFieldNumber = 10;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT PresetJSONMessageRequestLT {
+      get { return typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT ? (global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetJSONMessageRequestLT;
+      }
+    }
+
+    /// <summary>Field number for the "frameBufferMessageRequest" field.</summary>
+    public const int FrameBufferMessageRequestFieldNumber = 11;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest FrameBufferMessageRequest {
+      get { return typeCase_ == TypeOneofCase.FrameBufferMessageRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FrameBufferMessageRequest;
+      }
+    }
+
+    /// <summary>Field number for the "frameBufferMessage" field.</summary>
+    public const int FrameBufferMessageFieldNumber = 12;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage FrameBufferMessage {
+      get { return typeCase_ == TypeOneofCase.FrameBufferMessage ? (global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FrameBufferMessage;
+      }
+    }
+
+    /// <summary>Field number for the "lt4FootswitchModeRequest" field.</summary>
+    public const int Lt4FootswitchModeRequestFieldNumber = 13;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest Lt4FootswitchModeRequest {
+      get { return typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Lt4FootswitchModeRequest;
+      }
+    }
+
+    /// <summary>Field number for the "lt4FootswitchModeStatus" field.</summary>
+    public const int Lt4FootswitchModeStatusFieldNumber = 14;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus Lt4FootswitchModeStatus {
+      get { return typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Lt4FootswitchModeStatus;
+      }
+    }
+
+    /// <summary>Field number for the "loadPreset_TestSuite" field.</summary>
+    public const int LoadPresetTestSuiteFieldNumber = 15;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite LoadPresetTestSuite {
+      get { return typeCase_ == TypeOneofCase.LoadPresetTestSuite ? (global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoadPresetTestSuite;
+      }
+    }
+
+    /// <summary>Field number for the "loopbackTest" field.</summary>
+    public const int LoopbackTestFieldNumber = 30;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest LoopbackTest {
+      get { return typeCase_ == TypeOneofCase.LoopbackTest ? (global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoopbackTest;
+      }
+    }
+
+    /// <summary>Field number for the "presetJSONMessage" field.</summary>
+    public const int PresetJSONMessageFieldNumber = 31;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage PresetJSONMessage {
+      get { return typeCase_ == TypeOneofCase.PresetJSONMessage ? (global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetJSONMessage;
+      }
+    }
+
+    /// <summary>Field number for the "currentPresetStatus" field.</summary>
+    public const int CurrentPresetStatusFieldNumber = 32;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus CurrentPresetStatus {
+      get { return typeCase_ == TypeOneofCase.CurrentPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "loadPreset" field.</summary>
+    public const int LoadPresetFieldNumber = 33;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset LoadPreset {
+      get { return typeCase_ == TypeOneofCase.LoadPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoadPreset;
+      }
+    }
+
+    /// <summary>Field number for the "setDspUnitParameter" field.</summary>
+    public const int SetDspUnitParameterFieldNumber = 34;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter SetDspUnitParameter {
+      get { return typeCase_ == TypeOneofCase.SetDspUnitParameter ? (global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SetDspUnitParameter;
+      }
+    }
+
+    /// <summary>Field number for the "setDspUnitParameterStatus" field.</summary>
+    public const int SetDspUnitParameterStatusFieldNumber = 35;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus SetDspUnitParameterStatus {
+      get { return typeCase_ == TypeOneofCase.SetDspUnitParameterStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SetDspUnitParameterStatus;
+      }
+    }
+
+    /// <summary>Field number for the "dspUnitParameterStatus" field.</summary>
+    public const int DspUnitParameterStatusFieldNumber = 36;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus DspUnitParameterStatus {
+      get { return typeCase_ == TypeOneofCase.DspUnitParameterStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.DspUnitParameterStatus;
+      }
+    }
+
+    /// <summary>Field number for the "currentLoadedPresetIndexStatus" field.</summary>
+    public const int CurrentLoadedPresetIndexStatusFieldNumber = 37;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus CurrentLoadedPresetIndexStatus {
+      get { return typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentLoadedPresetIndexStatus;
+      }
+    }
+
+    /// <summary>Field number for the "presetEditedStatus" field.</summary>
+    public const int PresetEditedStatusFieldNumber = 38;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus PresetEditedStatus {
+      get { return typeCase_ == TypeOneofCase.PresetEditedStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetEditedStatus;
+      }
+    }
+
+    /// <summary>Field number for the "replaceNode" field.</summary>
+    public const int ReplaceNodeFieldNumber = 39;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode ReplaceNode {
+      get { return typeCase_ == TypeOneofCase.ReplaceNode ? (global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ReplaceNode;
+      }
+    }
+
+    /// <summary>Field number for the "replaceNodeStatus" field.</summary>
+    public const int ReplaceNodeStatusFieldNumber = 40;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus ReplaceNodeStatus {
+      get { return typeCase_ == TypeOneofCase.ReplaceNodeStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ReplaceNodeStatus;
+      }
+    }
+
+    /// <summary>Field number for the "shiftPreset" field.</summary>
+    public const int ShiftPresetFieldNumber = 41;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset ShiftPreset {
+      get { return typeCase_ == TypeOneofCase.ShiftPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ShiftPreset;
+      }
+    }
+
+    /// <summary>Field number for the "shiftPresetStatus" field.</summary>
+    public const int ShiftPresetStatusFieldNumber = 42;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus ShiftPresetStatus {
+      get { return typeCase_ == TypeOneofCase.ShiftPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ShiftPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "swapPreset" field.</summary>
+    public const int SwapPresetFieldNumber = 43;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset SwapPreset {
+      get { return typeCase_ == TypeOneofCase.SwapPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SwapPreset;
+      }
+    }
+
+    /// <summary>Field number for the "swapPresetStatus" field.</summary>
+    public const int SwapPresetStatusFieldNumber = 44;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus SwapPresetStatus {
+      get { return typeCase_ == TypeOneofCase.SwapPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SwapPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "currentPresetSet" field.</summary>
+    public const int CurrentPresetSetFieldNumber = 45;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet CurrentPresetSet {
+      get { return typeCase_ == TypeOneofCase.CurrentPresetSet ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetSet;
+      }
+    }
+
+    /// <summary>Field number for the "currentLoadedPresetIndexBypassStatus" field.</summary>
+    public const int CurrentLoadedPresetIndexBypassStatusFieldNumber = 46;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus CurrentLoadedPresetIndexBypassStatus {
+      get { return typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentLoadedPresetIndexBypassStatus;
+      }
+    }
+
+    /// <summary>Field number for the "currentDisplayedPresetIndexStatus" field.</summary>
+    public const int CurrentDisplayedPresetIndexStatusFieldNumber = 47;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus CurrentDisplayedPresetIndexStatus {
+      get { return typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentDisplayedPresetIndexStatus;
+      }
+    }
+
+    /// <summary>Field number for the "presetSavedStatus" field.</summary>
+    public const int PresetSavedStatusFieldNumber = 50;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus PresetSavedStatus {
+      get { return typeCase_ == TypeOneofCase.PresetSavedStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetSavedStatus;
+      }
+    }
+
+    /// <summary>Field number for the "clearPreset" field.</summary>
+    public const int ClearPresetFieldNumber = 51;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset ClearPreset {
+      get { return typeCase_ == TypeOneofCase.ClearPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ClearPreset;
+      }
+    }
+
+    /// <summary>Field number for the "clearPresetStatus" field.</summary>
+    public const int ClearPresetStatusFieldNumber = 52;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus ClearPresetStatus {
+      get { return typeCase_ == TypeOneofCase.ClearPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ClearPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "saveCurrentPreset" field.</summary>
+    public const int SaveCurrentPresetFieldNumber = 53;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset SaveCurrentPreset {
+      get { return typeCase_ == TypeOneofCase.SaveCurrentPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SaveCurrentPreset;
+      }
+    }
+
+    /// <summary>Field number for the "saveCurrentPresetTo" field.</summary>
+    public const int SaveCurrentPresetToFieldNumber = 54;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo SaveCurrentPresetTo {
+      get { return typeCase_ == TypeOneofCase.SaveCurrentPresetTo ? (global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SaveCurrentPresetTo;
+      }
+    }
+
+    /// <summary>Field number for the "savePresetAs" field.</summary>
+    public const int SavePresetAsFieldNumber = 55;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs SavePresetAs {
+      get { return typeCase_ == TypeOneofCase.SavePresetAs ? (global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SavePresetAs;
+      }
+    }
+
+    /// <summary>Field number for the "newPresetSavedStatus" field.</summary>
+    public const int NewPresetSavedStatusFieldNumber = 56;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus NewPresetSavedStatus {
+      get { return typeCase_ == TypeOneofCase.NewPresetSavedStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.NewPresetSavedStatus;
+      }
+    }
+
+    /// <summary>Field number for the "renamePresetAt" field.</summary>
+    public const int RenamePresetAtFieldNumber = 57;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt RenamePresetAt {
+      get { return typeCase_ == TypeOneofCase.RenamePresetAt ? (global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.RenamePresetAt;
+      }
+    }
+
+    /// <summary>Field number for the "auditionPreset" field.</summary>
+    public const int AuditionPresetFieldNumber = 58;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset AuditionPreset {
+      get { return typeCase_ == TypeOneofCase.AuditionPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionPreset;
+      }
+    }
+
+    /// <summary>Field number for the "auditionPresetStatus" field.</summary>
+    public const int AuditionPresetStatusFieldNumber = 59;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus AuditionPresetStatus {
+      get { return typeCase_ == TypeOneofCase.AuditionPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "exitAuditionPreset" field.</summary>
+    public const int ExitAuditionPresetFieldNumber = 60;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset ExitAuditionPreset {
+      get { return typeCase_ == TypeOneofCase.ExitAuditionPreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ExitAuditionPreset;
+      }
+    }
+
+    /// <summary>Field number for the "exitAuditionPresetStatus" field.</summary>
+    public const int ExitAuditionPresetStatusFieldNumber = 61;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus ExitAuditionPresetStatus {
+      get { return typeCase_ == TypeOneofCase.ExitAuditionPresetStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ExitAuditionPresetStatus;
+      }
+    }
+
+    /// <summary>Field number for the "auditionStateRequest" field.</summary>
+    public const int AuditionStateRequestFieldNumber = 62;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest AuditionStateRequest {
+      get { return typeCase_ == TypeOneofCase.AuditionStateRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionStateRequest;
+      }
+    }
+
+    /// <summary>Field number for the "auditionStateStatus" field.</summary>
+    public const int AuditionStateStatusFieldNumber = 63;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus AuditionStateStatus {
+      get { return typeCase_ == TypeOneofCase.AuditionStateStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionStateStatus;
+      }
+    }
+
+    /// <summary>Field number for the "productIdentificationStatus" field.</summary>
+    public const int ProductIdentificationStatusFieldNumber = 100;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus ProductIdentificationStatus {
+      get { return typeCase_ == TypeOneofCase.ProductIdentificationStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProductIdentificationStatus;
+      }
+    }
+
+    /// <summary>Field number for the "productIdentificationRequest" field.</summary>
+    public const int ProductIdentificationRequestFieldNumber = 101;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest ProductIdentificationRequest {
+      get { return typeCase_ == TypeOneofCase.ProductIdentificationRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProductIdentificationRequest;
+      }
+    }
+
+    /// <summary>Field number for the "firmwareVersionRequest" field.</summary>
+    public const int FirmwareVersionRequestFieldNumber = 102;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest FirmwareVersionRequest {
+      get { return typeCase_ == TypeOneofCase.FirmwareVersionRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FirmwareVersionRequest;
+      }
+    }
+
+    /// <summary>Field number for the "firmwareVersionStatus" field.</summary>
+    public const int FirmwareVersionStatusFieldNumber = 103;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus FirmwareVersionStatus {
+      get { return typeCase_ == TypeOneofCase.FirmwareVersionStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FirmwareVersionStatus;
+      }
+    }
+
+    /// <summary>Field number for the "currentPresetRequest" field.</summary>
+    public const int CurrentPresetRequestFieldNumber = 104;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest CurrentPresetRequest {
+      get { return typeCase_ == TypeOneofCase.CurrentPresetRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetRequest;
+      }
+    }
+
+    /// <summary>Field number for the "retrievePreset" field.</summary>
+    public const int RetrievePresetFieldNumber = 105;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset RetrievePreset {
+      get { return typeCase_ == TypeOneofCase.RetrievePreset ? (global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.RetrievePreset;
+      }
+    }
+
+    /// <summary>Field number for the "usbGainRequest" field.</summary>
+    public const int UsbGainRequestFieldNumber = 106;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest UsbGainRequest {
+      get { return typeCase_ == TypeOneofCase.UsbGainRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainRequest;
+      }
+    }
+
+    /// <summary>Field number for the "usbGainStatus" field.</summary>
+    public const int UsbGainStatusFieldNumber = 107;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus UsbGainStatus {
+      get { return typeCase_ == TypeOneofCase.UsbGainStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainStatus;
+      }
+    }
+
+    /// <summary>Field number for the "qASlotsRequest" field.</summary>
+    public const int QASlotsRequestFieldNumber = 108;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest QASlotsRequest {
+      get { return typeCase_ == TypeOneofCase.QASlotsRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsRequest;
+      }
+    }
+
+    /// <summary>Field number for the "qASlotsStatus" field.</summary>
+    public const int QASlotsStatusFieldNumber = 109;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus QASlotsStatus {
+      get { return typeCase_ == TypeOneofCase.QASlotsStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsStatus;
+      }
+    }
+
+    /// <summary>Field number for the "lineOutGainRequest" field.</summary>
+    public const int LineOutGainRequestFieldNumber = 110;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest LineOutGainRequest {
+      get { return typeCase_ == TypeOneofCase.LineOutGainRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainRequest;
+      }
+    }
+
+    /// <summary>Field number for the "lineOutGainStatus" field.</summary>
+    public const int LineOutGainStatusFieldNumber = 111;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus LineOutGainStatus {
+      get { return typeCase_ == TypeOneofCase.LineOutGainStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainStatus;
+      }
+    }
+
+    /// <summary>Field number for the "modalStatusMessage" field.</summary>
+    public const int ModalStatusMessageFieldNumber = 113;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage ModalStatusMessage {
+      get { return typeCase_ == TypeOneofCase.ModalStatusMessage ? (global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ModalStatusMessage;
+      }
+    }
+
+    /// <summary>Field number for the "usbGainSet" field.</summary>
+    public const int UsbGainSetFieldNumber = 114;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet UsbGainSet {
+      get { return typeCase_ == TypeOneofCase.UsbGainSet ? (global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainSet;
+      }
+    }
+
+    /// <summary>Field number for the "lineOutGainSet" field.</summary>
+    public const int LineOutGainSetFieldNumber = 115;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet LineOutGainSet {
+      get { return typeCase_ == TypeOneofCase.LineOutGainSet ? (global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainSet;
+      }
+    }
+
+    /// <summary>Field number for the "qASlotsSet" field.</summary>
+    public const int QASlotsSetFieldNumber = 116;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet QASlotsSet {
+      get { return typeCase_ == TypeOneofCase.QASlotsSet ? (global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsSet;
+      }
+    }
+
+    /// <summary>Field number for the "unsupportedMessageStatus" field.</summary>
+    public const int UnsupportedMessageStatusFieldNumber = 200;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus UnsupportedMessageStatus {
+      get { return typeCase_ == TypeOneofCase.UnsupportedMessageStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UnsupportedMessageStatus;
+      }
+    }
+
+    /// <summary>Field number for the "heartbeat" field.</summary>
+    public const int HeartbeatFieldNumber = 201;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat Heartbeat {
+      get { return typeCase_ == TypeOneofCase.Heartbeat ? (global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Heartbeat;
+      }
+    }
+
+    /// <summary>Field number for the "connectionStatusRequest" field.</summary>
+    public const int ConnectionStatusRequestFieldNumber = 202;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest ConnectionStatusRequest {
+      get { return typeCase_ == TypeOneofCase.ConnectionStatusRequest ? (global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ConnectionStatusRequest;
+      }
+    }
+
+    /// <summary>Field number for the "connectionStatus" field.</summary>
+    public const int ConnectionStatusFieldNumber = 203;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus ConnectionStatus {
+      get { return typeCase_ == TypeOneofCase.ConnectionStatus ? (global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ConnectionStatus;
+      }
+    }
+
+    private object type_;
+    /// <summary>Enum of possible cases for the "type" oneof.</summary>
+    public enum TypeOneofCase {
+      None = 0,
+      IndexPot = 2,
+      IndexButton = 3,
+      IndexEncoder = 4,
+      ActiveDisplay = 5,
+      ProcessorUtilizationRequest = 6,
+      ProcessorUtilization = 7,
+      MemoryUsageRequest = 8,
+      MemoryUsageStatus = 9,
+      PresetJSONMessageRequestLT = 10,
+      FrameBufferMessageRequest = 11,
+      FrameBufferMessage = 12,
+      Lt4FootswitchModeRequest = 13,
+      Lt4FootswitchModeStatus = 14,
+      LoadPresetTestSuite = 15,
+      LoopbackTest = 30,
+      PresetJSONMessage = 31,
+      CurrentPresetStatus = 32,
+      LoadPreset = 33,
+      SetDspUnitParameter = 34,
+      SetDspUnitParameterStatus = 35,
+      DspUnitParameterStatus = 36,
+      CurrentLoadedPresetIndexStatus = 37,
+      PresetEditedStatus = 38,
+      ReplaceNode = 39,
+      ReplaceNodeStatus = 40,
+      ShiftPreset = 41,
+      ShiftPresetStatus = 42,
+      SwapPreset = 43,
+      SwapPresetStatus = 44,
+      CurrentPresetSet = 45,
+      CurrentLoadedPresetIndexBypassStatus = 46,
+      CurrentDisplayedPresetIndexStatus = 47,
+      PresetSavedStatus = 50,
+      ClearPreset = 51,
+      ClearPresetStatus = 52,
+      SaveCurrentPreset = 53,
+      SaveCurrentPresetTo = 54,
+      SavePresetAs = 55,
+      NewPresetSavedStatus = 56,
+      RenamePresetAt = 57,
+      AuditionPreset = 58,
+      AuditionPresetStatus = 59,
+      ExitAuditionPreset = 60,
+      ExitAuditionPresetStatus = 61,
+      AuditionStateRequest = 62,
+      AuditionStateStatus = 63,
+      ProductIdentificationStatus = 100,
+      ProductIdentificationRequest = 101,
+      FirmwareVersionRequest = 102,
+      FirmwareVersionStatus = 103,
+      CurrentPresetRequest = 104,
+      RetrievePreset = 105,
+      UsbGainRequest = 106,
+      UsbGainStatus = 107,
+      QASlotsRequest = 108,
+      QASlotsStatus = 109,
+      LineOutGainRequest = 110,
+      LineOutGainStatus = 111,
+      ModalStatusMessage = 113,
+      UsbGainSet = 114,
+      LineOutGainSet = 115,
+      QASlotsSet = 116,
+      UnsupportedMessageStatus = 200,
+      Heartbeat = 201,
+      ConnectionStatusRequest = 202,
+      ConnectionStatus = 203,
+    }
+    private TypeOneofCase typeCase_ = TypeOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TypeOneofCase TypeCase {
+      get { return typeCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearType() {
+      typeCase_ = TypeOneofCase.None;
+      type_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as FenderMessageLT);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(FenderMessageLT other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ResponseType != other.ResponseType) return false;
+      if (!object.Equals(IndexPot, other.IndexPot)) return false;
+      if (!object.Equals(IndexButton, other.IndexButton)) return false;
+      if (!object.Equals(IndexEncoder, other.IndexEncoder)) return false;
+      if (!object.Equals(ActiveDisplay, other.ActiveDisplay)) return false;
+      if (!object.Equals(ProcessorUtilizationRequest, other.ProcessorUtilizationRequest)) return false;
+      if (!object.Equals(ProcessorUtilization, other.ProcessorUtilization)) return false;
+      if (!object.Equals(MemoryUsageRequest, other.MemoryUsageRequest)) return false;
+      if (!object.Equals(MemoryUsageStatus, other.MemoryUsageStatus)) return false;
+      if (!object.Equals(PresetJSONMessageRequestLT, other.PresetJSONMessageRequestLT)) return false;
+      if (!object.Equals(FrameBufferMessageRequest, other.FrameBufferMessageRequest)) return false;
+      if (!object.Equals(FrameBufferMessage, other.FrameBufferMessage)) return false;
+      if (!object.Equals(Lt4FootswitchModeRequest, other.Lt4FootswitchModeRequest)) return false;
+      if (!object.Equals(Lt4FootswitchModeStatus, other.Lt4FootswitchModeStatus)) return false;
+      if (!object.Equals(LoadPresetTestSuite, other.LoadPresetTestSuite)) return false;
+      if (!object.Equals(LoopbackTest, other.LoopbackTest)) return false;
+      if (!object.Equals(PresetJSONMessage, other.PresetJSONMessage)) return false;
+      if (!object.Equals(CurrentPresetStatus, other.CurrentPresetStatus)) return false;
+      if (!object.Equals(LoadPreset, other.LoadPreset)) return false;
+      if (!object.Equals(SetDspUnitParameter, other.SetDspUnitParameter)) return false;
+      if (!object.Equals(SetDspUnitParameterStatus, other.SetDspUnitParameterStatus)) return false;
+      if (!object.Equals(DspUnitParameterStatus, other.DspUnitParameterStatus)) return false;
+      if (!object.Equals(CurrentLoadedPresetIndexStatus, other.CurrentLoadedPresetIndexStatus)) return false;
+      if (!object.Equals(PresetEditedStatus, other.PresetEditedStatus)) return false;
+      if (!object.Equals(ReplaceNode, other.ReplaceNode)) return false;
+      if (!object.Equals(ReplaceNodeStatus, other.ReplaceNodeStatus)) return false;
+      if (!object.Equals(ShiftPreset, other.ShiftPreset)) return false;
+      if (!object.Equals(ShiftPresetStatus, other.ShiftPresetStatus)) return false;
+      if (!object.Equals(SwapPreset, other.SwapPreset)) return false;
+      if (!object.Equals(SwapPresetStatus, other.SwapPresetStatus)) return false;
+      if (!object.Equals(CurrentPresetSet, other.CurrentPresetSet)) return false;
+      if (!object.Equals(CurrentLoadedPresetIndexBypassStatus, other.CurrentLoadedPresetIndexBypassStatus)) return false;
+      if (!object.Equals(CurrentDisplayedPresetIndexStatus, other.CurrentDisplayedPresetIndexStatus)) return false;
+      if (!object.Equals(PresetSavedStatus, other.PresetSavedStatus)) return false;
+      if (!object.Equals(ClearPreset, other.ClearPreset)) return false;
+      if (!object.Equals(ClearPresetStatus, other.ClearPresetStatus)) return false;
+      if (!object.Equals(SaveCurrentPreset, other.SaveCurrentPreset)) return false;
+      if (!object.Equals(SaveCurrentPresetTo, other.SaveCurrentPresetTo)) return false;
+      if (!object.Equals(SavePresetAs, other.SavePresetAs)) return false;
+      if (!object.Equals(NewPresetSavedStatus, other.NewPresetSavedStatus)) return false;
+      if (!object.Equals(RenamePresetAt, other.RenamePresetAt)) return false;
+      if (!object.Equals(AuditionPreset, other.AuditionPreset)) return false;
+      if (!object.Equals(AuditionPresetStatus, other.AuditionPresetStatus)) return false;
+      if (!object.Equals(ExitAuditionPreset, other.ExitAuditionPreset)) return false;
+      if (!object.Equals(ExitAuditionPresetStatus, other.ExitAuditionPresetStatus)) return false;
+      if (!object.Equals(AuditionStateRequest, other.AuditionStateRequest)) return false;
+      if (!object.Equals(AuditionStateStatus, other.AuditionStateStatus)) return false;
+      if (!object.Equals(ProductIdentificationStatus, other.ProductIdentificationStatus)) return false;
+      if (!object.Equals(ProductIdentificationRequest, other.ProductIdentificationRequest)) return false;
+      if (!object.Equals(FirmwareVersionRequest, other.FirmwareVersionRequest)) return false;
+      if (!object.Equals(FirmwareVersionStatus, other.FirmwareVersionStatus)) return false;
+      if (!object.Equals(CurrentPresetRequest, other.CurrentPresetRequest)) return false;
+      if (!object.Equals(RetrievePreset, other.RetrievePreset)) return false;
+      if (!object.Equals(UsbGainRequest, other.UsbGainRequest)) return false;
+      if (!object.Equals(UsbGainStatus, other.UsbGainStatus)) return false;
+      if (!object.Equals(QASlotsRequest, other.QASlotsRequest)) return false;
+      if (!object.Equals(QASlotsStatus, other.QASlotsStatus)) return false;
+      if (!object.Equals(LineOutGainRequest, other.LineOutGainRequest)) return false;
+      if (!object.Equals(LineOutGainStatus, other.LineOutGainStatus)) return false;
+      if (!object.Equals(ModalStatusMessage, other.ModalStatusMessage)) return false;
+      if (!object.Equals(UsbGainSet, other.UsbGainSet)) return false;
+      if (!object.Equals(LineOutGainSet, other.LineOutGainSet)) return false;
+      if (!object.Equals(QASlotsSet, other.QASlotsSet)) return false;
+      if (!object.Equals(UnsupportedMessageStatus, other.UnsupportedMessageStatus)) return false;
+      if (!object.Equals(Heartbeat, other.Heartbeat)) return false;
+      if (!object.Equals(ConnectionStatusRequest, other.ConnectionStatusRequest)) return false;
+      if (!object.Equals(ConnectionStatus, other.ConnectionStatus)) return false;
+      if (TypeCase != other.TypeCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasResponseType) hash ^= ResponseType.GetHashCode();
+      if (typeCase_ == TypeOneofCase.IndexPot) hash ^= IndexPot.GetHashCode();
+      if (typeCase_ == TypeOneofCase.IndexButton) hash ^= IndexButton.GetHashCode();
+      if (typeCase_ == TypeOneofCase.IndexEncoder) hash ^= IndexEncoder.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ActiveDisplay) hash ^= ActiveDisplay.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) hash ^= ProcessorUtilizationRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ProcessorUtilization) hash ^= ProcessorUtilization.GetHashCode();
+      if (typeCase_ == TypeOneofCase.MemoryUsageRequest) hash ^= MemoryUsageRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.MemoryUsageStatus) hash ^= MemoryUsageStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) hash ^= PresetJSONMessageRequestLT.GetHashCode();
+      if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) hash ^= FrameBufferMessageRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.FrameBufferMessage) hash ^= FrameBufferMessage.GetHashCode();
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) hash ^= Lt4FootswitchModeRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) hash ^= Lt4FootswitchModeStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) hash ^= LoadPresetTestSuite.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LoopbackTest) hash ^= LoopbackTest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.PresetJSONMessage) hash ^= PresetJSONMessage.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentPresetStatus) hash ^= CurrentPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LoadPreset) hash ^= LoadPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameter) hash ^= SetDspUnitParameter.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) hash ^= SetDspUnitParameterStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) hash ^= DspUnitParameterStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) hash ^= CurrentLoadedPresetIndexStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.PresetEditedStatus) hash ^= PresetEditedStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ReplaceNode) hash ^= ReplaceNode.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) hash ^= ReplaceNodeStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ShiftPreset) hash ^= ShiftPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ShiftPresetStatus) hash ^= ShiftPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SwapPreset) hash ^= SwapPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SwapPresetStatus) hash ^= SwapPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentPresetSet) hash ^= CurrentPresetSet.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) hash ^= CurrentLoadedPresetIndexBypassStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) hash ^= CurrentDisplayedPresetIndexStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.PresetSavedStatus) hash ^= PresetSavedStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ClearPreset) hash ^= ClearPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ClearPresetStatus) hash ^= ClearPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SaveCurrentPreset) hash ^= SaveCurrentPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) hash ^= SaveCurrentPresetTo.GetHashCode();
+      if (typeCase_ == TypeOneofCase.SavePresetAs) hash ^= SavePresetAs.GetHashCode();
+      if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) hash ^= NewPresetSavedStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.RenamePresetAt) hash ^= RenamePresetAt.GetHashCode();
+      if (typeCase_ == TypeOneofCase.AuditionPreset) hash ^= AuditionPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.AuditionPresetStatus) hash ^= AuditionPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ExitAuditionPreset) hash ^= ExitAuditionPreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) hash ^= ExitAuditionPresetStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.AuditionStateRequest) hash ^= AuditionStateRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.AuditionStateStatus) hash ^= AuditionStateStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) hash ^= ProductIdentificationStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) hash ^= ProductIdentificationRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) hash ^= FirmwareVersionRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) hash ^= FirmwareVersionStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.CurrentPresetRequest) hash ^= CurrentPresetRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.RetrievePreset) hash ^= RetrievePreset.GetHashCode();
+      if (typeCase_ == TypeOneofCase.UsbGainRequest) hash ^= UsbGainRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.UsbGainStatus) hash ^= UsbGainStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.QASlotsRequest) hash ^= QASlotsRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.QASlotsStatus) hash ^= QASlotsStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LineOutGainRequest) hash ^= LineOutGainRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LineOutGainStatus) hash ^= LineOutGainStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ModalStatusMessage) hash ^= ModalStatusMessage.GetHashCode();
+      if (typeCase_ == TypeOneofCase.UsbGainSet) hash ^= UsbGainSet.GetHashCode();
+      if (typeCase_ == TypeOneofCase.LineOutGainSet) hash ^= LineOutGainSet.GetHashCode();
+      if (typeCase_ == TypeOneofCase.QASlotsSet) hash ^= QASlotsSet.GetHashCode();
+      if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) hash ^= UnsupportedMessageStatus.GetHashCode();
+      if (typeCase_ == TypeOneofCase.Heartbeat) hash ^= Heartbeat.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) hash ^= ConnectionStatusRequest.GetHashCode();
+      if (typeCase_ == TypeOneofCase.ConnectionStatus) hash ^= ConnectionStatus.GetHashCode();
+      hash ^= (int) typeCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasResponseType) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ResponseType);
+      }
+      if (typeCase_ == TypeOneofCase.IndexPot) {
+        output.WriteRawTag(18);
+        output.WriteMessage(IndexPot);
+      }
+      if (typeCase_ == TypeOneofCase.IndexButton) {
+        output.WriteRawTag(26);
+        output.WriteMessage(IndexButton);
+      }
+      if (typeCase_ == TypeOneofCase.IndexEncoder) {
+        output.WriteRawTag(34);
+        output.WriteMessage(IndexEncoder);
+      }
+      if (typeCase_ == TypeOneofCase.ActiveDisplay) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ActiveDisplay);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ProcessorUtilizationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ProcessorUtilization);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
+        output.WriteRawTag(66);
+        output.WriteMessage(MemoryUsageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
+        output.WriteRawTag(74);
+        output.WriteMessage(MemoryUsageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
+        output.WriteRawTag(82);
+        output.WriteMessage(PresetJSONMessageRequestLT);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
+        output.WriteRawTag(90);
+        output.WriteMessage(FrameBufferMessageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
+        output.WriteRawTag(98);
+        output.WriteMessage(FrameBufferMessage);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Lt4FootswitchModeRequest);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Lt4FootswitchModeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
+        output.WriteRawTag(122);
+        output.WriteMessage(LoadPresetTestSuite);
+      }
+      if (typeCase_ == TypeOneofCase.LoopbackTest) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(LoopbackTest);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
+        output.WriteRawTag(250, 1);
+        output.WriteMessage(PresetJSONMessage);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
+        output.WriteRawTag(130, 2);
+        output.WriteMessage(CurrentPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPreset) {
+        output.WriteRawTag(138, 2);
+        output.WriteMessage(LoadPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
+        output.WriteRawTag(146, 2);
+        output.WriteMessage(SetDspUnitParameter);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
+        output.WriteRawTag(154, 2);
+        output.WriteMessage(SetDspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
+        output.WriteRawTag(162, 2);
+        output.WriteMessage(DspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
+        output.WriteRawTag(170, 2);
+        output.WriteMessage(CurrentLoadedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
+        output.WriteRawTag(178, 2);
+        output.WriteMessage(PresetEditedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNode) {
+        output.WriteRawTag(186, 2);
+        output.WriteMessage(ReplaceNode);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
+        output.WriteRawTag(194, 2);
+        output.WriteMessage(ReplaceNodeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPreset) {
+        output.WriteRawTag(202, 2);
+        output.WriteMessage(ShiftPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
+        output.WriteRawTag(210, 2);
+        output.WriteMessage(ShiftPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPreset) {
+        output.WriteRawTag(218, 2);
+        output.WriteMessage(SwapPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
+        output.WriteRawTag(226, 2);
+        output.WriteMessage(SwapPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
+        output.WriteRawTag(234, 2);
+        output.WriteMessage(CurrentPresetSet);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
+        output.WriteRawTag(242, 2);
+        output.WriteMessage(CurrentLoadedPresetIndexBypassStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
+        output.WriteRawTag(250, 2);
+        output.WriteMessage(CurrentDisplayedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
+        output.WriteRawTag(146, 3);
+        output.WriteMessage(PresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPreset) {
+        output.WriteRawTag(154, 3);
+        output.WriteMessage(ClearPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
+        output.WriteRawTag(162, 3);
+        output.WriteMessage(ClearPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
+        output.WriteRawTag(170, 3);
+        output.WriteMessage(SaveCurrentPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
+        output.WriteRawTag(178, 3);
+        output.WriteMessage(SaveCurrentPresetTo);
+      }
+      if (typeCase_ == TypeOneofCase.SavePresetAs) {
+        output.WriteRawTag(186, 3);
+        output.WriteMessage(SavePresetAs);
+      }
+      if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
+        output.WriteRawTag(194, 3);
+        output.WriteMessage(NewPresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.RenamePresetAt) {
+        output.WriteRawTag(202, 3);
+        output.WriteMessage(RenamePresetAt);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPreset) {
+        output.WriteRawTag(210, 3);
+        output.WriteMessage(AuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
+        output.WriteRawTag(218, 3);
+        output.WriteMessage(AuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
+        output.WriteRawTag(226, 3);
+        output.WriteMessage(ExitAuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
+        output.WriteRawTag(234, 3);
+        output.WriteMessage(ExitAuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
+        output.WriteRawTag(242, 3);
+        output.WriteMessage(AuditionStateRequest);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
+        output.WriteRawTag(250, 3);
+        output.WriteMessage(AuditionStateStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
+        output.WriteRawTag(162, 6);
+        output.WriteMessage(ProductIdentificationStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
+        output.WriteRawTag(170, 6);
+        output.WriteMessage(ProductIdentificationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
+        output.WriteRawTag(178, 6);
+        output.WriteMessage(FirmwareVersionRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
+        output.WriteRawTag(186, 6);
+        output.WriteMessage(FirmwareVersionStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
+        output.WriteRawTag(194, 6);
+        output.WriteMessage(CurrentPresetRequest);
+      }
+      if (typeCase_ == TypeOneofCase.RetrievePreset) {
+        output.WriteRawTag(202, 6);
+        output.WriteMessage(RetrievePreset);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainRequest) {
+        output.WriteRawTag(210, 6);
+        output.WriteMessage(UsbGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainStatus) {
+        output.WriteRawTag(218, 6);
+        output.WriteMessage(UsbGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsRequest) {
+        output.WriteRawTag(226, 6);
+        output.WriteMessage(QASlotsRequest);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsStatus) {
+        output.WriteRawTag(234, 6);
+        output.WriteMessage(QASlotsStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
+        output.WriteRawTag(242, 6);
+        output.WriteMessage(LineOutGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
+        output.WriteRawTag(250, 6);
+        output.WriteMessage(LineOutGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
+        output.WriteRawTag(138, 7);
+        output.WriteMessage(ModalStatusMessage);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainSet) {
+        output.WriteRawTag(146, 7);
+        output.WriteMessage(UsbGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainSet) {
+        output.WriteRawTag(154, 7);
+        output.WriteMessage(LineOutGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsSet) {
+        output.WriteRawTag(162, 7);
+        output.WriteMessage(QASlotsSet);
+      }
+      if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
+        output.WriteRawTag(194, 12);
+        output.WriteMessage(UnsupportedMessageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.Heartbeat) {
+        output.WriteRawTag(202, 12);
+        output.WriteMessage(Heartbeat);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
+        output.WriteRawTag(210, 12);
+        output.WriteMessage(ConnectionStatusRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatus) {
+        output.WriteRawTag(218, 12);
+        output.WriteMessage(ConnectionStatus);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasResponseType) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ResponseType);
+      }
+      if (typeCase_ == TypeOneofCase.IndexPot) {
+        output.WriteRawTag(18);
+        output.WriteMessage(IndexPot);
+      }
+      if (typeCase_ == TypeOneofCase.IndexButton) {
+        output.WriteRawTag(26);
+        output.WriteMessage(IndexButton);
+      }
+      if (typeCase_ == TypeOneofCase.IndexEncoder) {
+        output.WriteRawTag(34);
+        output.WriteMessage(IndexEncoder);
+      }
+      if (typeCase_ == TypeOneofCase.ActiveDisplay) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ActiveDisplay);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ProcessorUtilizationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ProcessorUtilization);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
+        output.WriteRawTag(66);
+        output.WriteMessage(MemoryUsageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
+        output.WriteRawTag(74);
+        output.WriteMessage(MemoryUsageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
+        output.WriteRawTag(82);
+        output.WriteMessage(PresetJSONMessageRequestLT);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
+        output.WriteRawTag(90);
+        output.WriteMessage(FrameBufferMessageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
+        output.WriteRawTag(98);
+        output.WriteMessage(FrameBufferMessage);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Lt4FootswitchModeRequest);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Lt4FootswitchModeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
+        output.WriteRawTag(122);
+        output.WriteMessage(LoadPresetTestSuite);
+      }
+      if (typeCase_ == TypeOneofCase.LoopbackTest) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(LoopbackTest);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
+        output.WriteRawTag(250, 1);
+        output.WriteMessage(PresetJSONMessage);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
+        output.WriteRawTag(130, 2);
+        output.WriteMessage(CurrentPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPreset) {
+        output.WriteRawTag(138, 2);
+        output.WriteMessage(LoadPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
+        output.WriteRawTag(146, 2);
+        output.WriteMessage(SetDspUnitParameter);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
+        output.WriteRawTag(154, 2);
+        output.WriteMessage(SetDspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
+        output.WriteRawTag(162, 2);
+        output.WriteMessage(DspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
+        output.WriteRawTag(170, 2);
+        output.WriteMessage(CurrentLoadedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
+        output.WriteRawTag(178, 2);
+        output.WriteMessage(PresetEditedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNode) {
+        output.WriteRawTag(186, 2);
+        output.WriteMessage(ReplaceNode);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
+        output.WriteRawTag(194, 2);
+        output.WriteMessage(ReplaceNodeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPreset) {
+        output.WriteRawTag(202, 2);
+        output.WriteMessage(ShiftPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
+        output.WriteRawTag(210, 2);
+        output.WriteMessage(ShiftPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPreset) {
+        output.WriteRawTag(218, 2);
+        output.WriteMessage(SwapPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
+        output.WriteRawTag(226, 2);
+        output.WriteMessage(SwapPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
+        output.WriteRawTag(234, 2);
+        output.WriteMessage(CurrentPresetSet);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
+        output.WriteRawTag(242, 2);
+        output.WriteMessage(CurrentLoadedPresetIndexBypassStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
+        output.WriteRawTag(250, 2);
+        output.WriteMessage(CurrentDisplayedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
+        output.WriteRawTag(146, 3);
+        output.WriteMessage(PresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPreset) {
+        output.WriteRawTag(154, 3);
+        output.WriteMessage(ClearPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
+        output.WriteRawTag(162, 3);
+        output.WriteMessage(ClearPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
+        output.WriteRawTag(170, 3);
+        output.WriteMessage(SaveCurrentPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
+        output.WriteRawTag(178, 3);
+        output.WriteMessage(SaveCurrentPresetTo);
+      }
+      if (typeCase_ == TypeOneofCase.SavePresetAs) {
+        output.WriteRawTag(186, 3);
+        output.WriteMessage(SavePresetAs);
+      }
+      if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
+        output.WriteRawTag(194, 3);
+        output.WriteMessage(NewPresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.RenamePresetAt) {
+        output.WriteRawTag(202, 3);
+        output.WriteMessage(RenamePresetAt);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPreset) {
+        output.WriteRawTag(210, 3);
+        output.WriteMessage(AuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
+        output.WriteRawTag(218, 3);
+        output.WriteMessage(AuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
+        output.WriteRawTag(226, 3);
+        output.WriteMessage(ExitAuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
+        output.WriteRawTag(234, 3);
+        output.WriteMessage(ExitAuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
+        output.WriteRawTag(242, 3);
+        output.WriteMessage(AuditionStateRequest);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
+        output.WriteRawTag(250, 3);
+        output.WriteMessage(AuditionStateStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
+        output.WriteRawTag(162, 6);
+        output.WriteMessage(ProductIdentificationStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
+        output.WriteRawTag(170, 6);
+        output.WriteMessage(ProductIdentificationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
+        output.WriteRawTag(178, 6);
+        output.WriteMessage(FirmwareVersionRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
+        output.WriteRawTag(186, 6);
+        output.WriteMessage(FirmwareVersionStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
+        output.WriteRawTag(194, 6);
+        output.WriteMessage(CurrentPresetRequest);
+      }
+      if (typeCase_ == TypeOneofCase.RetrievePreset) {
+        output.WriteRawTag(202, 6);
+        output.WriteMessage(RetrievePreset);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainRequest) {
+        output.WriteRawTag(210, 6);
+        output.WriteMessage(UsbGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainStatus) {
+        output.WriteRawTag(218, 6);
+        output.WriteMessage(UsbGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsRequest) {
+        output.WriteRawTag(226, 6);
+        output.WriteMessage(QASlotsRequest);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsStatus) {
+        output.WriteRawTag(234, 6);
+        output.WriteMessage(QASlotsStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
+        output.WriteRawTag(242, 6);
+        output.WriteMessage(LineOutGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
+        output.WriteRawTag(250, 6);
+        output.WriteMessage(LineOutGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
+        output.WriteRawTag(138, 7);
+        output.WriteMessage(ModalStatusMessage);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainSet) {
+        output.WriteRawTag(146, 7);
+        output.WriteMessage(UsbGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainSet) {
+        output.WriteRawTag(154, 7);
+        output.WriteMessage(LineOutGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsSet) {
+        output.WriteRawTag(162, 7);
+        output.WriteMessage(QASlotsSet);
+      }
+      if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
+        output.WriteRawTag(194, 12);
+        output.WriteMessage(UnsupportedMessageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.Heartbeat) {
+        output.WriteRawTag(202, 12);
+        output.WriteMessage(Heartbeat);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
+        output.WriteRawTag(210, 12);
+        output.WriteMessage(ConnectionStatusRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatus) {
+        output.WriteRawTag(218, 12);
+        output.WriteMessage(ConnectionStatus);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasResponseType) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ResponseType);
+      }
+      if (typeCase_ == TypeOneofCase.IndexPot) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexPot);
+      }
+      if (typeCase_ == TypeOneofCase.IndexButton) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexButton);
+      }
+      if (typeCase_ == TypeOneofCase.IndexEncoder) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexEncoder);
+      }
+      if (typeCase_ == TypeOneofCase.ActiveDisplay) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ActiveDisplay);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProcessorUtilizationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProcessorUtilization);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MemoryUsageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MemoryUsageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PresetJSONMessageRequestLT);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FrameBufferMessageRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FrameBufferMessage);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lt4FootswitchModeRequest);
+      }
+      if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lt4FootswitchModeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LoadPresetTestSuite);
+      }
+      if (typeCase_ == TypeOneofCase.LoopbackTest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LoopbackTest);
+      }
+      if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetJSONMessage);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LoadPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LoadPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SetDspUnitParameter);
+      }
+      if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SetDspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(DspUnitParameterStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentLoadedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetEditedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNode) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReplaceNode);
+      }
+      if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReplaceNodeStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ShiftPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ShiftPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwapPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwapPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetSet);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentLoadedPresetIndexBypassStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentDisplayedPresetIndexStatus);
+      }
+      if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClearPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClearPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SaveCurrentPreset);
+      }
+      if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SaveCurrentPresetTo);
+      }
+      if (typeCase_ == TypeOneofCase.SavePresetAs) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SavePresetAs);
+      }
+      if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(NewPresetSavedStatus);
+      }
+      if (typeCase_ == TypeOneofCase.RenamePresetAt) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RenamePresetAt);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ExitAuditionPreset);
+      }
+      if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ExitAuditionPresetStatus);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionStateRequest);
+      }
+      if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionStateStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ProductIdentificationStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ProductIdentificationRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FirmwareVersionRequest);
+      }
+      if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FirmwareVersionStatus);
+      }
+      if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetRequest);
+      }
+      if (typeCase_ == TypeOneofCase.RetrievePreset) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RetrievePreset);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsRequest);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsStatus);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainRequest);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainStatus);
+      }
+      if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ModalStatusMessage);
+      }
+      if (typeCase_ == TypeOneofCase.UsbGainSet) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.LineOutGainSet) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainSet);
+      }
+      if (typeCase_ == TypeOneofCase.QASlotsSet) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsSet);
+      }
+      if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnsupportedMessageStatus);
+      }
+      if (typeCase_ == TypeOneofCase.Heartbeat) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Heartbeat);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ConnectionStatusRequest);
+      }
+      if (typeCase_ == TypeOneofCase.ConnectionStatus) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ConnectionStatus);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(FenderMessageLT other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasResponseType) {
+        ResponseType = other.ResponseType;
+      }
+      switch (other.TypeCase) {
+        case TypeOneofCase.IndexPot:
+          if (IndexPot == null) {
+            IndexPot = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot();
+          }
+          IndexPot.MergeFrom(other.IndexPot);
+          break;
+        case TypeOneofCase.IndexButton:
+          if (IndexButton == null) {
+            IndexButton = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton();
+          }
+          IndexButton.MergeFrom(other.IndexButton);
+          break;
+        case TypeOneofCase.IndexEncoder:
+          if (IndexEncoder == null) {
+            IndexEncoder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder();
+          }
+          IndexEncoder.MergeFrom(other.IndexEncoder);
+          break;
+        case TypeOneofCase.ActiveDisplay:
+          if (ActiveDisplay == null) {
+            ActiveDisplay = new global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay();
+          }
+          ActiveDisplay.MergeFrom(other.ActiveDisplay);
+          break;
+        case TypeOneofCase.ProcessorUtilizationRequest:
+          if (ProcessorUtilizationRequest == null) {
+            ProcessorUtilizationRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest();
+          }
+          ProcessorUtilizationRequest.MergeFrom(other.ProcessorUtilizationRequest);
+          break;
+        case TypeOneofCase.ProcessorUtilization:
+          if (ProcessorUtilization == null) {
+            ProcessorUtilization = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization();
+          }
+          ProcessorUtilization.MergeFrom(other.ProcessorUtilization);
+          break;
+        case TypeOneofCase.MemoryUsageRequest:
+          if (MemoryUsageRequest == null) {
+            MemoryUsageRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest();
+          }
+          MemoryUsageRequest.MergeFrom(other.MemoryUsageRequest);
+          break;
+        case TypeOneofCase.MemoryUsageStatus:
+          if (MemoryUsageStatus == null) {
+            MemoryUsageStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus();
+          }
+          MemoryUsageStatus.MergeFrom(other.MemoryUsageStatus);
+          break;
+        case TypeOneofCase.PresetJSONMessageRequestLT:
+          if (PresetJSONMessageRequestLT == null) {
+            PresetJSONMessageRequestLT = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT();
+          }
+          PresetJSONMessageRequestLT.MergeFrom(other.PresetJSONMessageRequestLT);
+          break;
+        case TypeOneofCase.FrameBufferMessageRequest:
+          if (FrameBufferMessageRequest == null) {
+            FrameBufferMessageRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest();
+          }
+          FrameBufferMessageRequest.MergeFrom(other.FrameBufferMessageRequest);
+          break;
+        case TypeOneofCase.FrameBufferMessage:
+          if (FrameBufferMessage == null) {
+            FrameBufferMessage = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage();
+          }
+          FrameBufferMessage.MergeFrom(other.FrameBufferMessage);
+          break;
+        case TypeOneofCase.Lt4FootswitchModeRequest:
+          if (Lt4FootswitchModeRequest == null) {
+            Lt4FootswitchModeRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest();
+          }
+          Lt4FootswitchModeRequest.MergeFrom(other.Lt4FootswitchModeRequest);
+          break;
+        case TypeOneofCase.Lt4FootswitchModeStatus:
+          if (Lt4FootswitchModeStatus == null) {
+            Lt4FootswitchModeStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus();
+          }
+          Lt4FootswitchModeStatus.MergeFrom(other.Lt4FootswitchModeStatus);
+          break;
+        case TypeOneofCase.LoadPresetTestSuite:
+          if (LoadPresetTestSuite == null) {
+            LoadPresetTestSuite = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite();
+          }
+          LoadPresetTestSuite.MergeFrom(other.LoadPresetTestSuite);
+          break;
+        case TypeOneofCase.LoopbackTest:
+          if (LoopbackTest == null) {
+            LoopbackTest = new global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest();
+          }
+          LoopbackTest.MergeFrom(other.LoopbackTest);
+          break;
+        case TypeOneofCase.PresetJSONMessage:
+          if (PresetJSONMessage == null) {
+            PresetJSONMessage = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage();
+          }
+          PresetJSONMessage.MergeFrom(other.PresetJSONMessage);
+          break;
+        case TypeOneofCase.CurrentPresetStatus:
+          if (CurrentPresetStatus == null) {
+            CurrentPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus();
+          }
+          CurrentPresetStatus.MergeFrom(other.CurrentPresetStatus);
+          break;
+        case TypeOneofCase.LoadPreset:
+          if (LoadPreset == null) {
+            LoadPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset();
+          }
+          LoadPreset.MergeFrom(other.LoadPreset);
+          break;
+        case TypeOneofCase.SetDspUnitParameter:
+          if (SetDspUnitParameter == null) {
+            SetDspUnitParameter = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter();
+          }
+          SetDspUnitParameter.MergeFrom(other.SetDspUnitParameter);
+          break;
+        case TypeOneofCase.SetDspUnitParameterStatus:
+          if (SetDspUnitParameterStatus == null) {
+            SetDspUnitParameterStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus();
+          }
+          SetDspUnitParameterStatus.MergeFrom(other.SetDspUnitParameterStatus);
+          break;
+        case TypeOneofCase.DspUnitParameterStatus:
+          if (DspUnitParameterStatus == null) {
+            DspUnitParameterStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus();
+          }
+          DspUnitParameterStatus.MergeFrom(other.DspUnitParameterStatus);
+          break;
+        case TypeOneofCase.CurrentLoadedPresetIndexStatus:
+          if (CurrentLoadedPresetIndexStatus == null) {
+            CurrentLoadedPresetIndexStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus();
+          }
+          CurrentLoadedPresetIndexStatus.MergeFrom(other.CurrentLoadedPresetIndexStatus);
+          break;
+        case TypeOneofCase.PresetEditedStatus:
+          if (PresetEditedStatus == null) {
+            PresetEditedStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus();
+          }
+          PresetEditedStatus.MergeFrom(other.PresetEditedStatus);
+          break;
+        case TypeOneofCase.ReplaceNode:
+          if (ReplaceNode == null) {
+            ReplaceNode = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode();
+          }
+          ReplaceNode.MergeFrom(other.ReplaceNode);
+          break;
+        case TypeOneofCase.ReplaceNodeStatus:
+          if (ReplaceNodeStatus == null) {
+            ReplaceNodeStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus();
+          }
+          ReplaceNodeStatus.MergeFrom(other.ReplaceNodeStatus);
+          break;
+        case TypeOneofCase.ShiftPreset:
+          if (ShiftPreset == null) {
+            ShiftPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset();
+          }
+          ShiftPreset.MergeFrom(other.ShiftPreset);
+          break;
+        case TypeOneofCase.ShiftPresetStatus:
+          if (ShiftPresetStatus == null) {
+            ShiftPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus();
+          }
+          ShiftPresetStatus.MergeFrom(other.ShiftPresetStatus);
+          break;
+        case TypeOneofCase.SwapPreset:
+          if (SwapPreset == null) {
+            SwapPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset();
+          }
+          SwapPreset.MergeFrom(other.SwapPreset);
+          break;
+        case TypeOneofCase.SwapPresetStatus:
+          if (SwapPresetStatus == null) {
+            SwapPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus();
+          }
+          SwapPresetStatus.MergeFrom(other.SwapPresetStatus);
+          break;
+        case TypeOneofCase.CurrentPresetSet:
+          if (CurrentPresetSet == null) {
+            CurrentPresetSet = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet();
+          }
+          CurrentPresetSet.MergeFrom(other.CurrentPresetSet);
+          break;
+        case TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
+          if (CurrentLoadedPresetIndexBypassStatus == null) {
+            CurrentLoadedPresetIndexBypassStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus();
+          }
+          CurrentLoadedPresetIndexBypassStatus.MergeFrom(other.CurrentLoadedPresetIndexBypassStatus);
+          break;
+        case TypeOneofCase.CurrentDisplayedPresetIndexStatus:
+          if (CurrentDisplayedPresetIndexStatus == null) {
+            CurrentDisplayedPresetIndexStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus();
+          }
+          CurrentDisplayedPresetIndexStatus.MergeFrom(other.CurrentDisplayedPresetIndexStatus);
+          break;
+        case TypeOneofCase.PresetSavedStatus:
+          if (PresetSavedStatus == null) {
+            PresetSavedStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus();
+          }
+          PresetSavedStatus.MergeFrom(other.PresetSavedStatus);
+          break;
+        case TypeOneofCase.ClearPreset:
+          if (ClearPreset == null) {
+            ClearPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset();
+          }
+          ClearPreset.MergeFrom(other.ClearPreset);
+          break;
+        case TypeOneofCase.ClearPresetStatus:
+          if (ClearPresetStatus == null) {
+            ClearPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus();
+          }
+          ClearPresetStatus.MergeFrom(other.ClearPresetStatus);
+          break;
+        case TypeOneofCase.SaveCurrentPreset:
+          if (SaveCurrentPreset == null) {
+            SaveCurrentPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset();
+          }
+          SaveCurrentPreset.MergeFrom(other.SaveCurrentPreset);
+          break;
+        case TypeOneofCase.SaveCurrentPresetTo:
+          if (SaveCurrentPresetTo == null) {
+            SaveCurrentPresetTo = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo();
+          }
+          SaveCurrentPresetTo.MergeFrom(other.SaveCurrentPresetTo);
+          break;
+        case TypeOneofCase.SavePresetAs:
+          if (SavePresetAs == null) {
+            SavePresetAs = new global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs();
+          }
+          SavePresetAs.MergeFrom(other.SavePresetAs);
+          break;
+        case TypeOneofCase.NewPresetSavedStatus:
+          if (NewPresetSavedStatus == null) {
+            NewPresetSavedStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus();
+          }
+          NewPresetSavedStatus.MergeFrom(other.NewPresetSavedStatus);
+          break;
+        case TypeOneofCase.RenamePresetAt:
+          if (RenamePresetAt == null) {
+            RenamePresetAt = new global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt();
+          }
+          RenamePresetAt.MergeFrom(other.RenamePresetAt);
+          break;
+        case TypeOneofCase.AuditionPreset:
+          if (AuditionPreset == null) {
+            AuditionPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset();
+          }
+          AuditionPreset.MergeFrom(other.AuditionPreset);
+          break;
+        case TypeOneofCase.AuditionPresetStatus:
+          if (AuditionPresetStatus == null) {
+            AuditionPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus();
+          }
+          AuditionPresetStatus.MergeFrom(other.AuditionPresetStatus);
+          break;
+        case TypeOneofCase.ExitAuditionPreset:
+          if (ExitAuditionPreset == null) {
+            ExitAuditionPreset = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset();
+          }
+          ExitAuditionPreset.MergeFrom(other.ExitAuditionPreset);
+          break;
+        case TypeOneofCase.ExitAuditionPresetStatus:
+          if (ExitAuditionPresetStatus == null) {
+            ExitAuditionPresetStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus();
+          }
+          ExitAuditionPresetStatus.MergeFrom(other.ExitAuditionPresetStatus);
+          break;
+        case TypeOneofCase.AuditionStateRequest:
+          if (AuditionStateRequest == null) {
+            AuditionStateRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest();
+          }
+          AuditionStateRequest.MergeFrom(other.AuditionStateRequest);
+          break;
+        case TypeOneofCase.AuditionStateStatus:
+          if (AuditionStateStatus == null) {
+            AuditionStateStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus();
+          }
+          AuditionStateStatus.MergeFrom(other.AuditionStateStatus);
+          break;
+        case TypeOneofCase.ProductIdentificationStatus:
+          if (ProductIdentificationStatus == null) {
+            ProductIdentificationStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus();
+          }
+          ProductIdentificationStatus.MergeFrom(other.ProductIdentificationStatus);
+          break;
+        case TypeOneofCase.ProductIdentificationRequest:
+          if (ProductIdentificationRequest == null) {
+            ProductIdentificationRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest();
+          }
+          ProductIdentificationRequest.MergeFrom(other.ProductIdentificationRequest);
+          break;
+        case TypeOneofCase.FirmwareVersionRequest:
+          if (FirmwareVersionRequest == null) {
+            FirmwareVersionRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest();
+          }
+          FirmwareVersionRequest.MergeFrom(other.FirmwareVersionRequest);
+          break;
+        case TypeOneofCase.FirmwareVersionStatus:
+          if (FirmwareVersionStatus == null) {
+            FirmwareVersionStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus();
+          }
+          FirmwareVersionStatus.MergeFrom(other.FirmwareVersionStatus);
+          break;
+        case TypeOneofCase.CurrentPresetRequest:
+          if (CurrentPresetRequest == null) {
+            CurrentPresetRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest();
+          }
+          CurrentPresetRequest.MergeFrom(other.CurrentPresetRequest);
+          break;
+        case TypeOneofCase.RetrievePreset:
+          if (RetrievePreset == null) {
+            RetrievePreset = new global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset();
+          }
+          RetrievePreset.MergeFrom(other.RetrievePreset);
+          break;
+        case TypeOneofCase.UsbGainRequest:
+          if (UsbGainRequest == null) {
+            UsbGainRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest();
+          }
+          UsbGainRequest.MergeFrom(other.UsbGainRequest);
+          break;
+        case TypeOneofCase.UsbGainStatus:
+          if (UsbGainStatus == null) {
+            UsbGainStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus();
+          }
+          UsbGainStatus.MergeFrom(other.UsbGainStatus);
+          break;
+        case TypeOneofCase.QASlotsRequest:
+          if (QASlotsRequest == null) {
+            QASlotsRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest();
+          }
+          QASlotsRequest.MergeFrom(other.QASlotsRequest);
+          break;
+        case TypeOneofCase.QASlotsStatus:
+          if (QASlotsStatus == null) {
+            QASlotsStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus();
+          }
+          QASlotsStatus.MergeFrom(other.QASlotsStatus);
+          break;
+        case TypeOneofCase.LineOutGainRequest:
+          if (LineOutGainRequest == null) {
+            LineOutGainRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest();
+          }
+          LineOutGainRequest.MergeFrom(other.LineOutGainRequest);
+          break;
+        case TypeOneofCase.LineOutGainStatus:
+          if (LineOutGainStatus == null) {
+            LineOutGainStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus();
+          }
+          LineOutGainStatus.MergeFrom(other.LineOutGainStatus);
+          break;
+        case TypeOneofCase.ModalStatusMessage:
+          if (ModalStatusMessage == null) {
+            ModalStatusMessage = new global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage();
+          }
+          ModalStatusMessage.MergeFrom(other.ModalStatusMessage);
+          break;
+        case TypeOneofCase.UsbGainSet:
+          if (UsbGainSet == null) {
+            UsbGainSet = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet();
+          }
+          UsbGainSet.MergeFrom(other.UsbGainSet);
+          break;
+        case TypeOneofCase.LineOutGainSet:
+          if (LineOutGainSet == null) {
+            LineOutGainSet = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet();
+          }
+          LineOutGainSet.MergeFrom(other.LineOutGainSet);
+          break;
+        case TypeOneofCase.QASlotsSet:
+          if (QASlotsSet == null) {
+            QASlotsSet = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet();
+          }
+          QASlotsSet.MergeFrom(other.QASlotsSet);
+          break;
+        case TypeOneofCase.UnsupportedMessageStatus:
+          if (UnsupportedMessageStatus == null) {
+            UnsupportedMessageStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus();
+          }
+          UnsupportedMessageStatus.MergeFrom(other.UnsupportedMessageStatus);
+          break;
+        case TypeOneofCase.Heartbeat:
+          if (Heartbeat == null) {
+            Heartbeat = new global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat();
+          }
+          Heartbeat.MergeFrom(other.Heartbeat);
+          break;
+        case TypeOneofCase.ConnectionStatusRequest:
+          if (ConnectionStatusRequest == null) {
+            ConnectionStatusRequest = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest();
+          }
+          ConnectionStatusRequest.MergeFrom(other.ConnectionStatusRequest);
+          break;
+        case TypeOneofCase.ConnectionStatus:
+          if (ConnectionStatus == null) {
+            ConnectionStatus = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus();
+          }
+          ConnectionStatus.MergeFrom(other.ConnectionStatus);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ResponseType = (global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot();
+            if (typeCase_ == TypeOneofCase.IndexPot) {
+              subBuilder.MergeFrom(IndexPot);
+            }
+            input.ReadMessage(subBuilder);
+            IndexPot = subBuilder;
+            break;
+          }
+          case 26: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton();
+            if (typeCase_ == TypeOneofCase.IndexButton) {
+              subBuilder.MergeFrom(IndexButton);
+            }
+            input.ReadMessage(subBuilder);
+            IndexButton = subBuilder;
+            break;
+          }
+          case 34: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder();
+            if (typeCase_ == TypeOneofCase.IndexEncoder) {
+              subBuilder.MergeFrom(IndexEncoder);
+            }
+            input.ReadMessage(subBuilder);
+            IndexEncoder = subBuilder;
+            break;
+          }
+          case 42: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay();
+            if (typeCase_ == TypeOneofCase.ActiveDisplay) {
+              subBuilder.MergeFrom(ActiveDisplay);
+            }
+            input.ReadMessage(subBuilder);
+            ActiveDisplay = subBuilder;
+            break;
+          }
+          case 50: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest();
+            if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
+              subBuilder.MergeFrom(ProcessorUtilizationRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ProcessorUtilizationRequest = subBuilder;
+            break;
+          }
+          case 58: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization();
+            if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
+              subBuilder.MergeFrom(ProcessorUtilization);
+            }
+            input.ReadMessage(subBuilder);
+            ProcessorUtilization = subBuilder;
+            break;
+          }
+          case 66: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest();
+            if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
+              subBuilder.MergeFrom(MemoryUsageRequest);
+            }
+            input.ReadMessage(subBuilder);
+            MemoryUsageRequest = subBuilder;
+            break;
+          }
+          case 74: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus();
+            if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
+              subBuilder.MergeFrom(MemoryUsageStatus);
+            }
+            input.ReadMessage(subBuilder);
+            MemoryUsageStatus = subBuilder;
+            break;
+          }
+          case 82: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT();
+            if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
+              subBuilder.MergeFrom(PresetJSONMessageRequestLT);
+            }
+            input.ReadMessage(subBuilder);
+            PresetJSONMessageRequestLT = subBuilder;
+            break;
+          }
+          case 90: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest();
+            if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
+              subBuilder.MergeFrom(FrameBufferMessageRequest);
+            }
+            input.ReadMessage(subBuilder);
+            FrameBufferMessageRequest = subBuilder;
+            break;
+          }
+          case 98: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage();
+            if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
+              subBuilder.MergeFrom(FrameBufferMessage);
+            }
+            input.ReadMessage(subBuilder);
+            FrameBufferMessage = subBuilder;
+            break;
+          }
+          case 106: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest();
+            if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
+              subBuilder.MergeFrom(Lt4FootswitchModeRequest);
+            }
+            input.ReadMessage(subBuilder);
+            Lt4FootswitchModeRequest = subBuilder;
+            break;
+          }
+          case 114: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus();
+            if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
+              subBuilder.MergeFrom(Lt4FootswitchModeStatus);
+            }
+            input.ReadMessage(subBuilder);
+            Lt4FootswitchModeStatus = subBuilder;
+            break;
+          }
+          case 122: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite();
+            if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
+              subBuilder.MergeFrom(LoadPresetTestSuite);
+            }
+            input.ReadMessage(subBuilder);
+            LoadPresetTestSuite = subBuilder;
+            break;
+          }
+          case 242: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest();
+            if (typeCase_ == TypeOneofCase.LoopbackTest) {
+              subBuilder.MergeFrom(LoopbackTest);
+            }
+            input.ReadMessage(subBuilder);
+            LoopbackTest = subBuilder;
+            break;
+          }
+          case 250: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage();
+            if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
+              subBuilder.MergeFrom(PresetJSONMessage);
+            }
+            input.ReadMessage(subBuilder);
+            PresetJSONMessage = subBuilder;
+            break;
+          }
+          case 258: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus();
+            if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
+              subBuilder.MergeFrom(CurrentPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetStatus = subBuilder;
+            break;
+          }
+          case 266: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset();
+            if (typeCase_ == TypeOneofCase.LoadPreset) {
+              subBuilder.MergeFrom(LoadPreset);
+            }
+            input.ReadMessage(subBuilder);
+            LoadPreset = subBuilder;
+            break;
+          }
+          case 274: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter();
+            if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
+              subBuilder.MergeFrom(SetDspUnitParameter);
+            }
+            input.ReadMessage(subBuilder);
+            SetDspUnitParameter = subBuilder;
+            break;
+          }
+          case 282: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus();
+            if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
+              subBuilder.MergeFrom(SetDspUnitParameterStatus);
+            }
+            input.ReadMessage(subBuilder);
+            SetDspUnitParameterStatus = subBuilder;
+            break;
+          }
+          case 290: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus();
+            if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
+              subBuilder.MergeFrom(DspUnitParameterStatus);
+            }
+            input.ReadMessage(subBuilder);
+            DspUnitParameterStatus = subBuilder;
+            break;
+          }
+          case 298: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus();
+            if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
+              subBuilder.MergeFrom(CurrentLoadedPresetIndexStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentLoadedPresetIndexStatus = subBuilder;
+            break;
+          }
+          case 306: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus();
+            if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
+              subBuilder.MergeFrom(PresetEditedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            PresetEditedStatus = subBuilder;
+            break;
+          }
+          case 314: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode();
+            if (typeCase_ == TypeOneofCase.ReplaceNode) {
+              subBuilder.MergeFrom(ReplaceNode);
+            }
+            input.ReadMessage(subBuilder);
+            ReplaceNode = subBuilder;
+            break;
+          }
+          case 322: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus();
+            if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
+              subBuilder.MergeFrom(ReplaceNodeStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ReplaceNodeStatus = subBuilder;
+            break;
+          }
+          case 330: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset();
+            if (typeCase_ == TypeOneofCase.ShiftPreset) {
+              subBuilder.MergeFrom(ShiftPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ShiftPreset = subBuilder;
+            break;
+          }
+          case 338: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus();
+            if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
+              subBuilder.MergeFrom(ShiftPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ShiftPresetStatus = subBuilder;
+            break;
+          }
+          case 346: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset();
+            if (typeCase_ == TypeOneofCase.SwapPreset) {
+              subBuilder.MergeFrom(SwapPreset);
+            }
+            input.ReadMessage(subBuilder);
+            SwapPreset = subBuilder;
+            break;
+          }
+          case 354: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus();
+            if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
+              subBuilder.MergeFrom(SwapPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            SwapPresetStatus = subBuilder;
+            break;
+          }
+          case 362: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet();
+            if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
+              subBuilder.MergeFrom(CurrentPresetSet);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetSet = subBuilder;
+            break;
+          }
+          case 370: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus();
+            if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
+              subBuilder.MergeFrom(CurrentLoadedPresetIndexBypassStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentLoadedPresetIndexBypassStatus = subBuilder;
+            break;
+          }
+          case 378: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus();
+            if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
+              subBuilder.MergeFrom(CurrentDisplayedPresetIndexStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentDisplayedPresetIndexStatus = subBuilder;
+            break;
+          }
+          case 402: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus();
+            if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
+              subBuilder.MergeFrom(PresetSavedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            PresetSavedStatus = subBuilder;
+            break;
+          }
+          case 410: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset();
+            if (typeCase_ == TypeOneofCase.ClearPreset) {
+              subBuilder.MergeFrom(ClearPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ClearPreset = subBuilder;
+            break;
+          }
+          case 418: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus();
+            if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
+              subBuilder.MergeFrom(ClearPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ClearPresetStatus = subBuilder;
+            break;
+          }
+          case 426: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset();
+            if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
+              subBuilder.MergeFrom(SaveCurrentPreset);
+            }
+            input.ReadMessage(subBuilder);
+            SaveCurrentPreset = subBuilder;
+            break;
+          }
+          case 434: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo();
+            if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
+              subBuilder.MergeFrom(SaveCurrentPresetTo);
+            }
+            input.ReadMessage(subBuilder);
+            SaveCurrentPresetTo = subBuilder;
+            break;
+          }
+          case 442: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs();
+            if (typeCase_ == TypeOneofCase.SavePresetAs) {
+              subBuilder.MergeFrom(SavePresetAs);
+            }
+            input.ReadMessage(subBuilder);
+            SavePresetAs = subBuilder;
+            break;
+          }
+          case 450: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus();
+            if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
+              subBuilder.MergeFrom(NewPresetSavedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            NewPresetSavedStatus = subBuilder;
+            break;
+          }
+          case 458: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt();
+            if (typeCase_ == TypeOneofCase.RenamePresetAt) {
+              subBuilder.MergeFrom(RenamePresetAt);
+            }
+            input.ReadMessage(subBuilder);
+            RenamePresetAt = subBuilder;
+            break;
+          }
+          case 466: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset();
+            if (typeCase_ == TypeOneofCase.AuditionPreset) {
+              subBuilder.MergeFrom(AuditionPreset);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionPreset = subBuilder;
+            break;
+          }
+          case 474: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus();
+            if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
+              subBuilder.MergeFrom(AuditionPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionPresetStatus = subBuilder;
+            break;
+          }
+          case 482: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset();
+            if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
+              subBuilder.MergeFrom(ExitAuditionPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ExitAuditionPreset = subBuilder;
+            break;
+          }
+          case 490: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus();
+            if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
+              subBuilder.MergeFrom(ExitAuditionPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ExitAuditionPresetStatus = subBuilder;
+            break;
+          }
+          case 498: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest();
+            if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
+              subBuilder.MergeFrom(AuditionStateRequest);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionStateRequest = subBuilder;
+            break;
+          }
+          case 506: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus();
+            if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
+              subBuilder.MergeFrom(AuditionStateStatus);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionStateStatus = subBuilder;
+            break;
+          }
+          case 802: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus();
+            if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
+              subBuilder.MergeFrom(ProductIdentificationStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ProductIdentificationStatus = subBuilder;
+            break;
+          }
+          case 810: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest();
+            if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
+              subBuilder.MergeFrom(ProductIdentificationRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ProductIdentificationRequest = subBuilder;
+            break;
+          }
+          case 818: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest();
+            if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
+              subBuilder.MergeFrom(FirmwareVersionRequest);
+            }
+            input.ReadMessage(subBuilder);
+            FirmwareVersionRequest = subBuilder;
+            break;
+          }
+          case 826: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus();
+            if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
+              subBuilder.MergeFrom(FirmwareVersionStatus);
+            }
+            input.ReadMessage(subBuilder);
+            FirmwareVersionStatus = subBuilder;
+            break;
+          }
+          case 834: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest();
+            if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
+              subBuilder.MergeFrom(CurrentPresetRequest);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetRequest = subBuilder;
+            break;
+          }
+          case 842: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset();
+            if (typeCase_ == TypeOneofCase.RetrievePreset) {
+              subBuilder.MergeFrom(RetrievePreset);
+            }
+            input.ReadMessage(subBuilder);
+            RetrievePreset = subBuilder;
+            break;
+          }
+          case 850: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest();
+            if (typeCase_ == TypeOneofCase.UsbGainRequest) {
+              subBuilder.MergeFrom(UsbGainRequest);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainRequest = subBuilder;
+            break;
+          }
+          case 858: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus();
+            if (typeCase_ == TypeOneofCase.UsbGainStatus) {
+              subBuilder.MergeFrom(UsbGainStatus);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainStatus = subBuilder;
+            break;
+          }
+          case 866: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest();
+            if (typeCase_ == TypeOneofCase.QASlotsRequest) {
+              subBuilder.MergeFrom(QASlotsRequest);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsRequest = subBuilder;
+            break;
+          }
+          case 874: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus();
+            if (typeCase_ == TypeOneofCase.QASlotsStatus) {
+              subBuilder.MergeFrom(QASlotsStatus);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsStatus = subBuilder;
+            break;
+          }
+          case 882: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest();
+            if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
+              subBuilder.MergeFrom(LineOutGainRequest);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainRequest = subBuilder;
+            break;
+          }
+          case 890: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus();
+            if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
+              subBuilder.MergeFrom(LineOutGainStatus);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainStatus = subBuilder;
+            break;
+          }
+          case 906: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage();
+            if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
+              subBuilder.MergeFrom(ModalStatusMessage);
+            }
+            input.ReadMessage(subBuilder);
+            ModalStatusMessage = subBuilder;
+            break;
+          }
+          case 914: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet();
+            if (typeCase_ == TypeOneofCase.UsbGainSet) {
+              subBuilder.MergeFrom(UsbGainSet);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainSet = subBuilder;
+            break;
+          }
+          case 922: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet();
+            if (typeCase_ == TypeOneofCase.LineOutGainSet) {
+              subBuilder.MergeFrom(LineOutGainSet);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainSet = subBuilder;
+            break;
+          }
+          case 930: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet();
+            if (typeCase_ == TypeOneofCase.QASlotsSet) {
+              subBuilder.MergeFrom(QASlotsSet);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsSet = subBuilder;
+            break;
+          }
+          case 1602: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus();
+            if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
+              subBuilder.MergeFrom(UnsupportedMessageStatus);
+            }
+            input.ReadMessage(subBuilder);
+            UnsupportedMessageStatus = subBuilder;
+            break;
+          }
+          case 1610: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat();
+            if (typeCase_ == TypeOneofCase.Heartbeat) {
+              subBuilder.MergeFrom(Heartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            Heartbeat = subBuilder;
+            break;
+          }
+          case 1618: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest();
+            if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
+              subBuilder.MergeFrom(ConnectionStatusRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ConnectionStatusRequest = subBuilder;
+            break;
+          }
+          case 1626: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus();
+            if (typeCase_ == TypeOneofCase.ConnectionStatus) {
+              subBuilder.MergeFrom(ConnectionStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ConnectionStatus = subBuilder;
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ResponseType = (global::LtAmpDotNet.Lib.Models.Protobuf.ResponseType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexPot();
+            if (typeCase_ == TypeOneofCase.IndexPot) {
+              subBuilder.MergeFrom(IndexPot);
+            }
+            input.ReadMessage(subBuilder);
+            IndexPot = subBuilder;
+            break;
+          }
+          case 26: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexButton();
+            if (typeCase_ == TypeOneofCase.IndexButton) {
+              subBuilder.MergeFrom(IndexButton);
+            }
+            input.ReadMessage(subBuilder);
+            IndexButton = subBuilder;
+            break;
+          }
+          case 34: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.IndexEncoder();
+            if (typeCase_ == TypeOneofCase.IndexEncoder) {
+              subBuilder.MergeFrom(IndexEncoder);
+            }
+            input.ReadMessage(subBuilder);
+            IndexEncoder = subBuilder;
+            break;
+          }
+          case 42: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ActiveDisplay();
+            if (typeCase_ == TypeOneofCase.ActiveDisplay) {
+              subBuilder.MergeFrom(ActiveDisplay);
+            }
+            input.ReadMessage(subBuilder);
+            ActiveDisplay = subBuilder;
+            break;
+          }
+          case 50: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilizationRequest();
+            if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
+              subBuilder.MergeFrom(ProcessorUtilizationRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ProcessorUtilizationRequest = subBuilder;
+            break;
+          }
+          case 58: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProcessorUtilization();
+            if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
+              subBuilder.MergeFrom(ProcessorUtilization);
+            }
+            input.ReadMessage(subBuilder);
+            ProcessorUtilization = subBuilder;
+            break;
+          }
+          case 66: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageRequest();
+            if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
+              subBuilder.MergeFrom(MemoryUsageRequest);
+            }
+            input.ReadMessage(subBuilder);
+            MemoryUsageRequest = subBuilder;
+            break;
+          }
+          case 74: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.MemoryUsageStatus();
+            if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
+              subBuilder.MergeFrom(MemoryUsageStatus);
+            }
+            input.ReadMessage(subBuilder);
+            MemoryUsageStatus = subBuilder;
+            break;
+          }
+          case 82: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessageRequest_LT();
+            if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
+              subBuilder.MergeFrom(PresetJSONMessageRequestLT);
+            }
+            input.ReadMessage(subBuilder);
+            PresetJSONMessageRequestLT = subBuilder;
+            break;
+          }
+          case 90: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessageRequest();
+            if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
+              subBuilder.MergeFrom(FrameBufferMessageRequest);
+            }
+            input.ReadMessage(subBuilder);
+            FrameBufferMessageRequest = subBuilder;
+            break;
+          }
+          case 98: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FrameBufferMessage();
+            if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
+              subBuilder.MergeFrom(FrameBufferMessage);
+            }
+            input.ReadMessage(subBuilder);
+            FrameBufferMessage = subBuilder;
+            break;
+          }
+          case 106: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeRequest();
+            if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
+              subBuilder.MergeFrom(Lt4FootswitchModeRequest);
+            }
+            input.ReadMessage(subBuilder);
+            Lt4FootswitchModeRequest = subBuilder;
+            break;
+          }
+          case 114: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LT4FootswitchModeStatus();
+            if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
+              subBuilder.MergeFrom(Lt4FootswitchModeStatus);
+            }
+            input.ReadMessage(subBuilder);
+            Lt4FootswitchModeStatus = subBuilder;
+            break;
+          }
+          case 122: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset_TestSuite();
+            if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
+              subBuilder.MergeFrom(LoadPresetTestSuite);
+            }
+            input.ReadMessage(subBuilder);
+            LoadPresetTestSuite = subBuilder;
+            break;
+          }
+          case 242: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoopbackTest();
+            if (typeCase_ == TypeOneofCase.LoopbackTest) {
+              subBuilder.MergeFrom(LoopbackTest);
+            }
+            input.ReadMessage(subBuilder);
+            LoopbackTest = subBuilder;
+            break;
+          }
+          case 250: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetJSONMessage();
+            if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
+              subBuilder.MergeFrom(PresetJSONMessage);
+            }
+            input.ReadMessage(subBuilder);
+            PresetJSONMessage = subBuilder;
+            break;
+          }
+          case 258: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetStatus();
+            if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
+              subBuilder.MergeFrom(CurrentPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetStatus = subBuilder;
+            break;
+          }
+          case 266: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LoadPreset();
+            if (typeCase_ == TypeOneofCase.LoadPreset) {
+              subBuilder.MergeFrom(LoadPreset);
+            }
+            input.ReadMessage(subBuilder);
+            LoadPreset = subBuilder;
+            break;
+          }
+          case 274: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameter();
+            if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
+              subBuilder.MergeFrom(SetDspUnitParameter);
+            }
+            input.ReadMessage(subBuilder);
+            SetDspUnitParameter = subBuilder;
+            break;
+          }
+          case 282: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SetDspUnitParameterStatus();
+            if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
+              subBuilder.MergeFrom(SetDspUnitParameterStatus);
+            }
+            input.ReadMessage(subBuilder);
+            SetDspUnitParameterStatus = subBuilder;
+            break;
+          }
+          case 290: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.DspUnitParameterStatus();
+            if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
+              subBuilder.MergeFrom(DspUnitParameterStatus);
+            }
+            input.ReadMessage(subBuilder);
+            DspUnitParameterStatus = subBuilder;
+            break;
+          }
+          case 298: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexStatus();
+            if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
+              subBuilder.MergeFrom(CurrentLoadedPresetIndexStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentLoadedPresetIndexStatus = subBuilder;
+            break;
+          }
+          case 306: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetEditedStatus();
+            if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
+              subBuilder.MergeFrom(PresetEditedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            PresetEditedStatus = subBuilder;
+            break;
+          }
+          case 314: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNode();
+            if (typeCase_ == TypeOneofCase.ReplaceNode) {
+              subBuilder.MergeFrom(ReplaceNode);
+            }
+            input.ReadMessage(subBuilder);
+            ReplaceNode = subBuilder;
+            break;
+          }
+          case 322: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ReplaceNodeStatus();
+            if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
+              subBuilder.MergeFrom(ReplaceNodeStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ReplaceNodeStatus = subBuilder;
+            break;
+          }
+          case 330: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPreset();
+            if (typeCase_ == TypeOneofCase.ShiftPreset) {
+              subBuilder.MergeFrom(ShiftPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ShiftPreset = subBuilder;
+            break;
+          }
+          case 338: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ShiftPresetStatus();
+            if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
+              subBuilder.MergeFrom(ShiftPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ShiftPresetStatus = subBuilder;
+            break;
+          }
+          case 346: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPreset();
+            if (typeCase_ == TypeOneofCase.SwapPreset) {
+              subBuilder.MergeFrom(SwapPreset);
+            }
+            input.ReadMessage(subBuilder);
+            SwapPreset = subBuilder;
+            break;
+          }
+          case 354: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SwapPresetStatus();
+            if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
+              subBuilder.MergeFrom(SwapPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            SwapPresetStatus = subBuilder;
+            break;
+          }
+          case 362: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetSet();
+            if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
+              subBuilder.MergeFrom(CurrentPresetSet);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetSet = subBuilder;
+            break;
+          }
+          case 370: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentLoadedPresetIndexBypassStatus();
+            if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
+              subBuilder.MergeFrom(CurrentLoadedPresetIndexBypassStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentLoadedPresetIndexBypassStatus = subBuilder;
+            break;
+          }
+          case 378: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentDisplayedPresetIndexStatus();
+            if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
+              subBuilder.MergeFrom(CurrentDisplayedPresetIndexStatus);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentDisplayedPresetIndexStatus = subBuilder;
+            break;
+          }
+          case 402: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.PresetSavedStatus();
+            if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
+              subBuilder.MergeFrom(PresetSavedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            PresetSavedStatus = subBuilder;
+            break;
+          }
+          case 410: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPreset();
+            if (typeCase_ == TypeOneofCase.ClearPreset) {
+              subBuilder.MergeFrom(ClearPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ClearPreset = subBuilder;
+            break;
+          }
+          case 418: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ClearPresetStatus();
+            if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
+              subBuilder.MergeFrom(ClearPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ClearPresetStatus = subBuilder;
+            break;
+          }
+          case 426: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPreset();
+            if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
+              subBuilder.MergeFrom(SaveCurrentPreset);
+            }
+            input.ReadMessage(subBuilder);
+            SaveCurrentPreset = subBuilder;
+            break;
+          }
+          case 434: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SaveCurrentPresetTo();
+            if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
+              subBuilder.MergeFrom(SaveCurrentPresetTo);
+            }
+            input.ReadMessage(subBuilder);
+            SaveCurrentPresetTo = subBuilder;
+            break;
+          }
+          case 442: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.SavePresetAs();
+            if (typeCase_ == TypeOneofCase.SavePresetAs) {
+              subBuilder.MergeFrom(SavePresetAs);
+            }
+            input.ReadMessage(subBuilder);
+            SavePresetAs = subBuilder;
+            break;
+          }
+          case 450: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.NewPresetSavedStatus();
+            if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
+              subBuilder.MergeFrom(NewPresetSavedStatus);
+            }
+            input.ReadMessage(subBuilder);
+            NewPresetSavedStatus = subBuilder;
+            break;
+          }
+          case 458: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.RenamePresetAt();
+            if (typeCase_ == TypeOneofCase.RenamePresetAt) {
+              subBuilder.MergeFrom(RenamePresetAt);
+            }
+            input.ReadMessage(subBuilder);
+            RenamePresetAt = subBuilder;
+            break;
+          }
+          case 466: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPreset();
+            if (typeCase_ == TypeOneofCase.AuditionPreset) {
+              subBuilder.MergeFrom(AuditionPreset);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionPreset = subBuilder;
+            break;
+          }
+          case 474: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionPresetStatus();
+            if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
+              subBuilder.MergeFrom(AuditionPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionPresetStatus = subBuilder;
+            break;
+          }
+          case 482: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPreset();
+            if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
+              subBuilder.MergeFrom(ExitAuditionPreset);
+            }
+            input.ReadMessage(subBuilder);
+            ExitAuditionPreset = subBuilder;
+            break;
+          }
+          case 490: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ExitAuditionPresetStatus();
+            if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
+              subBuilder.MergeFrom(ExitAuditionPresetStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ExitAuditionPresetStatus = subBuilder;
+            break;
+          }
+          case 498: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateRequest();
+            if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
+              subBuilder.MergeFrom(AuditionStateRequest);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionStateRequest = subBuilder;
+            break;
+          }
+          case 506: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.AuditionStateStatus();
+            if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
+              subBuilder.MergeFrom(AuditionStateStatus);
+            }
+            input.ReadMessage(subBuilder);
+            AuditionStateStatus = subBuilder;
+            break;
+          }
+          case 802: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationStatus();
+            if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
+              subBuilder.MergeFrom(ProductIdentificationStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ProductIdentificationStatus = subBuilder;
+            break;
+          }
+          case 810: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ProductIdentificationRequest();
+            if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
+              subBuilder.MergeFrom(ProductIdentificationRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ProductIdentificationRequest = subBuilder;
+            break;
+          }
+          case 818: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionRequest();
+            if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
+              subBuilder.MergeFrom(FirmwareVersionRequest);
+            }
+            input.ReadMessage(subBuilder);
+            FirmwareVersionRequest = subBuilder;
+            break;
+          }
+          case 826: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.FirmwareVersionStatus();
+            if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
+              subBuilder.MergeFrom(FirmwareVersionStatus);
+            }
+            input.ReadMessage(subBuilder);
+            FirmwareVersionStatus = subBuilder;
+            break;
+          }
+          case 834: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.CurrentPresetRequest();
+            if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
+              subBuilder.MergeFrom(CurrentPresetRequest);
+            }
+            input.ReadMessage(subBuilder);
+            CurrentPresetRequest = subBuilder;
+            break;
+          }
+          case 842: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.RetrievePreset();
+            if (typeCase_ == TypeOneofCase.RetrievePreset) {
+              subBuilder.MergeFrom(RetrievePreset);
+            }
+            input.ReadMessage(subBuilder);
+            RetrievePreset = subBuilder;
+            break;
+          }
+          case 850: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainRequest();
+            if (typeCase_ == TypeOneofCase.UsbGainRequest) {
+              subBuilder.MergeFrom(UsbGainRequest);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainRequest = subBuilder;
+            break;
+          }
+          case 858: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainStatus();
+            if (typeCase_ == TypeOneofCase.UsbGainStatus) {
+              subBuilder.MergeFrom(UsbGainStatus);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainStatus = subBuilder;
+            break;
+          }
+          case 866: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsRequest();
+            if (typeCase_ == TypeOneofCase.QASlotsRequest) {
+              subBuilder.MergeFrom(QASlotsRequest);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsRequest = subBuilder;
+            break;
+          }
+          case 874: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsStatus();
+            if (typeCase_ == TypeOneofCase.QASlotsStatus) {
+              subBuilder.MergeFrom(QASlotsStatus);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsStatus = subBuilder;
+            break;
+          }
+          case 882: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainRequest();
+            if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
+              subBuilder.MergeFrom(LineOutGainRequest);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainRequest = subBuilder;
+            break;
+          }
+          case 890: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainStatus();
+            if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
+              subBuilder.MergeFrom(LineOutGainStatus);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainStatus = subBuilder;
+            break;
+          }
+          case 906: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ModalStatusMessage();
+            if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
+              subBuilder.MergeFrom(ModalStatusMessage);
+            }
+            input.ReadMessage(subBuilder);
+            ModalStatusMessage = subBuilder;
+            break;
+          }
+          case 914: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UsbGainSet();
+            if (typeCase_ == TypeOneofCase.UsbGainSet) {
+              subBuilder.MergeFrom(UsbGainSet);
+            }
+            input.ReadMessage(subBuilder);
+            UsbGainSet = subBuilder;
+            break;
+          }
+          case 922: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.LineOutGainSet();
+            if (typeCase_ == TypeOneofCase.LineOutGainSet) {
+              subBuilder.MergeFrom(LineOutGainSet);
+            }
+            input.ReadMessage(subBuilder);
+            LineOutGainSet = subBuilder;
+            break;
+          }
+          case 930: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.QASlotsSet();
+            if (typeCase_ == TypeOneofCase.QASlotsSet) {
+              subBuilder.MergeFrom(QASlotsSet);
+            }
+            input.ReadMessage(subBuilder);
+            QASlotsSet = subBuilder;
+            break;
+          }
+          case 1602: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.UnsupportedMessageStatus();
+            if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
+              subBuilder.MergeFrom(UnsupportedMessageStatus);
+            }
+            input.ReadMessage(subBuilder);
+            UnsupportedMessageStatus = subBuilder;
+            break;
+          }
+          case 1610: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.Heartbeat();
+            if (typeCase_ == TypeOneofCase.Heartbeat) {
+              subBuilder.MergeFrom(Heartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            Heartbeat = subBuilder;
+            break;
+          }
+          case 1618: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatusRequest();
+            if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
+              subBuilder.MergeFrom(ConnectionStatusRequest);
+            }
+            input.ReadMessage(subBuilder);
+            ConnectionStatusRequest = subBuilder;
+            break;
+          }
+          case 1626: {
+            global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus subBuilder = new global::LtAmpDotNet.Lib.Models.Protobuf.ConnectionStatus();
+            if (typeCase_ == TypeOneofCase.ConnectionStatus) {
+              subBuilder.MergeFrom(ConnectionStatus);
+            }
+            input.ReadMessage(subBuilder);
+            ConnectionStatus = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   #endregion
 
 }
-#region Enums
-/// <summary>
-///
-/// Message response type
-/// </summary>
-public enum ResponseType {
-  /// <summary>
-  /// Message sent not as the result of a command
-  /// </summary>
-  [pbr::OriginalName("UNSOLICITED")] Unsolicited = 0,
-  /// <summary>
-  /// Message sent as the result of a command, but NOT the last message in the batch
-  /// </summary>
-  [pbr::OriginalName("NOT_LAST_ACK")] NotLastAck = 1,
-  /// <summary>
-  /// Message sent as the last result of a command
-  /// </summary>
-  [pbr::OriginalName("IS_LAST_ACK")] IsLastAck = 2,
-}
-
-#endregion
-
-#region Messages
-/// <summary>
-///
-/// Base message type used to communicate with the amp
-///
-/// All messages are of this type, and encapsulate the actual message
-/// </summary>
-[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-public sealed partial class FenderMessageLT : pb::IMessage<FenderMessageLT>
-#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    , pb::IBufferMessage
-#endif
-{
-  private static readonly pb::MessageParser<FenderMessageLT> _parser = new pb::MessageParser<FenderMessageLT>(() => new FenderMessageLT());
-  private pb::UnknownFieldSet _unknownFields;
-  private int _hasBits0;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pb::MessageParser<FenderMessageLT> Parser { get { return _parser; } }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public static pbr::MessageDescriptor Descriptor {
-    get { return global::FenderMessageLTReflection.Descriptor.MessageTypes[0]; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  pbr::MessageDescriptor pb::IMessage.Descriptor {
-    get { return Descriptor; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public FenderMessageLT() {
-    OnConstruction();
-  }
-
-  partial void OnConstruction();
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public FenderMessageLT(FenderMessageLT other) : this() {
-    _hasBits0 = other._hasBits0;
-    responseType_ = other.responseType_;
-    switch (other.TypeCase) {
-      case TypeOneofCase.IndexPot:
-        IndexPot = other.IndexPot.Clone();
-        break;
-      case TypeOneofCase.IndexButton:
-        IndexButton = other.IndexButton.Clone();
-        break;
-      case TypeOneofCase.IndexEncoder:
-        IndexEncoder = other.IndexEncoder.Clone();
-        break;
-      case TypeOneofCase.ActiveDisplay:
-        ActiveDisplay = other.ActiveDisplay.Clone();
-        break;
-      case TypeOneofCase.ProcessorUtilizationRequest:
-        ProcessorUtilizationRequest = other.ProcessorUtilizationRequest.Clone();
-        break;
-      case TypeOneofCase.ProcessorUtilization:
-        ProcessorUtilization = other.ProcessorUtilization.Clone();
-        break;
-      case TypeOneofCase.MemoryUsageRequest:
-        MemoryUsageRequest = other.MemoryUsageRequest.Clone();
-        break;
-      case TypeOneofCase.MemoryUsageStatus:
-        MemoryUsageStatus = other.MemoryUsageStatus.Clone();
-        break;
-      case TypeOneofCase.PresetJSONMessageRequestLT:
-        PresetJSONMessageRequestLT = other.PresetJSONMessageRequestLT.Clone();
-        break;
-      case TypeOneofCase.FrameBufferMessageRequest:
-        FrameBufferMessageRequest = other.FrameBufferMessageRequest.Clone();
-        break;
-      case TypeOneofCase.FrameBufferMessage:
-        FrameBufferMessage = other.FrameBufferMessage.Clone();
-        break;
-      case TypeOneofCase.Lt4FootswitchModeRequest:
-        Lt4FootswitchModeRequest = other.Lt4FootswitchModeRequest.Clone();
-        break;
-      case TypeOneofCase.Lt4FootswitchModeStatus:
-        Lt4FootswitchModeStatus = other.Lt4FootswitchModeStatus.Clone();
-        break;
-      case TypeOneofCase.LoadPresetTestSuite:
-        LoadPresetTestSuite = other.LoadPresetTestSuite.Clone();
-        break;
-      case TypeOneofCase.LoopbackTest:
-        LoopbackTest = other.LoopbackTest.Clone();
-        break;
-      case TypeOneofCase.PresetJSONMessage:
-        PresetJSONMessage = other.PresetJSONMessage.Clone();
-        break;
-      case TypeOneofCase.CurrentPresetStatus:
-        CurrentPresetStatus = other.CurrentPresetStatus.Clone();
-        break;
-      case TypeOneofCase.LoadPreset:
-        LoadPreset = other.LoadPreset.Clone();
-        break;
-      case TypeOneofCase.SetDspUnitParameter:
-        SetDspUnitParameter = other.SetDspUnitParameter.Clone();
-        break;
-      case TypeOneofCase.SetDspUnitParameterStatus:
-        SetDspUnitParameterStatus = other.SetDspUnitParameterStatus.Clone();
-        break;
-      case TypeOneofCase.DspUnitParameterStatus:
-        DspUnitParameterStatus = other.DspUnitParameterStatus.Clone();
-        break;
-      case TypeOneofCase.CurrentLoadedPresetIndexStatus:
-        CurrentLoadedPresetIndexStatus = other.CurrentLoadedPresetIndexStatus.Clone();
-        break;
-      case TypeOneofCase.PresetEditedStatus:
-        PresetEditedStatus = other.PresetEditedStatus.Clone();
-        break;
-      case TypeOneofCase.ReplaceNode:
-        ReplaceNode = other.ReplaceNode.Clone();
-        break;
-      case TypeOneofCase.ReplaceNodeStatus:
-        ReplaceNodeStatus = other.ReplaceNodeStatus.Clone();
-        break;
-      case TypeOneofCase.ShiftPreset:
-        ShiftPreset = other.ShiftPreset.Clone();
-        break;
-      case TypeOneofCase.ShiftPresetStatus:
-        ShiftPresetStatus = other.ShiftPresetStatus.Clone();
-        break;
-      case TypeOneofCase.SwapPreset:
-        SwapPreset = other.SwapPreset.Clone();
-        break;
-      case TypeOneofCase.SwapPresetStatus:
-        SwapPresetStatus = other.SwapPresetStatus.Clone();
-        break;
-      case TypeOneofCase.CurrentPresetSet:
-        CurrentPresetSet = other.CurrentPresetSet.Clone();
-        break;
-      case TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
-        CurrentLoadedPresetIndexBypassStatus = other.CurrentLoadedPresetIndexBypassStatus.Clone();
-        break;
-      case TypeOneofCase.CurrentDisplayedPresetIndexStatus:
-        CurrentDisplayedPresetIndexStatus = other.CurrentDisplayedPresetIndexStatus.Clone();
-        break;
-      case TypeOneofCase.PresetSavedStatus:
-        PresetSavedStatus = other.PresetSavedStatus.Clone();
-        break;
-      case TypeOneofCase.ClearPreset:
-        ClearPreset = other.ClearPreset.Clone();
-        break;
-      case TypeOneofCase.ClearPresetStatus:
-        ClearPresetStatus = other.ClearPresetStatus.Clone();
-        break;
-      case TypeOneofCase.SaveCurrentPreset:
-        SaveCurrentPreset = other.SaveCurrentPreset.Clone();
-        break;
-      case TypeOneofCase.SaveCurrentPresetTo:
-        SaveCurrentPresetTo = other.SaveCurrentPresetTo.Clone();
-        break;
-      case TypeOneofCase.SavePresetAs:
-        SavePresetAs = other.SavePresetAs.Clone();
-        break;
-      case TypeOneofCase.NewPresetSavedStatus:
-        NewPresetSavedStatus = other.NewPresetSavedStatus.Clone();
-        break;
-      case TypeOneofCase.RenamePresetAt:
-        RenamePresetAt = other.RenamePresetAt.Clone();
-        break;
-      case TypeOneofCase.AuditionPreset:
-        AuditionPreset = other.AuditionPreset.Clone();
-        break;
-      case TypeOneofCase.AuditionPresetStatus:
-        AuditionPresetStatus = other.AuditionPresetStatus.Clone();
-        break;
-      case TypeOneofCase.ExitAuditionPreset:
-        ExitAuditionPreset = other.ExitAuditionPreset.Clone();
-        break;
-      case TypeOneofCase.ExitAuditionPresetStatus:
-        ExitAuditionPresetStatus = other.ExitAuditionPresetStatus.Clone();
-        break;
-      case TypeOneofCase.AuditionStateRequest:
-        AuditionStateRequest = other.AuditionStateRequest.Clone();
-        break;
-      case TypeOneofCase.AuditionStateStatus:
-        AuditionStateStatus = other.AuditionStateStatus.Clone();
-        break;
-      case TypeOneofCase.ProductIdentificationStatus:
-        ProductIdentificationStatus = other.ProductIdentificationStatus.Clone();
-        break;
-      case TypeOneofCase.ProductIdentificationRequest:
-        ProductIdentificationRequest = other.ProductIdentificationRequest.Clone();
-        break;
-      case TypeOneofCase.FirmwareVersionRequest:
-        FirmwareVersionRequest = other.FirmwareVersionRequest.Clone();
-        break;
-      case TypeOneofCase.FirmwareVersionStatus:
-        FirmwareVersionStatus = other.FirmwareVersionStatus.Clone();
-        break;
-      case TypeOneofCase.CurrentPresetRequest:
-        CurrentPresetRequest = other.CurrentPresetRequest.Clone();
-        break;
-      case TypeOneofCase.RetrievePreset:
-        RetrievePreset = other.RetrievePreset.Clone();
-        break;
-      case TypeOneofCase.UsbGainRequest:
-        UsbGainRequest = other.UsbGainRequest.Clone();
-        break;
-      case TypeOneofCase.UsbGainStatus:
-        UsbGainStatus = other.UsbGainStatus.Clone();
-        break;
-      case TypeOneofCase.QASlotsRequest:
-        QASlotsRequest = other.QASlotsRequest.Clone();
-        break;
-      case TypeOneofCase.QASlotsStatus:
-        QASlotsStatus = other.QASlotsStatus.Clone();
-        break;
-      case TypeOneofCase.LineOutGainRequest:
-        LineOutGainRequest = other.LineOutGainRequest.Clone();
-        break;
-      case TypeOneofCase.LineOutGainStatus:
-        LineOutGainStatus = other.LineOutGainStatus.Clone();
-        break;
-      case TypeOneofCase.ModalStatusMessage:
-        ModalStatusMessage = other.ModalStatusMessage.Clone();
-        break;
-      case TypeOneofCase.UsbGainSet:
-        UsbGainSet = other.UsbGainSet.Clone();
-        break;
-      case TypeOneofCase.LineOutGainSet:
-        LineOutGainSet = other.LineOutGainSet.Clone();
-        break;
-      case TypeOneofCase.QASlotsSet:
-        QASlotsSet = other.QASlotsSet.Clone();
-        break;
-      case TypeOneofCase.UnsupportedMessageStatus:
-        UnsupportedMessageStatus = other.UnsupportedMessageStatus.Clone();
-        break;
-      case TypeOneofCase.Heartbeat:
-        Heartbeat = other.Heartbeat.Clone();
-        break;
-      case TypeOneofCase.ConnectionStatusRequest:
-        ConnectionStatusRequest = other.ConnectionStatusRequest.Clone();
-        break;
-      case TypeOneofCase.ConnectionStatus:
-        ConnectionStatus = other.ConnectionStatus.Clone();
-        break;
-    }
-
-    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public FenderMessageLT Clone() {
-    return new FenderMessageLT(this);
-  }
-
-  /// <summary>Field number for the "responseType" field.</summary>
-  public const int ResponseTypeFieldNumber = 1;
-  private readonly static global::ResponseType ResponseTypeDefaultValue = global::ResponseType.Unsolicited;
-
-  private global::ResponseType responseType_;
-  /// <summary>
-  /// Response type. All messages from the host to the amp are UNSOLICITED
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ResponseType ResponseType {
-    get { if ((_hasBits0 & 1) != 0) { return responseType_; } else { return ResponseTypeDefaultValue; } }
-    set {
-      _hasBits0 |= 1;
-      responseType_ = value;
-    }
-  }
-  /// <summary>Gets whether the "responseType" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool HasResponseType {
-    get { return (_hasBits0 & 1) != 0; }
-  }
-  /// <summary>Clears the value of the "responseType" field</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void ClearResponseType() {
-    _hasBits0 &= ~1;
-  }
-
-  /// <summary>Field number for the "indexPot" field.</summary>
-  public const int IndexPotFieldNumber = 2;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::IndexPot IndexPot {
-    get { return typeCase_ == TypeOneofCase.IndexPot ? (global::IndexPot) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexPot;
-    }
-  }
-
-  /// <summary>Field number for the "indexButton" field.</summary>
-  public const int IndexButtonFieldNumber = 3;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::IndexButton IndexButton {
-    get { return typeCase_ == TypeOneofCase.IndexButton ? (global::IndexButton) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexButton;
-    }
-  }
-
-  /// <summary>Field number for the "indexEncoder" field.</summary>
-  public const int IndexEncoderFieldNumber = 4;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::IndexEncoder IndexEncoder {
-    get { return typeCase_ == TypeOneofCase.IndexEncoder ? (global::IndexEncoder) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.IndexEncoder;
-    }
-  }
-
-  /// <summary>Field number for the "activeDisplay" field.</summary>
-  public const int ActiveDisplayFieldNumber = 5;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ActiveDisplay ActiveDisplay {
-    get { return typeCase_ == TypeOneofCase.ActiveDisplay ? (global::ActiveDisplay) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ActiveDisplay;
-    }
-  }
-
-  /// <summary>Field number for the "processorUtilizationRequest" field.</summary>
-  public const int ProcessorUtilizationRequestFieldNumber = 6;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ProcessorUtilizationRequest ProcessorUtilizationRequest {
-    get { return typeCase_ == TypeOneofCase.ProcessorUtilizationRequest ? (global::ProcessorUtilizationRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProcessorUtilizationRequest;
-    }
-  }
-
-  /// <summary>Field number for the "processorUtilization" field.</summary>
-  public const int ProcessorUtilizationFieldNumber = 7;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ProcessorUtilization ProcessorUtilization {
-    get { return typeCase_ == TypeOneofCase.ProcessorUtilization ? (global::ProcessorUtilization) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProcessorUtilization;
-    }
-  }
-
-  /// <summary>Field number for the "memoryUsageRequest" field.</summary>
-  public const int MemoryUsageRequestFieldNumber = 8;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::MemoryUsageRequest MemoryUsageRequest {
-    get { return typeCase_ == TypeOneofCase.MemoryUsageRequest ? (global::MemoryUsageRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.MemoryUsageRequest;
-    }
-  }
-
-  /// <summary>Field number for the "memoryUsageStatus" field.</summary>
-  public const int MemoryUsageStatusFieldNumber = 9;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::MemoryUsageStatus MemoryUsageStatus {
-    get { return typeCase_ == TypeOneofCase.MemoryUsageStatus ? (global::MemoryUsageStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.MemoryUsageStatus;
-    }
-  }
-
-  /// <summary>Field number for the "presetJSONMessageRequest_LT" field.</summary>
-  public const int PresetJSONMessageRequestLTFieldNumber = 10;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::PresetJSONMessageRequest_LT PresetJSONMessageRequestLT {
-    get { return typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT ? (global::PresetJSONMessageRequest_LT) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetJSONMessageRequestLT;
-    }
-  }
-
-  /// <summary>Field number for the "frameBufferMessageRequest" field.</summary>
-  public const int FrameBufferMessageRequestFieldNumber = 11;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::FrameBufferMessageRequest FrameBufferMessageRequest {
-    get { return typeCase_ == TypeOneofCase.FrameBufferMessageRequest ? (global::FrameBufferMessageRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FrameBufferMessageRequest;
-    }
-  }
-
-  /// <summary>Field number for the "frameBufferMessage" field.</summary>
-  public const int FrameBufferMessageFieldNumber = 12;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::FrameBufferMessage FrameBufferMessage {
-    get { return typeCase_ == TypeOneofCase.FrameBufferMessage ? (global::FrameBufferMessage) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FrameBufferMessage;
-    }
-  }
-
-  /// <summary>Field number for the "lt4FootswitchModeRequest" field.</summary>
-  public const int Lt4FootswitchModeRequestFieldNumber = 13;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LT4FootswitchModeRequest Lt4FootswitchModeRequest {
-    get { return typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest ? (global::LT4FootswitchModeRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Lt4FootswitchModeRequest;
-    }
-  }
-
-  /// <summary>Field number for the "lt4FootswitchModeStatus" field.</summary>
-  public const int Lt4FootswitchModeStatusFieldNumber = 14;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LT4FootswitchModeStatus Lt4FootswitchModeStatus {
-    get { return typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus ? (global::LT4FootswitchModeStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Lt4FootswitchModeStatus;
-    }
-  }
-
-  /// <summary>Field number for the "loadPreset_TestSuite" field.</summary>
-  public const int LoadPresetTestSuiteFieldNumber = 15;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LoadPreset_TestSuite LoadPresetTestSuite {
-    get { return typeCase_ == TypeOneofCase.LoadPresetTestSuite ? (global::LoadPreset_TestSuite) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoadPresetTestSuite;
-    }
-  }
-
-  /// <summary>Field number for the "loopbackTest" field.</summary>
-  public const int LoopbackTestFieldNumber = 30;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LoopbackTest LoopbackTest {
-    get { return typeCase_ == TypeOneofCase.LoopbackTest ? (global::LoopbackTest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoopbackTest;
-    }
-  }
-
-  /// <summary>Field number for the "presetJSONMessage" field.</summary>
-  public const int PresetJSONMessageFieldNumber = 31;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::PresetJSONMessage PresetJSONMessage {
-    get { return typeCase_ == TypeOneofCase.PresetJSONMessage ? (global::PresetJSONMessage) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetJSONMessage;
-    }
-  }
-
-  /// <summary>Field number for the "currentPresetStatus" field.</summary>
-  public const int CurrentPresetStatusFieldNumber = 32;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentPresetStatus CurrentPresetStatus {
-    get { return typeCase_ == TypeOneofCase.CurrentPresetStatus ? (global::CurrentPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "loadPreset" field.</summary>
-  public const int LoadPresetFieldNumber = 33;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LoadPreset LoadPreset {
-    get { return typeCase_ == TypeOneofCase.LoadPreset ? (global::LoadPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LoadPreset;
-    }
-  }
-
-  /// <summary>Field number for the "setDspUnitParameter" field.</summary>
-  public const int SetDspUnitParameterFieldNumber = 34;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SetDspUnitParameter SetDspUnitParameter {
-    get { return typeCase_ == TypeOneofCase.SetDspUnitParameter ? (global::SetDspUnitParameter) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SetDspUnitParameter;
-    }
-  }
-
-  /// <summary>Field number for the "setDspUnitParameterStatus" field.</summary>
-  public const int SetDspUnitParameterStatusFieldNumber = 35;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SetDspUnitParameterStatus SetDspUnitParameterStatus {
-    get { return typeCase_ == TypeOneofCase.SetDspUnitParameterStatus ? (global::SetDspUnitParameterStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SetDspUnitParameterStatus;
-    }
-  }
-
-  /// <summary>Field number for the "dspUnitParameterStatus" field.</summary>
-  public const int DspUnitParameterStatusFieldNumber = 36;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::DspUnitParameterStatus DspUnitParameterStatus {
-    get { return typeCase_ == TypeOneofCase.DspUnitParameterStatus ? (global::DspUnitParameterStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.DspUnitParameterStatus;
-    }
-  }
-
-  /// <summary>Field number for the "currentLoadedPresetIndexStatus" field.</summary>
-  public const int CurrentLoadedPresetIndexStatusFieldNumber = 37;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentLoadedPresetIndexStatus CurrentLoadedPresetIndexStatus {
-    get { return typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus ? (global::CurrentLoadedPresetIndexStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentLoadedPresetIndexStatus;
-    }
-  }
-
-  /// <summary>Field number for the "presetEditedStatus" field.</summary>
-  public const int PresetEditedStatusFieldNumber = 38;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::PresetEditedStatus PresetEditedStatus {
-    get { return typeCase_ == TypeOneofCase.PresetEditedStatus ? (global::PresetEditedStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetEditedStatus;
-    }
-  }
-
-  /// <summary>Field number for the "replaceNode" field.</summary>
-  public const int ReplaceNodeFieldNumber = 39;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ReplaceNode ReplaceNode {
-    get { return typeCase_ == TypeOneofCase.ReplaceNode ? (global::ReplaceNode) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ReplaceNode;
-    }
-  }
-
-  /// <summary>Field number for the "replaceNodeStatus" field.</summary>
-  public const int ReplaceNodeStatusFieldNumber = 40;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ReplaceNodeStatus ReplaceNodeStatus {
-    get { return typeCase_ == TypeOneofCase.ReplaceNodeStatus ? (global::ReplaceNodeStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ReplaceNodeStatus;
-    }
-  }
-
-  /// <summary>Field number for the "shiftPreset" field.</summary>
-  public const int ShiftPresetFieldNumber = 41;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ShiftPreset ShiftPreset {
-    get { return typeCase_ == TypeOneofCase.ShiftPreset ? (global::ShiftPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ShiftPreset;
-    }
-  }
-
-  /// <summary>Field number for the "shiftPresetStatus" field.</summary>
-  public const int ShiftPresetStatusFieldNumber = 42;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ShiftPresetStatus ShiftPresetStatus {
-    get { return typeCase_ == TypeOneofCase.ShiftPresetStatus ? (global::ShiftPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ShiftPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "swapPreset" field.</summary>
-  public const int SwapPresetFieldNumber = 43;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SwapPreset SwapPreset {
-    get { return typeCase_ == TypeOneofCase.SwapPreset ? (global::SwapPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SwapPreset;
-    }
-  }
-
-  /// <summary>Field number for the "swapPresetStatus" field.</summary>
-  public const int SwapPresetStatusFieldNumber = 44;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SwapPresetStatus SwapPresetStatus {
-    get { return typeCase_ == TypeOneofCase.SwapPresetStatus ? (global::SwapPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SwapPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "currentPresetSet" field.</summary>
-  public const int CurrentPresetSetFieldNumber = 45;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentPresetSet CurrentPresetSet {
-    get { return typeCase_ == TypeOneofCase.CurrentPresetSet ? (global::CurrentPresetSet) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetSet;
-    }
-  }
-
-  /// <summary>Field number for the "currentLoadedPresetIndexBypassStatus" field.</summary>
-  public const int CurrentLoadedPresetIndexBypassStatusFieldNumber = 46;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentLoadedPresetIndexBypassStatus CurrentLoadedPresetIndexBypassStatus {
-    get { return typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus ? (global::CurrentLoadedPresetIndexBypassStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentLoadedPresetIndexBypassStatus;
-    }
-  }
-
-  /// <summary>Field number for the "currentDisplayedPresetIndexStatus" field.</summary>
-  public const int CurrentDisplayedPresetIndexStatusFieldNumber = 47;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentDisplayedPresetIndexStatus CurrentDisplayedPresetIndexStatus {
-    get { return typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus ? (global::CurrentDisplayedPresetIndexStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentDisplayedPresetIndexStatus;
-    }
-  }
-
-  /// <summary>Field number for the "presetSavedStatus" field.</summary>
-  public const int PresetSavedStatusFieldNumber = 50;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::PresetSavedStatus PresetSavedStatus {
-    get { return typeCase_ == TypeOneofCase.PresetSavedStatus ? (global::PresetSavedStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.PresetSavedStatus;
-    }
-  }
-
-  /// <summary>Field number for the "clearPreset" field.</summary>
-  public const int ClearPresetFieldNumber = 51;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ClearPreset ClearPreset {
-    get { return typeCase_ == TypeOneofCase.ClearPreset ? (global::ClearPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ClearPreset;
-    }
-  }
-
-  /// <summary>Field number for the "clearPresetStatus" field.</summary>
-  public const int ClearPresetStatusFieldNumber = 52;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ClearPresetStatus ClearPresetStatus {
-    get { return typeCase_ == TypeOneofCase.ClearPresetStatus ? (global::ClearPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ClearPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "saveCurrentPreset" field.</summary>
-  public const int SaveCurrentPresetFieldNumber = 53;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SaveCurrentPreset SaveCurrentPreset {
-    get { return typeCase_ == TypeOneofCase.SaveCurrentPreset ? (global::SaveCurrentPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SaveCurrentPreset;
-    }
-  }
-
-  /// <summary>Field number for the "saveCurrentPresetTo" field.</summary>
-  public const int SaveCurrentPresetToFieldNumber = 54;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SaveCurrentPresetTo SaveCurrentPresetTo {
-    get { return typeCase_ == TypeOneofCase.SaveCurrentPresetTo ? (global::SaveCurrentPresetTo) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SaveCurrentPresetTo;
-    }
-  }
-
-  /// <summary>Field number for the "savePresetAs" field.</summary>
-  public const int SavePresetAsFieldNumber = 55;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::SavePresetAs SavePresetAs {
-    get { return typeCase_ == TypeOneofCase.SavePresetAs ? (global::SavePresetAs) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.SavePresetAs;
-    }
-  }
-
-  /// <summary>Field number for the "newPresetSavedStatus" field.</summary>
-  public const int NewPresetSavedStatusFieldNumber = 56;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::NewPresetSavedStatus NewPresetSavedStatus {
-    get { return typeCase_ == TypeOneofCase.NewPresetSavedStatus ? (global::NewPresetSavedStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.NewPresetSavedStatus;
-    }
-  }
-
-  /// <summary>Field number for the "renamePresetAt" field.</summary>
-  public const int RenamePresetAtFieldNumber = 57;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::RenamePresetAt RenamePresetAt {
-    get { return typeCase_ == TypeOneofCase.RenamePresetAt ? (global::RenamePresetAt) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.RenamePresetAt;
-    }
-  }
-
-  /// <summary>Field number for the "auditionPreset" field.</summary>
-  public const int AuditionPresetFieldNumber = 58;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::AuditionPreset AuditionPreset {
-    get { return typeCase_ == TypeOneofCase.AuditionPreset ? (global::AuditionPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionPreset;
-    }
-  }
-
-  /// <summary>Field number for the "auditionPresetStatus" field.</summary>
-  public const int AuditionPresetStatusFieldNumber = 59;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::AuditionPresetStatus AuditionPresetStatus {
-    get { return typeCase_ == TypeOneofCase.AuditionPresetStatus ? (global::AuditionPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "exitAuditionPreset" field.</summary>
-  public const int ExitAuditionPresetFieldNumber = 60;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ExitAuditionPreset ExitAuditionPreset {
-    get { return typeCase_ == TypeOneofCase.ExitAuditionPreset ? (global::ExitAuditionPreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ExitAuditionPreset;
-    }
-  }
-
-  /// <summary>Field number for the "exitAuditionPresetStatus" field.</summary>
-  public const int ExitAuditionPresetStatusFieldNumber = 61;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ExitAuditionPresetStatus ExitAuditionPresetStatus {
-    get { return typeCase_ == TypeOneofCase.ExitAuditionPresetStatus ? (global::ExitAuditionPresetStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ExitAuditionPresetStatus;
-    }
-  }
-
-  /// <summary>Field number for the "auditionStateRequest" field.</summary>
-  public const int AuditionStateRequestFieldNumber = 62;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::AuditionStateRequest AuditionStateRequest {
-    get { return typeCase_ == TypeOneofCase.AuditionStateRequest ? (global::AuditionStateRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionStateRequest;
-    }
-  }
-
-  /// <summary>Field number for the "auditionStateStatus" field.</summary>
-  public const int AuditionStateStatusFieldNumber = 63;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::AuditionStateStatus AuditionStateStatus {
-    get { return typeCase_ == TypeOneofCase.AuditionStateStatus ? (global::AuditionStateStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.AuditionStateStatus;
-    }
-  }
-
-  /// <summary>Field number for the "productIdentificationStatus" field.</summary>
-  public const int ProductIdentificationStatusFieldNumber = 100;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ProductIdentificationStatus ProductIdentificationStatus {
-    get { return typeCase_ == TypeOneofCase.ProductIdentificationStatus ? (global::ProductIdentificationStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProductIdentificationStatus;
-    }
-  }
-
-  /// <summary>Field number for the "productIdentificationRequest" field.</summary>
-  public const int ProductIdentificationRequestFieldNumber = 101;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ProductIdentificationRequest ProductIdentificationRequest {
-    get { return typeCase_ == TypeOneofCase.ProductIdentificationRequest ? (global::ProductIdentificationRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ProductIdentificationRequest;
-    }
-  }
-
-  /// <summary>Field number for the "firmwareVersionRequest" field.</summary>
-  public const int FirmwareVersionRequestFieldNumber = 102;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::FirmwareVersionRequest FirmwareVersionRequest {
-    get { return typeCase_ == TypeOneofCase.FirmwareVersionRequest ? (global::FirmwareVersionRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FirmwareVersionRequest;
-    }
-  }
-
-  /// <summary>Field number for the "firmwareVersionStatus" field.</summary>
-  public const int FirmwareVersionStatusFieldNumber = 103;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::FirmwareVersionStatus FirmwareVersionStatus {
-    get { return typeCase_ == TypeOneofCase.FirmwareVersionStatus ? (global::FirmwareVersionStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.FirmwareVersionStatus;
-    }
-  }
-
-  /// <summary>Field number for the "currentPresetRequest" field.</summary>
-  public const int CurrentPresetRequestFieldNumber = 104;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::CurrentPresetRequest CurrentPresetRequest {
-    get { return typeCase_ == TypeOneofCase.CurrentPresetRequest ? (global::CurrentPresetRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.CurrentPresetRequest;
-    }
-  }
-
-  /// <summary>Field number for the "retrievePreset" field.</summary>
-  public const int RetrievePresetFieldNumber = 105;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::RetrievePreset RetrievePreset {
-    get { return typeCase_ == TypeOneofCase.RetrievePreset ? (global::RetrievePreset) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.RetrievePreset;
-    }
-  }
-
-  /// <summary>Field number for the "usbGainRequest" field.</summary>
-  public const int UsbGainRequestFieldNumber = 106;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::UsbGainRequest UsbGainRequest {
-    get { return typeCase_ == TypeOneofCase.UsbGainRequest ? (global::UsbGainRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainRequest;
-    }
-  }
-
-  /// <summary>Field number for the "usbGainStatus" field.</summary>
-  public const int UsbGainStatusFieldNumber = 107;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::UsbGainStatus UsbGainStatus {
-    get { return typeCase_ == TypeOneofCase.UsbGainStatus ? (global::UsbGainStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainStatus;
-    }
-  }
-
-  /// <summary>Field number for the "qASlotsRequest" field.</summary>
-  public const int QASlotsRequestFieldNumber = 108;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::QASlotsRequest QASlotsRequest {
-    get { return typeCase_ == TypeOneofCase.QASlotsRequest ? (global::QASlotsRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsRequest;
-    }
-  }
-
-  /// <summary>Field number for the "qASlotsStatus" field.</summary>
-  public const int QASlotsStatusFieldNumber = 109;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::QASlotsStatus QASlotsStatus {
-    get { return typeCase_ == TypeOneofCase.QASlotsStatus ? (global::QASlotsStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsStatus;
-    }
-  }
-
-  /// <summary>Field number for the "lineOutGainRequest" field.</summary>
-  public const int LineOutGainRequestFieldNumber = 110;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LineOutGainRequest LineOutGainRequest {
-    get { return typeCase_ == TypeOneofCase.LineOutGainRequest ? (global::LineOutGainRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainRequest;
-    }
-  }
-
-  /// <summary>Field number for the "lineOutGainStatus" field.</summary>
-  public const int LineOutGainStatusFieldNumber = 111;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LineOutGainStatus LineOutGainStatus {
-    get { return typeCase_ == TypeOneofCase.LineOutGainStatus ? (global::LineOutGainStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainStatus;
-    }
-  }
-
-  /// <summary>Field number for the "modalStatusMessage" field.</summary>
-  public const int ModalStatusMessageFieldNumber = 113;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ModalStatusMessage ModalStatusMessage {
-    get { return typeCase_ == TypeOneofCase.ModalStatusMessage ? (global::ModalStatusMessage) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ModalStatusMessage;
-    }
-  }
-
-  /// <summary>Field number for the "usbGainSet" field.</summary>
-  public const int UsbGainSetFieldNumber = 114;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::UsbGainSet UsbGainSet {
-    get { return typeCase_ == TypeOneofCase.UsbGainSet ? (global::UsbGainSet) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UsbGainSet;
-    }
-  }
-
-  /// <summary>Field number for the "lineOutGainSet" field.</summary>
-  public const int LineOutGainSetFieldNumber = 115;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::LineOutGainSet LineOutGainSet {
-    get { return typeCase_ == TypeOneofCase.LineOutGainSet ? (global::LineOutGainSet) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.LineOutGainSet;
-    }
-  }
-
-  /// <summary>Field number for the "qASlotsSet" field.</summary>
-  public const int QASlotsSetFieldNumber = 116;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::QASlotsSet QASlotsSet {
-    get { return typeCase_ == TypeOneofCase.QASlotsSet ? (global::QASlotsSet) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.QASlotsSet;
-    }
-  }
-
-  /// <summary>Field number for the "unsupportedMessageStatus" field.</summary>
-  public const int UnsupportedMessageStatusFieldNumber = 200;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::UnsupportedMessageStatus UnsupportedMessageStatus {
-    get { return typeCase_ == TypeOneofCase.UnsupportedMessageStatus ? (global::UnsupportedMessageStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.UnsupportedMessageStatus;
-    }
-  }
-
-  /// <summary>Field number for the "heartbeat" field.</summary>
-  public const int HeartbeatFieldNumber = 201;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::Heartbeat Heartbeat {
-    get { return typeCase_ == TypeOneofCase.Heartbeat ? (global::Heartbeat) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Heartbeat;
-    }
-  }
-
-  /// <summary>Field number for the "connectionStatusRequest" field.</summary>
-  public const int ConnectionStatusRequestFieldNumber = 202;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ConnectionStatusRequest ConnectionStatusRequest {
-    get { return typeCase_ == TypeOneofCase.ConnectionStatusRequest ? (global::ConnectionStatusRequest) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ConnectionStatusRequest;
-    }
-  }
-
-  /// <summary>Field number for the "connectionStatus" field.</summary>
-  public const int ConnectionStatusFieldNumber = 203;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::ConnectionStatus ConnectionStatus {
-    get { return typeCase_ == TypeOneofCase.ConnectionStatus ? (global::ConnectionStatus) type_ : null; }
-    set {
-      type_ = value;
-      typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.ConnectionStatus;
-    }
-  }
-
-  private object type_;
-  /// <summary>Enum of possible cases for the "type" oneof.</summary>
-  public enum TypeOneofCase {
-    None = 0,
-    IndexPot = 2,
-    IndexButton = 3,
-    IndexEncoder = 4,
-    ActiveDisplay = 5,
-    ProcessorUtilizationRequest = 6,
-    ProcessorUtilization = 7,
-    MemoryUsageRequest = 8,
-    MemoryUsageStatus = 9,
-    PresetJSONMessageRequestLT = 10,
-    FrameBufferMessageRequest = 11,
-    FrameBufferMessage = 12,
-    Lt4FootswitchModeRequest = 13,
-    Lt4FootswitchModeStatus = 14,
-    LoadPresetTestSuite = 15,
-    LoopbackTest = 30,
-    PresetJSONMessage = 31,
-    CurrentPresetStatus = 32,
-    LoadPreset = 33,
-    SetDspUnitParameter = 34,
-    SetDspUnitParameterStatus = 35,
-    DspUnitParameterStatus = 36,
-    CurrentLoadedPresetIndexStatus = 37,
-    PresetEditedStatus = 38,
-    ReplaceNode = 39,
-    ReplaceNodeStatus = 40,
-    ShiftPreset = 41,
-    ShiftPresetStatus = 42,
-    SwapPreset = 43,
-    SwapPresetStatus = 44,
-    CurrentPresetSet = 45,
-    CurrentLoadedPresetIndexBypassStatus = 46,
-    CurrentDisplayedPresetIndexStatus = 47,
-    PresetSavedStatus = 50,
-    ClearPreset = 51,
-    ClearPresetStatus = 52,
-    SaveCurrentPreset = 53,
-    SaveCurrentPresetTo = 54,
-    SavePresetAs = 55,
-    NewPresetSavedStatus = 56,
-    RenamePresetAt = 57,
-    AuditionPreset = 58,
-    AuditionPresetStatus = 59,
-    ExitAuditionPreset = 60,
-    ExitAuditionPresetStatus = 61,
-    AuditionStateRequest = 62,
-    AuditionStateStatus = 63,
-    ProductIdentificationStatus = 100,
-    ProductIdentificationRequest = 101,
-    FirmwareVersionRequest = 102,
-    FirmwareVersionStatus = 103,
-    CurrentPresetRequest = 104,
-    RetrievePreset = 105,
-    UsbGainRequest = 106,
-    UsbGainStatus = 107,
-    QASlotsRequest = 108,
-    QASlotsStatus = 109,
-    LineOutGainRequest = 110,
-    LineOutGainStatus = 111,
-    ModalStatusMessage = 113,
-    UsbGainSet = 114,
-    LineOutGainSet = 115,
-    QASlotsSet = 116,
-    UnsupportedMessageStatus = 200,
-    Heartbeat = 201,
-    ConnectionStatusRequest = 202,
-    ConnectionStatus = 203,
-  }
-  private TypeOneofCase typeCase_ = TypeOneofCase.None;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public TypeOneofCase TypeCase {
-    get { return typeCase_; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void ClearType() {
-    typeCase_ = TypeOneofCase.None;
-    type_ = null;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override bool Equals(object other) {
-    return Equals(other as FenderMessageLT);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public bool Equals(FenderMessageLT other) {
-    if (ReferenceEquals(other, null)) {
-      return false;
-    }
-    if (ReferenceEquals(other, this)) {
-      return true;
-    }
-    if (ResponseType != other.ResponseType) return false;
-    if (!object.Equals(IndexPot, other.IndexPot)) return false;
-    if (!object.Equals(IndexButton, other.IndexButton)) return false;
-    if (!object.Equals(IndexEncoder, other.IndexEncoder)) return false;
-    if (!object.Equals(ActiveDisplay, other.ActiveDisplay)) return false;
-    if (!object.Equals(ProcessorUtilizationRequest, other.ProcessorUtilizationRequest)) return false;
-    if (!object.Equals(ProcessorUtilization, other.ProcessorUtilization)) return false;
-    if (!object.Equals(MemoryUsageRequest, other.MemoryUsageRequest)) return false;
-    if (!object.Equals(MemoryUsageStatus, other.MemoryUsageStatus)) return false;
-    if (!object.Equals(PresetJSONMessageRequestLT, other.PresetJSONMessageRequestLT)) return false;
-    if (!object.Equals(FrameBufferMessageRequest, other.FrameBufferMessageRequest)) return false;
-    if (!object.Equals(FrameBufferMessage, other.FrameBufferMessage)) return false;
-    if (!object.Equals(Lt4FootswitchModeRequest, other.Lt4FootswitchModeRequest)) return false;
-    if (!object.Equals(Lt4FootswitchModeStatus, other.Lt4FootswitchModeStatus)) return false;
-    if (!object.Equals(LoadPresetTestSuite, other.LoadPresetTestSuite)) return false;
-    if (!object.Equals(LoopbackTest, other.LoopbackTest)) return false;
-    if (!object.Equals(PresetJSONMessage, other.PresetJSONMessage)) return false;
-    if (!object.Equals(CurrentPresetStatus, other.CurrentPresetStatus)) return false;
-    if (!object.Equals(LoadPreset, other.LoadPreset)) return false;
-    if (!object.Equals(SetDspUnitParameter, other.SetDspUnitParameter)) return false;
-    if (!object.Equals(SetDspUnitParameterStatus, other.SetDspUnitParameterStatus)) return false;
-    if (!object.Equals(DspUnitParameterStatus, other.DspUnitParameterStatus)) return false;
-    if (!object.Equals(CurrentLoadedPresetIndexStatus, other.CurrentLoadedPresetIndexStatus)) return false;
-    if (!object.Equals(PresetEditedStatus, other.PresetEditedStatus)) return false;
-    if (!object.Equals(ReplaceNode, other.ReplaceNode)) return false;
-    if (!object.Equals(ReplaceNodeStatus, other.ReplaceNodeStatus)) return false;
-    if (!object.Equals(ShiftPreset, other.ShiftPreset)) return false;
-    if (!object.Equals(ShiftPresetStatus, other.ShiftPresetStatus)) return false;
-    if (!object.Equals(SwapPreset, other.SwapPreset)) return false;
-    if (!object.Equals(SwapPresetStatus, other.SwapPresetStatus)) return false;
-    if (!object.Equals(CurrentPresetSet, other.CurrentPresetSet)) return false;
-    if (!object.Equals(CurrentLoadedPresetIndexBypassStatus, other.CurrentLoadedPresetIndexBypassStatus)) return false;
-    if (!object.Equals(CurrentDisplayedPresetIndexStatus, other.CurrentDisplayedPresetIndexStatus)) return false;
-    if (!object.Equals(PresetSavedStatus, other.PresetSavedStatus)) return false;
-    if (!object.Equals(ClearPreset, other.ClearPreset)) return false;
-    if (!object.Equals(ClearPresetStatus, other.ClearPresetStatus)) return false;
-    if (!object.Equals(SaveCurrentPreset, other.SaveCurrentPreset)) return false;
-    if (!object.Equals(SaveCurrentPresetTo, other.SaveCurrentPresetTo)) return false;
-    if (!object.Equals(SavePresetAs, other.SavePresetAs)) return false;
-    if (!object.Equals(NewPresetSavedStatus, other.NewPresetSavedStatus)) return false;
-    if (!object.Equals(RenamePresetAt, other.RenamePresetAt)) return false;
-    if (!object.Equals(AuditionPreset, other.AuditionPreset)) return false;
-    if (!object.Equals(AuditionPresetStatus, other.AuditionPresetStatus)) return false;
-    if (!object.Equals(ExitAuditionPreset, other.ExitAuditionPreset)) return false;
-    if (!object.Equals(ExitAuditionPresetStatus, other.ExitAuditionPresetStatus)) return false;
-    if (!object.Equals(AuditionStateRequest, other.AuditionStateRequest)) return false;
-    if (!object.Equals(AuditionStateStatus, other.AuditionStateStatus)) return false;
-    if (!object.Equals(ProductIdentificationStatus, other.ProductIdentificationStatus)) return false;
-    if (!object.Equals(ProductIdentificationRequest, other.ProductIdentificationRequest)) return false;
-    if (!object.Equals(FirmwareVersionRequest, other.FirmwareVersionRequest)) return false;
-    if (!object.Equals(FirmwareVersionStatus, other.FirmwareVersionStatus)) return false;
-    if (!object.Equals(CurrentPresetRequest, other.CurrentPresetRequest)) return false;
-    if (!object.Equals(RetrievePreset, other.RetrievePreset)) return false;
-    if (!object.Equals(UsbGainRequest, other.UsbGainRequest)) return false;
-    if (!object.Equals(UsbGainStatus, other.UsbGainStatus)) return false;
-    if (!object.Equals(QASlotsRequest, other.QASlotsRequest)) return false;
-    if (!object.Equals(QASlotsStatus, other.QASlotsStatus)) return false;
-    if (!object.Equals(LineOutGainRequest, other.LineOutGainRequest)) return false;
-    if (!object.Equals(LineOutGainStatus, other.LineOutGainStatus)) return false;
-    if (!object.Equals(ModalStatusMessage, other.ModalStatusMessage)) return false;
-    if (!object.Equals(UsbGainSet, other.UsbGainSet)) return false;
-    if (!object.Equals(LineOutGainSet, other.LineOutGainSet)) return false;
-    if (!object.Equals(QASlotsSet, other.QASlotsSet)) return false;
-    if (!object.Equals(UnsupportedMessageStatus, other.UnsupportedMessageStatus)) return false;
-    if (!object.Equals(Heartbeat, other.Heartbeat)) return false;
-    if (!object.Equals(ConnectionStatusRequest, other.ConnectionStatusRequest)) return false;
-    if (!object.Equals(ConnectionStatus, other.ConnectionStatus)) return false;
-    if (TypeCase != other.TypeCase) return false;
-    return Equals(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override int GetHashCode() {
-    int hash = 1;
-    if (HasResponseType) hash ^= ResponseType.GetHashCode();
-    if (typeCase_ == TypeOneofCase.IndexPot) hash ^= IndexPot.GetHashCode();
-    if (typeCase_ == TypeOneofCase.IndexButton) hash ^= IndexButton.GetHashCode();
-    if (typeCase_ == TypeOneofCase.IndexEncoder) hash ^= IndexEncoder.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ActiveDisplay) hash ^= ActiveDisplay.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) hash ^= ProcessorUtilizationRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ProcessorUtilization) hash ^= ProcessorUtilization.GetHashCode();
-    if (typeCase_ == TypeOneofCase.MemoryUsageRequest) hash ^= MemoryUsageRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.MemoryUsageStatus) hash ^= MemoryUsageStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) hash ^= PresetJSONMessageRequestLT.GetHashCode();
-    if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) hash ^= FrameBufferMessageRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.FrameBufferMessage) hash ^= FrameBufferMessage.GetHashCode();
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) hash ^= Lt4FootswitchModeRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) hash ^= Lt4FootswitchModeStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) hash ^= LoadPresetTestSuite.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LoopbackTest) hash ^= LoopbackTest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.PresetJSONMessage) hash ^= PresetJSONMessage.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentPresetStatus) hash ^= CurrentPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LoadPreset) hash ^= LoadPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameter) hash ^= SetDspUnitParameter.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) hash ^= SetDspUnitParameterStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) hash ^= DspUnitParameterStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) hash ^= CurrentLoadedPresetIndexStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.PresetEditedStatus) hash ^= PresetEditedStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ReplaceNode) hash ^= ReplaceNode.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) hash ^= ReplaceNodeStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ShiftPreset) hash ^= ShiftPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ShiftPresetStatus) hash ^= ShiftPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SwapPreset) hash ^= SwapPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SwapPresetStatus) hash ^= SwapPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentPresetSet) hash ^= CurrentPresetSet.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) hash ^= CurrentLoadedPresetIndexBypassStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) hash ^= CurrentDisplayedPresetIndexStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.PresetSavedStatus) hash ^= PresetSavedStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ClearPreset) hash ^= ClearPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ClearPresetStatus) hash ^= ClearPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SaveCurrentPreset) hash ^= SaveCurrentPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) hash ^= SaveCurrentPresetTo.GetHashCode();
-    if (typeCase_ == TypeOneofCase.SavePresetAs) hash ^= SavePresetAs.GetHashCode();
-    if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) hash ^= NewPresetSavedStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.RenamePresetAt) hash ^= RenamePresetAt.GetHashCode();
-    if (typeCase_ == TypeOneofCase.AuditionPreset) hash ^= AuditionPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.AuditionPresetStatus) hash ^= AuditionPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ExitAuditionPreset) hash ^= ExitAuditionPreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) hash ^= ExitAuditionPresetStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.AuditionStateRequest) hash ^= AuditionStateRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.AuditionStateStatus) hash ^= AuditionStateStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) hash ^= ProductIdentificationStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) hash ^= ProductIdentificationRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) hash ^= FirmwareVersionRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) hash ^= FirmwareVersionStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.CurrentPresetRequest) hash ^= CurrentPresetRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.RetrievePreset) hash ^= RetrievePreset.GetHashCode();
-    if (typeCase_ == TypeOneofCase.UsbGainRequest) hash ^= UsbGainRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.UsbGainStatus) hash ^= UsbGainStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.QASlotsRequest) hash ^= QASlotsRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.QASlotsStatus) hash ^= QASlotsStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LineOutGainRequest) hash ^= LineOutGainRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LineOutGainStatus) hash ^= LineOutGainStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ModalStatusMessage) hash ^= ModalStatusMessage.GetHashCode();
-    if (typeCase_ == TypeOneofCase.UsbGainSet) hash ^= UsbGainSet.GetHashCode();
-    if (typeCase_ == TypeOneofCase.LineOutGainSet) hash ^= LineOutGainSet.GetHashCode();
-    if (typeCase_ == TypeOneofCase.QASlotsSet) hash ^= QASlotsSet.GetHashCode();
-    if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) hash ^= UnsupportedMessageStatus.GetHashCode();
-    if (typeCase_ == TypeOneofCase.Heartbeat) hash ^= Heartbeat.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) hash ^= ConnectionStatusRequest.GetHashCode();
-    if (typeCase_ == TypeOneofCase.ConnectionStatus) hash ^= ConnectionStatus.GetHashCode();
-    hash ^= (int) typeCase_;
-    if (_unknownFields != null) {
-      hash ^= _unknownFields.GetHashCode();
-    }
-    return hash;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public override string ToString() {
-    return pb::JsonFormatter.ToDiagnosticString(this);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void WriteTo(pb::CodedOutputStream output) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    output.WriteRawMessage(this);
-  #else
-    if (HasResponseType) {
-      output.WriteRawTag(8);
-      output.WriteEnum((int) ResponseType);
-    }
-    if (typeCase_ == TypeOneofCase.IndexPot) {
-      output.WriteRawTag(18);
-      output.WriteMessage(IndexPot);
-    }
-    if (typeCase_ == TypeOneofCase.IndexButton) {
-      output.WriteRawTag(26);
-      output.WriteMessage(IndexButton);
-    }
-    if (typeCase_ == TypeOneofCase.IndexEncoder) {
-      output.WriteRawTag(34);
-      output.WriteMessage(IndexEncoder);
-    }
-    if (typeCase_ == TypeOneofCase.ActiveDisplay) {
-      output.WriteRawTag(42);
-      output.WriteMessage(ActiveDisplay);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
-      output.WriteRawTag(50);
-      output.WriteMessage(ProcessorUtilizationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
-      output.WriteRawTag(58);
-      output.WriteMessage(ProcessorUtilization);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
-      output.WriteRawTag(66);
-      output.WriteMessage(MemoryUsageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
-      output.WriteRawTag(74);
-      output.WriteMessage(MemoryUsageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
-      output.WriteRawTag(82);
-      output.WriteMessage(PresetJSONMessageRequestLT);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
-      output.WriteRawTag(90);
-      output.WriteMessage(FrameBufferMessageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
-      output.WriteRawTag(98);
-      output.WriteMessage(FrameBufferMessage);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
-      output.WriteRawTag(106);
-      output.WriteMessage(Lt4FootswitchModeRequest);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
-      output.WriteRawTag(114);
-      output.WriteMessage(Lt4FootswitchModeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
-      output.WriteRawTag(122);
-      output.WriteMessage(LoadPresetTestSuite);
-    }
-    if (typeCase_ == TypeOneofCase.LoopbackTest) {
-      output.WriteRawTag(242, 1);
-      output.WriteMessage(LoopbackTest);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
-      output.WriteRawTag(250, 1);
-      output.WriteMessage(PresetJSONMessage);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
-      output.WriteRawTag(130, 2);
-      output.WriteMessage(CurrentPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPreset) {
-      output.WriteRawTag(138, 2);
-      output.WriteMessage(LoadPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
-      output.WriteRawTag(146, 2);
-      output.WriteMessage(SetDspUnitParameter);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
-      output.WriteRawTag(154, 2);
-      output.WriteMessage(SetDspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
-      output.WriteRawTag(162, 2);
-      output.WriteMessage(DspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
-      output.WriteRawTag(170, 2);
-      output.WriteMessage(CurrentLoadedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
-      output.WriteRawTag(178, 2);
-      output.WriteMessage(PresetEditedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNode) {
-      output.WriteRawTag(186, 2);
-      output.WriteMessage(ReplaceNode);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
-      output.WriteRawTag(194, 2);
-      output.WriteMessage(ReplaceNodeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPreset) {
-      output.WriteRawTag(202, 2);
-      output.WriteMessage(ShiftPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
-      output.WriteRawTag(210, 2);
-      output.WriteMessage(ShiftPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPreset) {
-      output.WriteRawTag(218, 2);
-      output.WriteMessage(SwapPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
-      output.WriteRawTag(226, 2);
-      output.WriteMessage(SwapPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
-      output.WriteRawTag(234, 2);
-      output.WriteMessage(CurrentPresetSet);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
-      output.WriteRawTag(242, 2);
-      output.WriteMessage(CurrentLoadedPresetIndexBypassStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
-      output.WriteRawTag(250, 2);
-      output.WriteMessage(CurrentDisplayedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
-      output.WriteRawTag(146, 3);
-      output.WriteMessage(PresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPreset) {
-      output.WriteRawTag(154, 3);
-      output.WriteMessage(ClearPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
-      output.WriteRawTag(162, 3);
-      output.WriteMessage(ClearPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
-      output.WriteRawTag(170, 3);
-      output.WriteMessage(SaveCurrentPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
-      output.WriteRawTag(178, 3);
-      output.WriteMessage(SaveCurrentPresetTo);
-    }
-    if (typeCase_ == TypeOneofCase.SavePresetAs) {
-      output.WriteRawTag(186, 3);
-      output.WriteMessage(SavePresetAs);
-    }
-    if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
-      output.WriteRawTag(194, 3);
-      output.WriteMessage(NewPresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.RenamePresetAt) {
-      output.WriteRawTag(202, 3);
-      output.WriteMessage(RenamePresetAt);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPreset) {
-      output.WriteRawTag(210, 3);
-      output.WriteMessage(AuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
-      output.WriteRawTag(218, 3);
-      output.WriteMessage(AuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
-      output.WriteRawTag(226, 3);
-      output.WriteMessage(ExitAuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
-      output.WriteRawTag(234, 3);
-      output.WriteMessage(ExitAuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
-      output.WriteRawTag(242, 3);
-      output.WriteMessage(AuditionStateRequest);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
-      output.WriteRawTag(250, 3);
-      output.WriteMessage(AuditionStateStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
-      output.WriteRawTag(162, 6);
-      output.WriteMessage(ProductIdentificationStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
-      output.WriteRawTag(170, 6);
-      output.WriteMessage(ProductIdentificationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
-      output.WriteRawTag(178, 6);
-      output.WriteMessage(FirmwareVersionRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
-      output.WriteRawTag(186, 6);
-      output.WriteMessage(FirmwareVersionStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
-      output.WriteRawTag(194, 6);
-      output.WriteMessage(CurrentPresetRequest);
-    }
-    if (typeCase_ == TypeOneofCase.RetrievePreset) {
-      output.WriteRawTag(202, 6);
-      output.WriteMessage(RetrievePreset);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainRequest) {
-      output.WriteRawTag(210, 6);
-      output.WriteMessage(UsbGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainStatus) {
-      output.WriteRawTag(218, 6);
-      output.WriteMessage(UsbGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsRequest) {
-      output.WriteRawTag(226, 6);
-      output.WriteMessage(QASlotsRequest);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsStatus) {
-      output.WriteRawTag(234, 6);
-      output.WriteMessage(QASlotsStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
-      output.WriteRawTag(242, 6);
-      output.WriteMessage(LineOutGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
-      output.WriteRawTag(250, 6);
-      output.WriteMessage(LineOutGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
-      output.WriteRawTag(138, 7);
-      output.WriteMessage(ModalStatusMessage);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainSet) {
-      output.WriteRawTag(146, 7);
-      output.WriteMessage(UsbGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainSet) {
-      output.WriteRawTag(154, 7);
-      output.WriteMessage(LineOutGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsSet) {
-      output.WriteRawTag(162, 7);
-      output.WriteMessage(QASlotsSet);
-    }
-    if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
-      output.WriteRawTag(194, 12);
-      output.WriteMessage(UnsupportedMessageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.Heartbeat) {
-      output.WriteRawTag(202, 12);
-      output.WriteMessage(Heartbeat);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
-      output.WriteRawTag(210, 12);
-      output.WriteMessage(ConnectionStatusRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatus) {
-      output.WriteRawTag(218, 12);
-      output.WriteMessage(ConnectionStatus);
-    }
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(output);
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (HasResponseType) {
-      output.WriteRawTag(8);
-      output.WriteEnum((int) ResponseType);
-    }
-    if (typeCase_ == TypeOneofCase.IndexPot) {
-      output.WriteRawTag(18);
-      output.WriteMessage(IndexPot);
-    }
-    if (typeCase_ == TypeOneofCase.IndexButton) {
-      output.WriteRawTag(26);
-      output.WriteMessage(IndexButton);
-    }
-    if (typeCase_ == TypeOneofCase.IndexEncoder) {
-      output.WriteRawTag(34);
-      output.WriteMessage(IndexEncoder);
-    }
-    if (typeCase_ == TypeOneofCase.ActiveDisplay) {
-      output.WriteRawTag(42);
-      output.WriteMessage(ActiveDisplay);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
-      output.WriteRawTag(50);
-      output.WriteMessage(ProcessorUtilizationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
-      output.WriteRawTag(58);
-      output.WriteMessage(ProcessorUtilization);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
-      output.WriteRawTag(66);
-      output.WriteMessage(MemoryUsageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
-      output.WriteRawTag(74);
-      output.WriteMessage(MemoryUsageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
-      output.WriteRawTag(82);
-      output.WriteMessage(PresetJSONMessageRequestLT);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
-      output.WriteRawTag(90);
-      output.WriteMessage(FrameBufferMessageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
-      output.WriteRawTag(98);
-      output.WriteMessage(FrameBufferMessage);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
-      output.WriteRawTag(106);
-      output.WriteMessage(Lt4FootswitchModeRequest);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
-      output.WriteRawTag(114);
-      output.WriteMessage(Lt4FootswitchModeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
-      output.WriteRawTag(122);
-      output.WriteMessage(LoadPresetTestSuite);
-    }
-    if (typeCase_ == TypeOneofCase.LoopbackTest) {
-      output.WriteRawTag(242, 1);
-      output.WriteMessage(LoopbackTest);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
-      output.WriteRawTag(250, 1);
-      output.WriteMessage(PresetJSONMessage);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
-      output.WriteRawTag(130, 2);
-      output.WriteMessage(CurrentPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPreset) {
-      output.WriteRawTag(138, 2);
-      output.WriteMessage(LoadPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
-      output.WriteRawTag(146, 2);
-      output.WriteMessage(SetDspUnitParameter);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
-      output.WriteRawTag(154, 2);
-      output.WriteMessage(SetDspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
-      output.WriteRawTag(162, 2);
-      output.WriteMessage(DspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
-      output.WriteRawTag(170, 2);
-      output.WriteMessage(CurrentLoadedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
-      output.WriteRawTag(178, 2);
-      output.WriteMessage(PresetEditedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNode) {
-      output.WriteRawTag(186, 2);
-      output.WriteMessage(ReplaceNode);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
-      output.WriteRawTag(194, 2);
-      output.WriteMessage(ReplaceNodeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPreset) {
-      output.WriteRawTag(202, 2);
-      output.WriteMessage(ShiftPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
-      output.WriteRawTag(210, 2);
-      output.WriteMessage(ShiftPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPreset) {
-      output.WriteRawTag(218, 2);
-      output.WriteMessage(SwapPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
-      output.WriteRawTag(226, 2);
-      output.WriteMessage(SwapPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
-      output.WriteRawTag(234, 2);
-      output.WriteMessage(CurrentPresetSet);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
-      output.WriteRawTag(242, 2);
-      output.WriteMessage(CurrentLoadedPresetIndexBypassStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
-      output.WriteRawTag(250, 2);
-      output.WriteMessage(CurrentDisplayedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
-      output.WriteRawTag(146, 3);
-      output.WriteMessage(PresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPreset) {
-      output.WriteRawTag(154, 3);
-      output.WriteMessage(ClearPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
-      output.WriteRawTag(162, 3);
-      output.WriteMessage(ClearPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
-      output.WriteRawTag(170, 3);
-      output.WriteMessage(SaveCurrentPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
-      output.WriteRawTag(178, 3);
-      output.WriteMessage(SaveCurrentPresetTo);
-    }
-    if (typeCase_ == TypeOneofCase.SavePresetAs) {
-      output.WriteRawTag(186, 3);
-      output.WriteMessage(SavePresetAs);
-    }
-    if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
-      output.WriteRawTag(194, 3);
-      output.WriteMessage(NewPresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.RenamePresetAt) {
-      output.WriteRawTag(202, 3);
-      output.WriteMessage(RenamePresetAt);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPreset) {
-      output.WriteRawTag(210, 3);
-      output.WriteMessage(AuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
-      output.WriteRawTag(218, 3);
-      output.WriteMessage(AuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
-      output.WriteRawTag(226, 3);
-      output.WriteMessage(ExitAuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
-      output.WriteRawTag(234, 3);
-      output.WriteMessage(ExitAuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
-      output.WriteRawTag(242, 3);
-      output.WriteMessage(AuditionStateRequest);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
-      output.WriteRawTag(250, 3);
-      output.WriteMessage(AuditionStateStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
-      output.WriteRawTag(162, 6);
-      output.WriteMessage(ProductIdentificationStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
-      output.WriteRawTag(170, 6);
-      output.WriteMessage(ProductIdentificationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
-      output.WriteRawTag(178, 6);
-      output.WriteMessage(FirmwareVersionRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
-      output.WriteRawTag(186, 6);
-      output.WriteMessage(FirmwareVersionStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
-      output.WriteRawTag(194, 6);
-      output.WriteMessage(CurrentPresetRequest);
-    }
-    if (typeCase_ == TypeOneofCase.RetrievePreset) {
-      output.WriteRawTag(202, 6);
-      output.WriteMessage(RetrievePreset);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainRequest) {
-      output.WriteRawTag(210, 6);
-      output.WriteMessage(UsbGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainStatus) {
-      output.WriteRawTag(218, 6);
-      output.WriteMessage(UsbGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsRequest) {
-      output.WriteRawTag(226, 6);
-      output.WriteMessage(QASlotsRequest);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsStatus) {
-      output.WriteRawTag(234, 6);
-      output.WriteMessage(QASlotsStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
-      output.WriteRawTag(242, 6);
-      output.WriteMessage(LineOutGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
-      output.WriteRawTag(250, 6);
-      output.WriteMessage(LineOutGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
-      output.WriteRawTag(138, 7);
-      output.WriteMessage(ModalStatusMessage);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainSet) {
-      output.WriteRawTag(146, 7);
-      output.WriteMessage(UsbGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainSet) {
-      output.WriteRawTag(154, 7);
-      output.WriteMessage(LineOutGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsSet) {
-      output.WriteRawTag(162, 7);
-      output.WriteMessage(QASlotsSet);
-    }
-    if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
-      output.WriteRawTag(194, 12);
-      output.WriteMessage(UnsupportedMessageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.Heartbeat) {
-      output.WriteRawTag(202, 12);
-      output.WriteMessage(Heartbeat);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
-      output.WriteRawTag(210, 12);
-      output.WriteMessage(ConnectionStatusRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatus) {
-      output.WriteRawTag(218, 12);
-      output.WriteMessage(ConnectionStatus);
-    }
-    if (_unknownFields != null) {
-      _unknownFields.WriteTo(ref output);
-    }
-  }
-  #endif
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int CalculateSize() {
-    int size = 0;
-    if (HasResponseType) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ResponseType);
-    }
-    if (typeCase_ == TypeOneofCase.IndexPot) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexPot);
-    }
-    if (typeCase_ == TypeOneofCase.IndexButton) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexButton);
-    }
-    if (typeCase_ == TypeOneofCase.IndexEncoder) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(IndexEncoder);
-    }
-    if (typeCase_ == TypeOneofCase.ActiveDisplay) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ActiveDisplay);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProcessorUtilizationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProcessorUtilization);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(MemoryUsageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(MemoryUsageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(PresetJSONMessageRequestLT);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FrameBufferMessageRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FrameBufferMessage);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lt4FootswitchModeRequest);
-    }
-    if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lt4FootswitchModeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(LoadPresetTestSuite);
-    }
-    if (typeCase_ == TypeOneofCase.LoopbackTest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(LoopbackTest);
-    }
-    if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetJSONMessage);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LoadPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(LoadPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SetDspUnitParameter);
-    }
-    if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SetDspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(DspUnitParameterStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentLoadedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetEditedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNode) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReplaceNode);
-    }
-    if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReplaceNodeStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ShiftPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ShiftPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwapPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwapPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetSet);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentLoadedPresetIndexBypassStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentDisplayedPresetIndexStatus);
-    }
-    if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(PresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClearPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClearPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SaveCurrentPreset);
-    }
-    if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SaveCurrentPresetTo);
-    }
-    if (typeCase_ == TypeOneofCase.SavePresetAs) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(SavePresetAs);
-    }
-    if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(NewPresetSavedStatus);
-    }
-    if (typeCase_ == TypeOneofCase.RenamePresetAt) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(RenamePresetAt);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ExitAuditionPreset);
-    }
-    if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ExitAuditionPresetStatus);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionStateRequest);
-    }
-    if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(AuditionStateStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ProductIdentificationStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ProductIdentificationRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(FirmwareVersionRequest);
-    }
-    if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(FirmwareVersionStatus);
-    }
-    if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(CurrentPresetRequest);
-    }
-    if (typeCase_ == TypeOneofCase.RetrievePreset) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(RetrievePreset);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsRequest);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsStatus);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainRequest);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainStatus);
-    }
-    if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ModalStatusMessage);
-    }
-    if (typeCase_ == TypeOneofCase.UsbGainSet) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(UsbGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.LineOutGainSet) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(LineOutGainSet);
-    }
-    if (typeCase_ == TypeOneofCase.QASlotsSet) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(QASlotsSet);
-    }
-    if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnsupportedMessageStatus);
-    }
-    if (typeCase_ == TypeOneofCase.Heartbeat) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(Heartbeat);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ConnectionStatusRequest);
-    }
-    if (typeCase_ == TypeOneofCase.ConnectionStatus) {
-      size += 2 + pb::CodedOutputStream.ComputeMessageSize(ConnectionStatus);
-    }
-    if (_unknownFields != null) {
-      size += _unknownFields.CalculateSize();
-    }
-    return size;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(FenderMessageLT other) {
-    if (other == null) {
-      return;
-    }
-    if (other.HasResponseType) {
-      ResponseType = other.ResponseType;
-    }
-    switch (other.TypeCase) {
-      case TypeOneofCase.IndexPot:
-        if (IndexPot == null) {
-          IndexPot = new global::IndexPot();
-        }
-        IndexPot.MergeFrom(other.IndexPot);
-        break;
-      case TypeOneofCase.IndexButton:
-        if (IndexButton == null) {
-          IndexButton = new global::IndexButton();
-        }
-        IndexButton.MergeFrom(other.IndexButton);
-        break;
-      case TypeOneofCase.IndexEncoder:
-        if (IndexEncoder == null) {
-          IndexEncoder = new global::IndexEncoder();
-        }
-        IndexEncoder.MergeFrom(other.IndexEncoder);
-        break;
-      case TypeOneofCase.ActiveDisplay:
-        if (ActiveDisplay == null) {
-          ActiveDisplay = new global::ActiveDisplay();
-        }
-        ActiveDisplay.MergeFrom(other.ActiveDisplay);
-        break;
-      case TypeOneofCase.ProcessorUtilizationRequest:
-        if (ProcessorUtilizationRequest == null) {
-          ProcessorUtilizationRequest = new global::ProcessorUtilizationRequest();
-        }
-        ProcessorUtilizationRequest.MergeFrom(other.ProcessorUtilizationRequest);
-        break;
-      case TypeOneofCase.ProcessorUtilization:
-        if (ProcessorUtilization == null) {
-          ProcessorUtilization = new global::ProcessorUtilization();
-        }
-        ProcessorUtilization.MergeFrom(other.ProcessorUtilization);
-        break;
-      case TypeOneofCase.MemoryUsageRequest:
-        if (MemoryUsageRequest == null) {
-          MemoryUsageRequest = new global::MemoryUsageRequest();
-        }
-        MemoryUsageRequest.MergeFrom(other.MemoryUsageRequest);
-        break;
-      case TypeOneofCase.MemoryUsageStatus:
-        if (MemoryUsageStatus == null) {
-          MemoryUsageStatus = new global::MemoryUsageStatus();
-        }
-        MemoryUsageStatus.MergeFrom(other.MemoryUsageStatus);
-        break;
-      case TypeOneofCase.PresetJSONMessageRequestLT:
-        if (PresetJSONMessageRequestLT == null) {
-          PresetJSONMessageRequestLT = new global::PresetJSONMessageRequest_LT();
-        }
-        PresetJSONMessageRequestLT.MergeFrom(other.PresetJSONMessageRequestLT);
-        break;
-      case TypeOneofCase.FrameBufferMessageRequest:
-        if (FrameBufferMessageRequest == null) {
-          FrameBufferMessageRequest = new global::FrameBufferMessageRequest();
-        }
-        FrameBufferMessageRequest.MergeFrom(other.FrameBufferMessageRequest);
-        break;
-      case TypeOneofCase.FrameBufferMessage:
-        if (FrameBufferMessage == null) {
-          FrameBufferMessage = new global::FrameBufferMessage();
-        }
-        FrameBufferMessage.MergeFrom(other.FrameBufferMessage);
-        break;
-      case TypeOneofCase.Lt4FootswitchModeRequest:
-        if (Lt4FootswitchModeRequest == null) {
-          Lt4FootswitchModeRequest = new global::LT4FootswitchModeRequest();
-        }
-        Lt4FootswitchModeRequest.MergeFrom(other.Lt4FootswitchModeRequest);
-        break;
-      case TypeOneofCase.Lt4FootswitchModeStatus:
-        if (Lt4FootswitchModeStatus == null) {
-          Lt4FootswitchModeStatus = new global::LT4FootswitchModeStatus();
-        }
-        Lt4FootswitchModeStatus.MergeFrom(other.Lt4FootswitchModeStatus);
-        break;
-      case TypeOneofCase.LoadPresetTestSuite:
-        if (LoadPresetTestSuite == null) {
-          LoadPresetTestSuite = new global::LoadPreset_TestSuite();
-        }
-        LoadPresetTestSuite.MergeFrom(other.LoadPresetTestSuite);
-        break;
-      case TypeOneofCase.LoopbackTest:
-        if (LoopbackTest == null) {
-          LoopbackTest = new global::LoopbackTest();
-        }
-        LoopbackTest.MergeFrom(other.LoopbackTest);
-        break;
-      case TypeOneofCase.PresetJSONMessage:
-        if (PresetJSONMessage == null) {
-          PresetJSONMessage = new global::PresetJSONMessage();
-        }
-        PresetJSONMessage.MergeFrom(other.PresetJSONMessage);
-        break;
-      case TypeOneofCase.CurrentPresetStatus:
-        if (CurrentPresetStatus == null) {
-          CurrentPresetStatus = new global::CurrentPresetStatus();
-        }
-        CurrentPresetStatus.MergeFrom(other.CurrentPresetStatus);
-        break;
-      case TypeOneofCase.LoadPreset:
-        if (LoadPreset == null) {
-          LoadPreset = new global::LoadPreset();
-        }
-        LoadPreset.MergeFrom(other.LoadPreset);
-        break;
-      case TypeOneofCase.SetDspUnitParameter:
-        if (SetDspUnitParameter == null) {
-          SetDspUnitParameter = new global::SetDspUnitParameter();
-        }
-        SetDspUnitParameter.MergeFrom(other.SetDspUnitParameter);
-        break;
-      case TypeOneofCase.SetDspUnitParameterStatus:
-        if (SetDspUnitParameterStatus == null) {
-          SetDspUnitParameterStatus = new global::SetDspUnitParameterStatus();
-        }
-        SetDspUnitParameterStatus.MergeFrom(other.SetDspUnitParameterStatus);
-        break;
-      case TypeOneofCase.DspUnitParameterStatus:
-        if (DspUnitParameterStatus == null) {
-          DspUnitParameterStatus = new global::DspUnitParameterStatus();
-        }
-        DspUnitParameterStatus.MergeFrom(other.DspUnitParameterStatus);
-        break;
-      case TypeOneofCase.CurrentLoadedPresetIndexStatus:
-        if (CurrentLoadedPresetIndexStatus == null) {
-          CurrentLoadedPresetIndexStatus = new global::CurrentLoadedPresetIndexStatus();
-        }
-        CurrentLoadedPresetIndexStatus.MergeFrom(other.CurrentLoadedPresetIndexStatus);
-        break;
-      case TypeOneofCase.PresetEditedStatus:
-        if (PresetEditedStatus == null) {
-          PresetEditedStatus = new global::PresetEditedStatus();
-        }
-        PresetEditedStatus.MergeFrom(other.PresetEditedStatus);
-        break;
-      case TypeOneofCase.ReplaceNode:
-        if (ReplaceNode == null) {
-          ReplaceNode = new global::ReplaceNode();
-        }
-        ReplaceNode.MergeFrom(other.ReplaceNode);
-        break;
-      case TypeOneofCase.ReplaceNodeStatus:
-        if (ReplaceNodeStatus == null) {
-          ReplaceNodeStatus = new global::ReplaceNodeStatus();
-        }
-        ReplaceNodeStatus.MergeFrom(other.ReplaceNodeStatus);
-        break;
-      case TypeOneofCase.ShiftPreset:
-        if (ShiftPreset == null) {
-          ShiftPreset = new global::ShiftPreset();
-        }
-        ShiftPreset.MergeFrom(other.ShiftPreset);
-        break;
-      case TypeOneofCase.ShiftPresetStatus:
-        if (ShiftPresetStatus == null) {
-          ShiftPresetStatus = new global::ShiftPresetStatus();
-        }
-        ShiftPresetStatus.MergeFrom(other.ShiftPresetStatus);
-        break;
-      case TypeOneofCase.SwapPreset:
-        if (SwapPreset == null) {
-          SwapPreset = new global::SwapPreset();
-        }
-        SwapPreset.MergeFrom(other.SwapPreset);
-        break;
-      case TypeOneofCase.SwapPresetStatus:
-        if (SwapPresetStatus == null) {
-          SwapPresetStatus = new global::SwapPresetStatus();
-        }
-        SwapPresetStatus.MergeFrom(other.SwapPresetStatus);
-        break;
-      case TypeOneofCase.CurrentPresetSet:
-        if (CurrentPresetSet == null) {
-          CurrentPresetSet = new global::CurrentPresetSet();
-        }
-        CurrentPresetSet.MergeFrom(other.CurrentPresetSet);
-        break;
-      case TypeOneofCase.CurrentLoadedPresetIndexBypassStatus:
-        if (CurrentLoadedPresetIndexBypassStatus == null) {
-          CurrentLoadedPresetIndexBypassStatus = new global::CurrentLoadedPresetIndexBypassStatus();
-        }
-        CurrentLoadedPresetIndexBypassStatus.MergeFrom(other.CurrentLoadedPresetIndexBypassStatus);
-        break;
-      case TypeOneofCase.CurrentDisplayedPresetIndexStatus:
-        if (CurrentDisplayedPresetIndexStatus == null) {
-          CurrentDisplayedPresetIndexStatus = new global::CurrentDisplayedPresetIndexStatus();
-        }
-        CurrentDisplayedPresetIndexStatus.MergeFrom(other.CurrentDisplayedPresetIndexStatus);
-        break;
-      case TypeOneofCase.PresetSavedStatus:
-        if (PresetSavedStatus == null) {
-          PresetSavedStatus = new global::PresetSavedStatus();
-        }
-        PresetSavedStatus.MergeFrom(other.PresetSavedStatus);
-        break;
-      case TypeOneofCase.ClearPreset:
-        if (ClearPreset == null) {
-          ClearPreset = new global::ClearPreset();
-        }
-        ClearPreset.MergeFrom(other.ClearPreset);
-        break;
-      case TypeOneofCase.ClearPresetStatus:
-        if (ClearPresetStatus == null) {
-          ClearPresetStatus = new global::ClearPresetStatus();
-        }
-        ClearPresetStatus.MergeFrom(other.ClearPresetStatus);
-        break;
-      case TypeOneofCase.SaveCurrentPreset:
-        if (SaveCurrentPreset == null) {
-          SaveCurrentPreset = new global::SaveCurrentPreset();
-        }
-        SaveCurrentPreset.MergeFrom(other.SaveCurrentPreset);
-        break;
-      case TypeOneofCase.SaveCurrentPresetTo:
-        if (SaveCurrentPresetTo == null) {
-          SaveCurrentPresetTo = new global::SaveCurrentPresetTo();
-        }
-        SaveCurrentPresetTo.MergeFrom(other.SaveCurrentPresetTo);
-        break;
-      case TypeOneofCase.SavePresetAs:
-        if (SavePresetAs == null) {
-          SavePresetAs = new global::SavePresetAs();
-        }
-        SavePresetAs.MergeFrom(other.SavePresetAs);
-        break;
-      case TypeOneofCase.NewPresetSavedStatus:
-        if (NewPresetSavedStatus == null) {
-          NewPresetSavedStatus = new global::NewPresetSavedStatus();
-        }
-        NewPresetSavedStatus.MergeFrom(other.NewPresetSavedStatus);
-        break;
-      case TypeOneofCase.RenamePresetAt:
-        if (RenamePresetAt == null) {
-          RenamePresetAt = new global::RenamePresetAt();
-        }
-        RenamePresetAt.MergeFrom(other.RenamePresetAt);
-        break;
-      case TypeOneofCase.AuditionPreset:
-        if (AuditionPreset == null) {
-          AuditionPreset = new global::AuditionPreset();
-        }
-        AuditionPreset.MergeFrom(other.AuditionPreset);
-        break;
-      case TypeOneofCase.AuditionPresetStatus:
-        if (AuditionPresetStatus == null) {
-          AuditionPresetStatus = new global::AuditionPresetStatus();
-        }
-        AuditionPresetStatus.MergeFrom(other.AuditionPresetStatus);
-        break;
-      case TypeOneofCase.ExitAuditionPreset:
-        if (ExitAuditionPreset == null) {
-          ExitAuditionPreset = new global::ExitAuditionPreset();
-        }
-        ExitAuditionPreset.MergeFrom(other.ExitAuditionPreset);
-        break;
-      case TypeOneofCase.ExitAuditionPresetStatus:
-        if (ExitAuditionPresetStatus == null) {
-          ExitAuditionPresetStatus = new global::ExitAuditionPresetStatus();
-        }
-        ExitAuditionPresetStatus.MergeFrom(other.ExitAuditionPresetStatus);
-        break;
-      case TypeOneofCase.AuditionStateRequest:
-        if (AuditionStateRequest == null) {
-          AuditionStateRequest = new global::AuditionStateRequest();
-        }
-        AuditionStateRequest.MergeFrom(other.AuditionStateRequest);
-        break;
-      case TypeOneofCase.AuditionStateStatus:
-        if (AuditionStateStatus == null) {
-          AuditionStateStatus = new global::AuditionStateStatus();
-        }
-        AuditionStateStatus.MergeFrom(other.AuditionStateStatus);
-        break;
-      case TypeOneofCase.ProductIdentificationStatus:
-        if (ProductIdentificationStatus == null) {
-          ProductIdentificationStatus = new global::ProductIdentificationStatus();
-        }
-        ProductIdentificationStatus.MergeFrom(other.ProductIdentificationStatus);
-        break;
-      case TypeOneofCase.ProductIdentificationRequest:
-        if (ProductIdentificationRequest == null) {
-          ProductIdentificationRequest = new global::ProductIdentificationRequest();
-        }
-        ProductIdentificationRequest.MergeFrom(other.ProductIdentificationRequest);
-        break;
-      case TypeOneofCase.FirmwareVersionRequest:
-        if (FirmwareVersionRequest == null) {
-          FirmwareVersionRequest = new global::FirmwareVersionRequest();
-        }
-        FirmwareVersionRequest.MergeFrom(other.FirmwareVersionRequest);
-        break;
-      case TypeOneofCase.FirmwareVersionStatus:
-        if (FirmwareVersionStatus == null) {
-          FirmwareVersionStatus = new global::FirmwareVersionStatus();
-        }
-        FirmwareVersionStatus.MergeFrom(other.FirmwareVersionStatus);
-        break;
-      case TypeOneofCase.CurrentPresetRequest:
-        if (CurrentPresetRequest == null) {
-          CurrentPresetRequest = new global::CurrentPresetRequest();
-        }
-        CurrentPresetRequest.MergeFrom(other.CurrentPresetRequest);
-        break;
-      case TypeOneofCase.RetrievePreset:
-        if (RetrievePreset == null) {
-          RetrievePreset = new global::RetrievePreset();
-        }
-        RetrievePreset.MergeFrom(other.RetrievePreset);
-        break;
-      case TypeOneofCase.UsbGainRequest:
-        if (UsbGainRequest == null) {
-          UsbGainRequest = new global::UsbGainRequest();
-        }
-        UsbGainRequest.MergeFrom(other.UsbGainRequest);
-        break;
-      case TypeOneofCase.UsbGainStatus:
-        if (UsbGainStatus == null) {
-          UsbGainStatus = new global::UsbGainStatus();
-        }
-        UsbGainStatus.MergeFrom(other.UsbGainStatus);
-        break;
-      case TypeOneofCase.QASlotsRequest:
-        if (QASlotsRequest == null) {
-          QASlotsRequest = new global::QASlotsRequest();
-        }
-        QASlotsRequest.MergeFrom(other.QASlotsRequest);
-        break;
-      case TypeOneofCase.QASlotsStatus:
-        if (QASlotsStatus == null) {
-          QASlotsStatus = new global::QASlotsStatus();
-        }
-        QASlotsStatus.MergeFrom(other.QASlotsStatus);
-        break;
-      case TypeOneofCase.LineOutGainRequest:
-        if (LineOutGainRequest == null) {
-          LineOutGainRequest = new global::LineOutGainRequest();
-        }
-        LineOutGainRequest.MergeFrom(other.LineOutGainRequest);
-        break;
-      case TypeOneofCase.LineOutGainStatus:
-        if (LineOutGainStatus == null) {
-          LineOutGainStatus = new global::LineOutGainStatus();
-        }
-        LineOutGainStatus.MergeFrom(other.LineOutGainStatus);
-        break;
-      case TypeOneofCase.ModalStatusMessage:
-        if (ModalStatusMessage == null) {
-          ModalStatusMessage = new global::ModalStatusMessage();
-        }
-        ModalStatusMessage.MergeFrom(other.ModalStatusMessage);
-        break;
-      case TypeOneofCase.UsbGainSet:
-        if (UsbGainSet == null) {
-          UsbGainSet = new global::UsbGainSet();
-        }
-        UsbGainSet.MergeFrom(other.UsbGainSet);
-        break;
-      case TypeOneofCase.LineOutGainSet:
-        if (LineOutGainSet == null) {
-          LineOutGainSet = new global::LineOutGainSet();
-        }
-        LineOutGainSet.MergeFrom(other.LineOutGainSet);
-        break;
-      case TypeOneofCase.QASlotsSet:
-        if (QASlotsSet == null) {
-          QASlotsSet = new global::QASlotsSet();
-        }
-        QASlotsSet.MergeFrom(other.QASlotsSet);
-        break;
-      case TypeOneofCase.UnsupportedMessageStatus:
-        if (UnsupportedMessageStatus == null) {
-          UnsupportedMessageStatus = new global::UnsupportedMessageStatus();
-        }
-        UnsupportedMessageStatus.MergeFrom(other.UnsupportedMessageStatus);
-        break;
-      case TypeOneofCase.Heartbeat:
-        if (Heartbeat == null) {
-          Heartbeat = new global::Heartbeat();
-        }
-        Heartbeat.MergeFrom(other.Heartbeat);
-        break;
-      case TypeOneofCase.ConnectionStatusRequest:
-        if (ConnectionStatusRequest == null) {
-          ConnectionStatusRequest = new global::ConnectionStatusRequest();
-        }
-        ConnectionStatusRequest.MergeFrom(other.ConnectionStatusRequest);
-        break;
-      case TypeOneofCase.ConnectionStatus:
-        if (ConnectionStatus == null) {
-          ConnectionStatus = new global::ConnectionStatus();
-        }
-        ConnectionStatus.MergeFrom(other.ConnectionStatus);
-        break;
-    }
-
-    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public void MergeFrom(pb::CodedInputStream input) {
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    input.ReadRawMessage(this);
-  #else
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-          break;
-        case 8: {
-          ResponseType = (global::ResponseType) input.ReadEnum();
-          break;
-        }
-        case 18: {
-          global::IndexPot subBuilder = new global::IndexPot();
-          if (typeCase_ == TypeOneofCase.IndexPot) {
-            subBuilder.MergeFrom(IndexPot);
-          }
-          input.ReadMessage(subBuilder);
-          IndexPot = subBuilder;
-          break;
-        }
-        case 26: {
-          global::IndexButton subBuilder = new global::IndexButton();
-          if (typeCase_ == TypeOneofCase.IndexButton) {
-            subBuilder.MergeFrom(IndexButton);
-          }
-          input.ReadMessage(subBuilder);
-          IndexButton = subBuilder;
-          break;
-        }
-        case 34: {
-          global::IndexEncoder subBuilder = new global::IndexEncoder();
-          if (typeCase_ == TypeOneofCase.IndexEncoder) {
-            subBuilder.MergeFrom(IndexEncoder);
-          }
-          input.ReadMessage(subBuilder);
-          IndexEncoder = subBuilder;
-          break;
-        }
-        case 42: {
-          global::ActiveDisplay subBuilder = new global::ActiveDisplay();
-          if (typeCase_ == TypeOneofCase.ActiveDisplay) {
-            subBuilder.MergeFrom(ActiveDisplay);
-          }
-          input.ReadMessage(subBuilder);
-          ActiveDisplay = subBuilder;
-          break;
-        }
-        case 50: {
-          global::ProcessorUtilizationRequest subBuilder = new global::ProcessorUtilizationRequest();
-          if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
-            subBuilder.MergeFrom(ProcessorUtilizationRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ProcessorUtilizationRequest = subBuilder;
-          break;
-        }
-        case 58: {
-          global::ProcessorUtilization subBuilder = new global::ProcessorUtilization();
-          if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
-            subBuilder.MergeFrom(ProcessorUtilization);
-          }
-          input.ReadMessage(subBuilder);
-          ProcessorUtilization = subBuilder;
-          break;
-        }
-        case 66: {
-          global::MemoryUsageRequest subBuilder = new global::MemoryUsageRequest();
-          if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
-            subBuilder.MergeFrom(MemoryUsageRequest);
-          }
-          input.ReadMessage(subBuilder);
-          MemoryUsageRequest = subBuilder;
-          break;
-        }
-        case 74: {
-          global::MemoryUsageStatus subBuilder = new global::MemoryUsageStatus();
-          if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
-            subBuilder.MergeFrom(MemoryUsageStatus);
-          }
-          input.ReadMessage(subBuilder);
-          MemoryUsageStatus = subBuilder;
-          break;
-        }
-        case 82: {
-          global::PresetJSONMessageRequest_LT subBuilder = new global::PresetJSONMessageRequest_LT();
-          if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
-            subBuilder.MergeFrom(PresetJSONMessageRequestLT);
-          }
-          input.ReadMessage(subBuilder);
-          PresetJSONMessageRequestLT = subBuilder;
-          break;
-        }
-        case 90: {
-          global::FrameBufferMessageRequest subBuilder = new global::FrameBufferMessageRequest();
-          if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
-            subBuilder.MergeFrom(FrameBufferMessageRequest);
-          }
-          input.ReadMessage(subBuilder);
-          FrameBufferMessageRequest = subBuilder;
-          break;
-        }
-        case 98: {
-          global::FrameBufferMessage subBuilder = new global::FrameBufferMessage();
-          if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
-            subBuilder.MergeFrom(FrameBufferMessage);
-          }
-          input.ReadMessage(subBuilder);
-          FrameBufferMessage = subBuilder;
-          break;
-        }
-        case 106: {
-          global::LT4FootswitchModeRequest subBuilder = new global::LT4FootswitchModeRequest();
-          if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
-            subBuilder.MergeFrom(Lt4FootswitchModeRequest);
-          }
-          input.ReadMessage(subBuilder);
-          Lt4FootswitchModeRequest = subBuilder;
-          break;
-        }
-        case 114: {
-          global::LT4FootswitchModeStatus subBuilder = new global::LT4FootswitchModeStatus();
-          if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
-            subBuilder.MergeFrom(Lt4FootswitchModeStatus);
-          }
-          input.ReadMessage(subBuilder);
-          Lt4FootswitchModeStatus = subBuilder;
-          break;
-        }
-        case 122: {
-          global::LoadPreset_TestSuite subBuilder = new global::LoadPreset_TestSuite();
-          if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
-            subBuilder.MergeFrom(LoadPresetTestSuite);
-          }
-          input.ReadMessage(subBuilder);
-          LoadPresetTestSuite = subBuilder;
-          break;
-        }
-        case 242: {
-          global::LoopbackTest subBuilder = new global::LoopbackTest();
-          if (typeCase_ == TypeOneofCase.LoopbackTest) {
-            subBuilder.MergeFrom(LoopbackTest);
-          }
-          input.ReadMessage(subBuilder);
-          LoopbackTest = subBuilder;
-          break;
-        }
-        case 250: {
-          global::PresetJSONMessage subBuilder = new global::PresetJSONMessage();
-          if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
-            subBuilder.MergeFrom(PresetJSONMessage);
-          }
-          input.ReadMessage(subBuilder);
-          PresetJSONMessage = subBuilder;
-          break;
-        }
-        case 258: {
-          global::CurrentPresetStatus subBuilder = new global::CurrentPresetStatus();
-          if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
-            subBuilder.MergeFrom(CurrentPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetStatus = subBuilder;
-          break;
-        }
-        case 266: {
-          global::LoadPreset subBuilder = new global::LoadPreset();
-          if (typeCase_ == TypeOneofCase.LoadPreset) {
-            subBuilder.MergeFrom(LoadPreset);
-          }
-          input.ReadMessage(subBuilder);
-          LoadPreset = subBuilder;
-          break;
-        }
-        case 274: {
-          global::SetDspUnitParameter subBuilder = new global::SetDspUnitParameter();
-          if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
-            subBuilder.MergeFrom(SetDspUnitParameter);
-          }
-          input.ReadMessage(subBuilder);
-          SetDspUnitParameter = subBuilder;
-          break;
-        }
-        case 282: {
-          global::SetDspUnitParameterStatus subBuilder = new global::SetDspUnitParameterStatus();
-          if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
-            subBuilder.MergeFrom(SetDspUnitParameterStatus);
-          }
-          input.ReadMessage(subBuilder);
-          SetDspUnitParameterStatus = subBuilder;
-          break;
-        }
-        case 290: {
-          global::DspUnitParameterStatus subBuilder = new global::DspUnitParameterStatus();
-          if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
-            subBuilder.MergeFrom(DspUnitParameterStatus);
-          }
-          input.ReadMessage(subBuilder);
-          DspUnitParameterStatus = subBuilder;
-          break;
-        }
-        case 298: {
-          global::CurrentLoadedPresetIndexStatus subBuilder = new global::CurrentLoadedPresetIndexStatus();
-          if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
-            subBuilder.MergeFrom(CurrentLoadedPresetIndexStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentLoadedPresetIndexStatus = subBuilder;
-          break;
-        }
-        case 306: {
-          global::PresetEditedStatus subBuilder = new global::PresetEditedStatus();
-          if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
-            subBuilder.MergeFrom(PresetEditedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          PresetEditedStatus = subBuilder;
-          break;
-        }
-        case 314: {
-          global::ReplaceNode subBuilder = new global::ReplaceNode();
-          if (typeCase_ == TypeOneofCase.ReplaceNode) {
-            subBuilder.MergeFrom(ReplaceNode);
-          }
-          input.ReadMessage(subBuilder);
-          ReplaceNode = subBuilder;
-          break;
-        }
-        case 322: {
-          global::ReplaceNodeStatus subBuilder = new global::ReplaceNodeStatus();
-          if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
-            subBuilder.MergeFrom(ReplaceNodeStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ReplaceNodeStatus = subBuilder;
-          break;
-        }
-        case 330: {
-          global::ShiftPreset subBuilder = new global::ShiftPreset();
-          if (typeCase_ == TypeOneofCase.ShiftPreset) {
-            subBuilder.MergeFrom(ShiftPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ShiftPreset = subBuilder;
-          break;
-        }
-        case 338: {
-          global::ShiftPresetStatus subBuilder = new global::ShiftPresetStatus();
-          if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
-            subBuilder.MergeFrom(ShiftPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ShiftPresetStatus = subBuilder;
-          break;
-        }
-        case 346: {
-          global::SwapPreset subBuilder = new global::SwapPreset();
-          if (typeCase_ == TypeOneofCase.SwapPreset) {
-            subBuilder.MergeFrom(SwapPreset);
-          }
-          input.ReadMessage(subBuilder);
-          SwapPreset = subBuilder;
-          break;
-        }
-        case 354: {
-          global::SwapPresetStatus subBuilder = new global::SwapPresetStatus();
-          if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
-            subBuilder.MergeFrom(SwapPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          SwapPresetStatus = subBuilder;
-          break;
-        }
-        case 362: {
-          global::CurrentPresetSet subBuilder = new global::CurrentPresetSet();
-          if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
-            subBuilder.MergeFrom(CurrentPresetSet);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetSet = subBuilder;
-          break;
-        }
-        case 370: {
-          global::CurrentLoadedPresetIndexBypassStatus subBuilder = new global::CurrentLoadedPresetIndexBypassStatus();
-          if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
-            subBuilder.MergeFrom(CurrentLoadedPresetIndexBypassStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentLoadedPresetIndexBypassStatus = subBuilder;
-          break;
-        }
-        case 378: {
-          global::CurrentDisplayedPresetIndexStatus subBuilder = new global::CurrentDisplayedPresetIndexStatus();
-          if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
-            subBuilder.MergeFrom(CurrentDisplayedPresetIndexStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentDisplayedPresetIndexStatus = subBuilder;
-          break;
-        }
-        case 402: {
-          global::PresetSavedStatus subBuilder = new global::PresetSavedStatus();
-          if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
-            subBuilder.MergeFrom(PresetSavedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          PresetSavedStatus = subBuilder;
-          break;
-        }
-        case 410: {
-          global::ClearPreset subBuilder = new global::ClearPreset();
-          if (typeCase_ == TypeOneofCase.ClearPreset) {
-            subBuilder.MergeFrom(ClearPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ClearPreset = subBuilder;
-          break;
-        }
-        case 418: {
-          global::ClearPresetStatus subBuilder = new global::ClearPresetStatus();
-          if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
-            subBuilder.MergeFrom(ClearPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ClearPresetStatus = subBuilder;
-          break;
-        }
-        case 426: {
-          global::SaveCurrentPreset subBuilder = new global::SaveCurrentPreset();
-          if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
-            subBuilder.MergeFrom(SaveCurrentPreset);
-          }
-          input.ReadMessage(subBuilder);
-          SaveCurrentPreset = subBuilder;
-          break;
-        }
-        case 434: {
-          global::SaveCurrentPresetTo subBuilder = new global::SaveCurrentPresetTo();
-          if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
-            subBuilder.MergeFrom(SaveCurrentPresetTo);
-          }
-          input.ReadMessage(subBuilder);
-          SaveCurrentPresetTo = subBuilder;
-          break;
-        }
-        case 442: {
-          global::SavePresetAs subBuilder = new global::SavePresetAs();
-          if (typeCase_ == TypeOneofCase.SavePresetAs) {
-            subBuilder.MergeFrom(SavePresetAs);
-          }
-          input.ReadMessage(subBuilder);
-          SavePresetAs = subBuilder;
-          break;
-        }
-        case 450: {
-          global::NewPresetSavedStatus subBuilder = new global::NewPresetSavedStatus();
-          if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
-            subBuilder.MergeFrom(NewPresetSavedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          NewPresetSavedStatus = subBuilder;
-          break;
-        }
-        case 458: {
-          global::RenamePresetAt subBuilder = new global::RenamePresetAt();
-          if (typeCase_ == TypeOneofCase.RenamePresetAt) {
-            subBuilder.MergeFrom(RenamePresetAt);
-          }
-          input.ReadMessage(subBuilder);
-          RenamePresetAt = subBuilder;
-          break;
-        }
-        case 466: {
-          global::AuditionPreset subBuilder = new global::AuditionPreset();
-          if (typeCase_ == TypeOneofCase.AuditionPreset) {
-            subBuilder.MergeFrom(AuditionPreset);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionPreset = subBuilder;
-          break;
-        }
-        case 474: {
-          global::AuditionPresetStatus subBuilder = new global::AuditionPresetStatus();
-          if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
-            subBuilder.MergeFrom(AuditionPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionPresetStatus = subBuilder;
-          break;
-        }
-        case 482: {
-          global::ExitAuditionPreset subBuilder = new global::ExitAuditionPreset();
-          if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
-            subBuilder.MergeFrom(ExitAuditionPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ExitAuditionPreset = subBuilder;
-          break;
-        }
-        case 490: {
-          global::ExitAuditionPresetStatus subBuilder = new global::ExitAuditionPresetStatus();
-          if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
-            subBuilder.MergeFrom(ExitAuditionPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ExitAuditionPresetStatus = subBuilder;
-          break;
-        }
-        case 498: {
-          global::AuditionStateRequest subBuilder = new global::AuditionStateRequest();
-          if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
-            subBuilder.MergeFrom(AuditionStateRequest);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionStateRequest = subBuilder;
-          break;
-        }
-        case 506: {
-          global::AuditionStateStatus subBuilder = new global::AuditionStateStatus();
-          if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
-            subBuilder.MergeFrom(AuditionStateStatus);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionStateStatus = subBuilder;
-          break;
-        }
-        case 802: {
-          global::ProductIdentificationStatus subBuilder = new global::ProductIdentificationStatus();
-          if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
-            subBuilder.MergeFrom(ProductIdentificationStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ProductIdentificationStatus = subBuilder;
-          break;
-        }
-        case 810: {
-          global::ProductIdentificationRequest subBuilder = new global::ProductIdentificationRequest();
-          if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
-            subBuilder.MergeFrom(ProductIdentificationRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ProductIdentificationRequest = subBuilder;
-          break;
-        }
-        case 818: {
-          global::FirmwareVersionRequest subBuilder = new global::FirmwareVersionRequest();
-          if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
-            subBuilder.MergeFrom(FirmwareVersionRequest);
-          }
-          input.ReadMessage(subBuilder);
-          FirmwareVersionRequest = subBuilder;
-          break;
-        }
-        case 826: {
-          global::FirmwareVersionStatus subBuilder = new global::FirmwareVersionStatus();
-          if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
-            subBuilder.MergeFrom(FirmwareVersionStatus);
-          }
-          input.ReadMessage(subBuilder);
-          FirmwareVersionStatus = subBuilder;
-          break;
-        }
-        case 834: {
-          global::CurrentPresetRequest subBuilder = new global::CurrentPresetRequest();
-          if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
-            subBuilder.MergeFrom(CurrentPresetRequest);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetRequest = subBuilder;
-          break;
-        }
-        case 842: {
-          global::RetrievePreset subBuilder = new global::RetrievePreset();
-          if (typeCase_ == TypeOneofCase.RetrievePreset) {
-            subBuilder.MergeFrom(RetrievePreset);
-          }
-          input.ReadMessage(subBuilder);
-          RetrievePreset = subBuilder;
-          break;
-        }
-        case 850: {
-          global::UsbGainRequest subBuilder = new global::UsbGainRequest();
-          if (typeCase_ == TypeOneofCase.UsbGainRequest) {
-            subBuilder.MergeFrom(UsbGainRequest);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainRequest = subBuilder;
-          break;
-        }
-        case 858: {
-          global::UsbGainStatus subBuilder = new global::UsbGainStatus();
-          if (typeCase_ == TypeOneofCase.UsbGainStatus) {
-            subBuilder.MergeFrom(UsbGainStatus);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainStatus = subBuilder;
-          break;
-        }
-        case 866: {
-          global::QASlotsRequest subBuilder = new global::QASlotsRequest();
-          if (typeCase_ == TypeOneofCase.QASlotsRequest) {
-            subBuilder.MergeFrom(QASlotsRequest);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsRequest = subBuilder;
-          break;
-        }
-        case 874: {
-          global::QASlotsStatus subBuilder = new global::QASlotsStatus();
-          if (typeCase_ == TypeOneofCase.QASlotsStatus) {
-            subBuilder.MergeFrom(QASlotsStatus);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsStatus = subBuilder;
-          break;
-        }
-        case 882: {
-          global::LineOutGainRequest subBuilder = new global::LineOutGainRequest();
-          if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
-            subBuilder.MergeFrom(LineOutGainRequest);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainRequest = subBuilder;
-          break;
-        }
-        case 890: {
-          global::LineOutGainStatus subBuilder = new global::LineOutGainStatus();
-          if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
-            subBuilder.MergeFrom(LineOutGainStatus);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainStatus = subBuilder;
-          break;
-        }
-        case 906: {
-          global::ModalStatusMessage subBuilder = new global::ModalStatusMessage();
-          if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
-            subBuilder.MergeFrom(ModalStatusMessage);
-          }
-          input.ReadMessage(subBuilder);
-          ModalStatusMessage = subBuilder;
-          break;
-        }
-        case 914: {
-          global::UsbGainSet subBuilder = new global::UsbGainSet();
-          if (typeCase_ == TypeOneofCase.UsbGainSet) {
-            subBuilder.MergeFrom(UsbGainSet);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainSet = subBuilder;
-          break;
-        }
-        case 922: {
-          global::LineOutGainSet subBuilder = new global::LineOutGainSet();
-          if (typeCase_ == TypeOneofCase.LineOutGainSet) {
-            subBuilder.MergeFrom(LineOutGainSet);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainSet = subBuilder;
-          break;
-        }
-        case 930: {
-          global::QASlotsSet subBuilder = new global::QASlotsSet();
-          if (typeCase_ == TypeOneofCase.QASlotsSet) {
-            subBuilder.MergeFrom(QASlotsSet);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsSet = subBuilder;
-          break;
-        }
-        case 1602: {
-          global::UnsupportedMessageStatus subBuilder = new global::UnsupportedMessageStatus();
-          if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
-            subBuilder.MergeFrom(UnsupportedMessageStatus);
-          }
-          input.ReadMessage(subBuilder);
-          UnsupportedMessageStatus = subBuilder;
-          break;
-        }
-        case 1610: {
-          global::Heartbeat subBuilder = new global::Heartbeat();
-          if (typeCase_ == TypeOneofCase.Heartbeat) {
-            subBuilder.MergeFrom(Heartbeat);
-          }
-          input.ReadMessage(subBuilder);
-          Heartbeat = subBuilder;
-          break;
-        }
-        case 1618: {
-          global::ConnectionStatusRequest subBuilder = new global::ConnectionStatusRequest();
-          if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
-            subBuilder.MergeFrom(ConnectionStatusRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ConnectionStatusRequest = subBuilder;
-          break;
-        }
-        case 1626: {
-          global::ConnectionStatus subBuilder = new global::ConnectionStatus();
-          if (typeCase_ == TypeOneofCase.ConnectionStatus) {
-            subBuilder.MergeFrom(ConnectionStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ConnectionStatus = subBuilder;
-          break;
-        }
-      }
-    }
-  #endif
-  }
-
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-          break;
-        case 8: {
-          ResponseType = (global::ResponseType) input.ReadEnum();
-          break;
-        }
-        case 18: {
-          global::IndexPot subBuilder = new global::IndexPot();
-          if (typeCase_ == TypeOneofCase.IndexPot) {
-            subBuilder.MergeFrom(IndexPot);
-          }
-          input.ReadMessage(subBuilder);
-          IndexPot = subBuilder;
-          break;
-        }
-        case 26: {
-          global::IndexButton subBuilder = new global::IndexButton();
-          if (typeCase_ == TypeOneofCase.IndexButton) {
-            subBuilder.MergeFrom(IndexButton);
-          }
-          input.ReadMessage(subBuilder);
-          IndexButton = subBuilder;
-          break;
-        }
-        case 34: {
-          global::IndexEncoder subBuilder = new global::IndexEncoder();
-          if (typeCase_ == TypeOneofCase.IndexEncoder) {
-            subBuilder.MergeFrom(IndexEncoder);
-          }
-          input.ReadMessage(subBuilder);
-          IndexEncoder = subBuilder;
-          break;
-        }
-        case 42: {
-          global::ActiveDisplay subBuilder = new global::ActiveDisplay();
-          if (typeCase_ == TypeOneofCase.ActiveDisplay) {
-            subBuilder.MergeFrom(ActiveDisplay);
-          }
-          input.ReadMessage(subBuilder);
-          ActiveDisplay = subBuilder;
-          break;
-        }
-        case 50: {
-          global::ProcessorUtilizationRequest subBuilder = new global::ProcessorUtilizationRequest();
-          if (typeCase_ == TypeOneofCase.ProcessorUtilizationRequest) {
-            subBuilder.MergeFrom(ProcessorUtilizationRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ProcessorUtilizationRequest = subBuilder;
-          break;
-        }
-        case 58: {
-          global::ProcessorUtilization subBuilder = new global::ProcessorUtilization();
-          if (typeCase_ == TypeOneofCase.ProcessorUtilization) {
-            subBuilder.MergeFrom(ProcessorUtilization);
-          }
-          input.ReadMessage(subBuilder);
-          ProcessorUtilization = subBuilder;
-          break;
-        }
-        case 66: {
-          global::MemoryUsageRequest subBuilder = new global::MemoryUsageRequest();
-          if (typeCase_ == TypeOneofCase.MemoryUsageRequest) {
-            subBuilder.MergeFrom(MemoryUsageRequest);
-          }
-          input.ReadMessage(subBuilder);
-          MemoryUsageRequest = subBuilder;
-          break;
-        }
-        case 74: {
-          global::MemoryUsageStatus subBuilder = new global::MemoryUsageStatus();
-          if (typeCase_ == TypeOneofCase.MemoryUsageStatus) {
-            subBuilder.MergeFrom(MemoryUsageStatus);
-          }
-          input.ReadMessage(subBuilder);
-          MemoryUsageStatus = subBuilder;
-          break;
-        }
-        case 82: {
-          global::PresetJSONMessageRequest_LT subBuilder = new global::PresetJSONMessageRequest_LT();
-          if (typeCase_ == TypeOneofCase.PresetJSONMessageRequestLT) {
-            subBuilder.MergeFrom(PresetJSONMessageRequestLT);
-          }
-          input.ReadMessage(subBuilder);
-          PresetJSONMessageRequestLT = subBuilder;
-          break;
-        }
-        case 90: {
-          global::FrameBufferMessageRequest subBuilder = new global::FrameBufferMessageRequest();
-          if (typeCase_ == TypeOneofCase.FrameBufferMessageRequest) {
-            subBuilder.MergeFrom(FrameBufferMessageRequest);
-          }
-          input.ReadMessage(subBuilder);
-          FrameBufferMessageRequest = subBuilder;
-          break;
-        }
-        case 98: {
-          global::FrameBufferMessage subBuilder = new global::FrameBufferMessage();
-          if (typeCase_ == TypeOneofCase.FrameBufferMessage) {
-            subBuilder.MergeFrom(FrameBufferMessage);
-          }
-          input.ReadMessage(subBuilder);
-          FrameBufferMessage = subBuilder;
-          break;
-        }
-        case 106: {
-          global::LT4FootswitchModeRequest subBuilder = new global::LT4FootswitchModeRequest();
-          if (typeCase_ == TypeOneofCase.Lt4FootswitchModeRequest) {
-            subBuilder.MergeFrom(Lt4FootswitchModeRequest);
-          }
-          input.ReadMessage(subBuilder);
-          Lt4FootswitchModeRequest = subBuilder;
-          break;
-        }
-        case 114: {
-          global::LT4FootswitchModeStatus subBuilder = new global::LT4FootswitchModeStatus();
-          if (typeCase_ == TypeOneofCase.Lt4FootswitchModeStatus) {
-            subBuilder.MergeFrom(Lt4FootswitchModeStatus);
-          }
-          input.ReadMessage(subBuilder);
-          Lt4FootswitchModeStatus = subBuilder;
-          break;
-        }
-        case 122: {
-          global::LoadPreset_TestSuite subBuilder = new global::LoadPreset_TestSuite();
-          if (typeCase_ == TypeOneofCase.LoadPresetTestSuite) {
-            subBuilder.MergeFrom(LoadPresetTestSuite);
-          }
-          input.ReadMessage(subBuilder);
-          LoadPresetTestSuite = subBuilder;
-          break;
-        }
-        case 242: {
-          global::LoopbackTest subBuilder = new global::LoopbackTest();
-          if (typeCase_ == TypeOneofCase.LoopbackTest) {
-            subBuilder.MergeFrom(LoopbackTest);
-          }
-          input.ReadMessage(subBuilder);
-          LoopbackTest = subBuilder;
-          break;
-        }
-        case 250: {
-          global::PresetJSONMessage subBuilder = new global::PresetJSONMessage();
-          if (typeCase_ == TypeOneofCase.PresetJSONMessage) {
-            subBuilder.MergeFrom(PresetJSONMessage);
-          }
-          input.ReadMessage(subBuilder);
-          PresetJSONMessage = subBuilder;
-          break;
-        }
-        case 258: {
-          global::CurrentPresetStatus subBuilder = new global::CurrentPresetStatus();
-          if (typeCase_ == TypeOneofCase.CurrentPresetStatus) {
-            subBuilder.MergeFrom(CurrentPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetStatus = subBuilder;
-          break;
-        }
-        case 266: {
-          global::LoadPreset subBuilder = new global::LoadPreset();
-          if (typeCase_ == TypeOneofCase.LoadPreset) {
-            subBuilder.MergeFrom(LoadPreset);
-          }
-          input.ReadMessage(subBuilder);
-          LoadPreset = subBuilder;
-          break;
-        }
-        case 274: {
-          global::SetDspUnitParameter subBuilder = new global::SetDspUnitParameter();
-          if (typeCase_ == TypeOneofCase.SetDspUnitParameter) {
-            subBuilder.MergeFrom(SetDspUnitParameter);
-          }
-          input.ReadMessage(subBuilder);
-          SetDspUnitParameter = subBuilder;
-          break;
-        }
-        case 282: {
-          global::SetDspUnitParameterStatus subBuilder = new global::SetDspUnitParameterStatus();
-          if (typeCase_ == TypeOneofCase.SetDspUnitParameterStatus) {
-            subBuilder.MergeFrom(SetDspUnitParameterStatus);
-          }
-          input.ReadMessage(subBuilder);
-          SetDspUnitParameterStatus = subBuilder;
-          break;
-        }
-        case 290: {
-          global::DspUnitParameterStatus subBuilder = new global::DspUnitParameterStatus();
-          if (typeCase_ == TypeOneofCase.DspUnitParameterStatus) {
-            subBuilder.MergeFrom(DspUnitParameterStatus);
-          }
-          input.ReadMessage(subBuilder);
-          DspUnitParameterStatus = subBuilder;
-          break;
-        }
-        case 298: {
-          global::CurrentLoadedPresetIndexStatus subBuilder = new global::CurrentLoadedPresetIndexStatus();
-          if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexStatus) {
-            subBuilder.MergeFrom(CurrentLoadedPresetIndexStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentLoadedPresetIndexStatus = subBuilder;
-          break;
-        }
-        case 306: {
-          global::PresetEditedStatus subBuilder = new global::PresetEditedStatus();
-          if (typeCase_ == TypeOneofCase.PresetEditedStatus) {
-            subBuilder.MergeFrom(PresetEditedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          PresetEditedStatus = subBuilder;
-          break;
-        }
-        case 314: {
-          global::ReplaceNode subBuilder = new global::ReplaceNode();
-          if (typeCase_ == TypeOneofCase.ReplaceNode) {
-            subBuilder.MergeFrom(ReplaceNode);
-          }
-          input.ReadMessage(subBuilder);
-          ReplaceNode = subBuilder;
-          break;
-        }
-        case 322: {
-          global::ReplaceNodeStatus subBuilder = new global::ReplaceNodeStatus();
-          if (typeCase_ == TypeOneofCase.ReplaceNodeStatus) {
-            subBuilder.MergeFrom(ReplaceNodeStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ReplaceNodeStatus = subBuilder;
-          break;
-        }
-        case 330: {
-          global::ShiftPreset subBuilder = new global::ShiftPreset();
-          if (typeCase_ == TypeOneofCase.ShiftPreset) {
-            subBuilder.MergeFrom(ShiftPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ShiftPreset = subBuilder;
-          break;
-        }
-        case 338: {
-          global::ShiftPresetStatus subBuilder = new global::ShiftPresetStatus();
-          if (typeCase_ == TypeOneofCase.ShiftPresetStatus) {
-            subBuilder.MergeFrom(ShiftPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ShiftPresetStatus = subBuilder;
-          break;
-        }
-        case 346: {
-          global::SwapPreset subBuilder = new global::SwapPreset();
-          if (typeCase_ == TypeOneofCase.SwapPreset) {
-            subBuilder.MergeFrom(SwapPreset);
-          }
-          input.ReadMessage(subBuilder);
-          SwapPreset = subBuilder;
-          break;
-        }
-        case 354: {
-          global::SwapPresetStatus subBuilder = new global::SwapPresetStatus();
-          if (typeCase_ == TypeOneofCase.SwapPresetStatus) {
-            subBuilder.MergeFrom(SwapPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          SwapPresetStatus = subBuilder;
-          break;
-        }
-        case 362: {
-          global::CurrentPresetSet subBuilder = new global::CurrentPresetSet();
-          if (typeCase_ == TypeOneofCase.CurrentPresetSet) {
-            subBuilder.MergeFrom(CurrentPresetSet);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetSet = subBuilder;
-          break;
-        }
-        case 370: {
-          global::CurrentLoadedPresetIndexBypassStatus subBuilder = new global::CurrentLoadedPresetIndexBypassStatus();
-          if (typeCase_ == TypeOneofCase.CurrentLoadedPresetIndexBypassStatus) {
-            subBuilder.MergeFrom(CurrentLoadedPresetIndexBypassStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentLoadedPresetIndexBypassStatus = subBuilder;
-          break;
-        }
-        case 378: {
-          global::CurrentDisplayedPresetIndexStatus subBuilder = new global::CurrentDisplayedPresetIndexStatus();
-          if (typeCase_ == TypeOneofCase.CurrentDisplayedPresetIndexStatus) {
-            subBuilder.MergeFrom(CurrentDisplayedPresetIndexStatus);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentDisplayedPresetIndexStatus = subBuilder;
-          break;
-        }
-        case 402: {
-          global::PresetSavedStatus subBuilder = new global::PresetSavedStatus();
-          if (typeCase_ == TypeOneofCase.PresetSavedStatus) {
-            subBuilder.MergeFrom(PresetSavedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          PresetSavedStatus = subBuilder;
-          break;
-        }
-        case 410: {
-          global::ClearPreset subBuilder = new global::ClearPreset();
-          if (typeCase_ == TypeOneofCase.ClearPreset) {
-            subBuilder.MergeFrom(ClearPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ClearPreset = subBuilder;
-          break;
-        }
-        case 418: {
-          global::ClearPresetStatus subBuilder = new global::ClearPresetStatus();
-          if (typeCase_ == TypeOneofCase.ClearPresetStatus) {
-            subBuilder.MergeFrom(ClearPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ClearPresetStatus = subBuilder;
-          break;
-        }
-        case 426: {
-          global::SaveCurrentPreset subBuilder = new global::SaveCurrentPreset();
-          if (typeCase_ == TypeOneofCase.SaveCurrentPreset) {
-            subBuilder.MergeFrom(SaveCurrentPreset);
-          }
-          input.ReadMessage(subBuilder);
-          SaveCurrentPreset = subBuilder;
-          break;
-        }
-        case 434: {
-          global::SaveCurrentPresetTo subBuilder = new global::SaveCurrentPresetTo();
-          if (typeCase_ == TypeOneofCase.SaveCurrentPresetTo) {
-            subBuilder.MergeFrom(SaveCurrentPresetTo);
-          }
-          input.ReadMessage(subBuilder);
-          SaveCurrentPresetTo = subBuilder;
-          break;
-        }
-        case 442: {
-          global::SavePresetAs subBuilder = new global::SavePresetAs();
-          if (typeCase_ == TypeOneofCase.SavePresetAs) {
-            subBuilder.MergeFrom(SavePresetAs);
-          }
-          input.ReadMessage(subBuilder);
-          SavePresetAs = subBuilder;
-          break;
-        }
-        case 450: {
-          global::NewPresetSavedStatus subBuilder = new global::NewPresetSavedStatus();
-          if (typeCase_ == TypeOneofCase.NewPresetSavedStatus) {
-            subBuilder.MergeFrom(NewPresetSavedStatus);
-          }
-          input.ReadMessage(subBuilder);
-          NewPresetSavedStatus = subBuilder;
-          break;
-        }
-        case 458: {
-          global::RenamePresetAt subBuilder = new global::RenamePresetAt();
-          if (typeCase_ == TypeOneofCase.RenamePresetAt) {
-            subBuilder.MergeFrom(RenamePresetAt);
-          }
-          input.ReadMessage(subBuilder);
-          RenamePresetAt = subBuilder;
-          break;
-        }
-        case 466: {
-          global::AuditionPreset subBuilder = new global::AuditionPreset();
-          if (typeCase_ == TypeOneofCase.AuditionPreset) {
-            subBuilder.MergeFrom(AuditionPreset);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionPreset = subBuilder;
-          break;
-        }
-        case 474: {
-          global::AuditionPresetStatus subBuilder = new global::AuditionPresetStatus();
-          if (typeCase_ == TypeOneofCase.AuditionPresetStatus) {
-            subBuilder.MergeFrom(AuditionPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionPresetStatus = subBuilder;
-          break;
-        }
-        case 482: {
-          global::ExitAuditionPreset subBuilder = new global::ExitAuditionPreset();
-          if (typeCase_ == TypeOneofCase.ExitAuditionPreset) {
-            subBuilder.MergeFrom(ExitAuditionPreset);
-          }
-          input.ReadMessage(subBuilder);
-          ExitAuditionPreset = subBuilder;
-          break;
-        }
-        case 490: {
-          global::ExitAuditionPresetStatus subBuilder = new global::ExitAuditionPresetStatus();
-          if (typeCase_ == TypeOneofCase.ExitAuditionPresetStatus) {
-            subBuilder.MergeFrom(ExitAuditionPresetStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ExitAuditionPresetStatus = subBuilder;
-          break;
-        }
-        case 498: {
-          global::AuditionStateRequest subBuilder = new global::AuditionStateRequest();
-          if (typeCase_ == TypeOneofCase.AuditionStateRequest) {
-            subBuilder.MergeFrom(AuditionStateRequest);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionStateRequest = subBuilder;
-          break;
-        }
-        case 506: {
-          global::AuditionStateStatus subBuilder = new global::AuditionStateStatus();
-          if (typeCase_ == TypeOneofCase.AuditionStateStatus) {
-            subBuilder.MergeFrom(AuditionStateStatus);
-          }
-          input.ReadMessage(subBuilder);
-          AuditionStateStatus = subBuilder;
-          break;
-        }
-        case 802: {
-          global::ProductIdentificationStatus subBuilder = new global::ProductIdentificationStatus();
-          if (typeCase_ == TypeOneofCase.ProductIdentificationStatus) {
-            subBuilder.MergeFrom(ProductIdentificationStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ProductIdentificationStatus = subBuilder;
-          break;
-        }
-        case 810: {
-          global::ProductIdentificationRequest subBuilder = new global::ProductIdentificationRequest();
-          if (typeCase_ == TypeOneofCase.ProductIdentificationRequest) {
-            subBuilder.MergeFrom(ProductIdentificationRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ProductIdentificationRequest = subBuilder;
-          break;
-        }
-        case 818: {
-          global::FirmwareVersionRequest subBuilder = new global::FirmwareVersionRequest();
-          if (typeCase_ == TypeOneofCase.FirmwareVersionRequest) {
-            subBuilder.MergeFrom(FirmwareVersionRequest);
-          }
-          input.ReadMessage(subBuilder);
-          FirmwareVersionRequest = subBuilder;
-          break;
-        }
-        case 826: {
-          global::FirmwareVersionStatus subBuilder = new global::FirmwareVersionStatus();
-          if (typeCase_ == TypeOneofCase.FirmwareVersionStatus) {
-            subBuilder.MergeFrom(FirmwareVersionStatus);
-          }
-          input.ReadMessage(subBuilder);
-          FirmwareVersionStatus = subBuilder;
-          break;
-        }
-        case 834: {
-          global::CurrentPresetRequest subBuilder = new global::CurrentPresetRequest();
-          if (typeCase_ == TypeOneofCase.CurrentPresetRequest) {
-            subBuilder.MergeFrom(CurrentPresetRequest);
-          }
-          input.ReadMessage(subBuilder);
-          CurrentPresetRequest = subBuilder;
-          break;
-        }
-        case 842: {
-          global::RetrievePreset subBuilder = new global::RetrievePreset();
-          if (typeCase_ == TypeOneofCase.RetrievePreset) {
-            subBuilder.MergeFrom(RetrievePreset);
-          }
-          input.ReadMessage(subBuilder);
-          RetrievePreset = subBuilder;
-          break;
-        }
-        case 850: {
-          global::UsbGainRequest subBuilder = new global::UsbGainRequest();
-          if (typeCase_ == TypeOneofCase.UsbGainRequest) {
-            subBuilder.MergeFrom(UsbGainRequest);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainRequest = subBuilder;
-          break;
-        }
-        case 858: {
-          global::UsbGainStatus subBuilder = new global::UsbGainStatus();
-          if (typeCase_ == TypeOneofCase.UsbGainStatus) {
-            subBuilder.MergeFrom(UsbGainStatus);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainStatus = subBuilder;
-          break;
-        }
-        case 866: {
-          global::QASlotsRequest subBuilder = new global::QASlotsRequest();
-          if (typeCase_ == TypeOneofCase.QASlotsRequest) {
-            subBuilder.MergeFrom(QASlotsRequest);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsRequest = subBuilder;
-          break;
-        }
-        case 874: {
-          global::QASlotsStatus subBuilder = new global::QASlotsStatus();
-          if (typeCase_ == TypeOneofCase.QASlotsStatus) {
-            subBuilder.MergeFrom(QASlotsStatus);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsStatus = subBuilder;
-          break;
-        }
-        case 882: {
-          global::LineOutGainRequest subBuilder = new global::LineOutGainRequest();
-          if (typeCase_ == TypeOneofCase.LineOutGainRequest) {
-            subBuilder.MergeFrom(LineOutGainRequest);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainRequest = subBuilder;
-          break;
-        }
-        case 890: {
-          global::LineOutGainStatus subBuilder = new global::LineOutGainStatus();
-          if (typeCase_ == TypeOneofCase.LineOutGainStatus) {
-            subBuilder.MergeFrom(LineOutGainStatus);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainStatus = subBuilder;
-          break;
-        }
-        case 906: {
-          global::ModalStatusMessage subBuilder = new global::ModalStatusMessage();
-          if (typeCase_ == TypeOneofCase.ModalStatusMessage) {
-            subBuilder.MergeFrom(ModalStatusMessage);
-          }
-          input.ReadMessage(subBuilder);
-          ModalStatusMessage = subBuilder;
-          break;
-        }
-        case 914: {
-          global::UsbGainSet subBuilder = new global::UsbGainSet();
-          if (typeCase_ == TypeOneofCase.UsbGainSet) {
-            subBuilder.MergeFrom(UsbGainSet);
-          }
-          input.ReadMessage(subBuilder);
-          UsbGainSet = subBuilder;
-          break;
-        }
-        case 922: {
-          global::LineOutGainSet subBuilder = new global::LineOutGainSet();
-          if (typeCase_ == TypeOneofCase.LineOutGainSet) {
-            subBuilder.MergeFrom(LineOutGainSet);
-          }
-          input.ReadMessage(subBuilder);
-          LineOutGainSet = subBuilder;
-          break;
-        }
-        case 930: {
-          global::QASlotsSet subBuilder = new global::QASlotsSet();
-          if (typeCase_ == TypeOneofCase.QASlotsSet) {
-            subBuilder.MergeFrom(QASlotsSet);
-          }
-          input.ReadMessage(subBuilder);
-          QASlotsSet = subBuilder;
-          break;
-        }
-        case 1602: {
-          global::UnsupportedMessageStatus subBuilder = new global::UnsupportedMessageStatus();
-          if (typeCase_ == TypeOneofCase.UnsupportedMessageStatus) {
-            subBuilder.MergeFrom(UnsupportedMessageStatus);
-          }
-          input.ReadMessage(subBuilder);
-          UnsupportedMessageStatus = subBuilder;
-          break;
-        }
-        case 1610: {
-          global::Heartbeat subBuilder = new global::Heartbeat();
-          if (typeCase_ == TypeOneofCase.Heartbeat) {
-            subBuilder.MergeFrom(Heartbeat);
-          }
-          input.ReadMessage(subBuilder);
-          Heartbeat = subBuilder;
-          break;
-        }
-        case 1618: {
-          global::ConnectionStatusRequest subBuilder = new global::ConnectionStatusRequest();
-          if (typeCase_ == TypeOneofCase.ConnectionStatusRequest) {
-            subBuilder.MergeFrom(ConnectionStatusRequest);
-          }
-          input.ReadMessage(subBuilder);
-          ConnectionStatusRequest = subBuilder;
-          break;
-        }
-        case 1626: {
-          global::ConnectionStatus subBuilder = new global::ConnectionStatus();
-          if (typeCase_ == TypeOneofCase.ConnectionStatus) {
-            subBuilder.MergeFrom(ConnectionStatus);
-          }
-          input.ReadMessage(subBuilder);
-          ConnectionStatus = subBuilder;
-          break;
-        }
-      }
-    }
-  }
-  #endif
-
-}
-
-#endregion
-
 
 #endregion Designer generated code

@@ -1,4 +1,5 @@
 syntax = "proto2";
+option csharp_namespace = "LtAmpDotNet.Lib.Models.Protobuf";
 
 message NewPresetSavedStatus {
     required string presetData = 1;

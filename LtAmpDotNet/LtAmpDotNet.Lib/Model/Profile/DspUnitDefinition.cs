@@ -1,20 +1,14 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using LtAmpDotNet.Lib.Extensions.JsonConverters;
+﻿using LtAmpDotNet.Lib.Extensions.JsonConverters;
 using LtAmpDotNet.Lib.Model.Preset;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace LtAmpDotNet.Lib.Model.Profile
 {
     public class DspUnitDefinition
     {
         [JsonIgnore]
-        public string? DisplayName { get => Info?.DisplayName; }
+        public string? DisplayName => Info?.DisplayName;
 
         [JsonProperty("nodeType")]
         public string? NodeType { get; set; }
@@ -32,21 +26,25 @@ namespace LtAmpDotNet.Lib.Model.Profile
         [JsonProperty("ui")]
         public DspUnitUi? Ui { get; set; }
 
-        public Node ToNode()
+        public Node ToNode(NodeIdType nodeId)
         {
-            return new Node(Info?.SubCategory)
+            return new Node(this, nodeId);
+        }
+
+        public static List<DspUnitDefinition> Load()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "LtAmpDotNet.Lib.Resources.JsonDefinitions.mustang.dsp_units.dsp_units.json";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName)!)
             {
-                NodeId = Info?.SubCategory,
-                FenderId = FenderId,
-                DspUnitParameters = DefaultDspUnitParameters,
-            };
+                using (StreamReader reader = new(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    return JsonConvert.DeserializeObject<List<DspUnitDefinition>>(result);
+                }
+            }
         }
     }
-
-    
-    
-
-    
 
     //public class TaperValue
     //{
@@ -149,7 +147,7 @@ namespace LtAmpDotNet.Lib.Model.Profile
     //    };
     //}
 
-    
+
 
     public static class DspUnitTypes
     {

@@ -1,11 +1,5 @@
 ﻿using LtAmpDotNet.Lib.Extensions.JsonConverters;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Lib.Model.Preset
 {
@@ -35,13 +29,25 @@ namespace LtAmpDotNet.Lib.Model.Preset
                         return intValue.GetValueOrDefault();
                     case DspUnitParameterType.None:
                         if (boolValue.HasValue)
+                        {
                             return boolValue.Value;
+                        }
+
                         if (stringValue?.Length > 0)
+                        {
                             return stringValue;
+                        }
+
                         if (floatValue.HasValue)
+                        {
                             return floatValue.Value;
+                        }
+
                         if (intValue.HasValue)
+                        {
                             return intValue.Value;
+                        }
+
                         break;
                 }
                 return null!;
@@ -102,16 +108,14 @@ namespace LtAmpDotNet.Lib.Model.Preset
 
     public enum DspUnitParameterType
     {
-        None = 0,
-        Boolean = 6,
-        Integer = 9,
-        Float = 13,
-        String = 18,
+        None = 0b0010,  // 0  0 0 0 0
+        Boolean = 0b0001,  // 1  0 0 0 1
+        Integer = 0b1010,  //10  1 0 1 0 
+        Float = 0b1011,  //11  1 0 1 1 
+        String = 0x0100,  //4   0 1 0 0
 
-        //None = 0,
-        //Float = 3,
-        //String = 4,
-        //Integer = 5,
-        //Boolean = 6,
+        Numeric = 0b1000,
+
+
     }
 }

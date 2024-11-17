@@ -1,21 +1,20 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LtAmpDotNet.Lib.Model.Preset
 {
+    /// <summary>A connection among the parts of the preset</summary>
     public class Connection
     {
+        /// <summary>The input part of the connection</summary>
         [JsonProperty("input")]
         public InputOutput? Input { get; set; }
 
+        /// <summary>The output part of the connection</summary>
         [JsonProperty("output")]
         public InputOutput? Output { get; set; }
     }
 
+    /// <summary>An object in a connection</summary>
     public class InputOutput
     {
         [JsonProperty("index")]

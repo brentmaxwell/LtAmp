@@ -1,9 +1,5 @@
 ﻿using Google.Protobuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LtAmpDotNet.Lib.Models.Protobuf;
 
 namespace LtAmpDotNet.Lib.Model
 {
@@ -11,7 +7,7 @@ namespace LtAmpDotNet.Lib.Model
     {
         public static FenderMessageLT Create(IMessage message, ResponseType responseType = ResponseType.Unsolicited)
         {
-            FenderMessageLT fenderMessage = new FenderMessageLT() { ResponseType = responseType };
+            FenderMessageLT fenderMessage = new() { ResponseType = responseType };
             switch (message.GetType().Name)
             {
                 case "IndexPot":

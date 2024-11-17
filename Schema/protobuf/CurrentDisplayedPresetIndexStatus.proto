@@ -1,4 +1,5 @@
 syntax = "proto2";
+option csharp_namespace = "LtAmpDotNet.Lib.Models.Protobuf";
 
 /*
  * The current preset displayed on the amp. Sent when the preset is changed at the amp

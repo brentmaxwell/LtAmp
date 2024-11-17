@@ -1,0 +1,200 @@
+{
+  "productFamily": "rumble",
+  "effectCategories": [
+    {
+      "categoryName": "stomp",
+      "menuName18Max": "STOMP",
+      "dspUnits": [
+        {
+          "FenderId": "DUBS_Passthru",
+          "menuName18Max": "NONE"
+        },
+        {
+          "FenderId": "DUBS_Overdrive",
+          "menuName18Max": "OVERDRIVE"
+        },
+        {
+          "FenderId": "DUBS_Greenbox",
+          "menuName18Max": "BLUES DRIVE"
+        },
+        {
+          "FenderId": "DUBS_ModernBassOverdrive",
+          "menuName18Max": "BASS DRIVE"
+        },
+        {
+          "FenderId": "DUBS_Blackbox",
+          "menuName18Max": "ROCK DIRT"
+        },
+        {
+          "FenderId": "DUBS_VariFuzz",
+          "menuName18Max": "FUZZ"
+        },
+        {
+          "FenderId": "DUBS_Octobot",
+          "menuName18Max": "OCTOBOT"
+        },
+        {
+          "FenderId": "DUBS_SimpleCompressor",
+          "menuName18Max": "COMPRESSOR"
+        },
+        {
+          "FenderId": "DUBS_Sustain",
+          "menuName18Max": "SUSTAIN"
+        },
+        {
+          "FenderId": "DUBS_MustangFiveBandEq1",
+          "menuName18Max": "5-BAND EQ"
+        }
+      ]
+    },
+    {
+      "categoryName": "mod",
+      "menuName18Max": "MOD",
+      "dspUnits": [
+        {
+          "FenderId": "DUBS_Passthru",
+          "menuName18Max": "NONE"
+        },
+        {
+          "FenderId": "DUBS_ChorusTriangle",
+          "menuName18Max": "CHORUS"
+        },
+        {
+          "FenderId": "DUBS_TriangleFlanger",
+          "menuName18Max": "FLANGER"
+        },
+        {
+          "FenderId": "DUBS_Vibratone",
+          "menuName18Max": "VIBRATONE"
+        },
+        {
+          "FenderId": "DUBS_SineTremolo",
+          "menuName18Max": "TREMOLO"
+        },
+        {
+          "FenderId": "DUBS_Phaser",
+          "menuName18Max": "PHASER"
+        },
+        {
+          "FenderId": "DUBS_StepFilter",
+          "menuName18Max": "STEP FILTER"
+        },
+        {
+          "FenderId": "DUBS_EcFilter",
+          "menuName18Max": "TOUCH WAH"
+        }
+      ]
+    },
+    {
+      "categoryName": "delay",
+      "menuName18Max": "DELAY",
+      "dspUnits": [
+        {
+          "FenderId": "DUBS_Passthru",
+          "menuName18Max": "NONE"
+        },
+        {
+          "FenderId": "DUBS_MonoDelay",
+          "menuName18Max": "DELAY"
+        },
+        {
+          "FenderId": "DUBS_ReverseDelay",
+          "menuName18Max": "REVERSE"
+        },
+        {
+          "FenderId": "DUBS_TapeDelayLite",
+          "menuName18Max": "ECHO"
+        },
+        {
+          "FenderId": "DUBS_LargeHallReverb",
+          "menuName18Max": "HALL RVRB"
+        },
+        {
+          "FenderId": "DUBS_SmallRoomReverb",
+          "menuName18Max": "ROOM RVRB"
+        }
+      ]
+    },
+    {
+      "categoryName": "eq",
+      "menuName18Max": "EQ",
+      "dspUnits": [
+        {
+          "FenderId": "DUBS_Passthru",
+          "menuName18Max": "NONE"
+        },
+        {
+          "FenderId": "DUBS_MustangFiveBandEq1",
+          "menuName18Max": "5-BAND EQ"
+        }
+      ]
+    }
+  ],
+  "amp": {
+    "dspUnits": [
+      {
+        "FenderId": "DUBS_StudioPreampBass",
+        "menuName18Max": "STUDIO 1"
+      },
+      {
+        "FenderId": "DUBS_StudioTubePreampBass",
+        "menuName18Max": "STUDIO 2"
+      },
+      {
+        "FenderId": "DUBS_RumbleV3Lite",
+        "menuName18Max": "RUMBLE"
+      },
+      {
+        "FenderId": "DUBS_RumbleV38x10Lite",
+        "menuName18Max": "BIG RUMBLE"
+      },
+      {
+        "FenderId": "DUBS_Ampeg66B15",
+        "menuName18Max": "WARM COMBO"
+      },
+      {
+        "FenderId": "DUBS_SVT",
+        "menuName18Max": "ARENA BASS"
+      },
+      {
+        "FenderId": "DUBS_GK800RB",
+        "menuName18Max": "CLEAN BASS"
+      },
+      {
+        "FenderId": "DUBS_Redhead",
+        "menuName18Max": "SLAP BASS"
+      },
+      {
+        "FenderId": "DUBS_Bassman300",
+        "menuName18Max": "BASS 300"
+      },
+      {
+        "FenderId": "DUBS_MonsterLite",
+        "menuName18Max": "MONSTER"
+      },
+      {
+        "FenderId": "DUBS_BassmanTV",
+        "menuName18Max": "OLD FENDER"
+      },
+      {
+        "FenderId": "DUBS_DualShowmanBass",
+        "menuName18Max": "SHOWMAN"
+      },
+      {
+        "FenderId": "DUBS_Or120Bass",
+        "menuName18Max": "GRUNGE BASS"
+      },
+      {
+        "FenderId": "DUBS_Plexi87Bass",
+        "menuName18Max": "70S ROCK"
+      },
+      {
+        "FenderId": "DUBS_Jcm800",
+        "menuName18Max": "ANGRY BRIT"
+      },
+      {
+        "FenderId": "DUBS_SuperBassmanVintage",
+        "menuName18Max": "BASSMAN 2K"
+      }
+    ]
+  }

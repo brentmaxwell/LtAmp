@@ -1,6 +1,8 @@
 # LtAmp
 Reverse engineering the USB protocol of the Fender Mustang LT series guitar amps.
 
+*** I decided to start over on the application. I didn't like how complicated event messaging was getting ***
+
 ## Protocol Documentation
 Communication with the amp is over USB HID using [protobuf](https://github.com/protocolbuffers/protobuf). Documentation can be found [here](/Docs/Protocol.md)
 
@@ -21,5 +23,5 @@ Initally, this has been developed in .NET Core to allow for quick scaffolding of
 - Keyboard shortcuts to control effect parameters; specifically to be able to set up conplex changes via macros
 - MIDI control of effect parameters
 - Integrated VU meter to monitor sound levels from the USB audio inteface for volume leveling across presets (and maybe a spectrogram if the latency isnt too bad)
-- Cooy and paste effect units between presets
+- Copy and paste effect units between presets
 
